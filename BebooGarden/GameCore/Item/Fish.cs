@@ -19,8 +19,8 @@ internal class Fish : Item
   private System.Numerics.Vector3? Destination { get; set; }
   private TimedBehaviour MoveBehaviour { get; set; }
   private TimedBehaviour ChangeDestinationBehaviour { get; set; }
-  public override string Name { get; } = BebooText.fish_name;
-  public override string Description { get; } = BebooText.fish_description;
+  public override string Name => BebooText.fish_name;
+  public override string Description => BebooText.fish_description;
   public override System.Numerics.Vector3? Position
   {
     get => position;

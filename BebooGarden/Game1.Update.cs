@@ -70,6 +70,7 @@ public partial class Game1
       item?.Update(gameTime);
     }
 
+    ReleaseBebooInArmsIfGone();
     HandleKeyboardNavigation(_currentKeyboardState);
     UpdateMinigames(gameTime, _currentKeyboardState);
     UpdateScriptedScene(gameTime);
@@ -85,7 +86,13 @@ public partial class Game1
     if (_aMenuShouldBeClosed)
     {
       SoundSystem.System.PlaySound(SoundSystem.MenuBackSound);
-      if (PreviousPanels.TryGetValue((Panel)_desktop.Root, out var previousPanal))
+      _aMenuShouldBeClosed = false;
+      if (_desktop.Root is not Panel root)
+      {
+        SwitchToScreen(GameScreen.game);
+        return;
+      }
+      if (PreviousPanels.TryGetValue(root, out var previousPanal))
       {
         if (previousPanal == _gamePanel)
         {
@@ -108,7 +115,6 @@ public partial class Game1
       {
         SwitchToScreen(GameScreen.game);
       }
-      _aMenuShouldBeClosed = false;
     }
   }
 
@@ -138,6 +144,20 @@ public partial class Game1
 
   private void GetKeyStates(out KeyboardState currentKeyboardState, out MouseState currentMouseState)
   {
+    currentMouseState = Mouse.GetState();
+    if (!IsActive)
+    {
+      // Nothing typed in somebody else's window is meant for the garden.
+      lock (_keyLock)
+      {
+        _hookPressedKeys.Clear();
+        _keysToProcess.Clear();
+        _updateProcessed = true;
+      }
+      currentKeyboardState = new KeyboardState();
+      _wasActive = false;
+      return;
+    }
     KeyboardState nativeKeyboardState = Keyboard.GetState();
     List<Keys> allPressedKeys = nativeKeyboardState.GetPressedKeys().ToList();
     lock (_keyLock)
@@ -155,7 +175,13 @@ public partial class Game1
       EscapeJustPressed = false;
     }
     currentKeyboardState = new(allPressedKeys.ToArray());
-    currentMouseState = Mouse.GetState();
+    if (!_wasActive)
+    {
+      // First frame back in focus: treat whatever is still held as already seen, so alt-tabbing
+      // home does not fire the action that key is bound to.
+      _previousKeyboardState = currentKeyboardState;
+      _wasActive = true;
+    }
   }
   public void RemoveEscapeKey()
   {

@@ -29,6 +29,8 @@ public partial class Game1
   private readonly HashSet<Keys> _hookPressedKeys = [];
   private readonly HashSet<Keys> _keysToProcess = []; // Nouvelles touches à traiter
   private bool _updateProcessed = false;
+  private bool _lastSwayWasLeft;
+  private bool _wasActive = true;
 
   private void HandleKeyboardNavigation(KeyboardState currentKeyboardState)
   {
@@ -63,11 +65,33 @@ public partial class Game1
       || Wasd && currentKeyboardState.IsKeyDown(Keys.A)
       || !Wasd && currentKeyboardState.IsKeyDown(Keys.Q))
       {
-        MoveOf(new Vector3(-1, 0, 0));
+        if (BebooInArms != null && currentKeyboardState.IsKeyDown(Keys.Enter))
+        {
+          if (!_lastSwayWasLeft)
+          {
+            SwayBebooInArms(true);
+            _lastSwayWasLeft = true;
+          }
+        }
+        else
+        {
+          MoveOf(new Vector3(-1, 0, 0));
+        }
       }
       else if (currentKeyboardState.IsKeyDown(Keys.Right) || currentKeyboardState.IsKeyDown(Keys.D))
       {
-        MoveOf(new Vector3(1, 0, 0));
+        if (BebooInArms != null && currentKeyboardState.IsKeyDown(Keys.Enter))
+        {
+          if (_lastSwayWasLeft)
+          {
+            SwayBebooInArms(false);
+            _lastSwayWasLeft = false;
+          }
+        }
+        else
+        {
+          MoveOf(new Vector3(1, 0, 0));
+        }
       }
       else if (currentKeyboardState.IsKeyDown(Keys.Up)
         || Wasd && IsKeyPressed(currentKeyboardState, Keys.W)
@@ -117,24 +141,29 @@ public partial class Game1
     {
       SayTickets();
     }
+    if (IsKeyPressed(currentKeyboardState, Keys.P))
+    {
+      TakeOrPutDownBeboo();
+    }
     if (IsKeyPressed(currentKeyboardState, Keys.Enter))
     {
-      if (itemUnderCursor != null && itemUnderCursor.IsTakable) itemUnderCursor.Take();
-      else if (!Race.IsARaceRunning && Save.Flags.UnlockShop && (Map?.IsArroundShop(PlayerPosition) ?? false))
+      var mapConnexion = Map?.GetConnexionArroundPosition(PlayerPosition);
+      if (itemUnderCursor != null && itemUnderCursor.IsTakable && BebooInArms == null) itemUnderCursor.Take();
+      else if (Race.IsARaceRunning)
+      {
+        // Nothing on the map is reachable while a race is on.
+      }
+      else if (Save.Flags.UnlockShop && (Map?.IsArroundShop(PlayerPosition) ?? false))
       {
         ShowShop();
       }
-      else if (!Race.IsARaceRunning)
+      else if (Map?.IsArroundRaceGate(PlayerPosition) ?? false)
       {
-        var mapConnexion= Map?.GetConnexionArroundPosition(PlayerPosition);
-        if (mapConnexion?.Map.IsUnlocked()??false)
-        {
-          TravelBetwieen(Map.Preset, mapConnexion.MapPreset);
-        }
+        ShowCompetitionMenu();
       }
-      else if (!Race.IsARaceRunning && Map?.Beboos.Count > 0 && (Map?.IsArroundRaceGate(PlayerPosition) ?? false))
+      else if (mapConnexion?.Map.IsUnlocked() ?? false)
       {
-        ChooseBebooForRace();
+        TravelBetwieen(Map.Preset, mapConnexion.MapPreset);
       }
     }
     if (currentKeyboardState.GetPressedKeyCount() > 0)
@@ -248,7 +277,8 @@ public partial class Game1
 
   private void OnKeyReleased(object sender, KeyboardHookEventArgs e)
   {
-    if (!IsActive) return;
+    // Deliberately not gated on IsActive: a key let go of while the window is in the background
+    // still has to stop being held here, or it stays down forever.
     Keys monogameKey = MonoUtil.ConvertKeyCodeToMonogameKey(e.Data.KeyCode);
 
     if (monogameKey != Keys.None)

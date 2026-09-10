@@ -12,6 +12,24 @@ namespace BebooGarden.GameCore.Pet;
 
 public partial class Beboo
 {
+  /// <summary>
+  /// How long a beboo goes before losing a point of energy. Slow enough that a well fed beboo can
+  /// stay lively through a play session rather than sliding into exhausted on its own.
+  /// </summary>
+  private const int GOINGTIREDMINMS = 60000 * 6;
+  private const int GOINGTIREDMAXMS = 60000 * 11;
+
+  /// <summary>A beboo takes itself to bed at this share of its energy, and sleeps until that one.</summary>
+  public const float SLEEPYAT = 0.25f;
+  // Above the Energetic threshold rather than exactly on it, so a full night reads as energetic.
+  public const float RESTEDAT = 0.85f;
+
+  /// <summary>
+  /// Share of its maximum a beboo recovers each sleeping tick. Ticks run every 5 to 10 seconds, so
+  /// this fills an empty beboo of any size in roughly six minutes.
+  /// </summary>
+  public const float RECOVERYPERTICK = 0.016f;
+
   private DateTime _lastPetted = DateTime.MinValue;
 
   private int _petCount;
@@ -52,12 +70,14 @@ public partial class Beboo
     FancyMoveBehaviour =
         new TimedBehaviour(10000, 20000, true);
     GoingTiredBehaviour =
-        new TimedBehaviour(60000 * 3, 60000 * 6, !isSleepingAtStart || !racer);
+        new TimedBehaviour(GOINGTIREDMINMS, GOINGTIREDMAXMS, !isSleepingAtStart || !racer);
     GoingSadBehaviour =
         new TimedBehaviour(120000, 150000, !racer);
     EmotionBehaviour = new TimedBehaviour(1000, 1500, true);
     CryBehaviour =
       new TimedBehaviour(5000, 15000, false);
+    PresentBehaviour =
+      new TimedBehaviour(60000 * 3, 60000 * 7, !racer);
     SleepingBehaviour = new(5000, 10000, isSleepingAtStart);
     //+0.1 every 3mn=1lvl/30mn
     GrowthBehaviour = new(3000 * 60, 3000 * 60, !racer);
@@ -80,8 +100,8 @@ public partial class Beboo
         MaxHappinness = 20;
         break;
     }
-    Energy = elapsedTime.TotalHours > 8 ? 5 : energy;
-    Energy = elapsedTime.TotalDays > 2 ? 7 : energy;
+    // Left alone overnight or longer, a beboo has had all the sleep it needs.
+    Energy = elapsedTime.TotalHours > 8 ? MaxEnergy * RESTEDAT : energy;
     //SpeechRecognizer = new BebooSpeechRecognition(this);
     //SpeechRecognizer.BebooCalled += Call;
   }
@@ -134,6 +154,13 @@ public partial class Beboo
     }
   }
 
+  /// <summary>
+  /// Happiness a sad beboo has to climb back to before it counts as cheered up. Bursting into
+  /// tears happens at 0, so there is a gap in between: a beboo on the way up keeps its sad music
+  /// until it is genuinely better, and one on the way down does not flip at the first bad tick.
+  /// </summary>
+  public const int CHEEREDUPAT = 3;
+
   public Vector3 Position { get; set; }
   public bool Happy { get; private set; } = true;
   public bool Sleeping { get; private set; }
@@ -153,20 +180,41 @@ public partial class Beboo
   public TimedBehaviour GoToSleepOrWakeUpBehaviour { get; private set; }
   private TimedBehaviour FancyMoveBehaviour { get; }
   private TimedBehaviour CryBehaviour { get; }
+  private TimedBehaviour PresentBehaviour { get; }
   private TimedBehaviour SleepingBehaviour { get; }
   public TimedBehaviour GrowthBehaviour { get; }
   //public BebooSpeechRecognition SpeechRecognizer { get; }
   public bool KnowItsName { get; internal set; }
   public int MaxEnergy { get; private set; } = 10;
+
+  /// <summary>
+  /// How rested this beboo is, as a share of what it can hold. Thresholds are fractions rather
+  /// than fixed numbers because MaxEnergy grows from 10 to 20 as a beboo ages.
+  /// </summary>
+  public EnergyStage EnergyLevel
+  {
+    get
+    {
+      if (Energy <= 0) return EnergyStage.Exhausted;
+      float share = Energy / MaxEnergy;
+      if (share <= 0.25f) return EnergyStage.Tired;
+      if (share <= 0.5f) return EnergyStage.LittleTired;
+      if (share <= 0.75f) return EnergyStage.Ok;
+      return EnergyStage.Energetic;
+    }
+  }
   public int MaxHappinness { get; private set; } = 10;
   public bool Paused { get; private set; }
 
+  /// <summary>Set when this beboo's mood changed and the map's music has yet to catch up.</summary>
+  private bool _moodMusicDirty;
+
   private void BurstInTearrs()
   {
-    if (!Happy) return;
+    if (!Happy || Sleeping) return;
     Happy = false;
     CrossSpeakManager.Instance.Output(String.Format(BebooText.beboo_sadstart, Name));
-    Game1.Instance.SoundSystem.PlaySadMusic();
+    _moodMusicDirty = true;
     CuteBehaviour.Stop();
     CryBehaviour.Start();
     MoveBehaviour.MinMS = 800;
@@ -175,19 +223,31 @@ public partial class Beboo
 
   private void BeHappy()
   {
-    if (Happy) return;
+    if (Happy || Happiness < CHEEREDUPAT) return;
     Happy = true;
-    //IGlobalActions.SayLocalizedString("beboo.happystart", Name);
-    //Game1.Instance.UpdateMapMusic();
-    // CuteBehaviour.Start();
     CryBehaviour.Stop();
+    CuteBehaviour.Start();
     MoveBehaviour.MinMS = 200;
     MoveBehaviour.MaxMS = 400;
+    _moodMusicDirty = true;
+  }
+
+  /// <summary>
+  /// The sad music belongs to the map rather than to one beboo, so hand the choice back to
+  /// PlayMapMusic: it keeps the sad tune while somebody is still crying and lifts it once nobody
+  /// is. Skipped during a contest, which is playing its own music.
+  /// </summary>
+  private void RefreshMoodMusic()
+  {
+    if (!_moodMusicDirty) return;
+    _moodMusicDirty = false;
+    if (Game1.Instance.Map?.IsRaceMap ?? false) return;
+    Game1.Instance.ChangeMapMusic();
   }
 
   private bool MoveTowardGoal()
   {
-    if (Destination == null || Destination == Position || Sleeping) return false;
+    if (Destination == null || Destination == Position || Sleeping || IsHeld) return false;
     Vector3 direction = (Vector3)Destination - Position;
     Vector3 directionNormalized = Vector3.Normalize(direction);
     directionNormalized.X = Math.Sign(directionNormalized.X);
@@ -321,12 +381,12 @@ public partial class Beboo
     }
   }
 
-  public void GoAsleep()
+  public void GoAsleep(bool cradled = false)
   {
-    if (Sleeping) return;
-    if (SwimLevel >= 10 || Game1.Instance.Map == Map.UnderWater || (!Game1.Instance.Map?.IsInWater(Position) ?? false))
+    if (Sleeping || IsBeingShaken) return;
+    if (cradled || IsHeld || SwimLevel >= 10 || Game1.Instance.Map == Map.UnderWater || (!Game1.Instance.Map?.IsInWater(Position) ?? false))
     {
-      CrossSpeakManager.Instance.Output(String.Format(BebooText.beboo_gosleep, Name));
+      CrossSpeakManager.Instance.Output(String.Format(cradled ? BebooText.beboo_sleepinarms : BebooText.beboo_gosleep, Name));
       GoingTiredBehaviour.Stop();
       MoveBehaviour.Stop();
       FancyMoveBehaviour.Stop();
@@ -336,6 +396,7 @@ public partial class Beboo
       Game1.Instance.SoundSystem.PlayBebooSound(Game1.Instance.SoundSystem.BebooYawningSounds, this);
       Sleeping = true;
       SleepingBehaviour.Start();
+      StartCradleWakeResistance();
     }
     else
     {
@@ -343,9 +404,10 @@ public partial class Beboo
     }
   }
 
-  public void WakeUp()
+  public void WakeUp(bool force = false)
   {
     if (Game1.Instance.Map != null && (!Sleeping || Game1.Instance.Map.IsLullabyPlaying)) return;
+    if (!force && ResistCradleWakeUp()) return;
     CrossSpeakManager.Instance.Output(String.Format(BebooText.beboo_wakeup, Name));
     SleepingBehaviour.Stop();
     GoingTiredBehaviour.Start();
@@ -356,6 +418,7 @@ public partial class Beboo
     Game1.Instance.SoundSystem.PlayBebooSound(Game1.Instance.SoundSystem.GrassSound, this);
     Game1.Instance.SoundSystem.PlayBebooSound(Game1.Instance.SoundSystem.BebooYawningSounds, this);
     Sleeping = false;
+    ForgetSnuggling();
     BeHappy();
   }
 
@@ -397,6 +460,22 @@ public partial class Beboo
       _petCount = 0;
     }
     //if (Game1.Instance.Random.Next(101) == 1) Game1.Instance.GainTicket(Game1.Instance.Random.Next(3));
+  }
+
+  /// <summary>
+  /// Sets how fast this beboo moves for a contest. Racers never run the emotion tick that would
+  /// otherwise set their pace, and a contest should be decided by condition rather than by mood.
+  /// </summary>
+  public void SetCompetitionPace()
+  {
+    (MoveBehaviour.MinMS, MoveBehaviour.MaxMS) = EnergyLevel switch
+    {
+      EnergyStage.Energetic => (110, 190),
+      EnergyStage.Ok => (150, 250),
+      EnergyStage.LittleTired => (210, 330),
+      EnergyStage.Tired => (300, 460),
+      _ => (430, 650),
+    };
   }
 
   private void BeNormal()
@@ -474,12 +553,13 @@ public partial class Beboo
   }
   public void GetWakeUped(Beboo friend)
   {
+    if (ResistCradleWakeUp()) return;
     Game1.Instance.SoundSystem.PlayBebooSound(Game1.Instance.SoundSystem.BebooSurpriseSounds, this);
     Task.Run(async () =>
     {
       await Task.Delay(2000);
       Game1.Instance.SoundSystem.PlayBebooSound(Game1.Instance.SoundSystem.BebooAngrySounds, this);
-      WakeUp();
+      WakeUp(true);
     });
   }
   public void Follow(Beboo friend)

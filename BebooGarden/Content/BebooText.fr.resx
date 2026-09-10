@@ -492,4 +492,73 @@ Vous venez de déblquer le chemin vers la pleine enneigée. Allez vite la visite
 	<data name="fish.description" xml:space="preserve">
 		<value>Un poisson frais pour nourrir les Bébous affamés.</value>
 		</data>
-	</root>
+	<data name="beboo.pickup" xml:space="preserve">
+		<value>Vous prenez {0} dans vos bras</value>
+	</data>
+	<data name="beboo.putdown" xml:space="preserve">
+		<value>Vous reposez {0}</value>
+	</data>
+	<data name="beboo.sleepinarms" xml:space="preserve">
+		<value>{0} s'endort dans vos bras</value>
+	</data>
+	<data name="beboo.swaytoohard" xml:space="preserve">
+		<value>Vous secouez {0} beaucoup trop fort, et il fond en larmes !</value>
+	</data>
+	<data name="beboo.handsfull" xml:space="preserve">
+		<value>Vous avez déjà les mains prises</value>
+	</data>
+	<data name="competition.gate" xml:space="preserve">
+		<value>Centre de compétition ({0} essais restants aujourd'hui)</value>
+	</data>
+	<data name="competition.choose" xml:space="preserve">
+		<value>Choisissez une compétition</value>
+	</data>
+	<data name="competition.race" xml:space="preserve">
+		<value>Course</value>
+	</data>
+	<data name="competition.closed" xml:space="preserve">
+		<value>Le centre de compétition est fermé pour aujourd'hui. Revenez demain !</value>
+	</data>
+	<data name="jump.name" xml:space="preserve">
+		<value>Saute-Saute</value>
+	</data>
+	<data name="jump.start" xml:space="preserve">
+		<value>Saute-Saute ! Celui qui saute le plus loin gagne.</value>
+	</data>
+	<data name="jump.jumped" xml:space="preserve">
+		<value>{0} a sauté à {1} mètres</value>
+	</data>
+	<data name="jump.win" xml:space="preserve">
+		<value>{0} a sauté le plus loin, {1} mètres, et gagne !</value>
+	</data>
+	<data name="beboo.exhausted" xml:space="preserve">
+		<value>{0} est épuisé</value>
+	</data>
+	<data name="beboo.tired" xml:space="preserve">
+		<value>{0} est fatigué</value>
+	</data>
+	<data name="beboo.okenergy" xml:space="preserve">
+		<value>{0} va plutôt bien</value>
+	</data>
+	<data name="beboo.energetic" xml:space="preserve">
+		<value>{0} déborde d'énergie</value>
+	</data>
+	<data name="competition.entry" xml:space="preserve">
+		<value>{0} ({1} essais restants aujourd'hui)</value>
+	</data>
+	<data name="nest.name" xml:space="preserve">
+		<value>Nid</value>
+	</data>
+	<data name="nest.description" xml:space="preserve">
+		<value>Un lit douillet. Un bébou qui y dort récupère mieux, et un bébou fatigué ira le chercher tout seul.</value>
+	</data>
+	<data name="beboo.snuggle" xml:space="preserve">
+		<value>{0} se blottit contre {1}</value>
+	</data>
+	<data name="beboo.present" xml:space="preserve">
+		<value>{0} revient et dépose {1} à vos pieds !</value>
+	</data>
+	<data name="beboo.presentticket" xml:space="preserve">
+		<value>{0} revient avec quelque chose qui brille !</value>
+	</data>
+</root>

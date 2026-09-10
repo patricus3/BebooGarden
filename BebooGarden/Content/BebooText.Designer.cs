@@ -61,114 +61,6 @@ namespace BebooGarden.Content {
         }
         
         /// <summary>
-        ///   Recherche une chaîne localisée semblable à Bag.
-        /// </summary>
-        internal static string bag {
-            get {
-                return ResourceManager.GetString("bag", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Recherche une chaîne localisée semblable à {0} is fine.
-        /// </summary>
-        internal static string beboo_good {
-            get {
-                return ResourceManager.GetString("beboo.good", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Recherche une chaîne localisée semblable à {0} went asleep.
-        /// </summary>
-        internal static string beboo_gosleep {
-            get {
-                return ResourceManager.GetString("beboo.gosleep", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Recherche une chaîne localisée semblable à {0} is happy!.
-        /// </summary>
-        internal static string beboo_happystart {
-            get {
-                return ResourceManager.GetString("beboo.happystart", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Recherche une chaîne localisée semblable à {0} is a little bit sad.
-        /// </summary>
-        internal static string beboo_littlesad {
-            get {
-                return ResourceManager.GetString("beboo.littlesad", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Recherche une chaîne localisée semblable à {0} is a little bit tired.
-        /// </summary>
-        internal static string beboo_littletired {
-            get {
-                return ResourceManager.GetString("beboo.littletired", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Recherche une chaîne localisée semblable à {0} burst in tears. Do something!.
-        /// </summary>
-        internal static string beboo_sadstart {
-            get {
-                return ResourceManager.GetString("beboo.sadstart", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Recherche une chaîne localisée semblable à {0} is sleeping.
-        /// </summary>
-        internal static string beboo_sleep {
-            get {
-                return ResourceManager.GetString("beboo.sleep", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Recherche une chaîne localisée semblable à {0} is doing very well.
-        /// </summary>
-        internal static string beboo_verygood {
-            get {
-                return ResourceManager.GetString("beboo.verygood", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Recherche une chaîne localisée semblable à {0} is very sad.. Do something!.
-        /// </summary>
-        internal static string beboo_verysad {
-            get {
-                return ResourceManager.GetString("beboo.verysad", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Recherche une chaîne localisée semblable à {0} is very tired.
-        /// </summary>
-        internal static string beboo_verytired {
-            get {
-                return ResourceManager.GetString("beboo.verytired", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Recherche une chaîne localisée semblable à {0} wakes up.
-        /// </summary>
-        internal static string beboo_wakeup {
-            get {
-                return ResourceManager.GetString("beboo.wakeup", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Recherche une chaîne localisée semblable à Beboo Garden.
         /// </summary>
         internal static string beboogarden {
@@ -176,331 +68,7 @@ namespace BebooGarden.Content {
                 return ResourceManager.GetString("beboogarden", resourceCulture);
             }
         }
-        
-        /// <summary>
-        ///   Recherche une chaîne localisée semblable à Blue.
-        /// </summary>
-        internal static string blue {
-            get {
-                return ResourceManager.GetString("blue", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Recherche une chaîne localisée semblable à Boom Box.
-        /// </summary>
-        internal static string boombox {
-            get {
-                return ResourceManager.GetString("boombox", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Recherche une chaîne localisée semblable à A Beboo can use them to bounce further. Place it on the ground then try make a beboo to put them on.
-        /// </summary>
-        internal static string boots_description {
-            get {
-                return ResourceManager.GetString("boots.description", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Recherche une chaîne localisée semblable à Bouncing Boots.
-        /// </summary>
-        internal static string boots_name {
-            get {
-                return ResourceManager.GetString("boots.name", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Recherche une chaîne localisée semblable à Blup.
-        /// </summary>
-        internal static string bubble_description {
-            get {
-                return ResourceManager.GetString("bubble.description", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Recherche une chaîne localisée semblable à Bubble.
-        /// </summary>
-        internal static string bubble_name {
-            get {
-                return ResourceManager.GetString("bubble.name", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Recherche une chaîne localisée semblable à A chest full of tickets. But be careful! A Beboo must be wit to get them..
-        /// </summary>
-        internal static string chest_description {
-            get {
-                return ResourceManager.GetString("chest.description", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Recherche une chaîne localisée semblable à Treasure chest.
-        /// </summary>
-        internal static string chest_name {
-            get {
-                return ResourceManager.GetString("chest.name", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Recherche une chaîne localisée semblable à A fat chocolate cake.
-        /// </summary>
-        internal static string chocolatekake {
-            get {
-                return ResourceManager.GetString("chocolatekake", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Recherche une chaîne localisée semblable à Choose a Beboo.
-        /// </summary>
-        internal static string choosebeboo {
-            get {
-                return ResourceManager.GetString("choosebeboo", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Recherche une chaîne localisée semblable à Just a coffee, thanks..
-        /// </summary>
-        internal static string coffee {
-            get {
-                return ResourceManager.GetString("coffee", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Recherche une chaîne localisée semblable à It&apos;s just a duck.
-        /// </summary>
-        internal static string duck_description {
-            get {
-                return ResourceManager.GetString("duck.description", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Recherche une chaîne localisée semblable à Rubber duck.
-        /// </summary>
-        internal static string duck_name {
-            get {
-                return ResourceManager.GetString("duck.name", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Recherche une chaîne localisée semblable à For more and more beboos!.
-        /// </summary>
-        internal static string egg_description {
-            get {
-                return ResourceManager.GetString("egg.description", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Recherche une chaîne localisée semblable à {0} beboo&apos;s egg.
-        /// </summary>
-        internal static string egg_name {
-            get {
-                return ResourceManager.GetString("egg.name", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Recherche une chaîne localisée semblable à Your bag is empty (escape to leave).
-        /// </summary>
-        internal static string emptybag {
-            get {
-                return ResourceManager.GetString("emptybag", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Recherche une chaîne localisée semblable à Super Apple.
-        /// </summary>
-        internal static string Energetic {
-            get {
-                return ResourceManager.GetString("Energetic", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Recherche une chaîne localisée semblable à Find a Beboo.
-        /// </summary>
-        internal static string findbeboo {
-            get {
-                return ResourceManager.GetString("findbeboo", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Recherche une chaîne localisée semblable à It&apos;s just a fish.
-        /// </summary>
-        internal static string fish_description {
-            get {
-                return ResourceManager.GetString("fish.description", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Recherche une chaîne localisée semblable à Fish.
-        /// </summary>
-        internal static string fish_name {
-            get {
-                return ResourceManager.GetString("fish.name", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Recherche une chaîne localisée semblable à A light and fresh fruit salad.
-        /// </summary>
-        internal static string fruitsalad {
-            get {
-                return ResourceManager.GetString("fruitsalad", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Recherche une chaîne localisée semblable à You gain {0} ticket.
-        /// </summary>
-        internal static string gainticket {
-            get {
-                return ResourceManager.GetString("gainticket", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Recherche une chaîne localisée semblable à Press the numbers on the keyboard to hear a sound. Find all the pairs to move to the next level..
-        /// </summary>
-        internal static string goal {
-            get {
-                return ResourceManager.GetString("goal", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Recherche une chaîne localisée semblable à Green.
-        /// </summary>
-        internal static string green {
-            get {
-                return ResourceManager.GetString("green", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Recherche une chaîne localisée semblable à A delicious icecream.
-        /// </summary>
-        internal static string icecream {
-            get {
-                return ResourceManager.GetString("icecream", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Recherche une chaîne localisée semblable à Indigo.
-        /// </summary>
-        internal static string indigo {
-            get {
-                return ResourceManager.GetString("indigo", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Recherche une chaîne localisée semblable à {0} (×{1}).
-        /// </summary>
-        internal static string inventory_item {
-            get {
-                return ResourceManager.GetString("inventory.item", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Recherche une chaîne localisée semblable à You lose..
-        /// </summary>
-        internal static string lose {
-            get {
-                return ResourceManager.GetString("lose", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Recherche une chaîne localisée semblable à An old object that can play music when putting a roll in it.
-        /// </summary>
-        internal static string musicbox_description {
-            get {
-                return ResourceManager.GetString("musicbox.description", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Recherche une chaîne localisée semblable à Music box.
-        /// </summary>
-        internal static string musicbox_name {
-            get {
-                return ResourceManager.GetString("musicbox.name", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Recherche une chaîne localisée semblable à You don&apos;t have any roll to put in it yet.
-        /// </summary>
-        internal static string musicbox_noroll {
-            get {
-                return ResourceManager.GetString("musicbox.noroll", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Recherche une chaîne localisée semblable à There is no beboo here..
-        /// </summary>
-        internal static string nobeboo {
-            get {
-                return ResourceManager.GetString("nobeboo", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Recherche une chaîne localisée semblable à None.
-        /// </summary>
-        internal static string none {
-            get {
-                return ResourceManager.GetString("none", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Recherche une chaîne localisée semblable à Apple.
-        /// </summary>
-        internal static string Normal {
-            get {
-                return ResourceManager.GetString("Normal", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Recherche une chaîne localisée semblable à Orange.
-        /// </summary>
-        internal static string orange {
-            get {
-                return ResourceManager.GetString("orange", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Recherche une chaîne localisée semblable à Path.
-        /// </summary>
-        internal static string path {
-            get {
-                return ResourceManager.GetString("path", resourceCulture);
-            }
-        }
-        
+
         /// <summary>
         ///   Recherche une chaîne localisée semblable à Pink.
         /// </summary>
@@ -509,88 +77,7 @@ namespace BebooGarden.Content {
                 return ResourceManager.GetString("pink", resourceCulture);
             }
         }
-        
-        /// <summary>
-        ///   Recherche une chaîne localisée semblable à Choose a race.
-        /// </summary>
-        internal static string race_chooserace {
-            get {
-                return ResourceManager.GetString("race.chooserace", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Recherche une chaîne localisée semblable à Choose your racer.
-        /// </summary>
-        internal static string race_chooseracer {
-            get {
-                return ResourceManager.GetString("race.chooseracer", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Recherche une chaîne localisée semblable à {0} is the first! ({1} seconds).
-        /// </summary>
-        internal static string race_first {
-            get {
-                return ResourceManager.GetString("race.first", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Recherche une chaîne localisée semblable à Take part in a race ({0} remaining today).
-        /// </summary>
-        internal static string race_gate {
-            get {
-                return ResourceManager.GetString("race.gate", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Recherche une chaîne localisée semblable à {0} is the second. ({1} seconds).
-        /// </summary>
-        internal static string race_second {
-            get {
-                return ResourceManager.GetString("race.second", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Recherche une chaîne localisée semblable à Easy race.
-        /// </summary>
-        internal static string race_simple {
-            get {
-                return ResourceManager.GetString("race.simple", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Recherche une chaîne localisée semblable à Snowy race.
-        /// </summary>
-        internal static string race_snow {
-            get {
-                return ResourceManager.GetString("race.snow", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Recherche une chaîne localisée semblable à {0} is the third....
-        /// </summary>
-        internal static string race_third {
-            get {
-                return ResourceManager.GetString("race.third", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Recherche une chaîne localisée semblable à Racing is closed for today..
-        /// </summary>
-        internal static string race_trytommorow {
-            get {
-                return ResourceManager.GetString("race.trytommorow", resourceCulture);
-            }
-        }
-        
+
         /// <summary>
         ///   Recherche une chaîne localisée semblable à Red.
         /// </summary>
@@ -599,601 +86,16 @@ namespace BebooGarden.Content {
                 return ResourceManager.GetString("red", resourceCulture);
             }
         }
-        
+
         /// <summary>
-        ///   Recherche une chaîne localisée semblable à Music box&apos;s roll.
+        ///   Recherche une chaîne localisée semblable à Orange.
         /// </summary>
-        internal static string roll_name {
+        internal static string orange {
             get {
-                return ResourceManager.GetString("roll.name", resourceCulture);
+                return ResourceManager.GetString("orange", resourceCulture);
             }
         }
-        
-        /// <summary>
-        ///   Recherche une chaîne localisée semblable à Floating beboo isn&apos;t water scared.
-        /// </summary>
-        internal static string rubberring_description {
-            get {
-                return ResourceManager.GetString("rubberring.description", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Recherche une chaîne localisée semblable à Rubber ring.
-        /// </summary>
-        internal static string rubberring_name {
-            get {
-                return ResourceManager.GetString("rubberring.name", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Recherche une chaîne localisée semblable à Score: {0}.
-        /// </summary>
-        internal static string score {
-            get {
-                return ResourceManager.GetString("score", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Recherche une chaîne localisée semblable à Boutique.
-        /// </summary>
-        internal static string shop {
-            get {
-                return ResourceManager.GetString("shop", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Recherche une chaîne localisée semblable à You already have this roll.
-        /// </summary>
-        internal static string shop_alreadyroll {
-            get {
-                return ResourceManager.GetString("shop.alreadyroll", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Recherche une chaîne localisée semblable à {0} bought.
-        /// </summary>
-        internal static string shop_buy {
-            get {
-                return ResourceManager.GetString("shop.buy", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Recherche une chaîne localisée semblable à {0} : {1}, {2} tickets.
-        /// </summary>
-        internal static string shop_item {
-            get {
-                return ResourceManager.GetString("shop.item", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Recherche une chaîne localisée semblable à Items ({0} remaining tickets).
-        /// </summary>
-        internal static string shop_items {
-            get {
-                return ResourceManager.GetString("shop.items", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Recherche une chaîne localisée semblable à Items.
-        /// </summary>
-        internal static string shop_itemstitle {
-            get {
-                return ResourceManager.GetString("shop.itemstitle", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Recherche une chaîne localisée semblable à You don&apos;t have enough tickets.
-        /// </summary>
-        internal static string shop_notickets {
-            get {
-                return ResourceManager.GetString("shop.notickets", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Recherche une chaîne localisée semblable à {0} : {1}, {2} tickets.
-        /// </summary>
-        internal static string shop_roll {
-            get {
-                return ResourceManager.GetString("shop.roll", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Recherche une chaîne localisée semblable à Music box roll&apos;s ({0} remaining tickets).
-        /// </summary>
-        internal static string shop_rolls {
-            get {
-                return ResourceManager.GetString("shop.rolls", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Recherche une chaîne localisée semblable à Music Box roll&apos;s.
-        /// </summary>
-        internal static string shop_rollstitle {
-            get {
-                return ResourceManager.GetString("shop.rollstitle", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Recherche une chaîne localisée semblable à Welcome to the boutique! ({0} remaining tickets).
-        /// </summary>
-        internal static string shop_title {
-            get {
-                return ResourceManager.GetString("shop.title", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Recherche une chaîne localisée semblable à You unlock the boutique!
-        ///Go to the lower right corner of the garden to redeem your tickets!.
-        /// </summary>
-        internal static string shopunlock {
-            get {
-                return ResourceManager.GetString("shopunlock", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Recherche une chaîne localisée semblable à Snow ball.
-        /// </summary>
-        internal static string snowball_name {
-            get {
-                return ResourceManager.GetString("snowball.name", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Recherche une chaîne localisée semblable à Jack pot!.
-        /// </summary>
-        internal static string ticketpack_description {
-            get {
-                return ResourceManager.GetString("ticketpack.description", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Recherche une chaîne localisée semblable à Tickets pack.
-        /// </summary>
-        internal static string ticketpack_name {
-            get {
-                return ResourceManager.GetString("ticketpack.name", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Recherche une chaîne localisée semblable à You have {0} tickets.
-        /// </summary>
-        internal static string tickets {
-            get {
-                return ResourceManager.GetString("tickets", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Recherche une chaîne localisée semblable à Find an item.
-        /// </summary>
-        internal static string tp {
-            get {
-                return ResourceManager.GetString("tp", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Recherche une chaîne localisée semblable à {0} {1}.
-        /// </summary>
-        internal static string tp_item {
-            get {
-                return ResourceManager.GetString("tp.item", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Recherche une chaîne localisée semblable à Trees without any fruit.
-        /// </summary>
-        internal static string trees_empty {
-            get {
-                return ResourceManager.GetString("trees.empty", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Recherche une chaîne localisée semblable à Trees full of fruits.
-        /// </summary>
-        internal static string trees_full {
-            get {
-                return ResourceManager.GetString("trees.full", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Recherche une chaîne localisée semblable à Trees with some fruits.
-        /// </summary>
-        internal static string trees_soonempty {
-            get {
-                return ResourceManager.GetString("trees.soonempty", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Recherche une chaîne localisée semblable à Trees with some fruits.
-        /// </summary>
-        internal static string trees_soonfull {
-            get {
-                return ResourceManager.GetString("trees.soonfull", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Recherche une chaîne localisée semblable à Great! Now, {0}, I have to ask you a few questions to find the Beboo who suits you best.
-        ///Let&apos;s start simple..
-        /// </summary>
-        internal static string ui_aboutyou {
-            get {
-                return ResourceManager.GetString("ui.aboutyou", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Recherche une chaîne localisée semblable à Well, everything seems in order..
-        /// </summary>
-        internal static string ui_allgood {
-            get {
-                return ResourceManager.GetString("ui.allgood", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Recherche une chaîne localisée semblable à Back.
-        /// </summary>
-        internal static string ui_back {
-            get {
-                return ResourceManager.GetString("ui.back", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Recherche une chaîne localisée semblable à There are {0} fruits in the basket.
-        /// </summary>
-        internal static string ui_basket {
-            get {
-                return ResourceManager.GetString("ui.basket", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Recherche une chaîne localisée semblable à Your Beboo&apos;s cute name.
-        /// </summary>
-        internal static string ui_bebooname {
-            get {
-                return ResourceManager.GetString("ui.bebooname", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Recherche une chaîne localisée semblable à Choose an item.
-        /// </summary>
-        internal static string ui_chooseitem {
-            get {
-                return ResourceManager.GetString("ui.chooseitem", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Recherche une chaîne localisée semblable à Please choose a roll to insert.
-        /// </summary>
-        internal static string ui_chooseroll {
-            get {
-                return ResourceManager.GetString("ui.chooseroll", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Recherche une chaîne localisée semblable à What is your favorite color?.
-        /// </summary>
-        internal static string ui_color {
-            get {
-                return ResourceManager.GetString("ui.color", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Recherche une chaîne localisée semblable à Help: Game&apos;s keybindings.
-        /// </summary>
-        internal static string ui_commands {
-            get {
-                return ResourceManager.GetString("ui.commands", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Recherche une chaîne localisée semblable à Credits.
-        /// </summary>
-        internal static string ui_credits {
-            get {
-                return ResourceManager.GetString("ui.credits", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Recherche une chaîne localisée semblable à Finally, what is your favorite dessert in this list?.
-        /// </summary>
-        internal static string ui_dessert {
-            get {
-                return ResourceManager.GetString("ui.dessert", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Recherche une chaîne localisée semblable à Join the discord server.
-        /// </summary>
-        internal static string ui_discord {
-            get {
-                return ResourceManager.GetString("ui.discord", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Recherche une chaîne localisée semblable à You must type something..
-        /// </summary>
-        internal static string ui_empty {
-            get {
-                return ResourceManager.GetString("ui.empty", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Recherche une chaîne localisée semblable à Nothing in the bag.
-        /// </summary>
-        internal static string ui_emptyinventory {
-            get {
-                return ResourceManager.GetString("ui.emptyinventory", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Recherche une chaîne localisée semblable à There are no items here. To place an item, go to your bag, select an item then press space where you want to place it..
-        /// </summary>
-        internal static string ui_emptymap {
-            get {
-                return ResourceManager.GetString("ui.emptymap", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Recherche une chaîne localisée semblable à Cool!
-        ///Now, what do you love doing when you have some free time?
-        ///It may be anything..
-        /// </summary>
-        internal static string ui_freetime {
-            get {
-                return ResourceManager.GetString("ui.freetime", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Recherche une chaîne localisée semblable à What do you love to do?.
-        /// </summary>
-        internal static string ui_freetimequick {
-            get {
-                return ResourceManager.GetString("ui.freetimequick", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Recherche une chaîne localisée semblable à {0} dropped.
-        /// </summary>
-        internal static string ui_itemput {
-            get {
-                return ResourceManager.GetString("ui.itemput", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Recherche une chaîne localisée semblable à {0} stored in the bag.
-        /// </summary>
-        internal static string ui_itemtake {
-            get {
-                return ResourceManager.GetString("ui.itemtake", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Recherche une chaîne localisée semblable à Change language.
-        /// </summary>
-        internal static string ui_language {
-            get {
-                return ResourceManager.GetString("ui.language", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Recherche une chaîne localisée semblable à Language changed.
-        /// </summary>
-        internal static string ui_languagechanged {
-            get {
-                return ResourceManager.GetString("ui.languagechanged", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Recherche une chaîne localisée semblable à Your Beboo has just hatched! Now it&apos;s time to name it!.
-        /// </summary>
-        internal static string ui_letsname {
-            get {
-                return ResourceManager.GetString("ui.letsname", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Recherche une chaîne localisée semblable à Main menu.
-        /// </summary>
-        internal static string ui_mainmenu {
-            get {
-                return ResourceManager.GetString("ui.mainmenu", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Recherche une chaîne localisée semblable à Perfect!
-        ///Before you start taking care of {0}, I need to teach you the basics of the garden.
-        ///To feed {0}, you&apos;ll need to collect fruits from the trees on your right. Shake the trees by holding down the enter key and alternating between the up and down arrow keys.
-        ///To give a fruit to {0}, press the space bar when you are close, just like you did with the egg earlier.
-        ///You can also press F to know if {0} is missing something.
-        ///Once {0} is very happy, you can go to top-left corner to get some exercise.
-        ///Final [le reste de la chaîne a été tronqué]&quot;;.
-        /// </summary>
-        internal static string ui_quicktips {
-            get {
-                return ResourceManager.GetString("ui.quicktips", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Recherche une chaîne localisée semblable à Close the Game..
-        /// </summary>
-        internal static string ui_quit {
-            get {
-                return ResourceManager.GetString("ui.quit", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Recherche une chaîne localisée semblable à You have taken the music box&apos;s roll {0}, from {1}.
-        /// </summary>
-        internal static string ui_rolltake {
-            get {
-                return ResourceManager.GetString("ui.rolltake", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Recherche une chaîne localisée semblable à Don&apos;t put this in water!.
-        /// </summary>
-        internal static string ui_warningwater {
-            get {
-                return ResourceManager.GetString("ui.warningwater", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Recherche une chaîne localisée semblable à Welcome to the Beboo Garden!
-        ///To begin with, what should I call you?.
-        /// </summary>
-        internal static string ui_welcome {
-            get {
-                return ResourceManager.GetString("ui.welcome", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Recherche une chaîne localisée semblable à Here is the Beboo Garden.
-        ///It&apos;s a large square of greenery, featuring a small lagoon to the left and tall fruit trees to the right.
-        ///To navigate the garden, I highly recommend wearing headphones or earphones.
-        ///It is currently empty, except for an egg about to hatch, which you should hear on your right.
-        ///Once this dialogue is closed, move using the arrow keys towards the egg, and when you hear it in front of you, press the space bar to help your Beboo break its shell..
-        /// </summary>
-        internal static string ui_welcome2 {
-            get {
-                return ResourceManager.GetString("ui.welcome2", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Recherche une chaîne localisée semblable à Your name.
-        /// </summary>
-        internal static string ui_yourname {
-            get {
-                return ResourceManager.GetString("ui.yourname", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Recherche une chaîne localisée semblable à Volcanic underwater chimney.
-        /// </summary>
-        internal static string underwater {
-            get {
-                return ResourceManager.GetString("underwater", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Recherche une chaîne localisée semblable à Congratulations!
-        ///You unlock the path to the snowy area. Go through it by calling your Beboo to the bottom left of the garden..
-        /// </summary>
-        internal static string unlocksnowy {
-            get {
-                return ResourceManager.GetString("unlocksnowy", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Recherche une chaîne localisée semblable à Congratulations!
-        ///{0} can perfectly swim now..
-        /// </summary>
-        internal static string unlockswimming {
-            get {
-                return ResourceManager.GetString("unlockswimming", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Recherche une chaîne localisée semblable à {0} is now old enough to recognize its name!
-        ///Try calling it!.
-        /// </summary>
-        internal static string unlockvoice {
-            get {
-                return ResourceManager.GetString("unlockvoice", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Recherche une chaîne localisée semblable à Violet.
-        /// </summary>
-        internal static string violet {
-            get {
-                return ResourceManager.GetString("violet", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Recherche une chaîne localisée semblable à lagoon.
-        /// </summary>
-        internal static string water {
-            get {
-                return ResourceManager.GetString("water", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Recherche une chaîne localisée semblable à Welcome to Boom Box!.
-        /// </summary>
-        internal static string welcome {
-            get {
-                return ResourceManager.GetString("welcome", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Recherche une chaîne localisée semblable à You win!.
-        /// </summary>
-        internal static string win {
-            get {
-                return ResourceManager.GetString("win", resourceCulture);
-            }
-        }
-        
+
         /// <summary>
         ///   Recherche une chaîne localisée semblable à Yellow.
         /// </summary>
@@ -1202,5 +104,1293 @@ namespace BebooGarden.Content {
                 return ResourceManager.GetString("yellow", resourceCulture);
             }
         }
+
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à Green.
+        /// </summary>
+        internal static string green {
+            get {
+                return ResourceManager.GetString("green", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à Blue.
+        /// </summary>
+        internal static string blue {
+            get {
+                return ResourceManager.GetString("blue", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à Indigo.
+        /// </summary>
+        internal static string indigo {
+            get {
+                return ResourceManager.GetString("indigo", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à Violet.
+        /// </summary>
+        internal static string violet {
+            get {
+                return ResourceManager.GetString("violet", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à None.
+        /// </summary>
+        internal static string none {
+            get {
+                return ResourceManager.GetString("none", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à A fat chocolate cake.
+        /// </summary>
+        internal static string chocolatekake {
+            get {
+                return ResourceManager.GetString("chocolatekake", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à A delicious icecream.
+        /// </summary>
+        internal static string icecream {
+            get {
+                return ResourceManager.GetString("icecream", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à A light and fresh fruit salad.
+        /// </summary>
+        internal static string fruitsalad {
+            get {
+                return ResourceManager.GetString("fruitsalad", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à Just a coffee, thanks..
+        /// </summary>
+        internal static string coffee {
+            get {
+                return ResourceManager.GetString("coffee", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à Trees full of fruits.
+        /// </summary>
+        internal static string trees_full {
+            get {
+                return ResourceManager.GetString("trees.full", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à Trees without any fruit.
+        /// </summary>
+        internal static string trees_empty {
+            get {
+                return ResourceManager.GetString("trees.empty", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à Trees with some fruits.
+        /// </summary>
+        internal static string trees_soonempty {
+            get {
+                return ResourceManager.GetString("trees.soonempty", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à Trees with some fruits.
+        /// </summary>
+        internal static string trees_soonfull {
+            get {
+                return ResourceManager.GetString("trees.soonfull", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à You have {0} tickets.
+        /// </summary>
+        internal static string tickets {
+            get {
+                return ResourceManager.GetString("tickets", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à lagoon.
+        /// </summary>
+        internal static string water {
+            get {
+                return ResourceManager.GetString("water", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à Apple.
+        /// </summary>
+        internal static string Normal {
+            get {
+                return ResourceManager.GetString("Normal", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à Super Apple.
+        /// </summary>
+        internal static string Energetic {
+            get {
+                return ResourceManager.GetString("Energetic", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à {0} went asleep.
+        /// </summary>
+        internal static string beboo_gosleep {
+            get {
+                return ResourceManager.GetString("beboo.gosleep", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à {0} wakes up.
+        /// </summary>
+        internal static string beboo_wakeup {
+            get {
+                return ResourceManager.GetString("beboo.wakeup", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à {0} burst in tears. Do something!.
+        /// </summary>
+        internal static string beboo_sadstart {
+            get {
+                return ResourceManager.GetString("beboo.sadstart", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à {0} is happy!.
+        /// </summary>
+        internal static string beboo_happystart {
+            get {
+                return ResourceManager.GetString("beboo.happystart", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à {0} is sleeping.
+        /// </summary>
+        internal static string beboo_sleep {
+            get {
+                return ResourceManager.GetString("beboo.sleep", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à {0} is very tired.
+        /// </summary>
+        internal static string beboo_verytired {
+            get {
+                return ResourceManager.GetString("beboo.verytired", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à {0} is very sad.. Do something!.
+        /// </summary>
+        internal static string beboo_verysad {
+            get {
+                return ResourceManager.GetString("beboo.verysad", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à {0} is a little bit sad.
+        /// </summary>
+        internal static string beboo_littlesad {
+            get {
+                return ResourceManager.GetString("beboo.littlesad", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à {0} is a little bit tired.
+        /// </summary>
+        internal static string beboo_littletired {
+            get {
+                return ResourceManager.GetString("beboo.littletired", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à {0} is fine.
+        /// </summary>
+        internal static string beboo_good {
+            get {
+                return ResourceManager.GetString("beboo.good", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à {0} is doing very well.
+        /// </summary>
+        internal static string beboo_verygood {
+            get {
+                return ResourceManager.GetString("beboo.verygood", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à Music box.
+        /// </summary>
+        internal static string musicbox_name {
+            get {
+                return ResourceManager.GetString("musicbox.name", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à An old object that can play music when putting a roll in it.
+        /// </summary>
+        internal static string musicbox_description {
+            get {
+                return ResourceManager.GetString("musicbox.description", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à You don't have any roll to put in it yet.
+        /// </summary>
+        internal static string musicbox_noroll {
+            get {
+                return ResourceManager.GetString("musicbox.noroll", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à Rubber duck.
+        /// </summary>
+        internal static string duck_name {
+            get {
+                return ResourceManager.GetString("duck.name", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à It's just a duck.
+        /// </summary>
+        internal static string duck_description {
+            get {
+                return ResourceManager.GetString("duck.description", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à Bouncing Boots.
+        /// </summary>
+        internal static string boots_name {
+            get {
+                return ResourceManager.GetString("boots.name", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à A Beboo can use them to bounce further. Place it on the ground then try make a beboo to put them on.
+        /// </summary>
+        internal static string boots_description {
+            get {
+                return ResourceManager.GetString("boots.description", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à Tickets pack.
+        /// </summary>
+        internal static string ticketpack_name {
+            get {
+                return ResourceManager.GetString("ticketpack.name", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à Jack pot!.
+        /// </summary>
+        internal static string ticketpack_description {
+            get {
+                return ResourceManager.GetString("ticketpack.description", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à {0} beboo's egg.
+        /// </summary>
+        internal static string egg_name {
+            get {
+                return ResourceManager.GetString("egg.name", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à For more and more beboos!.
+        /// </summary>
+        internal static string egg_description {
+            get {
+                return ResourceManager.GetString("egg.description", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à Bubble.
+        /// </summary>
+        internal static string bubble_name {
+            get {
+                return ResourceManager.GetString("bubble.name", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à Blup.
+        /// </summary>
+        internal static string bubble_description {
+            get {
+                return ResourceManager.GetString("bubble.description", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à Snow ball.
+        /// </summary>
+        internal static string snowball_name {
+            get {
+                return ResourceManager.GetString("snowball.name", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à Music box's roll.
+        /// </summary>
+        internal static string roll_name {
+            get {
+                return ResourceManager.GetString("roll.name", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à You must type something..
+        /// </summary>
+        internal static string ui_empty {
+            get {
+                return ResourceManager.GetString("ui.empty", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à Your name.
+        /// </summary>
+        internal static string ui_yourname {
+            get {
+                return ResourceManager.GetString("ui.yourname", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à Your Beboo has just hatched! Now it's time to name it!.
+        /// </summary>
+        internal static string ui_letsname {
+            get {
+                return ResourceManager.GetString("ui.letsname", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à Your Beboo's cute name.
+        /// </summary>
+        internal static string ui_bebooname {
+            get {
+                return ResourceManager.GetString("ui.bebooname", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à Welcome to the Beboo Garden! To begin with, what should I call you?.
+        /// </summary>
+        internal static string ui_welcome {
+            get {
+                return ResourceManager.GetString("ui.welcome", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à Here is the Beboo Garden. It's a large square of greenery, featuring a small lagoon to the left and tall fruit trees to the right. To navigate the garden, I highly recommend wearing headphones or earphones. It is currently empty, except for an egg about to hatch, which you should hear on your right. Once this dialogue is closed, move using the arrow keys towards the egg, and when you hear it in front of you, press the space bar to help your Beboo break its shell..
+        /// </summary>
+        internal static string ui_welcome2 {
+            get {
+                return ResourceManager.GetString("ui.welcome2", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à Great! Now, {0}, I have to ask you a few questions to find the Beboo who suits you best. Let's start simple..
+        /// </summary>
+        internal static string ui_aboutyou {
+            get {
+                return ResourceManager.GetString("ui.aboutyou", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à What is your favorite color?.
+        /// </summary>
+        internal static string ui_color {
+            get {
+                return ResourceManager.GetString("ui.color", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à Cool! Now, what do you love doing when you have some free time? It may be anything..
+        /// </summary>
+        internal static string ui_freetime {
+            get {
+                return ResourceManager.GetString("ui.freetime", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à What do you love to do?.
+        /// </summary>
+        internal static string ui_freetimequick {
+            get {
+                return ResourceManager.GetString("ui.freetimequick", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à Finally, what is your favorite dessert in this list?.
+        /// </summary>
+        internal static string ui_dessert {
+            get {
+                return ResourceManager.GetString("ui.dessert", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à Well, everything seems in order..
+        /// </summary>
+        internal static string ui_allgood {
+            get {
+                return ResourceManager.GetString("ui.allgood", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à Perfect! Before you start taking care of {0}, I need to teach you the basics of the garden. To feed {0}, you'll need to collect fruits from the trees on your right. Shake the trees by holding down the enter key and alternating between the up and down arrow keys. To give a fruit to {0}, press the space bar when you are close, just like you did with the egg earlier. You can also press F to know if {0} is missing something. Once {0} is very happy, you can go to top-left corner to get some exercise. Finally, press escape to open the menu. Have fun!.
+        /// </summary>
+        internal static string ui_quicktips {
+            get {
+                return ResourceManager.GetString("ui.quicktips", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à Nothing in the bag.
+        /// </summary>
+        internal static string ui_emptyinventory {
+            get {
+                return ResourceManager.GetString("ui.emptyinventory", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à Choose an item.
+        /// </summary>
+        internal static string ui_chooseitem {
+            get {
+                return ResourceManager.GetString("ui.chooseitem", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à {0} dropped.
+        /// </summary>
+        internal static string ui_itemput {
+            get {
+                return ResourceManager.GetString("ui.itemput", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à Don't put this in water!.
+        /// </summary>
+        internal static string ui_warningwater {
+            get {
+                return ResourceManager.GetString("ui.warningwater", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à You have taken the music box's roll {0}, from {1}.
+        /// </summary>
+        internal static string ui_rolltake {
+            get {
+                return ResourceManager.GetString("ui.rolltake", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à Please choose a roll to insert.
+        /// </summary>
+        internal static string ui_chooseroll {
+            get {
+                return ResourceManager.GetString("ui.chooseroll", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à {0} stored in the bag.
+        /// </summary>
+        internal static string ui_itemtake {
+            get {
+                return ResourceManager.GetString("ui.itemtake", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à There are {0} fruits in the basket.
+        /// </summary>
+        internal static string ui_basket {
+            get {
+                return ResourceManager.GetString("ui.basket", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à Back.
+        /// </summary>
+        internal static string ui_back {
+            get {
+                return ResourceManager.GetString("ui.back", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à {0} : {1}, {2} tickets.
+        /// </summary>
+        internal static string shop_item {
+            get {
+                return ResourceManager.GetString("shop.item", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à Items ({0} remaining tickets).
+        /// </summary>
+        internal static string shop_items {
+            get {
+                return ResourceManager.GetString("shop.items", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à Items.
+        /// </summary>
+        internal static string shop_itemstitle {
+            get {
+                return ResourceManager.GetString("shop.itemstitle", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à Music box roll's ({0} remaining tickets).
+        /// </summary>
+        internal static string shop_rolls {
+            get {
+                return ResourceManager.GetString("shop.rolls", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à {0} : {1}, {2} tickets.
+        /// </summary>
+        internal static string shop_roll {
+            get {
+                return ResourceManager.GetString("shop.roll", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à Music Box roll's.
+        /// </summary>
+        internal static string shop_rollstitle {
+            get {
+                return ResourceManager.GetString("shop.rollstitle", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à You already have this roll.
+        /// </summary>
+        internal static string shop_alreadyroll {
+            get {
+                return ResourceManager.GetString("shop.alreadyroll", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à You don't have enough tickets.
+        /// </summary>
+        internal static string shop_notickets {
+            get {
+                return ResourceManager.GetString("shop.notickets", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à Welcome to the boutique! ({0} remaining tickets).
+        /// </summary>
+        internal static string shop_title {
+            get {
+                return ResourceManager.GetString("shop.title", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à {0} bought.
+        /// </summary>
+        internal static string shop_buy {
+            get {
+                return ResourceManager.GetString("shop.buy", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à {0} (×{1}).
+        /// </summary>
+        internal static string inventory_item {
+            get {
+                return ResourceManager.GetString("inventory.item", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à Find an item.
+        /// </summary>
+        internal static string tp {
+            get {
+                return ResourceManager.GetString("tp", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à {0} {1}.
+        /// </summary>
+        internal static string tp_item {
+            get {
+                return ResourceManager.GetString("tp.item", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à You gain {0} ticket.
+        /// </summary>
+        internal static string gainticket {
+            get {
+                return ResourceManager.GetString("gainticket", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à You unlock the boutique! Go to the lower right corner of the garden to redeem your tickets!.
+        /// </summary>
+        internal static string shopunlock {
+            get {
+                return ResourceManager.GetString("shopunlock", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à Boutique.
+        /// </summary>
+        internal static string shop {
+            get {
+                return ResourceManager.GetString("shop", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à {0} is the third....
+        /// </summary>
+        internal static string race_third {
+            get {
+                return ResourceManager.GetString("race.third", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à {0} is the second. ({1} seconds).
+        /// </summary>
+        internal static string race_second {
+            get {
+                return ResourceManager.GetString("race.second", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à {0} is the first! ({1} seconds).
+        /// </summary>
+        internal static string race_first {
+            get {
+                return ResourceManager.GetString("race.first", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à Take part in a race ({0} remaining today).
+        /// </summary>
+        internal static string race_gate {
+            get {
+                return ResourceManager.GetString("race.gate", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à Choose your racer.
+        /// </summary>
+        internal static string race_chooseracer {
+            get {
+                return ResourceManager.GetString("race.chooseracer", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à Choose a race.
+        /// </summary>
+        internal static string race_chooserace {
+            get {
+                return ResourceManager.GetString("race.chooserace", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à Racing is closed for today..
+        /// </summary>
+        internal static string race_trytommorow {
+            get {
+                return ResourceManager.GetString("race.trytommorow", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à Easy race.
+        /// </summary>
+        internal static string race_simple {
+            get {
+                return ResourceManager.GetString("race.simple", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à Snowy race.
+        /// </summary>
+        internal static string race_snow {
+            get {
+                return ResourceManager.GetString("race.snow", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à {0} is now old enough to recognize its name! Try calling it!.
+        /// </summary>
+        internal static string unlockvoice {
+            get {
+                return ResourceManager.GetString("unlockvoice", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à Congratulations! You unlock the path to the snowy area. Go through it by calling your Beboo to the bottom left of the garden..
+        /// </summary>
+        internal static string unlocksnowy {
+            get {
+                return ResourceManager.GetString("unlocksnowy", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à Congratulations! {0} can perfectly swim now..
+        /// </summary>
+        internal static string unlockswimming {
+            get {
+                return ResourceManager.GetString("unlockswimming", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à Path.
+        /// </summary>
+        internal static string path {
+            get {
+                return ResourceManager.GetString("path", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à There is no beboo here..
+        /// </summary>
+        internal static string nobeboo {
+            get {
+                return ResourceManager.GetString("nobeboo", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à Volcanic underwater chimney.
+        /// </summary>
+        internal static string underwater {
+            get {
+                return ResourceManager.GetString("underwater", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à Choose a Beboo.
+        /// </summary>
+        internal static string choosebeboo {
+            get {
+                return ResourceManager.GetString("choosebeboo", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à Main menu.
+        /// </summary>
+        internal static string ui_mainmenu {
+            get {
+                return ResourceManager.GetString("ui.mainmenu", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à Help: Game's keybindings.
+        /// </summary>
+        internal static string ui_commands {
+            get {
+                return ResourceManager.GetString("ui.commands", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à Credits.
+        /// </summary>
+        internal static string ui_credits {
+            get {
+                return ResourceManager.GetString("ui.credits", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à Join the discord server.
+        /// </summary>
+        internal static string ui_discord {
+            get {
+                return ResourceManager.GetString("ui.discord", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à Close the Game..
+        /// </summary>
+        internal static string ui_quit {
+            get {
+                return ResourceManager.GetString("ui.quit", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à Bag.
+        /// </summary>
+        internal static string bag {
+            get {
+                return ResourceManager.GetString("bag", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à Your bag is empty (escape to leave).
+        /// </summary>
+        internal static string emptybag {
+            get {
+                return ResourceManager.GetString("emptybag", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à There are no items here. To place an item, go to your bag, select an item then press space where you want to place it..
+        /// </summary>
+        internal static string ui_emptymap {
+            get {
+                return ResourceManager.GetString("ui.emptymap", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à Change language.
+        /// </summary>
+        internal static string ui_language {
+            get {
+                return ResourceManager.GetString("ui.language", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à Language changed.
+        /// </summary>
+        internal static string ui_languagechanged {
+            get {
+                return ResourceManager.GetString("ui.languagechanged", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à You win!.
+        /// </summary>
+        internal static string win {
+            get {
+                return ResourceManager.GetString("win", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à You lose..
+        /// </summary>
+        internal static string lose {
+            get {
+                return ResourceManager.GetString("lose", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à Boom Box.
+        /// </summary>
+        internal static string boombox {
+            get {
+                return ResourceManager.GetString("boombox", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à Score: {0}.
+        /// </summary>
+        internal static string score {
+            get {
+                return ResourceManager.GetString("score", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à Welcome to Boom Box!.
+        /// </summary>
+        internal static string welcome {
+            get {
+                return ResourceManager.GetString("welcome", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à Press the numbers on the keyboard to hear a sound. Find all the pairs to move to the next level..
+        /// </summary>
+        internal static string goal {
+            get {
+                return ResourceManager.GetString("goal", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à Treasure chest.
+        /// </summary>
+        internal static string chest_name {
+            get {
+                return ResourceManager.GetString("chest.name", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à A chest full of tickets. But be careful! A Beboo must be wit to get them..
+        /// </summary>
+        internal static string chest_description {
+            get {
+                return ResourceManager.GetString("chest.description", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à Find a Beboo.
+        /// </summary>
+        internal static string findbeboo {
+            get {
+                return ResourceManager.GetString("findbeboo", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à Rubber ring.
+        /// </summary>
+        internal static string rubberring_name {
+            get {
+                return ResourceManager.GetString("rubberring.name", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à Floating beboo isn't water scared.
+        /// </summary>
+        internal static string rubberring_description {
+            get {
+                return ResourceManager.GetString("rubberring.description", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à Fish.
+        /// </summary>
+        internal static string fish_name {
+            get {
+                return ResourceManager.GetString("fish.name", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à It's just a fish.
+        /// </summary>
+        internal static string fish_description {
+            get {
+                return ResourceManager.GetString("fish.description", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à You take {0} in your arms.
+        /// </summary>
+        internal static string beboo_pickup {
+            get {
+                return ResourceManager.GetString("beboo.pickup", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à You put {0} back down.
+        /// </summary>
+        internal static string beboo_putdown {
+            get {
+                return ResourceManager.GetString("beboo.putdown", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à {0} falls asleep in your arms.
+        /// </summary>
+        internal static string beboo_sleepinarms {
+            get {
+                return ResourceManager.GetString("beboo.sleepinarms", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à You shake {0} way too hard, and it bursts into tears!.
+        /// </summary>
+        internal static string beboo_swaytoohard {
+            get {
+                return ResourceManager.GetString("beboo.swaytoohard", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à Your hands are already full.
+        /// </summary>
+        internal static string beboo_handsfull {
+            get {
+                return ResourceManager.GetString("beboo.handsfull", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à Competition center ({0} tries left today).
+        /// </summary>
+        internal static string competition_gate {
+            get {
+                return ResourceManager.GetString("competition.gate", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à Choose a competition.
+        /// </summary>
+        internal static string competition_choose {
+            get {
+                return ResourceManager.GetString("competition.choose", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à Race.
+        /// </summary>
+        internal static string competition_race {
+            get {
+                return ResourceManager.GetString("competition.race", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à The competition center is closed for today. Come back tomorrow!.
+        /// </summary>
+        internal static string competition_closed {
+            get {
+                return ResourceManager.GetString("competition.closed", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à Jumpidy Jump.
+        /// </summary>
+        internal static string jump_name {
+            get {
+                return ResourceManager.GetString("jump.name", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à Jumpidy Jump! Whoever jumps the furthest wins..
+        /// </summary>
+        internal static string jump_start {
+            get {
+                return ResourceManager.GetString("jump.start", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à {0} jumped {1} metres.
+        /// </summary>
+        internal static string jump_jumped {
+            get {
+                return ResourceManager.GetString("jump.jumped", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à {0} jumped the furthest, {1} metres, and wins!.
+        /// </summary>
+        internal static string jump_win {
+            get {
+                return ResourceManager.GetString("jump.win", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à {0} is exhausted.
+        /// </summary>
+        internal static string beboo_exhausted {
+            get {
+                return ResourceManager.GetString("beboo.exhausted", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à {0} is tired.
+        /// </summary>
+        internal static string beboo_tired {
+            get {
+                return ResourceManager.GetString("beboo.tired", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à {0} is doing okay.
+        /// </summary>
+        internal static string beboo_okenergy {
+            get {
+                return ResourceManager.GetString("beboo.okenergy", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à {0} is full of energy.
+        /// </summary>
+        internal static string beboo_energetic {
+            get {
+                return ResourceManager.GetString("beboo.energetic", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à {0} ({1} tries left today).
+        /// </summary>
+        internal static string competition_entry {
+            get {
+                return ResourceManager.GetString("competition.entry", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à Nest.
+        /// </summary>
+        internal static string nest_name {
+            get {
+                return ResourceManager.GetString("nest.name", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à A soft bed. A beboo sleeping in one wakes up better rested, and a sleepy beboo will go and find it..
+        /// </summary>
+        internal static string nest_description {
+            get {
+                return ResourceManager.GetString("nest.description", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à {0} snuggles up against {1}.
+        /// </summary>
+        internal static string beboo_snuggle {
+            get {
+                return ResourceManager.GetString("beboo.snuggle", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à {0} comes back and drops {1} at your feet!.
+        /// </summary>
+        internal static string beboo_present {
+            get {
+                return ResourceManager.GetString("beboo.present", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à {0} comes back with something shiny!.
+        /// </summary>
+        internal static string beboo_presentticket {
+            get {
+                return ResourceManager.GetString("beboo.presentticket", resourceCulture);
+            }
+        }
+
     }
 }

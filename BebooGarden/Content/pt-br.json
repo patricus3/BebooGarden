@@ -1,4 +1,4 @@
-{
+﻿{
     "beboogarden": "Jardim Beboo",
     "red": "Vermelho",
     "orange": "Laranja",
@@ -32,6 +32,16 @@
     "beboo.littletired": "{0} está um pouco cansado",
     "beboo.good": "{0} está bem",
     "beboo.verygood": "{0} está indo muito bem",
+    "beboo.pickup": "Você pega {0} no colo",
+    //0=beboo name
+    "beboo.putdown": "Você coloca {0} de volta no chão",
+    //0=beboo name
+    "beboo.sleepinarms": "{0} adormece no seu colo",
+    //0=beboo name
+    "beboo.swaytoohard": "Você balança {0} forte demais, e ele cai no choro!",
+    //0=beboo name
+    "beboo.handsfull": "Suas mãos já estão ocupadas",
+    //0=beboo name
     "musicbox.name": "Caixa de música",
     "musicbox.description": "Um objeto antigo que pode tocar música quando se coloca um rolo nele",
     "musicbox.noroll": "Você ainda não tem nenhum rolo para colocar nela",
@@ -143,5 +153,28 @@
     "log.sad": "Ficou triste",
     "log.sad.end": "{0} não conseguiu mais segurar as lágrimas",
     "log.lonely": "Se sentiu sozinho",
-    "log.lonely.end": "{0} se sentiu melhor depois de um bom tempo junto"
+    "log.lonely.end": "{0} se sentiu melhor depois de um bom tempo junto",
+    "findbeboo": "Encontrar um Beboo",
+    "rubberring.name": "Boia",
+    "rubberring.description": "Um beboo que flutua não tem medo da água.",
+    "fish.name": "Peixe",
+    "fish.description": "Um peixe fresco para alimentar beboos famintos.",
+    "competition.gate": "Centro de competições ({0} tentativas restantes hoje)",
+    "competition.choose": "Escolha uma competição",
+    "competition.race": "Corrida",
+    "competition.closed": "O centro de competições está fechado por hoje. Volte amanhã!",
+    "jump.name": "Pula Pula",
+    "jump.start": "Pula Pula! Quem pular mais longe vence.",
+    "jump.jumped": "{0} pulou {1} metros",
+    "jump.win": "{0} pulou mais longe, {1} metros, e vence!",
+    "beboo.exhausted": "{0} está exausto",
+    "beboo.tired": "{0} está cansado",
+    "beboo.okenergy": "{0} está bem",
+    "beboo.energetic": "{0} está cheio de energia",
+    "competition.entry": "{0} ({1} tentativas restantes hoje)",
+    "nest.name": "Ninho",
+    "nest.description": "Uma cama macia. Um beboo que dorme nela acorda mais descansado, e um beboo com sono vai procurá-la sozinho.",
+    "beboo.snuggle": "{0} se aconchega em {1}",
+    "beboo.present": "{0} volta e deixa {1} aos seus pés!",
+    "beboo.presentticket": "{0} volta com algo brilhante!",
 }

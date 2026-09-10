@@ -3,13 +3,14 @@ using System.Collections.Generic;
 using System.Globalization;
 using BebooGarden.GameCore.Item;
 using BebooGarden.GameCore.World;
+using BebooGarden.MiniGames;
 
 namespace BebooGarden.Save;
 
 public class SaveParameters
 {
   public SaveParameters(string? language, float volume,
-      DateTime lastPayed, Flags flags, string playerName, SortedDictionary<FruitSpecies, int> fruitsBasket, List<Item> inventory, int tickets, System.Collections.Generic.List<string> unlockedRolls, string favoredColor, Dictionary<MapPreset, MapInfo> mapInfos, MapPreset currentMap, Dictionary<RaceType, double> raceScores, int raceTodayTries, int raceTotalWin, float musicVolume)
+      DateTime lastPayed, Flags flags, string playerName, SortedDictionary<FruitSpecies, int> fruitsBasket, List<Item> inventory, int tickets, System.Collections.Generic.List<string> unlockedRolls, string favoredColor, Dictionary<MapPreset, MapInfo> mapInfos, MapPreset currentMap, Dictionary<RaceType, double> raceScores, int raceTodayTries, int raceTotalWin, float musicVolume, Dictionary<CompetitionType, int>? competitionTries = null)
   {
     Volume = volume;
     Language = language;
@@ -25,6 +26,7 @@ public class SaveParameters
     CurrentMap = currentMap;
     RaceScores = raceScores;
     RaceTodayTries = raceTodayTries;
+    CompetitionTries = competitionTries ?? [];
     RaceTotalWin = raceTotalWin;
     MusicVolume = musicVolume;
   }
@@ -57,5 +59,8 @@ public class SaveParameters
   public string FreeTime { get; set; }
   public string Dessert { get; set; }
   public int RaceTodayTries { get; set; }
+
+  /// <summary>Tries spent today per contest. RaceTodayTries above is the older single counter.</summary>
+  public Dictionary<CompetitionType, int> CompetitionTries { get; set; } = [];
   public int RaceTotalWin { get; set; }
 }

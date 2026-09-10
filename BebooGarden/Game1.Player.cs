@@ -3,6 +3,7 @@ using BebooGarden.GameCore.Item;
 using BebooGarden.GameCore.Pet;
 using BebooGarden.GameCore.World;
 using BebooGarden.Minigame;
+using BebooGarden.MiniGames;
 using BebooGarden.Save;
 using BebooGarden.UI;
 using CrossSpeak;
@@ -39,7 +40,7 @@ public partial class Game1
     SoundSystem.MovePlayerTo(newPos);
     if (Save.Flags.UnlockShop && (Map?.IsArroundShop(PlayerPosition) ?? false)) CrossSpeakManager.Instance.Output(BebooText.shop);
     else if (Map?.IsArroundRaceGate(PlayerPosition) ?? false)
-      CrossSpeakManager.Instance.Output(String.Format(BebooText.race_gate, Race.GetRemainingTriesToday()));
+      CrossSpeakManager.Instance.Output(String.Format(BebooText.competition_gate, Competition.GetRemainingTriesToday()));
     else if (connexion?.Map.IsUnlocked() ?? false)
     {
       CrossSpeak.CrossSpeakManager.Instance.Output(connexion.Nme);

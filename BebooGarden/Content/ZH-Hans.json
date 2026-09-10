@@ -1,4 +1,4 @@
-{
+﻿{
     "beboogarden": "波波花园",
     "red": "红色",
     "orange": "橙色",
@@ -42,6 +42,16 @@
     "beboo.good": "{0} 很好",
     //0=beboo name
     "beboo.verygood": "{0} 非常好",
+    //0=beboo name
+    "beboo.pickup": "你把 {0} 抱了起来",
+    //0=beboo name
+    "beboo.putdown": "你把 {0} 放了下来",
+    //0=beboo name
+    "beboo.sleepinarms": "{0} 在你怀里睡着了",
+    //0=beboo name
+    "beboo.swaytoohard": "你把 {0} 摇得太用力了，它放声大哭！",
+    //0=beboo name
+    "beboo.handsfull": "你的手已经满了",
     //0=beboo name
     "musicbox.name": "音乐盒",
     "musicbox.description": "一个放入唱片就能播放音乐的就物件。",
@@ -134,4 +144,26 @@
     "chest.name": "宝箱。",
     "chest.description": "一箱宠物券。请注意！波波宠物发挥自己的智慧才能得到他们。",
     "findbeboo": "寻找波波",
+    "rubberring.name": "游泳圈",
+    "rubberring.description": "漂着的 beboo 就不怕水了。",
+    "fish.name": "鱼",
+    "fish.description": "一条新鲜的鱼，喂给饿肚子的 beboo。",
+    "competition.gate": "比赛中心（今天还剩 {0} 次机会）",
+    "competition.choose": "选择一项比赛",
+    "competition.race": "赛跑",
+    "competition.closed": "比赛中心今天已经关门了，明天再来吧！",
+    "jump.name": "蹦蹦跳跳",
+    "jump.start": "蹦蹦跳跳！谁跳得最远谁就赢。",
+    "jump.jumped": "{0} 跳了 {1} 米",
+    "jump.win": "{0} 跳得最远，{1} 米，赢了！",
+    "beboo.exhausted": "{0} 精疲力尽了",
+    "beboo.tired": "{0} 累了",
+    "beboo.okenergy": "{0} 状态还行",
+    "beboo.energetic": "{0} 精力充沛",
+    "competition.entry": "{0}（今天还剩 {1} 次机会）",
+    "nest.name": "小窝",
+    "nest.description": "一张柔软的床。宠物睡在里面醒来会更精神，困了的宠物也会自己找过去。",
+    "beboo.snuggle": "{0} 依偎着 {1}",
+    "beboo.present": "{0} 回来了，把 {1} 放在你脚边！",
+    "beboo.presentticket": "{0} 带着亮晶晶的东西回来了！",
 }

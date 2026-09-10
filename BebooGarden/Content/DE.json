@@ -1,4 +1,4 @@
-{
+﻿{
     "beboogarden": "Beboo Garten",
     "red": "Rot",
     "orange": "Orange",
@@ -42,6 +42,16 @@
     "beboo.good": "{0} geht es gut",
     //0=beboo name
     "beboo.verygood": "{0} geht es sehr gut",
+    //0=beboo name
+    "beboo.pickup": "Du nimmst {0} auf den Arm",
+    //0=beboo name
+    "beboo.putdown": "Du setzt {0} wieder ab",
+    //0=beboo name
+    "beboo.sleepinarms": "{0} schläft in deinen Armen ein",
+    //0=beboo name
+    "beboo.swaytoohard": "Du schüttelst {0} viel zu stark, und es bricht in Tränen aus!",
+    //0=beboo name
+    "beboo.handsfull": "Deine Hände sind schon voll",
     //0=beboo name
     "musicbox.name": "Spieluhr",
     "musicbox.description": "Ein altes Objekt, das Musik spielen kann, wenn eine Rolle eingesetzt wird.",
@@ -134,4 +144,27 @@
     "chest.name": "Schatztruhe.",
     "chest.description": "Eine Truhe voll mit Tickets. Aber sei vorsichtig! Ein Beboo muss dabei sein, um sie zu bekommen.",
     "findbeboo": "ein  Beboo finden",
+    "bubble.name": "Blase",
+    "rubberring.name": "Schwimmreifen",
+    "rubberring.description": "Ein Beboo, das schwimmt, hat keine Angst vor Wasser.",
+    "fish.name": "Fisch",
+    "fish.description": "Ein frischer Fisch für hungrige Beboos.",
+    "competition.gate": "Wettkampfzentrum ({0} Versuche heute übrig)",
+    "competition.choose": "Wähle einen Wettkampf",
+    "competition.race": "Rennen",
+    "competition.closed": "Das Wettkampfzentrum hat heute geschlossen. Komm morgen wieder!",
+    "jump.name": "Hüpfi Hüpf",
+    "jump.start": "Hüpfi Hüpf! Wer am weitesten springt, gewinnt.",
+    "jump.jumped": "{0} sprang {1} Meter weit",
+    "jump.win": "{0} sprang am weitesten, {1} Meter, und gewinnt!",
+    "beboo.exhausted": "{0} ist erschöpft",
+    "beboo.tired": "{0} ist müde",
+    "beboo.okenergy": "{0} geht es ganz gut",
+    "beboo.energetic": "{0} steckt voller Energie",
+    "competition.entry": "{0} ({1} Versuche heute übrig)",
+    "nest.name": "Nest",
+    "nest.description": "Ein weiches Bett. Ein Beboo, das darin schläft, wacht besser erholt auf, und ein müdes Beboo sucht es von selbst.",
+    "beboo.snuggle": "{0} kuschelt sich an {1}",
+    "beboo.present": "{0} kommt zurück und legt dir {1} vor die Füße!",
+    "beboo.presentticket": "{0} kommt mit etwas Glänzendem zurück!",
 }

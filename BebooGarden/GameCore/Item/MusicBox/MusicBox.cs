@@ -42,8 +42,8 @@ internal class MusicBox : Item
       }
   }
 
-  public override string Name { get; } = BebooText.musicbox_name;
-  public override string Description { get; } = BebooText.musicbox_description;
+  public override string Name => BebooText.musicbox_name;
+  public override string Description => BebooText.musicbox_description;
   public override Vector3? Position { get; set; } = null;
   public override Channel? Channel { get; set; }
   public override bool IsTakable { get; set; } = true;

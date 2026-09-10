@@ -21,6 +21,8 @@ namespace BebooGarden;
 public partial class Game1
 {
   public static readonly string[] SUPPORTEDLANGUAGES = ["fr", "en", "pt-br", "pl", "vi", "zh-Hans", "de"];
+  // TODO: put the real invite back here, it was the one thing in Secrets.cs that wasn't a secret.
+  private const string DISCORDINVITE = "https://discord.gg/REPLACE_WITH_THE_REAL_INVITE";
   private Panel _escapeMenuPanel;
   private Panel _inventoryPanel;
   private Panel _teleportPanel;
@@ -335,7 +337,11 @@ public partial class Game1
     _desktop.Root = _bebooTPPanel;
   }
 
-  public void ShowLanguageMenu(Panel parentManel, bool backOption=true)
+  /// <param name="onSelected">
+  /// Called once the player picked a language. When null the menu simply rebuilds itself in the
+  /// new language and stays open, which is what the escape menu wants.
+  /// </param>
+  public void ShowLanguageMenu(Panel parentManel, bool backOption=true, Action? onSelected=null)
   {
     _languagesPanel = new Panel();
 
@@ -367,13 +373,13 @@ public partial class Game1
       };
       langButton.Click += (_, _) =>
       {
-        OnLanguageSelected(option.Value);
+        OnLanguageSelected(option.Value, backOption, onSelected);
       };
       grid.Widgets.Add(langButton);
     }
     if (backOption)
     {
-      BackButton backButton = new("Retour")
+      BackButton backButton = new(BebooText.ui_back)
       {
         Id = "backToMainButton"
       };
@@ -392,6 +398,38 @@ public partial class Game1
   public void ShowEscapeMenu()
   {
     _desktop.Root = _escapeMenuPanel;
+  }
+
+  /// <summary>
+  /// Switches the game's language. Everything the player can still be shown is built on demand, so
+  /// the only thing left to do is to rebuild the menus that are already on screen.
+  /// </summary>
+  private void OnLanguageSelected(string languageCode, bool backOption, Action? onSelected)
+  {
+    ApplyLanguage(languageCode);
+    SoundSystem.System.PlaySound(SoundSystem.MenuOk2Sound);
+    if (onSelected != null)
+    {
+      onSelected();
+      return;
+    }
+    CreateEscapeMenu();
+    ShowLanguageMenu(_escapeMenuPanel, backOption);
+    var chosenButton = _languagesPanel.FindChildById($"lang_{languageCode}");
+    if (chosenButton != null) _desktop.FocusedKeyboardWidget = chosenButton;
+    CrossSpeakManager.Instance.Output(BebooText.ui_languagechanged);
+  }
+
+  /// <summary>
+  /// Applies a language for this session and remembers it for the next one. The default thread
+  /// culture is set too, so the beboo reactions spoken from background tasks follow along.
+  /// </summary>
+  private void ApplyLanguage(string languageCode)
+  {
+    CultureInfo culture = new(languageCode);
+    CultureInfo.CurrentUICulture = culture;
+    CultureInfo.DefaultThreadCurrentUICulture = culture;
+    Save.Language = culture.Name;
   }
 
   private void CloseEscapeMenu()
@@ -431,11 +469,11 @@ public partial class Game1
   }
   private void InviteDiscord()
   {
-    Process.Start(new ProcessStartInfo(Secrets.DISCORDINVITE) { UseShellExecute = true });
+    Process.Start(new ProcessStartInfo(DISCORDINVITE) { UseShellExecute = true });
   }
   private void OpenCredits()
   {
-    var twoLetterLang = CultureInfo.CurrentCulture.TwoLetterISOLanguageName;
+    var twoLetterLang = CultureInfo.CurrentUICulture.TwoLetterISOLanguageName;
     var langFile = Path.Combine(SoundSystem.CONTENTFOLDER, "doc", $"credits_{twoLetterLang}.html");
     var file = Path.Combine(SoundSystem.CONTENTFOLDER, "doc", "credits.html");
     if (File.Exists(langFile))
@@ -444,8 +482,4 @@ public partial class Game1
       Process.Start(new ProcessStartInfo(file) { UseShellExecute = true });
   }
 
-  private void OnLanguageSelected(string languageCode)
-  {
-    // Logique de changement de langue
-  }
 }

@@ -99,467 +99,466 @@
 		<value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.3500.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
 	</resheader>
 	<data name="beboogarden" xml:space="preserve">
-    <value>Beboo Garden</value>
-  </data>
+		<value>波波花园</value>
+	</data>
 	<data name="pink" xml:space="preserve">
-    <value>Pink</value>
-  </data>
+		<value>粉红色</value>
+	</data>
 	<data name="red" xml:space="preserve">
-    <value>Red</value>
-  </data>
+		<value>红色</value>
+	</data>
 	<data name="orange" xml:space="preserve">
-    <value>Orange</value>
-  </data>
+		<value>橙色</value>
+	</data>
 	<data name="yellow" xml:space="preserve">
-    <value>Yellow</value>
-  </data>
+		<value>黄色</value>
+	</data>
 	<data name="green" xml:space="preserve">
-    <value>Green</value>
-  </data>
+		<value>绿色</value>
+	</data>
 	<data name="blue" xml:space="preserve">
-    <value>Blue</value>
-  </data>
+		<value>蓝色</value>
+	</data>
 	<data name="indigo" xml:space="preserve">
-    <value>Indigo</value>
-  </data>
+		<value>青色</value>
+	</data>
 	<data name="violet" xml:space="preserve">
-    <value>Violet</value>
-  </data>
+		<value>紫色</value>
+	</data>
 	<data name="none" xml:space="preserve">
-    <value>None</value>
-  </data>
+		<value>无</value>
+	</data>
 	<data name="chocolatekake" xml:space="preserve">
-    <value>A fat chocolate cake</value>
-  </data>
+		<value>一块肥巧克力蛋糕</value>
+	</data>
 	<data name="icecream" xml:space="preserve">
-    <value>A delicious icecream</value>
-  </data>
+		<value>美味的冰淇淋</value>
+	</data>
 	<data name="fruitsalad" xml:space="preserve">
-    <value>A light and fresh fruit salad</value>
-  </data>
+		<value>清淡新鲜的水果沙拉</value>
+	</data>
 	<data name="coffee" xml:space="preserve">
-    <value>Just a coffee, thanks.</value>
-  </data>
+		<value>只要一杯咖啡，谢谢。</value>
+	</data>
 	<data name="trees.full" xml:space="preserve">
-    <value>Trees full of fruits</value>
-  </data>
+		<value>结满果实的树</value>
+	</data>
 	<data name="trees.empty" xml:space="preserve">
-    <value>Trees without any fruit</value>
-  </data>
+		<value>没有果实的树</value>
+	</data>
 	<data name="trees.soonempty" xml:space="preserve">
-    <value>Trees with some fruits</value>
-  </data>
+		<value>有少许果实的树</value>
+	</data>
 	<data name="trees.soonfull" xml:space="preserve">
-    <value>Trees with some fruits</value>
-  </data>
+		<value>有部分果实的树</value>
+	</data>
 	<data name="tickets" xml:space="preserve">
-    <value>You have {0} tickets</value>
-  </data>
+		<value>你有 {0} 张宠物券</value>
+	</data>
 	<data name="water" xml:space="preserve">
-    <value>lagoon</value>
-  </data>
+		<value>泻湖</value>
+	</data>
 	<data name="Normal" xml:space="preserve">
-    <value>Apple</value>
-  </data>
+		<value>苹果</value>
+	</data>
 	<data name="Energetic" xml:space="preserve">
-    <value>Super Apple</value>
-  </data>
+		<value>超级苹果</value>
+	</data>
 	<data name="beboo.gosleep" xml:space="preserve">
-    <value>{0} went asleep</value>
-  </data>
+		<value>{0} 快睡着了</value>
+	</data>
 	<data name="beboo.wakeup" xml:space="preserve">
-    <value>{0} wakes up</value>
-  </data>
+		<value>{0} 醒来</value>
+	</data>
 	<data name="beboo.sadstart" xml:space="preserve">
-    <value>{0} burst in tears. Do something!</value>
-  </data>
+		<value>{0} 泪如雨下。 赶紧做点什么吧！</value>
+	</data>
 	<data name="beboo.happystart" xml:space="preserve">
-    <value>{0} is happy!</value>
-  </data>
+		<value>{0} 很开心！</value>
+	</data>
 	<data name="beboo.sleep" xml:space="preserve">
-    <value>{0} is sleeping</value>
-  </data>
+		<value>{0} 正在睡觉</value>
+	</data>
 	<data name="beboo.verytired" xml:space="preserve">
-    <value>{0} is very tired</value>
-  </data>
+		<value>{0} 很累</value>
+	</data>
 	<data name="beboo.verysad" xml:space="preserve">
-    <value>{0} is very sad.. Do something!</value>
-  </data>
+		<value>{0} 非常难过。赶紧做点什么吧！</value>
+	</data>
 	<data name="beboo.littlesad" xml:space="preserve">
-    <value>{0} is a little bit sad</value>
-  </data>
+		<value>{0} 有点难过</value>
+	</data>
 	<data name="beboo.littletired" xml:space="preserve">
-    <value>{0} is a little bit tired</value>
-  </data>
+		<value>{0} 有点累</value>
+	</data>
 	<data name="beboo.good" xml:space="preserve">
-    <value>{0} is fine</value>
-  </data>
+		<value>{0} 很好</value>
+	</data>
 	<data name="beboo.verygood" xml:space="preserve">
-    <value>{0} is doing very well</value>
-  </data>
+		<value>{0} 非常好</value>
+	</data>
 	<data name="musicbox.name" xml:space="preserve">
-    <value>Music box</value>
-  </data>
+		<value>音乐盒</value>
+	</data>
 	<data name="musicbox.description" xml:space="preserve">
-    <value>An old object that can play music when putting a roll in it</value>
-  </data>
+		<value>一个放入唱片就能播放音乐的就物件。</value>
+	</data>
 	<data name="musicbox.noroll" xml:space="preserve">
-    <value>You don't have any roll to put in it yet</value>
-  </data>
+		<value>你还没有放入唱片</value>
+	</data>
 	<data name="duck.name" xml:space="preserve">
-    <value>Rubber duck</value>
-  </data>
+		<value>橡胶鸭</value>
+	</data>
 	<data name="duck.description" xml:space="preserve">
-    <value>It's just a duck</value>
-  </data>
+		<value>它只是一只小鸭子</value>
+	</data>
 	<data name="boots.name" xml:space="preserve">
-    <value>Bouncing Boots</value>
-  </data>
+		<value>弹跳靴</value>
+	</data>
 	<data name="boots.description" xml:space="preserve">
-    <value>A Beboo can use them to bounce further. Place it on the ground then try make a beboo to put them on</value>
-  </data>
+		<value>波波可以用它弹跳的更远。把靴子放在地上，让波波来感受下吧。</value>
+	</data>
 	<data name="ticketpack.name" xml:space="preserve">
-    <value>Tickets pack</value>
-  </data>
+		<value>宠物券礼包</value>
+	</data>
 	<data name="ticketpack.description" xml:space="preserve">
-    <value>Jack pot!</value>
-  </data>
+		<value>大奖！</value>
+	</data>
 	<data name="egg.name" xml:space="preserve">
-    <value>{0} beboo's egg</value>
-  </data>
+		<value>{0} 波波蛋</value>
+	</data>
 	<data name="egg.description" xml:space="preserve">
-    <value>For more and more beboos!</value>
-  </data>
+		<value>为了越来越多的波波！</value>
+	</data>
 	<data name="bubble.name" xml:space="preserve">
-    <value>Bubble</value>
-  </data>
+		<value>气泡</value>
+	</data>
 	<data name="bubble.description" xml:space="preserve">
-    <value>Blup</value>
-  </data>
+		<value>波波</value>
+	</data>
 	<data name="snowball.name" xml:space="preserve">
-    <value>Snow ball</value>
-  </data>
+		<value>雪球</value>
+	</data>
 	<data name="roll.name" xml:space="preserve">
-    <value>Music box's roll</value>
-  </data>
+		<value>音乐盒的唱片</value>
+	</data>
 	<data name="ui.empty" xml:space="preserve">
-    <value>You must type something.</value>
-  </data>
+		<value>你必须打点什么。</value>
+	</data>
 	<data name="ui.yourname" xml:space="preserve">
-    <value>Your name</value>
-  </data>
+		<value>你的名字</value>
+	</data>
 	<data name="ui.letsname" xml:space="preserve">
-    <value>Your Beboo has just hatched! Now it's time to name it!</value>
-  </data>
+		<value>你的波波刚刚被孵化出来！现在，给可爱的小家伙取个名字吧！</value>
+	</data>
 	<data name="ui.bebooname" xml:space="preserve">
-    <value>Your Beboo's cute name</value>
-  </data>
+		<value>你波波可爱宠物的名字</value>
+	</data>
 	<data name="ui.welcome" xml:space="preserve">
-    <value>Welcome to the Beboo Garden!
-To begin with, what should I call you?</value>
-  </data>
+		<value>欢迎来到波波宠物花园！
+首先，我该怎样称呼你？</value>
+	</data>
 	<data name="ui.welcome2" xml:space="preserve">
-    <value>Here is the Beboo Garden.
-It's a large square of greenery, featuring a small lagoon to the left and tall fruit trees to the right.
-To navigate the garden, I highly recommend wearing headphones or earphones.
-It is currently empty, except for an egg about to hatch, which you should hear on your right.
-Once this dialogue is closed, move using the arrow keys towards the egg, and when you hear it in front of you, press the space bar to help your Beboo break its shell.</value>
-  </data>
+		<value>这里是波波宠物花园。
+这里是一片巨大的绿地，左边有一个小泻湖，右边有着高大的果树。
+要在花园里导航，我建议你带上耳机或耳塞。
+目前这里什么都没有，除了一个还没有孵化的蛋，在你的右边，你应该可以听到。
+当此对话框关闭后，就用方向键移动，当听到宠物蛋在你面前时，就按下空格键来打破蛋壳。</value>
+	</data>
 	<data name="ui.aboutyou" xml:space="preserve">
-    <value>Great! Now, {0}, I have to ask you a few questions to find the Beboo who suits you best.
-Let's start simple.</value>
-  </data>
+		<value>太棒了！ {0}, 现在，我必须问你几个问题，才能帮你找到最适合你的波波宠物。
+让我们从最简单开始。</value>
+	</data>
 	<data name="ui.color" xml:space="preserve">
-    <value>What is your favorite color?</value>
-  </data>
+		<value>你最喜欢的颜色是什么？</value>
+	</data>
 	<data name="ui.freetime" xml:space="preserve">
-    <value>Cool!
-Now, what do you love doing when you have some free time?
-It may be anything.</value>
-  </data>
+		<value>太酷了！
+现在，当你有空闲时间的时候，你喜欢做什么？
+它可以是任何东西。</value>
+	</data>
 	<data name="ui.freetimequick" xml:space="preserve">
-    <value>What do you love to do?</value>
-  </data>
+		<value>你喜欢做什么？</value>
+	</data>
 	<data name="ui.dessert" xml:space="preserve">
-    <value>Finally, what is your favorite dessert in this list?</value>
-  </data>
+		<value>最后，这份清单上你最喜欢的甜点是什么？</value>
+	</data>
 	<data name="ui.allgood" xml:space="preserve">
-    <value>Well, everything seems in order.</value>
-  </data>
+		<value>嗯，一切似乎都井然有序。</value>
+	</data>
 	<data name="ui.quicktips" xml:space="preserve">
-    <value>Perfect!
-Before you start taking care of {0}, I need to teach you the basics of the garden.
-To feed {0}, you'll need to collect fruits from the trees on your right. Shake the trees by holding down the enter key and alternating between the up and down arrow keys.
-To give a fruit to {0}, press the space bar when you are close, just like you did with the egg earlier.
-You can also press F to know if {0} is missing something.
-Once {0} is very happy, you can go to top-left corner to get some exercise.
-Finally, press escape to open the menu.
-Have fun!</value>
-  </data>
+		<value>太好了！
+在你照顾 {0}, 之前，我需要教你花园基本知识。
+喂养 {0}, 你需要从右边的树上摘水果。 按住enter键抓住树木，然后交替按上下方向键来摇树。
+当获得水果后，来到 {0}身边, 像之前操作宠物蛋那样，按下空格，在背包里找到水果来喂给你的小可爱吧！
+你也可以按F键来查看 {0} 的状态。
+一旦 {0} 很开心，你可以去左上角自由发挥自己。
+最后，按ESC键可打开菜单。
+祝你玩的开心！</value>
+	</data>
 	<data name="ui.emptyinventory" xml:space="preserve">
-    <value>Nothing in the bag</value>
-  </data>
+		<value>背包里什么都没有</value>
+	</data>
 	<data name="ui.chooseitem" xml:space="preserve">
-    <value>Choose an item</value>
-  </data>
+		<value>选择一个项目</value>
+	</data>
 	<data name="ui.itemput" xml:space="preserve">
-    <value>{0} dropped</value>
-  </data>
+		<value>{0} 下降</value>
+	</data>
 	<data name="ui.warningwater" xml:space="preserve">
-    <value>Don't put this in water!</value>
-  </data>
+		<value>别把这个放进水里！</value>
+	</data>
 	<data name="ui.rolltake" xml:space="preserve">
-    <value>You have taken the music box's roll {0}, from {1}</value>
-  </data>
+		<value>你拿走了音乐盒的唱片  {0}, 从 {1}</value>
+	</data>
 	<data name="ui.chooseroll" xml:space="preserve">
-    <value>Please choose a roll to insert</value>
-  </data>
+		<value>请选择要插入的唱片</value>
+	</data>
 	<data name="ui.itemtake" xml:space="preserve">
-    <value>{0} stored in the bag</value>
-  </data>
+		<value>{0} 存放在背包里</value>
+	</data>
 	<data name="ui.basket" xml:space="preserve">
-    <value>There are {0} fruits in the basket</value>
-  </data>
+		<value>篮子里有 {0} 个水果</value>
+	</data>
 	<data name="ui.back" xml:space="preserve">
-    <value>Back</value>
-  </data>
+		<value>返回</value>
+	</data>
 	<data name="shop.item" xml:space="preserve">
-    <value>{0} : {1}, {2} tickets</value>
-  </data>
+		<value>{0} : {1}, {2} 宠物券</value>
+	</data>
 	<data name="shop.items" xml:space="preserve">
-    <value>Items ({0} remaining tickets)</value>
-  </data>
+		<value>项目 ({0} 剩余的宠物券)</value>
+	</data>
 	<data name="shop.itemstitle" xml:space="preserve">
-    <value>Items</value>
-  </data>
+		<value>项目</value>
+	</data>
 	<data name="shop.rolls" xml:space="preserve">
-    <value>Music box roll's ({0} remaining tickets)</value>
-  </data>
+		<value>音乐盒唱片 ({0} 剩余宠物券)</value>
+	</data>
 	<data name="shop.roll" xml:space="preserve">
-    <value>{0} : {1}, {2} tickets</value>
-  </data>
+		<value>{0} : {1}, {2} 宠物券</value>
+	</data>
 	<data name="shop.rollstitle" xml:space="preserve">
-    <value>Music Box roll's</value>
-  </data>
+		<value>音乐盒唱片</value>
+	</data>
 	<data name="shop.alreadyroll" xml:space="preserve">
-    <value>You already have this roll</value>
-  </data>
+		<value>你已经有这张唱片了</value>
+	</data>
 	<data name="shop.notickets" xml:space="preserve">
-    <value>You don't have enough tickets</value>
-  </data>
+		<value>你的宠物券不够</value>
+	</data>
 	<data name="shop.title" xml:space="preserve">
-    <value>Welcome to the boutique! ({0} remaining tickets)</value>
-  </data>
+		<value>欢迎光临精品店！ ({0} 剩余宠物券)</value>
+	</data>
 	<data name="shop.buy" xml:space="preserve">
-    <value>{0} bought</value>
-  </data>
+		<value>{0} 买</value>
+	</data>
 	<data name="inventory.item" xml:space="preserve">
-    <value>{0} (×{1})</value>
-  </data>
+		<value>{0} (×{1})</value>
+	</data>
 	<data name="tp" xml:space="preserve">
-    <value>Find an item</value>
-  </data>
+		<value>查找项目</value>
+	</data>
 	<data name="tp.item" xml:space="preserve">
-    <value>{0} {1}</value>
-  </data>
+		<value>{0} {1}</value>
+	</data>
 	<data name="gainticket" xml:space="preserve">
-    <value>You gain {0} ticket</value>
-  </data>
+		<value>你获得 {0} 张宠物券</value>
+	</data>
 	<data name="shopunlock" xml:space="preserve">
-    <value>You unlock the boutique!
-Go to the lower right corner of the garden to redeem your tickets!</value>
-  </data>
+		<value>你打开精品店！
+去花园的右下角兑换宠物券吧！</value>
+	</data>
 	<data name="shop" xml:space="preserve">
-    <value>Boutique</value>
-  </data>
+		<value>奢侈品铭牌专卖店</value>
+	</data>
 	<data name="race.third" xml:space="preserve">
-    <value>{0} is the third...</value>
-  </data>
+		<value>{0} 是第三名...</value>
+	</data>
 	<data name="race.second" xml:space="preserve">
-    <value>{0} is the second. ({1} seconds)</value>
-  </data>
+		<value>{0} 是第二名。 ({1} 秒)</value>
+	</data>
 	<data name="race.first" xml:space="preserve">
-    <value>{0} is the first! ({1} seconds)</value>
-  </data>
+		<value>{0} 是第一名！ ({1} 秒)</value>
+	</data>
 	<data name="race.gate" xml:space="preserve">
-    <value>Take part in a race ({0} remaining today)</value>
-  </data>
+		<value>参加比赛，你今天还有 ({0} 次参加机会)</value>
+	</data>
 	<data name="race.chooseracer" xml:space="preserve">
-    <value>Choose your racer</value>
-  </data>
+		<value>选择你的参赛选手</value>
+	</data>
 	<data name="race.chooserace" xml:space="preserve">
-    <value>Choose a race</value>
-  </data>
+		<value>选择一场比赛</value>
+	</data>
 	<data name="race.trytommorow" xml:space="preserve">
-    <value>Racing is closed for today.</value>
-  </data>
+		<value>今天休赛。</value>
+	</data>
 	<data name="race.simple" xml:space="preserve">
-    <value>Easy race</value>
-  </data>
+		<value>比赛并不容易</value>
+	</data>
 	<data name="race.snow" xml:space="preserve">
-    <value>Snowy race</value>
-  </data>
+		<value>雪地赛跑</value>
+	</data>
 	<data name="unlockvoice" xml:space="preserve">
-    <value>{0} is now old enough to recognize its name!
-Try calling it!</value>
-  </data>
+		<value>{0} 现在已经足够大了，可以认出它的名字了
+试着叫它！</value>
+	</data>
 	<data name="unlocksnowy" xml:space="preserve">
-    <value>Congratulations!
-You unlock the path to the snowy area. Go through it by calling your Beboo to the bottom left of the garden.</value>
-  </data>
+		<value>祝贺你！
+你解锁了通往雪地的道路。 通过花园的左下角，叫你的波波宠物来完成它。</value>
+	</data>
 	<data name="unlockswimming" xml:space="preserve">
-    <value>Congratulations!
-{0} can perfectly swim now.</value>
-  </data>
+		<value>祝贺你！
+{0} 现在可以游泳了。</value>
+	</data>
 	<data name="path" xml:space="preserve">
-    <value>Path</value>
-  </data>
+		<value>路径</value>
+	</data>
 	<data name="nobeboo" xml:space="preserve">
-    <value>There is no beboo here.</value>
-  </data>
+		<value>这里没有波波。</value>
+	</data>
 	<data name="underwater" xml:space="preserve">
-    <value>Volcanic underwater chimney</value>
-  </data>
+		<value>火山水下烟囱</value>
+	</data>
 	<data name="choosebeboo" xml:space="preserve">
-    <value>Choose a Beboo</value>
-  </data>
+		<value>选择参加比赛的波波宠物。</value>
+	</data>
 	<data name="ui.mainmenu" xml:space="preserve">
-    <value>Main menu</value>
-  </data>
+		<value>主菜单。</value>
+	</data>
 	<data name="ui.commands" xml:space="preserve">
-    <value>Help: Game's keybindings</value>
-  </data>
+		<value>帮助 : 游戏命令</value>
+	</data>
 	<data name="ui.credits" xml:space="preserve">
-    <value>Credits</value>
-  </data>
+		<value>人员名单</value>
+	</data>
 	<data name="ui.discord" xml:space="preserve">
-    <value>Join the discord server</value>
-  </data>
+		<value>加入discord服务器</value>
+	</data>
 	<data name="ui.quit" xml:space="preserve">
-    <value>Close the Game.</value>
-  </data>
+		<value>结束游戏</value>
+	</data>
 	<data name="bag" xml:space="preserve">
-    <value>Bag</value>
-  </data>
+		<value>背包</value>
+	</data>
 	<data name="emptybag" xml:space="preserve">
-    <value>Your bag is empty (escape to leave)</value>
-  </data>
+		<value>你的背包是空的， (ESC离开)。</value>
+	</data>
 	<data name="ui.emptymap" xml:space="preserve">
-    <value>There are no items here. To place an item, go to your bag, select an item then press space where you want to place it.</value>
-  </data>
+		<value>这里没有项目。 要放置物品，请前往你的背包，然后选择一键物品，按空格键来放置。</value>
+	</data>
 	<data name="ui.language" xml:space="preserve">
-    <value>Change language</value>
-  </data>
+		<value>更改语言</value>
+	</data>
 	<data name="ui.languagechanged" xml:space="preserve">
-    <value>Language changed</value>
-  </data>
+		<value>语言已更改</value>
+	</data>
 	<data name="win" xml:space="preserve">
-    <value>You win!</value>
-  </data>
+		<value>你赢了！</value>
+	</data>
 	<data name="lose" xml:space="preserve">
-    <value>You lose.</value>
-  </data>
+		<value>你输了。</value>
+	</data>
 	<data name="boombox" xml:space="preserve">
-    <value>Boom Box</value>
-  </data>
+		<value>Boom Box</value>
+	</data>
 	<data name="score" xml:space="preserve">
-    <value>Score: {0}</value>
-  </data>
+		<value>得分: {0}</value>
+	</data>
 	<data name="welcome" xml:space="preserve">
-    <value>Welcome to Boom Box!</value>
-  </data>
+		<value>欢迎来到 Boom Box!</value>
+	</data>
 	<data name="goal" xml:space="preserve">
-    <value>Press the numbers on the keyboard to hear a sound. Find all the pairs to move to the next level.</value>
-  </data>
+		<value>按键盘上的数字可听到声音。 找到匹配成对的词以通往下一关。</value>
+	</data>
 	<data name="chest.name" xml:space="preserve">
-    <value>Treasure chest</value>
-  </data>
+		<value>宝箱。</value>
+	</data>
 	<data name="chest.description" xml:space="preserve">
-    <value>A chest full of tickets. But be careful! A Beboo must be wit to get them.</value>
-  </data>
+		<value>一箱宠物券。请注意！波波宠物发挥自己的智慧才能得到他们。</value>
+	</data>
 	<data name="findbeboo" xml:space="preserve">
-    <value>Find a Beboo</value>
-  </data>
+		<value>寻找波波</value>
+	</data>
 	<data name="rubberring.name" xml:space="preserve">
-    <value>Rubber ring</value>
-  </data>
+		<value>游泳圈</value>
+	</data>
 	<data name="rubberring.description" xml:space="preserve">
-    <value>Floating beboo isn't water scared</value>
-  </data>
+		<value>漂着的 beboo 就不怕水了。</value>
+	</data>
 	<data name="fish.name" xml:space="preserve">
-    <value>Fish</value>
-  </data>
+		<value>鱼</value>
+	</data>
 	<data name="fish.description" xml:space="preserve">
-    <value>It's just a fish</value>
-  </data>
-
+		<value>一条新鲜的鱼，喂给饿肚子的 beboo。</value>
+	</data>
 	<data name="beboo.pickup" xml:space="preserve">
-		<value>You take {0} in your arms</value>
+		<value>你把 {0} 抱了起来</value>
 	</data>
 	<data name="beboo.putdown" xml:space="preserve">
-		<value>You put {0} back down</value>
+		<value>你把 {0} 放了下来</value>
 	</data>
 	<data name="beboo.sleepinarms" xml:space="preserve">
-		<value>{0} falls asleep in your arms</value>
+		<value>{0} 在你怀里睡着了</value>
 	</data>
 	<data name="beboo.swaytoohard" xml:space="preserve">
-		<value>You shake {0} way too hard, and it bursts into tears!</value>
+		<value>你把 {0} 摇得太用力了，它放声大哭！</value>
 	</data>
 	<data name="beboo.handsfull" xml:space="preserve">
-		<value>Your hands are already full</value>
+		<value>你的手已经满了</value>
 	</data>
 	<data name="competition.gate" xml:space="preserve">
-		<value>Competition center ({0} tries left today)</value>
+		<value>比赛中心（今天还剩 {0} 次机会）</value>
 	</data>
 	<data name="competition.choose" xml:space="preserve">
-		<value>Choose a competition</value>
+		<value>选择一项比赛</value>
 	</data>
 	<data name="competition.race" xml:space="preserve">
-		<value>Race</value>
+		<value>赛跑</value>
 	</data>
 	<data name="competition.closed" xml:space="preserve">
-		<value>The competition center is closed for today. Come back tomorrow!</value>
+		<value>比赛中心今天已经关门了，明天再来吧！</value>
 	</data>
 	<data name="jump.name" xml:space="preserve">
-		<value>Jumpidy Jump</value>
+		<value>蹦蹦跳跳</value>
 	</data>
 	<data name="jump.start" xml:space="preserve">
-		<value>Jumpidy Jump! Whoever jumps the furthest wins.</value>
+		<value>蹦蹦跳跳！谁跳得最远谁就赢。</value>
 	</data>
 	<data name="jump.jumped" xml:space="preserve">
-		<value>{0} jumped {1} metres</value>
+		<value>{0} 跳了 {1} 米</value>
 	</data>
 	<data name="jump.win" xml:space="preserve">
-		<value>{0} jumped the furthest, {1} metres, and wins!</value>
+		<value>{0} 跳得最远，{1} 米，赢了！</value>
 	</data>
 	<data name="beboo.exhausted" xml:space="preserve">
-		<value>{0} is exhausted</value>
+		<value>{0} 精疲力尽了</value>
 	</data>
 	<data name="beboo.tired" xml:space="preserve">
-		<value>{0} is tired</value>
+		<value>{0} 累了</value>
 	</data>
 	<data name="beboo.okenergy" xml:space="preserve">
-		<value>{0} is doing okay</value>
+		<value>{0} 状态还行</value>
 	</data>
 	<data name="beboo.energetic" xml:space="preserve">
-		<value>{0} is full of energy</value>
+		<value>{0} 精力充沛</value>
 	</data>
 	<data name="competition.entry" xml:space="preserve">
-		<value>{0} ({1} tries left today)</value>
+		<value>{0}（今天还剩 {1} 次机会）</value>
 	</data>
 	<data name="nest.name" xml:space="preserve">
-		<value>Nest</value>
+		<value>小窝</value>
 	</data>
 	<data name="nest.description" xml:space="preserve">
-		<value>A soft bed. A beboo sleeping in one wakes up better rested, and a sleepy beboo will go and find it.</value>
+		<value>一张柔软的床。宠物睡在里面醒来会更精神，困了的宠物也会自己找过去。</value>
 	</data>
 	<data name="beboo.snuggle" xml:space="preserve">
-		<value>{0} snuggles up against {1}</value>
+		<value>{0} 依偎着 {1}</value>
 	</data>
 	<data name="beboo.present" xml:space="preserve">
-		<value>{0} comes back and drops {1} at your feet!</value>
+		<value>{0} 回来了，把 {1} 放在你脚边！</value>
 	</data>
 	<data name="beboo.presentticket" xml:space="preserve">
-		<value>{0} comes back with something shiny!</value>
+		<value>{0} 带着亮晶晶的东西回来了！</value>
 	</data>
 </root>

@@ -1,7 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.IO;
 using System.Numerics;
+using BebooGarden.Content;
 using BebooGarden.GameCore;
 using BebooGarden.GameCore.Pet;
 using Microsoft.Xna.Framework.Input;
@@ -13,6 +15,15 @@ public static class Util
   public static readonly Vector3[] DIRECTIONS = [new(0, 1, 0), new(1, 0, 0), new(-1, 0, 0), new(0, -1, 0)];
   public static readonly string[] Colors =
       ["pink", "red", "orange", "yellow", "green", "blue", "indigo", "violet", "none"];
+
+  /// <summary>
+  /// Looks a name up by its resource key, for the things stored as english identifiers: colors in
+  /// the save, fruit species names off the enum. Falls back to the identifier itself.
+  /// </summary>
+  public static string Localized(string key)
+      => BebooText.ResourceManager.GetString(key, CultureInfo.CurrentUICulture) ?? key;
+
+  public static string LocalizedColor(string color) => Localized(color);
 
   public static bool IsInSquare(Vector3 otherPoint, Vector3 center, int halfSideSize)
   {

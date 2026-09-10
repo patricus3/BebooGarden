@@ -2,6 +2,7 @@
 using BebooGarden.GameCore.Item.MusicBox;
 using BebooGarden.GameCore.World;
 using BebooGarden.Minigame;
+using BebooGarden.MiniGames;
 using BebooGarden.Save;
 using BebooGarden.UI.ScriptedScene;
 using Microsoft.Xna.Framework.Audio;
@@ -23,7 +24,14 @@ public partial class Game1
     Save = SaveManager.LoadSave();
     if (Save.RaceScores != null) Race.RaceScores = Save.RaceScores;
     Race.TotalWin = Save.RaceTotalWin;
-    Race.TodayTries = Save.LastPlayed.Day == DateTime.Now.Day ? Save.RaceTodayTries : 0;
+    if (Save.LastPlayed.Day == DateTime.Now.Day)
+    {
+      Competition.TodayTries = Save.CompetitionTries ?? [];
+      // Saves written before contests had separate allowances only carry the race's count.
+      if (Competition.TodayTries.Count == 0 && Save.RaceTodayTries > 0)
+        Competition.TodayTries[CompetitionType.Race] = Save.RaceTodayTries;
+    }
+    else Competition.ResetDay();
     Save.Flags.UnlockEggInShop = Save.Flags.UnlockUnderwaterMap || Save.Flags.UnlockSnowyMap || Save.Flags.UnlockEggInShop;
     try
     {
@@ -59,6 +67,9 @@ public partial class Game1
     {
       HasExternalTextInput = true
     };
+    // The garden itself is played by ear, but it still needs a root: a null one makes
+    // Desktop.Root null on every switch back to the game, which the menu bookkeeping cannot take.
+    _gamePanel = new Panel();
     Window.TextInput += (s, a) =>
     {
       _desktop.OnChar(a.Character);

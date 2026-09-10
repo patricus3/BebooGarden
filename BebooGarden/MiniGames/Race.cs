@@ -15,12 +15,15 @@ namespace BebooGarden.Minigame;
 internal class Race : IMiniGame
 {
   public string Tips { get; set; } = "";
-  private const int MAXTRIESPERDAY = 5;
   public static Dictionary<RaceType, double> RaceScores { get; set; } = new();
-  public static int TodayTries { get; set; }
   public static int TotalWin { get; set; }
   public static readonly int BASERACELENGTH = 60;
-  public static bool IsARaceRunning { get; set; }
+  /// <summary>Alias of the competition centre's flag: only one contest runs at a time.</summary>
+  public static bool IsARaceRunning
+  {
+    get => Competition.IsRunning;
+    set => Competition.IsRunning = value;
+  }
   public bool IsRunning => IsARaceRunning;
   public int Length { get; set; }
   public DateTime StartTime;
@@ -49,7 +52,7 @@ internal class Race : IMiniGame
   {
     if (IsARaceRunning) return;
     IsARaceRunning = true;
-    TodayTries++;
+    Competition.UseATry(CompetitionType.Race);
     switch (RaceType)
     {
       case RaceType.Base: Game1.Instance.ChangeMap(Map.BasicRace); break;
@@ -64,6 +67,7 @@ internal class Race : IMiniGame
     Game1.Instance.Map.Beboos[1].Position = startPos + new Vector3(0, 2, 0);
     Game1.Instance.Map?.Beboos.Add(new Beboo("boby", BebooType.Green, 1, DateTime.Now, Game1.Instance.Random.Next(6), 3, Game1.Instance.Random.Next(8), true, 1.2f));
     Game1.Instance.Map.Beboos[2].Position = startPos + new Vector3(0, -2, 0);
+    foreach (Beboo racer in Game1.Instance.Map?.Beboos ?? []) racer.SetCompetitionPace();
     switch (RaceType)
     {
       case RaceType.Base: Game1.Instance.SoundSystem.PlayRaceMusic(); break;
@@ -127,12 +131,5 @@ internal class Race : IMiniGame
       End(third, second, first);
     }
   }
-  public static int GetRemainingTriesToday()
-  {
-#if DEBUG
-    return MAXTRIESPERDAY;
-#else
-    return MAXTRIESPERDAY - TodayTries;
-#endif
-  }
+  public static int GetRemainingTriesToday() => Competition.GetRemainingTriesToday(CompetitionType.Race);
 }

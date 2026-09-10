@@ -1,4 +1,4 @@
-{
+﻿{
     "beboogarden": "Beboo Garden",
     "red": "Red",
     "orange": "Orange",
@@ -42,6 +42,16 @@
     "beboo.good": "{0} is fine",
     //0=beboo name
     "beboo.verygood": "{0} is doing very well",
+    //0=beboo name
+    "beboo.pickup": "You take {0} in your arms",
+    //0=beboo name
+    "beboo.putdown": "You put {0} back down",
+    //0=beboo name
+    "beboo.sleepinarms": "{0} falls asleep in your arms",
+    //0=beboo name
+    "beboo.swaytoohard": "You shake {0} way too hard, and it bursts into tears!",
+    //0=beboo name
+    "beboo.handsfull": "Your hands are already full",
     //0=beboo name
     "musicbox.name": "Music box",
     "musicbox.description": "An old object that can play music when putting a roll in it",
@@ -134,4 +144,26 @@
     "chest.name": "Treasure chest.",
     "chest.description": "A chest full of tickets. But be careful! A Beboo must be wit to get them.",
     "findbeboo": "Find a Beboo",
+    "rubberring.name": "Rubber ring",
+    "rubberring.description": "A floating beboo isn't scared of water.",
+    "fish.name": "Fish",
+    "fish.description": "A fresh fish to feed hungry beboos.",
+    "competition.gate": "Competition center ({0} tries left today)",
+    "competition.choose": "Choose a competition",
+    "competition.race": "Race",
+    "competition.closed": "The competition center is closed for today. Come back tomorrow!",
+    "jump.name": "Jumpidy Jump",
+    "jump.start": "Jumpidy Jump! Whoever jumps the furthest wins.",
+    "jump.jumped": "{0} jumped {1} metres",
+    "jump.win": "{0} jumped the furthest, {1} metres, and wins!",
+    "beboo.exhausted": "{0} is exhausted",
+    "beboo.tired": "{0} is tired",
+    "beboo.okenergy": "{0} is doing okay",
+    "beboo.energetic": "{0} is full of energy",
+    "competition.entry": "{0} ({1} tries left today)",
+    "nest.name": "Nest",
+    "nest.description": "A soft bed. A beboo sleeping in one wakes up better rested, and a sleepy beboo will go and find it.",
+    "beboo.snuggle": "{0} snuggles up against {1}",
+    "beboo.present": "{0} comes back and drops {1} at your feet!",
+    "beboo.presentticket": "{0} comes back with something shiny!",
 }

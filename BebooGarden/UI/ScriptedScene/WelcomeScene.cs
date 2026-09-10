@@ -1,179 +1,234 @@
 ﻿using BebooGarden.Content;
 using BebooGarden.GameCore.Item;
-using BebooGarden.GameCore.Item.MusicBox;
-using BebooGarden.GameCore.Pet;
 using BebooGarden.GameCore.World;
+using CrossSpeak;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Input;
 using Myra.Graphics2D.UI;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.Numerics;
 
 namespace BebooGarden.UI.ScriptedScene;
 
+/// <summary>
+/// The questions a new player answers before the garden opens. Every panel is built at the moment
+/// it is shown rather than up front, so the whole scene follows the language picked in the first
+/// step.
+/// </summary>
 public class WelcomeScene : IScriptedScene
 {
-  private Panel _welcomePanel;
-  private TalkDialog _letsNameYouDialog;
-  private TalkDialog _aboutYouDialog;
-  private bool _letsNameYouDialogShowed;
-  private TalkDialog _quickTipsDialog;
-  private Dialog _nameTextFieldDialog;
-  private string _yourName;
-  private FancyTextField _textField;
-  private bool _yourNameTextBoxShowed = false;
-  private string? _favoredColor = null;
-  private string? _freeTime;
-  private Panel _colorChoicePanel;
-  private Dialog _freeTimeTextFieldDialog;
-  private FancyTextField _freeTimeTextField;
-  private bool _colorChoiceDialogShowed = false;
-  private bool _freeTimeTextFieldDialogShowed = false;
-
-  public WelcomeScene()
+  private enum Step
   {
-    _welcomePanel = new Panel();
-    _letsNameYouDialog = new TalkDialog(BebooText.ui_welcome, GameScreen.ScriptedScene);
-    _aboutYouDialog = new TalkDialog(BebooText.ui_aboutyou, GameScreen.ScriptedScene);
-    CreateNameTextBox();
-    CreateColorChoice();
-    CreateFreeTimeTextBox();
+    Language,
+    Welcome,
+    AskName,
+    WaitName,
+    AboutYou,
+    AskColor,
+    WaitColor,
+    AskFreeTime,
+    WaitFreeTime,
+    AskDessert,
+    WaitDessert,
+    AllGood,
+    Garden,
+    Finished
   }
 
-  private void CreateNameTextBox()
-  {
-    _nameTextFieldDialog = new Dialog
-    {
-      Title = BebooText.ui_yourname
-    };
-    var stackPanel = new HorizontalStackPanel
-    {
-      Spacing = 8
-    };
-    _textField = new FancyTextField(12, true);
-    StackPanel.SetProportionType(_textField, ProportionType.Fill);
-    stackPanel.Widgets.Add(_textField);
-    _nameTextFieldDialog.Content = stackPanel;
-    _textField.KeyDown += (s, a) =>
-    {
-      if ((Keys)a.Data == Keys.Enter)
-      {
-        bool alreadyExistingName = false;
-        var name = ((FancyTextField)s).Text;
-        if (name.Length > 0)
-        {
-          Game1.Instance.SoundSystem.System.PlaySound(Game1.Instance.SoundSystem.MenuOkSound);
-          _yourName = name;
-        }
-      }
-    };
-  }
+  private readonly Panel _welcomePanel = new();
+  private Step _step = Step.Language;
+  private Step _stepAfterTalk;
+  private TalkDialog? _talk;
 
-  private void CreateFreeTimeTextBox()
-  {
-    _freeTimeTextFieldDialog = new Dialog
-    {
-      Title = BebooText.ui_freetime
-    };
-    var stackPanel = new HorizontalStackPanel
-    {
-      Spacing = 8
-    };
-    _freeTimeTextField = new FancyTextField(200);
-    StackPanel.SetProportionType(_freeTimeTextField, ProportionType.Fill);
-    stackPanel.Widgets.Add(_freeTimeTextField);
-    _freeTimeTextFieldDialog.Content = stackPanel;
-    _freeTimeTextField.KeyDown += (s, a) =>
-    {
-      if ((Keys)a.Data == Keys.Enter)
-      {
-        bool alreadyExistingName = false;
-        var freeTime = ((FancyTextField)s).Text;
-        if (freeTime.Length > 0)
-        {
-          Game1.Instance.SoundSystem.System.PlaySound(Game1.Instance.SoundSystem.MenuOkSound);
-          _freeTime = freeTime;
-        }
-      }
-    };
-  }
-  public void Update(GameTime gameTime)
-  {
-    if (Game1.Instance._currentScreen != GameScreen.ScriptedScene) return;
-    if (!_letsNameYouDialogShowed)
-    {
-      _letsNameYouDialog.Show();
-      _letsNameYouDialogShowed = true;
-    }
-    else if (!_yourNameTextBoxShowed && _letsNameYouDialog.Closed)
-    {
-      _nameTextFieldDialog.ShowModal(Game1.Instance._desktop);
-      Game1.Instance._desktop.FocusedKeyboardWidget = _textField;
-      _yourNameTextBoxShowed = true;
-    }
-    else if (!_colorChoiceDialogShowed && (_yourName != null && _yourName != String.Empty))
-    {
-      _nameTextFieldDialog.Close();
-      Game1.Instance._desktop.Root = _colorChoicePanel;
-      //_colorChoicePanel.ShowModal(Game1.Instance._desktop);
-      _colorChoiceDialogShowed = true;
-      var firstButton = _colorChoicePanel.FindWidgetById("color_blue");
-      if (firstButton != null)
-      {
-        Game1.Instance._desktop.FocusedKeyboardWidget = firstButton;
-      }
-    }
-    else if (!_freeTimeTextFieldDialogShowed && _favoredColor != null && _favoredColor != String.Empty)
-    {
-      _freeTimeTextFieldDialog.ShowModal(Game1.Instance._desktop);
-      Game1.Instance._desktop.FocusedKeyboardWidget = _freeTimeTextField;
-      _freeTimeTextFieldDialogShowed = true;
-    }
-  }
-  private void CreateColorChoice()
-  {
-    _colorChoicePanel = new Panel();
-      VerticalStackPanel grid = new()
-      {
-        Spacing = 15,
-        HorizontalAlignment = HorizontalAlignment.Center,
-        VerticalAlignment = VerticalAlignment.Center
-      };
-    _colorChoicePanel.Widgets.Add(grid);
-    Label titleLabel = new()
-    {
-      Text = BebooText.ui_color,
-      HorizontalAlignment = HorizontalAlignment.Center
-    };
-    grid.Widgets.Add(titleLabel);
+  private string _yourName = string.Empty;
+  private string? _favoredColor;
+  private string _freeTime = string.Empty;
+  private string? _dessert;
 
-    foreach (var color in Util.Colors)
-    {
-      ConfirmButton colorButton = new(color)
-      {
-        Id = $"color_{color}"
-      };
-      colorButton.Click += (_, _) =>
-      {
-        _favoredColor = color;
-      };
-      grid.Widgets.Add(colorButton);
-    }
-  }
-
-  private void Close()
-  {
-    Game1.Instance.SwitchToScreen(GameScreen.game);
-    Game1.Instance._scriptedScene = null;
-  }
   public void Show()
   {
     Game1.Instance.SwitchToScreen(GameScreen.ScriptedScene);
     Game1.Instance._scriptedScene = this;
     Game1.Instance.SoundSystem.PlayNWelcomeMusic();
-    Game1.Instance.ShowLanguageMenu(_welcomePanel, false);
+    Game1.Instance.ShowLanguageMenu(_welcomePanel, false, () => _step = Step.Welcome);
+  }
+
+  public void Update(GameTime gameTime)
+  {
+    // A talk dialog runs on its own screen; let it finish before touching anything.
+    if (_talk != null)
+    {
+      if (!_talk.Closed) return;
+      _talk = null;
+      _step = _stepAfterTalk;
+    }
+    if (Game1.Instance._currentScreen != GameScreen.ScriptedScene) return;
+    switch (_step)
+    {
+      case Step.Welcome:
+        Talk(BebooText.ui_welcome, Step.AskName);
+        break;
+      case Step.AskName:
+        AskText(BebooText.ui_yourname, new FancyTextField(12, true), OnNameTyped);
+        _step = Step.WaitName;
+        break;
+      case Step.AboutYou:
+        Talk(String.Format(BebooText.ui_aboutyou, _yourName), Step.AskColor);
+        break;
+      case Step.AskColor:
+        AskChoice(BebooText.ui_color, Util.Colors.ToDictionary(Util.LocalizedColor), OnColorPicked);
+        _step = Step.WaitColor;
+        break;
+      case Step.AskFreeTime:
+        AskText(BebooText.ui_freetime, new FancyTextField(200), OnFreeTimeTyped);
+        _step = Step.WaitFreeTime;
+        break;
+      case Step.AskDessert:
+        AskChoice(BebooText.ui_dessert, Desserts(), OnDessertPicked);
+        _step = Step.WaitDessert;
+        break;
+      case Step.AllGood:
+        Talk(BebooText.ui_allgood, Step.Garden);
+        break;
+      case Step.Garden:
+        Talk(BebooText.ui_welcome2, Step.Finished);
+        break;
+      case Step.Finished:
+        Finish();
+        break;
+    }
+  }
+
+  private static Dictionary<string, string> Desserts() => new()
+  {
+    { BebooText.chocolatekake, "chocolatekake" },
+    { BebooText.icecream, "icecream" },
+    { BebooText.fruitsalad, "fruitsalad" },
+    { BebooText.coffee, "coffee" },
+  };
+
+  private void OnNameTyped(string name)
+  {
+    if (name.Length == 0)
+    {
+      // The name is used everywhere afterwards, so keep asking for it.
+      Game1.Instance.SoundSystem.System.PlaySound(Game1.Instance.SoundSystem.WarningSound);
+      CrossSpeakManager.Instance.Output(BebooText.ui_empty);
+      _step = Step.AskName;
+      return;
+    }
+    _yourName = name;
+    _step = Step.AboutYou;
+  }
+
+  private void OnColorPicked(string color)
+  {
+    _favoredColor = color;
+    _step = Step.AskFreeTime;
+  }
+
+  private void OnFreeTimeTyped(string freeTime)
+  {
+    _freeTime = freeTime;
+    _step = Step.AskDessert;
+  }
+
+  private void OnDessertPicked(string dessert)
+  {
+    _dessert = dessert;
+    _step = Step.AllGood;
+  }
+
+  private void Talk(string text, Step next)
+  {
+    _stepAfterTalk = next;
+    _talk = new TalkDialog(text, GameScreen.ScriptedScene);
+    _talk.Show();
+  }
+
+  /// <summary>
+  /// A question with a text field, as a plain panel rather than a Myra dialog: a dialog answers
+  /// Enter by closing itself, which left the scene with nothing on screen and no way forward.
+  /// </summary>
+  private void AskText(string question, FancyTextField field, Action<string> onAnswered)
+  {
+    Panel panel = new();
+    VerticalStackPanel grid = new()
+    {
+      Spacing = 15,
+      HorizontalAlignment = HorizontalAlignment.Center,
+      VerticalAlignment = VerticalAlignment.Center
+    };
+    grid.Widgets.Add(new Label { Text = question, HorizontalAlignment = HorizontalAlignment.Center });
+    grid.Widgets.Add(field);
+    panel.Widgets.Add(grid);
+    field.KeyDown += (sender, args) =>
+    {
+      if ((Keys)args.Data != Keys.Enter) return;
+      Game1.Instance.SoundSystem.System.PlaySound(Game1.Instance.SoundSystem.MenuOkSound);
+      onAnswered(((FancyTextField)sender).Text ?? string.Empty);
+    };
+    Game1.Instance._desktop.Root = panel;
+    Game1.Instance._desktop.FocusedKeyboardWidget = field;
+    CrossSpeakManager.Instance.Output(question);
+  }
+
+  /// <param name="options">Spoken label mapped to the value that gets stored.</param>
+  private void AskChoice(string question, Dictionary<string, string> options, Action<string> onAnswered)
+  {
+    Panel panel = new();
+    VerticalStackPanel grid = new()
+    {
+      Spacing = 15,
+      HorizontalAlignment = HorizontalAlignment.Center,
+      VerticalAlignment = VerticalAlignment.Center
+    };
+    grid.Widgets.Add(new Label { Text = question, HorizontalAlignment = HorizontalAlignment.Center });
+    Widget? firstButton = null;
+    foreach (var option in options)
+    {
+      ConfirmButton button = new(option.Key) { Id = $"choice_{option.Value}" };
+      var value = option.Value;
+      button.Click += (_, _) => onAnswered(value);
+      grid.Widgets.Add(button);
+      firstButton ??= button;
+    }
+    panel.Widgets.Add(grid);
+    Game1.Instance._desktop.Root = panel;
+    if (firstButton != null) Game1.Instance._desktop.FocusedKeyboardWidget = firstButton;
+    CrossSpeakManager.Instance.Output(question);
+  }
+
+  private void Finish()
+  {
+    var save = Game1.Instance.Save;
+    save.PlayerName = _yourName;
+    save.FavoredColor = _favoredColor ?? "none";
+    save.FreeTime = _freeTime;
+    save.Dessert = _dessert ?? string.Empty;
+    PutEggOfFavoredColor();
+    // NewGame stays set until the beboo hatches and gets named; that scene turns it off.
+    Game1.Instance._scriptedScene = null;
+    Game1.Instance.ChangeMapMusic();
+    Game1.Instance.SwitchToScreen(GameScreen.game);
+  }
+
+  /// <summary>
+  /// The starting egg is placed before the player is asked anything, so swap it for one of the
+  /// color they just chose.
+  /// </summary>
+  private void PutEggOfFavoredColor()
+  {
+    Map? map = Game1.Instance.Map;
+    if (map == null) return;
+    foreach (Egg egg in map.Items.OfType<Egg>().ToList())
+    {
+      egg.SoundLoopBehaviour.Stop();
+      if (egg.Channel != null && egg.Channel.IsPlaying) egg.Channel.Stop();
+      map.Items.Remove(egg);
+    }
+    map.AddItem(new Egg(Game1.Instance.Save.FavoredColor), new System.Numerics.Vector3(2, 0, 0));
   }
 }

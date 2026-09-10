@@ -1,4 +1,4 @@
-{
+﻿{
     "beboogarden": "Khu Vườn Beboo",
     "red": "Màu đỏ",
     "orange": "Màu cam",
@@ -42,6 +42,16 @@
     "beboo.good": "{0} cảm thấy ổn",
     //0=beboo name
     "beboo.verygood": "{0} đang rất khỏe mạnh",
+    //0=beboo name
+    "beboo.pickup": "Bạn bế {0} lên",
+    //0=beboo name
+    "beboo.putdown": "Bạn đặt {0} xuống",
+    //0=beboo name
+    "beboo.sleepinarms": "{0} ngủ thiếp đi trong vòng tay bạn",
+    //0=beboo name
+    "beboo.swaytoohard": "Bạn lắc {0} quá mạnh, và nó òa khóc!",
+    //0=beboo name
+    "beboo.handsfull": "Tay bạn đã bận rồi",
     //0=beboo name
     "musicbox.name": "Hộp nhạc",
     "musicbox.description": "Một đồ vật cũ có thể phát nhạc khi cho một cuộn băng vào đó",
@@ -134,4 +144,26 @@
     "goal": "Nhấn các số trên bàn phím để nghe âm thanh. Tìm tất cả các cặp để chuyển sang cấp độ tiếp theo.",
     "chest.name": "Rương kho báu.",
     "chest.description": "Một rương đầy vé. Nhưng hãy cẩn thận! Một Beboo phải thông minh để có được chúng.",
+    "rubberring.name": "Phao bơi",
+    "rubberring.description": "Một beboo đang nổi thì không sợ nước.",
+    "fish.name": "Cá",
+    "fish.description": "Một con cá tươi cho những chú beboo đang đói.",
+    "competition.gate": "Trung tâm thi đấu (còn {0} lượt hôm nay)",
+    "competition.choose": "Chọn một cuộc thi",
+    "competition.race": "Đua",
+    "competition.closed": "Trung tâm thi đấu hôm nay đã đóng cửa. Hãy quay lại vào ngày mai!",
+    "jump.name": "Nhảy Tưng Tưng",
+    "jump.start": "Nhảy Tưng Tưng! Ai nhảy xa nhất thì thắng.",
+    "jump.jumped": "{0} đã nhảy xa {1} mét",
+    "jump.win": "{0} nhảy xa nhất, {1} mét, và giành chiến thắng!",
+    "beboo.exhausted": "{0} đã kiệt sức",
+    "beboo.tired": "{0} đang mệt",
+    "beboo.okenergy": "{0} vẫn ổn",
+    "beboo.energetic": "{0} tràn đầy năng lượng",
+    "competition.entry": "{0} (còn {1} lượt hôm nay)",
+    "nest.name": "Tổ ấm",
+    "nest.description": "Một chiếc giường êm. Bé Beboo ngủ trong đó sẽ hồi sức tốt hơn, và bé đang buồn ngủ sẽ tự tìm đến.",
+    "beboo.snuggle": "{0} rúc vào {1}",
+    "beboo.present": "{0} quay lại và đặt {1} xuống chân bạn!",
+    "beboo.presentticket": "{0} quay lại với một thứ lấp lánh!",
 }

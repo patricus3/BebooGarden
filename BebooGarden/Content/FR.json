@@ -1,4 +1,4 @@
-{
+﻿{
     "beboogarden": "Jardin Bébous",
     "pink": "Rose",
     "red": "Rouge",
@@ -42,6 +42,16 @@
     "beboo.good": "{0} va bien",
     //0=beboo name
     "beboo.verygood": "{0} est en pleine forme!",
+    //0=beboo name
+    "beboo.pickup": "Vous prenez {0} dans vos bras",
+    //0=beboo name
+    "beboo.putdown": "Vous reposez {0}",
+    //0=beboo name
+    "beboo.sleepinarms": "{0} s'endort dans vos bras",
+    //0=beboo name
+    "beboo.swaytoohard": "Vous secouez {0} beaucoup trop fort, et il fond en larmes !",
+    //0=beboo name
+    "beboo.handsfull": "Vous avez déjà les mains prises",
     //0=beboo name
     "musicbox.name": "Boîte à musique",
     "musicbox.description": "Un objet ancien qui permet de jouer de la musique en y mettant un rouleau",
@@ -134,4 +144,26 @@
     "chest.name": "Coffre à trésors",
     "chest.description": "Un coffre rempli de tickets. M ais attention ! Un Bébou doit redoubler d'intelligence pour les obtenir.",
     "findbeboo": "Trouver un Bébou.",
+    "rubberring.name": "Bouée",
+    "rubberring.description": "Un Bébou qui flotte n'a pas peur de l'eau.",
+    "fish.name": "Poisson",
+    "fish.description": "Un poisson frais pour nourrir les Bébous affamés.",
+    "competition.gate": "Centre de compétition ({0} essais restants aujourd'hui)",
+    "competition.choose": "Choisissez une compétition",
+    "competition.race": "Course",
+    "competition.closed": "Le centre de compétition est fermé pour aujourd'hui. Revenez demain !",
+    "jump.name": "Saute-Saute",
+    "jump.start": "Saute-Saute ! Celui qui saute le plus loin gagne.",
+    "jump.jumped": "{0} a sauté à {1} mètres",
+    "jump.win": "{0} a sauté le plus loin, {1} mètres, et gagne !",
+    "beboo.exhausted": "{0} est épuisé",
+    "beboo.tired": "{0} est fatigué",
+    "beboo.okenergy": "{0} va plutôt bien",
+    "beboo.energetic": "{0} déborde d'énergie",
+    "competition.entry": "{0} ({1} essais restants aujourd'hui)",
+    "nest.name": "Nid",
+    "nest.description": "Un lit douillet. Un bébou qui y dort récupère mieux, et un bébou fatigué ira le chercher tout seul.",
+    "beboo.snuggle": "{0} se blottit contre {1}",
+    "beboo.present": "{0} revient et dépose {1} à vos pieds !",
+    "beboo.presentticket": "{0} revient avec quelque chose qui brille !",
 }

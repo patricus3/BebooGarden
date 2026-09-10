@@ -27,37 +27,24 @@ public class SaveManager
 
   private static SaveParameters? LoadJson()
   {
-    if (File.Exists(DATAFILEPATH))
+    if (!File.Exists(DATAFILEPATH)) return null;
+    string json = File.ReadAllText(DATAFILEPATH);
+    try
     {
-      using StreamReader r = new(DATAFILEPATH);
-      string json = r.ReadToEnd();
-      try
-      {
-#if DEBUG
-        json = StringCipher.Decrypt(json, Game1.Instance.Config["Save:Key"]);
-#endif
-      }
-      catch (FormatException)
-      {
-      }
-
-
-      SaveParameters parameters = JsonConvert.DeserializeObject<SaveParameters>(json, Settings);
-      return parameters;
+      return JsonConvert.DeserializeObject<SaveParameters>(json, Settings);
     }
-#if DEBUG
-    //ScreenReader.Output("Nouvelle save");
-#endif
-    return null;
+    catch (JsonException)
+    {
+      // Anything we can't read, an encrypted save from an older version included, starts over
+      // rather than taking the game down on startup.
+      return null;
+    }
   }
 
 
   public static void WriteSave(SaveParameters parameters)
   {
     string json = JsonConvert.SerializeObject(parameters, Settings);
-#if !DEBUG
-    json = StringCipher.Encrypt(json, Secrets.SAVEKEY);
-#endif
     File.WriteAllText(DATAFILEPATH, json);
   }
 }

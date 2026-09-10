@@ -14,6 +14,9 @@ public partial class Beboo
   public void Update(GameTime gameTime)
   {
     if (Paused) return;
+    if (IsHeld) CarryAlong();
+    // BeHappy is reached from a delayed task, so the music switch lands here on the main thread.
+    RefreshMoodMusic();
     if (CuteBehaviour.ItsTime())
     {
       if (!Sleeping)
@@ -24,7 +27,7 @@ public partial class Beboo
     }
     if (MoveBehaviour.ItsTime())
     {
-      if (!Sleeping)
+      if (!Sleeping && !IsHeld)
       {
         MoveTowardGoal();
         MoveBehaviour.Done();
@@ -32,11 +35,12 @@ public partial class Beboo
     }
     if (GoToSleepOrWakeUpBehaviour.ItsTime())
     {
-      if (!Sleeping && Energy <= 0)
+      if (!Sleeping && Energy <= MaxEnergy * SLEEPYAT && !OnAnErrand)
       {
-        GoAsleep();
+        GoToBed();
+        GoToSleepOrWakeUpBehaviour.Done();
       }
-      else if (Sleeping && Energy > 2)
+      else if (Sleeping && Energy >= MaxEnergy * RESTEDAT)
       {
         WakeUp();
         GoToSleepOrWakeUpBehaviour.Done();
@@ -44,7 +48,7 @@ public partial class Beboo
     }
     if (FancyMoveBehaviour.ItsTime())
     {
-      if (!Sleeping && !Racer)
+      if (!Sleeping && !Racer && !IsHeld && !OnAnErrand)
       {
         if (Happy || (!Happy && Game1.Instance.Random.Next(3) == 1))
           WannaGoToRandomPlace();
@@ -67,11 +71,11 @@ public partial class Beboo
         GoingSadBehaviour.Done();
       }
     }
-    if (!Racer && EmotionBehaviour.ItsTime())
+    if (!Racer && !Sleeping && EmotionBehaviour.ItsTime())
     {
       if (Happy && Happiness <= 0)
         BurstInTearrs();
-      else if (!Happy && Happiness > 0)
+      else if (!Happy && Happiness >= CHEEREDUPAT)
       {
         Task.Run(async () =>
         {
@@ -86,6 +90,12 @@ public partial class Beboo
       else BeNormal();
       EmotionBehaviour.Done();
     }
+    UpdateErrand();
+    if (PresentBehaviour.ItsTime())
+    {
+      StartErrand();
+      PresentBehaviour.Done();
+    }
     if (CryBehaviour.ItsTime())
     {
       if (!Sleeping && !Racer)
@@ -98,7 +108,7 @@ public partial class Beboo
     {
       if (Sleeping)
       {
-        Energy += 0.10f;
+        Energy += SleepRecovery();
         Game1.Instance.SoundSystem.PlayBebooSound(Game1.Instance.SoundSystem.BebooSleepingSounds, this, true, 0.3f);
         SleepingBehaviour.Done(); ;
       }

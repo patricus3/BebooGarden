@@ -9,14 +9,8 @@ namespace BebooGarden.GameCore.Item;
 
 public class Egg(string color) : Item
 {
-  public override string Name { get
-    {
-      var textColor = " ";
-      return textColor;
-           if (Color !="none") textColor= Color;
-            return String.Format(BebooText.egg_name, textColor); 
-    } }
-  public override string Description { get; } = BebooText.egg_description;
+  public override string Name => String.Format(BebooText.egg_name, Color != "none" ? Util.LocalizedColor(Color) : " ");
+  public override string Description => BebooText.egg_description;
   public override Vector3? Position { get; set; } // position null=in inventory
   public override bool IsTakable { get; set; } = false;
   public override int Cost { get; set; } = 20;

@@ -49,7 +49,7 @@ public partial class Game1
     SoundSystem.LoadMainScreen();
     if (!Save.Flags.NewGame)
     {
-      CultureInfo.CurrentUICulture = new CultureInfo(Save.Language);
+      ApplyLanguage(Save.Language);
       PlayerPosition = new Vector3(0, 0, 0);
       foreach (Map map in Map.Maps.Values)
       {

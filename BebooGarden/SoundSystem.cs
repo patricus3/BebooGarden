@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -69,6 +69,13 @@ internal class SoundSystem
   public Sound BebooStepSnowSound { get; private set; }
   public Sound BebooStepSlipSound { get; set; }
   public Sound BebooScreamSound { get; private set; }
+
+
+  /// <summary>
+  /// The base voice's crying, borrowed by every beboo for the moments that used to fire the one
+  /// harsh shared scream: panicking in water, being startled, being shaken too hard.
+  /// </summary>
+  public List<Sound> BebooWailSounds => BebooCrySounds[BebooType.Base];
   public Sound ItemPutSound { get; private set; }
   public Sound ItemTakeSound { get; private set; }
   public Sound ItemPutWaterSound { get; private set; }

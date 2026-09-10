@@ -97,7 +97,7 @@ public partial class Game1
     };
     grid.Widgets.Add(titleLabel);
 
-    List<Item> itemsList = new() { new Duck(), new MusicBox(), new BouncingBoots(), new Chest() };
+    List<Item> itemsList = new() { new Duck(), new Nest(), new MusicBox(), new BouncingBoots(), new Chest() };
     if (Save.Flags.UnlockEggInShop)
       itemsList.Add(new Egg("none"));
 
@@ -246,12 +246,7 @@ public partial class Game1
     CreateItemsMenu();
     _desktop.Root = _itemsSopPanel;
 
-    // Définir le focus sur le premier élément disponible
-    var firstButton = _itemsSopPanel.Widgets.First()?.GetChildren()?.FirstOrDefault(w => w.Id?.StartsWith("item_") == true);
-    if (firstButton != null)
-    {
-      _desktop.FocusedKeyboardWidget = firstButton;
-    }
+    FocusFirstButton(_itemsSopPanel);
   }
 
   private void ShowRollsMenu()
@@ -262,12 +257,17 @@ public partial class Game1
    CreateRollsMenu();
     _desktop.Root = _rollsShopPanel;
 
-    // Définir le focus sur le premier élément disponible
-    var firstButton = _rollsShopPanel.Widgets.First()?.GetChildren()?.FirstOrDefault(w => w.Id?.StartsWith("roll_") == true);
-    if (firstButton != null)
-    {
-      _desktop.FocusedKeyboardWidget = firstButton;
-    }
+    FocusFirstButton(_rollsShopPanel);
+  }
+
+  /// <summary>
+  /// Puts the keyboard on the first button of a freshly shown panel. Picked by type rather than by
+  /// id: the buttons are labelled with translated item names, so ids built from them are fragile.
+  /// </summary>
+  private void FocusFirstButton(Panel panel)
+  {
+    Widget? first = panel.Widgets.FirstOrDefault()?.GetChildren()?.OfType<Button>().FirstOrDefault();
+    if (first != null) _desktop.FocusedKeyboardWidget = first;
   }
 
   private void OnItemShopSelected(Item item)
@@ -289,7 +289,8 @@ public partial class Game1
 
   private void CloseShop()
   {
-    _aMenuShouldBeClosed = true;
+    // No close flag here: this switches screen itself, and doing both made the next frame try to
+    // close a screen that had already gone.
     SoundSystem.PlayCinematic(SoundSystem.CinematicElevator, false);
     Game1.Instance.ChangeMapMusic();
     Game1.Instance.Unpause();

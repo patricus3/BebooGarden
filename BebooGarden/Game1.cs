@@ -6,7 +6,6 @@ using BebooGarden.Minigame;
 using BebooGarden.MiniGames;
 using BebooGarden.Save;
 using CrossSpeak;
-using Microsoft.Extensions.Configuration;
 using Microsoft.Xna.Framework;
 using System;
 using System.Collections.Generic;
@@ -28,9 +27,6 @@ public partial class Game1 : Game
 
   public Game1()
   {
-    Config = new ConfigurationBuilder()
-    .AddUserSecrets<Game1>()
-    .Build();
     ScreenReader.Load();
     _graphics = new GraphicsDeviceManager(this);
     Content.RootDirectory = "Content";
@@ -54,7 +50,10 @@ public partial class Game1 : Game
 
   private void WriteSave()
   {
-    Map?.Items.RemoveAll(item => typeof(Roll) == item.GetType());
+    // Rolls live in the music box, not on the ground. Every map, not just the current one:
+    // rolls left elsewhere used to be saved.
+    foreach (Map map in Map.Maps.Values)
+      map.Items.RemoveAll(item => item is Roll);
     Dictionary<MapPreset, MapInfo> mapInfos = [];
     foreach (Map map in Map.Maps.Values)
     {
@@ -83,16 +82,16 @@ public partial class Game1 : Game
          currentMap: Map?.Preset ?? MapPreset.garden,
          mapInfos: mapInfos,
          raceScores: Race.RaceScores,
-         raceTodayTries: Race.TodayTries,
+         raceTodayTries: Competition.TodayTries.GetValueOrDefault(CompetitionType.Race),
          raceTotalWin: Race.TotalWin,
-         musicVolume: SoundSystem.Music?.Volume ?? 0.5f
+         musicVolume: SoundSystem.Music?.Volume ?? 0.5f,
+         competitionTries: Competition.TodayTries
      );
     SaveManager.WriteSave(parameters);
   }
 
   public List<Item> Inventory { get; set; } = [];
   public Item? ItemInHand { get; set; }
-  public IConfigurationRoot Config { get; private set; }
 
   public bool Wasd = false; // TODO InputLanguage.CurrentInputLanguage.Culture.TwoLetterISOLanguageName != "fr";
 }
