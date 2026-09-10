@@ -10,5 +10,6 @@ public enum GameScreen
   WordPractice,
   TalkDialog,
   ScriptedScene,
-  ChooseMenu
+  ChooseMenu,
+  ModMenu
 }

@@ -234,14 +234,15 @@ public partial class Game1
     {
       _desktop.FocusPrevious();
     }
-    if (IsKeyPressed(currentKeyboardState, Keys.Enter))
+    if (IsKeyPressed(currentKeyboardState, Keys.Enter) || IsKeyPressed(currentKeyboardState, Keys.Space))
     {
-      if (focused is Button button)
-      {
-        button.DoClick();
-      }
+      // CheckButton is not a Button in Myra, so a checkbox needs saying separately.
+      if (focused is CheckButton checkButton) checkButton.IsPressed = !checkButton.IsPressed;
+      else if (focused is Button button) button.DoClick();
     }
-    if (IsKeyPressed(currentKeyboardState, Keys.Escape) && !EscapeJustPressed)
+    // The mod list is not a menu you can back out of; it is the way in.
+    if (IsKeyPressed(currentKeyboardState, Keys.Escape) && !EscapeJustPressed
+        && _currentScreen != GameScreen.ModMenu)
     {
       _aMenuShouldBeClosed = true;
     }

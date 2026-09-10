@@ -13,8 +13,12 @@ public partial class Beboo
 {
   /// <summary>How much faster beboos recover curled up against each other.</summary>
   private const float SNUGGLERECOVERY = 1.5f;
-  /// <summary>A sleepy beboo will walk this far to sleep next to a friend or in a nest.</summary>
-  private const int BEDSEARCHRANGE = 8;
+  /// <summary>
+  /// A sleepy beboo will walk this far to sleep next to a friend or in a nest. Wide enough to
+  /// cover most of a 40 by 40 garden: at eight tiles two wandering beboos were usually too far
+  /// apart to ever find each other, and the pile almost never formed.
+  /// </summary>
+  private const int BEDSEARCHRANGE = 15;
   /// <summary>Happiness a beboo needs before it starts bringing things back for you.</summary>
   private const int PRESENTHAPPINESS = 6;
 

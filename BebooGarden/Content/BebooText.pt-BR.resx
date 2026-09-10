@@ -561,4 +561,19 @@ Você desbloqueou o caminho para a área nevada. Passe por ele chamando seu Bebo
 	<data name="beboo.presentticket" xml:space="preserve">
 		<value>{0} volta com algo brilhante!</value>
 	</data>
+	<data name="mods.title" xml:space="preserve">
+		<value>Mods. Marque os que quiser e depois escolha jogar.</value>
+	</data>
+	<data name="mods.play" xml:space="preserve">
+		<value>Jogar</value>
+	</data>
+	<data name="mods.entrycreatures" xml:space="preserve">
+		<value>{0}, adiciona {1} criatura(s)</value>
+	</data>
+	<data name="mods.inuse" xml:space="preserve">
+		<value>{0}, em uso</value>
+	</data>
+	<data name="mods.cantdisable" xml:space="preserve">
+		<value>Não dá para desligar {0}: você já tem {1}. Separe-se deles primeiro.</value>
+	</data>
 </root>

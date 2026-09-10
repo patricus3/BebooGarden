@@ -1392,5 +1392,50 @@ namespace BebooGarden.Content {
             }
         }
 
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à Mods. Tick the ones you want, then choose play..
+        /// </summary>
+        internal static string mods_title {
+            get {
+                return ResourceManager.GetString("mods.title", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à Play.
+        /// </summary>
+        internal static string mods_play {
+            get {
+                return ResourceManager.GetString("mods.play", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à {0}, adds {1} creature(s).
+        /// </summary>
+        internal static string mods_entrycreatures {
+            get {
+                return ResourceManager.GetString("mods.entrycreatures", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à {0}, in use.
+        /// </summary>
+        internal static string mods_inuse {
+            get {
+                return ResourceManager.GetString("mods.inuse", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à {0} cannot be switched off: you already have {1}. Give them away or let them go first..
+        /// </summary>
+        internal static string mods_cantdisable {
+            get {
+                return ResourceManager.GetString("mods.cantdisable", resourceCulture);
+            }
+        }
+
     }
 }

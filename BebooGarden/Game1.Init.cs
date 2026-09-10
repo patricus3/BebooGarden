@@ -25,6 +25,7 @@ public partial class Game1
   protected override void Initialize()
   {
     base.Initialize();
+    Window.Title = GAMENAME;
     this.Exiting += OnExit;
     CrossSpeakManager.Instance.Initialize();
     // create hook to get keyboard and simulated keyboard (e.g. screen readers inputs) 
@@ -34,7 +35,10 @@ public partial class Game1
     Task.Run(() => hook.Run());
     _previousKeyboardState = Keyboard.GetState();
     _previousMouseState = Mouse.GetState();
+    // Before LoadMainScreen, which reads every voice folder including the mods'.
+    Modding.ModManager.Discover();
     Save=SaveManager.LoadSave();
+    Modding.ModManager.SetEnabled(Save.EnabledMods ?? []);
     Save.Flags.UnlockEggInShop = Save.Flags.UnlockUnderwaterMap || Save.Flags.UnlockSnowyMap || Save.Flags.UnlockEggInShop;
     Save.Flags.UnlockBeachMap = true;
     try
@@ -80,7 +84,8 @@ public partial class Game1
               }
               Beboo beboo = new(bebooInfo.Name, bebootype, bebooInfo.Age, Save.LastPlayed, bebooInfo.Happiness, bebooInfo.Energy, bebooInfo.SwimLevel, false, bebooInfo.Voice)
               {
-                KnowItsName = bebooInfo.KnowItsName || bebooInfo.Age >= 2
+                KnowItsName = bebooInfo.KnowItsName || bebooInfo.Age >= 2,
+                ModCreature = bebooInfo.ModCreature,
               };
               map.Beboos.Add(beboo);
               if (map != Map) beboo.Pause();

@@ -166,4 +166,9 @@
     "beboo.snuggle": "{0} 依偎着 {1}",
     "beboo.present": "{0} 回来了，把 {1} 放在你脚边！",
     "beboo.presentticket": "{0} 带着亮晶晶的东西回来了！",
+    "mods.title": "模组。勾选你想要的，然后选择开始游戏。",
+    "mods.play": "开始游戏",
+    "mods.entrycreatures": "{0}，新增 {1} 种生物",
+    "mods.inuse": "{0}，使用中",
+    "mods.cantdisable": "无法关闭 {0}：你已经拥有 {1}。请先让它们离开。"
 }

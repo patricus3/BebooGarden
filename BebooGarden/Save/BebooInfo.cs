@@ -12,4 +12,7 @@ public class BebooInfo(string name, float age, int happiness, float energy, int 
   public float Voice { get; set; } = voice;
   public bool KnowItsName { get; set; } = false;
   public BebooType BebooType { get; set; }=bebooType;
+
+  /// <summary>Id of the mod creature this beboo is, when it came from a mod.</summary>
+  public string? ModCreature { get; set; }
 }

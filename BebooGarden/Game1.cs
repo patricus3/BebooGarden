@@ -14,6 +14,8 @@ using System.Globalization;
 namespace BebooGarden;
 public partial class Game1 : Game
 {
+  public const string GAMENAME = "Beboo Garden: Enhanced Edition";
+
   public GameScreen _currentScreen;
   public GameScreen _previousGameScreen;
 
@@ -64,7 +66,10 @@ public partial class Game1 : Game
       foreach (Beboo beboo in map.Beboos)
       {
         if (!beboo.Racer)
-          bebooInfos.Add(new(beboo.Name, beboo.Age, beboo.Happiness, beboo.Energy, beboo.SwimLevel, beboo.VoicePitch, beboo.BebooType));
+          bebooInfos.Add(new(beboo.Name, beboo.Age, beboo.Happiness, beboo.Energy, beboo.SwimLevel, beboo.VoicePitch, beboo.BebooType)
+          {
+            ModCreature = beboo.ModCreature,
+          });
       }
       MapInfo mapInfo = new(map.Items, fruits, bebooInfos);
       mapInfos.Add(map.Preset, mapInfo);
@@ -85,6 +90,7 @@ public partial class Game1 : Game
          raceTodayTries: Competition.TodayTries.GetValueOrDefault(CompetitionType.Race),
          raceTotalWin: Race.TotalWin,
          musicVolume: SoundSystem.Music?.Volume ?? 0.5f,
+         enabledMods: [.. Modding.ModManager.Enabled],
          competitionTries: Competition.TodayTries
      );
     SaveManager.WriteSave(parameters);

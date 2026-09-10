@@ -561,4 +561,19 @@ Du schaltest den Weg zum Schneegebiet frei. Gehe hindurch, indem du dein Beboo i
 	<data name="beboo.presentticket" xml:space="preserve">
 		<value>{0} kommt mit etwas Glänzendem zurück!</value>
 	</data>
+	<data name="mods.title" xml:space="preserve">
+		<value>Mods. Hake die an, die du möchtest, und wähle dann Spielen.</value>
+	</data>
+	<data name="mods.play" xml:space="preserve">
+		<value>Spielen</value>
+	</data>
+	<data name="mods.entrycreatures" xml:space="preserve">
+		<value>{0}, fügt {1} Kreatur(en) hinzu</value>
+	</data>
+	<data name="mods.inuse" xml:space="preserve">
+		<value>{0}, in Benutzung</value>
+	</data>
+	<data name="mods.cantdisable" xml:space="preserve">
+		<value>{0} lässt sich nicht abschalten: du hast bereits {1}. Trenne dich zuerst von ihnen.</value>
+	</data>
 </root>

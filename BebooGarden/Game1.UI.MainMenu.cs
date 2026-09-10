@@ -191,7 +191,7 @@ public partial class Game1
       }
     }
 
-    BackButton backButton = new("Retour")
+    BackButton backButton = new(BebooText.ui_back)
     {
       Id = "backToMainButton"
     };
@@ -264,7 +264,7 @@ public partial class Game1
       grid.Widgets.Add(tpButton);
     }
 
-    BackButton backButton = new("Retour")
+    BackButton backButton = new(BebooText.ui_back)
     {
       Id = "backToMainButton"
     };
@@ -322,7 +322,7 @@ public partial class Game1
       grid.Widgets.Add(bebooButton);
     }
 
-    BackButton backButton = new("Retour")
+    BackButton backButton = new(BebooText.ui_back)
     {
       Id = "backToMainButton"
     };
@@ -437,25 +437,38 @@ public partial class Game1
     _aMenuShouldBeClosed = true;
   }
 
+  /// <summary>
+  /// Ends the whole menu session rather than stepping back one panel. For the choices that are the
+  /// reason the menu was opened in the first place, going back to where you came from is clutter.
+  /// </summary>
+  private void LeaveMenusForTheGarden()
+  {
+    _aMenuShouldBeClosed = false;
+    SwitchToScreen(GameScreen.game);
+  }
+
   private void OnInventoryItemSelected(Item item)
   {
-    Game1.Instance.SoundSystem.System.PlaySound(Game1.Instance.SoundSystem.MenuOkSound);
-    Game1.Instance.ItemInHand = item;
-    CloseEscapeMenu();
+    SoundSystem.System.PlaySound(SoundSystem.MenuOkSound);
+    ItemInHand = item;
+    CrossSpeakManager.Instance.Output(item.Name);
+    // Straight out to the garden: you took the item out to put it somewhere, and walking back
+    // through the menu one panel at a time to get there is only in the way.
+    LeaveMenusForTheGarden();
   }
 
   private void OnTeleportSelected(Item item)
   {
-    Game1.Instance.SoundSystem.System.PlaySound(Game1.Instance.SoundSystem.MenuOkSound);
-    if (item.Position != null) Game1.Instance.MoveOf(item.Position.Value - Game1.Instance.PlayerPosition);
-    CloseEscapeMenu();
+    SoundSystem.System.PlaySound(SoundSystem.MenuOkSound);
+    LeaveMenusForTheGarden();
+    if (item.Position != null) MoveOf(item.Position.Value - PlayerPosition);
   }
 
   private void OnBebooSelected(Beboo beboo)
   {
-    Game1.Instance.SoundSystem.System.PlaySound(Game1.Instance.SoundSystem.MenuOkSound);
-    if (beboo.Position != null) Game1.Instance.MoveOf(beboo.Position - Game1.Instance.PlayerPosition);
-    CloseEscapeMenu();
+    SoundSystem.System.PlaySound(SoundSystem.MenuOkSound);
+    LeaveMenusForTheGarden();
+    MoveOf(beboo.Position - PlayerPosition);
   }
   private void OpenCommands()
   {

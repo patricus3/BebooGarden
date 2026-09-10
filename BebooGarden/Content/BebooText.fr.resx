@@ -561,4 +561,19 @@ Vous venez de déblquer le chemin vers la pleine enneigée. Allez vite la visite
 	<data name="beboo.presentticket" xml:space="preserve">
 		<value>{0} revient avec quelque chose qui brille !</value>
 	</data>
+	<data name="mods.title" xml:space="preserve">
+		<value>Mods. Cochez ceux que vous voulez, puis choisissez jouer.</value>
+	</data>
+	<data name="mods.play" xml:space="preserve">
+		<value>Jouer</value>
+	</data>
+	<data name="mods.entrycreatures" xml:space="preserve">
+		<value>{0}, ajoute {1} créature(s)</value>
+	</data>
+	<data name="mods.inuse" xml:space="preserve">
+		<value>{0}, en cours d'utilisation</value>
+	</data>
+	<data name="mods.cantdisable" xml:space="preserve">
+		<value>Impossible de désactiver {0} : vous avez déjà {1}. Séparez-vous d'eux d'abord.</value>
+	</data>
 </root>

@@ -561,4 +561,19 @@
 	<data name="beboo.presentticket" xml:space="preserve">
 		<value>{0} 带着亮晶晶的东西回来了！</value>
 	</data>
+	<data name="mods.title" xml:space="preserve">
+		<value>模组。勾选你想要的，然后选择开始游戏。</value>
+	</data>
+	<data name="mods.play" xml:space="preserve">
+		<value>开始游戏</value>
+	</data>
+	<data name="mods.entrycreatures" xml:space="preserve">
+		<value>{0}，新增 {1} 种生物</value>
+	</data>
+	<data name="mods.inuse" xml:space="preserve">
+		<value>{0}，使用中</value>
+	</data>
+	<data name="mods.cantdisable" xml:space="preserve">
+		<value>无法关闭 {0}：你已经拥有 {1}。请先让它们离开。</value>
+	</data>
 </root>

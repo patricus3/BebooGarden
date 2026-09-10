@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Linq;
 using System.Numerics;
 using BebooGarden.Content;
 using BebooGarden.GameCore.Pet;
@@ -26,12 +27,21 @@ public class Egg(string color) : Item
     Game1.Instance.Map?.Items.Remove(this);
     SoundLoopBehaviour.Stop();
     BebooType bebooType = Color != "none" ? Util.GetBebooTypeByColor(Color) : Util.GetRandomBebooType();
+    // Roughly one hatchling in three is a mod creature when any mod offering them is switched on.
+    Modding.ModCreature? modCreature = null;
+    var offered = Modding.ModManager.AvailableCreatures.ToList();
+    if (offered.Count > 0 && Game1.Instance.Random.Next(3) == 0)
+      modCreature = offered[Game1.Instance.Random.Next(offered.Count)];
     Sound cinematic;
     if (!Game1.Instance.SoundSystem.CinematicsHatch.TryGetValue(bebooType, out cinematic)) cinematic = Game1.Instance.SoundSystem.CinematicsHatch[BebooType.Base];
     Game1.Instance.SoundSystem.PlayCinematic(cinematic);
     string name = "";// NewBeboo.Run();
     int swimLevel = (Game1.Instance.Map?.IsInWater(Position ?? new(0, 0, 0)) ?? false) ? 5 : 0;
-    var beboo = new Beboo(name, bebooType, 1, DateTime.MinValue, 3, 3, swimLevel, false, 1 + (Game1.Instance.Random.Next(4) / 10)) { Position = this.Position ?? new(0, 0, 0) };
+    var beboo = new Beboo(name, bebooType, 1, DateTime.MinValue, 3, 3, swimLevel, false, 1 + (Game1.Instance.Random.Next(4) / 10))
+    {
+      Position = this.Position ?? new(0, 0, 0),
+      ModCreature = modCreature?.Id,
+    };
     Game1.Instance.Map?.Beboos.Add(beboo);
     new NewBebooScene(beboo).Show();
     Game1.Instance.ChangeMapMusic();

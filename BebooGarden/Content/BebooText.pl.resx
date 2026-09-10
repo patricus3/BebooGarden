@@ -561,4 +561,19 @@ Odblokowałeś ścieżkę na śnieżny teren. Przejdź nią, wołając swojego b
 	<data name="beboo.presentticket" xml:space="preserve">
 		<value>{0} wraca z czymś błyszczącym!</value>
 	</data>
+	<data name="mods.title" xml:space="preserve">
+		<value>Mody. Zaznacz te, których chcesz, a potem wybierz graj.</value>
+	</data>
+	<data name="mods.play" xml:space="preserve">
+		<value>Graj</value>
+	</data>
+	<data name="mods.entrycreatures" xml:space="preserve">
+		<value>{0}, dodaje {1} stworzeń</value>
+	</data>
+	<data name="mods.inuse" xml:space="preserve">
+		<value>{0}, w użyciu</value>
+	</data>
+	<data name="mods.cantdisable" xml:space="preserve">
+		<value>Nie można wyłączyć {0}: masz już {1}. Najpierw się z nimi rozstań.</value>
+	</data>
 </root>

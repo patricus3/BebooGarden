@@ -10,7 +10,7 @@ namespace BebooGarden.Save;
 public class SaveParameters
 {
   public SaveParameters(string? language, float volume,
-      DateTime lastPayed, Flags flags, string playerName, SortedDictionary<FruitSpecies, int> fruitsBasket, List<Item> inventory, int tickets, System.Collections.Generic.List<string> unlockedRolls, string favoredColor, Dictionary<MapPreset, MapInfo> mapInfos, MapPreset currentMap, Dictionary<RaceType, double> raceScores, int raceTodayTries, int raceTotalWin, float musicVolume, Dictionary<CompetitionType, int>? competitionTries = null)
+      DateTime lastPayed, Flags flags, string playerName, SortedDictionary<FruitSpecies, int> fruitsBasket, List<Item> inventory, int tickets, System.Collections.Generic.List<string> unlockedRolls, string favoredColor, Dictionary<MapPreset, MapInfo> mapInfos, MapPreset currentMap, Dictionary<RaceType, double> raceScores, int raceTodayTries, int raceTotalWin, float musicVolume, Dictionary<CompetitionType, int>? competitionTries = null, List<string>? enabledMods = null)
   {
     Volume = volume;
     Language = language;
@@ -27,6 +27,7 @@ public class SaveParameters
     RaceScores = raceScores;
     RaceTodayTries = raceTodayTries;
     CompetitionTries = competitionTries ?? [];
+    EnabledMods = enabledMods ?? [];
     RaceTotalWin = raceTotalWin;
     MusicVolume = musicVolume;
   }
@@ -62,5 +63,8 @@ public class SaveParameters
 
   /// <summary>Tries spent today per contest. RaceTodayTries above is the older single counter.</summary>
   public Dictionary<CompetitionType, int> CompetitionTries { get; set; } = [];
+
+  /// <summary>Ids of the mods the player switched on.</summary>
+  public List<string> EnabledMods { get; set; } = [];
   public int RaceTotalWin { get; set; }
 }

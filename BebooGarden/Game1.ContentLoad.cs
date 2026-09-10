@@ -74,6 +74,14 @@ public partial class Game1
     {
       _desktop.OnChar(a.Character);
     };
+    // The mod list comes first when there is one, so a choice about creatures is made before any
+    // creature is handed out.
+    if (Modding.ModManager.Any) new UI.ModMenu(StartTheGarden).Show();
+    else StartTheGarden();
+  }
+
+  private void StartTheGarden()
+  {
     if (Save.Flags.NewGame)
     {
       (new WelcomeScene()).Show();
@@ -82,5 +90,6 @@ public partial class Game1
     {
       ChangeMapMusic();
       SwitchToScreen(GameScreen.game);
-    }  }
+    }
+  }
 }

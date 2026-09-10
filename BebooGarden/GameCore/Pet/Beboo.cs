@@ -50,6 +50,17 @@ public partial class Beboo
   public int SwimLevel { get; set; } = 0;
   public bool Racer { get; set; } = false;
   public BebooType BebooType { get; set; }
+
+  /// <summary>
+  /// Id of the mod creature this beboo is, when it came from a mod. Null for the built in types.
+  /// </summary>
+  public string? ModCreature { get; set; }
+
+  /// <summary>
+  /// Which voice folder this beboo speaks with: a mod creature's id when it has one, otherwise the
+  /// name of its built in type.
+  /// </summary>
+  public string VoiceId => ModCreature ?? BebooType.ToString();
   public Beboo(string name, BebooType bebooType, float age, DateTime lastPlayed, int happiness = 3, float energy = 3, int swimLevel = 0, bool racer = false, float voicePitch = 1)
   {
     Racer = racer;

@@ -561,4 +561,19 @@ Bạn đã mở khóa đường dẫn đến khu vực đầy tuyết. Hãy vư�
 	<data name="beboo.presentticket" xml:space="preserve">
 		<value>{0} quay lại với một thứ lấp lánh!</value>
 	</data>
+	<data name="mods.title" xml:space="preserve">
+		<value>Mod. Đánh dấu những mod bạn muốn, rồi chọn chơi.</value>
+	</data>
+	<data name="mods.play" xml:space="preserve">
+		<value>Chơi</value>
+	</data>
+	<data name="mods.entrycreatures" xml:space="preserve">
+		<value>{0}, thêm {1} sinh vật</value>
+	</data>
+	<data name="mods.inuse" xml:space="preserve">
+		<value>{0}, đang được dùng</value>
+	</data>
+	<data name="mods.cantdisable" xml:space="preserve">
+		<value>Không thể tắt {0}: bạn đang có {1}. Hãy chia tay chúng trước đã.</value>
+	</data>
 </root>

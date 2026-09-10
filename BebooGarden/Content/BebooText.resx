@@ -562,4 +562,19 @@ You unlock the path to the snowy area. Go through it by calling your Beboo to th
 	<data name="beboo.presentticket" xml:space="preserve">
 		<value>{0} comes back with something shiny!</value>
 	</data>
+	<data name="mods.title" xml:space="preserve">
+		<value>Mods. Tick the ones you want, then choose play.</value>
+	</data>
+	<data name="mods.play" xml:space="preserve">
+		<value>Play</value>
+	</data>
+	<data name="mods.entrycreatures" xml:space="preserve">
+		<value>{0}, adds {1} creature(s)</value>
+	</data>
+	<data name="mods.inuse" xml:space="preserve">
+		<value>{0}, in use</value>
+	</data>
+	<data name="mods.cantdisable" xml:space="preserve">
+		<value>{0} cannot be switched off: you already have {1}. Give them away or let them go first.</value>
+	</data>
 </root>

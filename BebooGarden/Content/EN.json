@@ -166,4 +166,9 @@
     "beboo.snuggle": "{0} snuggles up against {1}",
     "beboo.present": "{0} comes back and drops {1} at your feet!",
     "beboo.presentticket": "{0} comes back with something shiny!",
+    "mods.title": "Mods. Tick the ones you want, then choose play.",
+    "mods.play": "Play",
+    "mods.entrycreatures": "{0}, adds {1} creature(s)",
+    "mods.inuse": "{0}, in use",
+    "mods.cantdisable": "{0} cannot be switched off: you already have {1}. Give them away or let them go first."
 }

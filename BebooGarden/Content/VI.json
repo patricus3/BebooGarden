@@ -166,4 +166,9 @@
     "beboo.snuggle": "{0} rúc vào {1}",
     "beboo.present": "{0} quay lại và đặt {1} xuống chân bạn!",
     "beboo.presentticket": "{0} quay lại với một thứ lấp lánh!",
+    "mods.title": "Mod. Đánh dấu những mod bạn muốn, rồi chọn chơi.",
+    "mods.play": "Chơi",
+    "mods.entrycreatures": "{0}, thêm {1} sinh vật",
+    "mods.inuse": "{0}, đang được dùng",
+    "mods.cantdisable": "Không thể tắt {0}: bạn đang có {1}. Hãy chia tay chúng trước đã."
 }

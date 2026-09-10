@@ -177,4 +177,9 @@
     "beboo.snuggle": "{0} se aconchega em {1}",
     "beboo.present": "{0} volta e deixa {1} aos seus pés!",
     "beboo.presentticket": "{0} volta com algo brilhante!",
+    "mods.title": "Mods. Marque os que quiser e depois escolha jogar.",
+    "mods.play": "Jogar",
+    "mods.entrycreatures": "{0}, adiciona {1} criatura(s)",
+    "mods.inuse": "{0}, em uso",
+    "mods.cantdisable": "Não dá para desligar {0}: você já tem {1}. Separe-se deles primeiro."
 }

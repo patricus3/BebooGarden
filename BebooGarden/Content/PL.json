@@ -165,4 +165,9 @@
     "beboo.snuggle": "{0} przytula się do {1}",
     "beboo.present": "{0} wraca i kładzie ci {1} pod nogami!",
     "beboo.presentticket": "{0} wraca z czymś błyszczącym!",
+    "mods.title": "Mody. Zaznacz te, których chcesz, a potem wybierz graj.",
+    "mods.play": "Graj",
+    "mods.entrycreatures": "{0}, dodaje {1} stworzeń",
+    "mods.inuse": "{0}, w użyciu",
+    "mods.cantdisable": "Nie można wyłączyć {0}: masz już {1}. Najpierw się z nimi rozstań."
 }

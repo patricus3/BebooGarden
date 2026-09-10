@@ -53,9 +53,9 @@ internal class SoundSystem
     set => System.MasterSoundGroup.GetValueOrDefault().Volume = value;
   }
 
-  public Dictionary<BebooType, List<Sound>> BebooCuteSounds { get; private set; }
-  public Dictionary<BebooType, List<Sound>> BebooSleepSounds { get; }
-  public Dictionary<BebooType, List<Sound>> BebooYawningSounds { get; private set; }
+  public Dictionary<string, List<Sound>> BebooCuteSounds { get; private set; }
+  public Dictionary<string, List<Sound>> BebooSleepSounds { get; }
+  public Dictionary<string, List<Sound>> BebooYawningSounds { get; private set; }
   public List<Sound> BebooChewSounds { get; private set; }
   public Sound WhistleSound { get; set; }
   public Sound Whistle2Sound { get; private set; }
@@ -63,7 +63,7 @@ internal class SoundSystem
   public Sound WaterCursorSound { get; private set; }
   public Sound TreesShakeSound { get; private set; }
   public Sound WallSound { get; private set; }
-  public Dictionary<BebooType, List<Sound>> BebooSleepingSounds { get; private set; }
+  public Dictionary<string, List<Sound>> BebooSleepingSounds { get; private set; }
   public Sound BebooStepSound { get; private set; }
   public Sound BebooStepWaterSound { get; private set; }
   public Sound BebooStepSnowSound { get; private set; }
@@ -75,7 +75,7 @@ internal class SoundSystem
   /// The base voice's crying, borrowed by every beboo for the moments that used to fire the one
   /// harsh shared scream: panicking in water, being startled, being shaken too hard.
   /// </summary>
-  public List<Sound> BebooWailSounds => BebooCrySounds[BebooType.Base];
+  public List<Sound> BebooWailSounds => BebooCrySounds[BebooType.Base.ToString()];
   public Sound ItemPutSound { get; private set; }
   public Sound ItemTakeSound { get; private set; }
   public Sound ItemPutWaterSound { get; private set; }
@@ -101,7 +101,7 @@ internal class SoundSystem
   public Sound TreeWindSound { get; private set; }
   public Sound JingleComplete { get; private set; }
   public Sound JingleStar { get; private set; }
-  public Dictionary<BebooType, List<Sound>> BebooYumySounds { get; private set; }
+  public Dictionary<string, List<Sound>> BebooYumySounds { get; private set; }
   private SortedDictionary<FruitSpecies, Sound> FruitsSounds { get; set; }
   public Sound WelcomeMusicStream { get; private set; }
   public Sound NeutralMusicStream { get; private set; }
@@ -118,8 +118,8 @@ internal class SoundSystem
   public Sound RaceGoodSound { get; private set; }
   public Sound RaceBadSound { get; private set; }
   public List<Sound> BebooPetSound { get; private set; }
-  public Dictionary<BebooType, List<Sound>> BebooCrySounds { get; private set; }
-  public Dictionary<BebooType, List<Sound>> BebooDelightSounds { get; private set; }
+  public Dictionary<string, List<Sound>> BebooCrySounds { get; private set; }
+  public Dictionary<string, List<Sound>> BebooDelightSounds { get; private set; }
   public Sound JingleStar2 { get; private set; }
   public Sound JingleWaw { get; private set; }
   public Sound JingleLittleStar { get; private set; }
@@ -130,7 +130,7 @@ internal class SoundSystem
   public Sound CinematicElevator { get; private set; }
   public Sound CinematicRaceStart { get; private set; }
   public Sound CinematicRaceEnd { get; private set; }
-  public Dictionary<BebooType, List<Sound>> BebooFunSounds { get; private set; }
+  public Dictionary<string, List<Sound>> BebooFunSounds { get; private set; }
   public List<Sound> BoingSounds { get; private set; }
   public List<Sound> BubbleSounds { get; private set; }
   public Sound BubblePopSound { get; private set; }
@@ -140,10 +140,10 @@ internal class SoundSystem
   public Sound ItemChestSound { get; private set; }
   public Sound ItemChestOpenSound { get; private set; }
   public Sound ItemChestCloseSound { get; private set; }
-  public Dictionary<BebooType, List<Sound>> BebooSurpriseSounds { get; private set; }
-  public Dictionary<BebooType, List<Sound>> BebooInteractSounds { get; private set; }
-  public Dictionary<BebooType, List<Sound>> BebooAngrySounds { get; private set; }
-  public Dictionary<BebooType, List<Sound>> BebooSongSounds { get; private set; }
+  public Dictionary<string, List<Sound>> BebooSurpriseSounds { get; private set; }
+  public Dictionary<string, List<Sound>> BebooInteractSounds { get; private set; }
+  public Dictionary<string, List<Sound>> BebooAngrySounds { get; private set; }
+  public Dictionary<string, List<Sound>> BebooSongSounds { get; private set; }
 
   private void LoadSoundsInList(string[] files, List<Sound> sounds, string prefixe = "")
   {
@@ -155,26 +155,40 @@ internal class SoundSystem
     }
   }
 
-  private Dictionary<BebooType, List<Sound>> LoadBebooSoundsInList(string folder)
+  private Dictionary<string, List<Sound>> LoadBebooSoundsInList(string folder)
   {
-    Dictionary<BebooType, List<Sound>> dict = new();
+    Dictionary<string, List<Sound>> dict = new();
     foreach (BebooType bebooType in Enum.GetValues(typeof(BebooType)))
-    {
-      List<Sound> sounds = new();
-      string path = Path.Combine(CONTENTFOLDER, BEBOOSOUNDSFOLDER, bebooType.ToString(), folder);
-      if (Directory.Exists(path))
-      {
-        var files = Directory.GetFiles(path);
-        foreach (string file in files)
-        {
-          Sound sound = System.CreateSound(file,
-              Mode._3D | Mode._3D_LinearSquareRolloff);
-          sounds.Add(sound);
-        }
-      }
-      dict[bebooType] = sounds;
-    }
+      dict[bebooType.ToString()] = LoadVoiceFolder(
+          Path.Combine(CONTENTFOLDER, BEBOOSOUNDSFOLDER, bebooType.ToString(), folder));
+    // Every discovered mod, enabled or not: a creature you already own keeps its voice while its
+    // mod is switched off, and its mod cannot be switched off while you own it.
+    foreach (Modding.ModCreature creature in Modding.ModManager.AllCreatures)
+      dict[creature.Id] = LoadVoiceFolder(Path.Combine(creature.VoiceFolder, folder));
     return dict;
+  }
+
+  /// <summary>
+  /// Loads one category folder of one voice. A missing or unreadable folder gives an empty list,
+  /// which sends that category back to the base voice rather than anywhere near a crash: mod files
+  /// are somebody else's, and they should not be able to stop the game starting.
+  /// </summary>
+  private List<Sound> LoadVoiceFolder(string path)
+  {
+    List<Sound> sounds = [];
+    if (!Directory.Exists(path)) return sounds;
+    foreach (string file in Directory.GetFiles(path))
+    {
+      try
+      {
+        sounds.Add(System.CreateSound(file, Mode._3D | Mode._3D_LinearSquareRolloff));
+      }
+      catch (Exception)
+      {
+        // Not something FMOD can read. Skip the file, keep the rest of the voice.
+      }
+    }
+    return sounds;
   }
   public void LoadMainScreen()
   {
@@ -470,7 +484,7 @@ internal class SoundSystem
     if (volume != -1) beboo.Channel.Volume = volume;
   }
 
-  public void PlayBebooSound(Dictionary<BebooType, List<Sound>> sounds, Beboo beboo, bool stopOthers = true, float volume = -1)
+  public void PlayBebooSound(Dictionary<string, List<Sound>> sounds, Beboo beboo, bool stopOthers = true, float volume = -1)
   {
     if (beboo.Paused) return;
     List<Sound> soundsList = new();
@@ -481,12 +495,12 @@ internal class SoundSystem
     if (volume != -1) beboo.Channel.Volume = volume;
   }
 
-  public static List<Sound> GetBebooSounds(Dictionary<BebooType, List<Sound>> sounds, Beboo beboo)
+  public static List<Sound> GetBebooSounds(Dictionary<string, List<Sound>> sounds, Beboo beboo)
   {
-    List<Sound> soundsList;
-    if (!sounds.TryGetValue(beboo.BebooType, out soundsList) || soundsList.Count <= 0)
-      soundsList = sounds[BebooType.Base];
-    return soundsList;
+    // VoiceId is the mod creature's id when there is one, otherwise the built in type's name.
+    if (sounds.TryGetValue(beboo.VoiceId, out List<Sound>? soundsList) && soundsList.Count > 0)
+      return soundsList;
+    return sounds[BebooType.Base.ToString()];
   }
 
   public Channel PlaySoundAtPosition(Sound sound, Vector3 position, double volumeModifier = 0, float pitch = 1)
