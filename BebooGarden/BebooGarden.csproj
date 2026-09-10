@@ -17,7 +17,9 @@
 		<ApplicationIcon>Icon.ico</ApplicationIcon>
 	</PropertyGroup>
 	<ItemGroup>
-		<Content Include="Content\**">
+		<!-- Content/bin and Content/obj are the content pipeline's intermediates. The game reads the
+		     raw files through FMOD, so shipping them added 351 MB of build junk to the release. -->
+		<Content Include="Content\**" Exclude="Content\bin\**;Content\obj\**">
 			<CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
 		</Content>
 		<Content Include="lib\**">
