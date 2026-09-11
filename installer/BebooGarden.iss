@@ -60,7 +60,10 @@ VersionInfoProductName={#AppName}
 ; instead, which lands in %LocalAppData%\Programs; both are correct now that nothing the player
 ; owns is kept in the install folder. {autopf} follows whichever mode is in force.
 PrivilegesRequired=admin
-PrivilegesRequiredOverridesAllowed=dialog
+; dialog: the wizard offers a just-for-me install to anyone without administrator rights.
+; commandline: /CURRENTUSER does the same unattended, which is also what makes the components
+; testable without an elevation prompt.
+PrivilegesRequiredOverridesAllowed=commandline dialog
 DefaultDirName={autopf}\{#AppShortName}
 DefaultGroupName={#AppShortName}
 DisableProgramGroupPage=yes
