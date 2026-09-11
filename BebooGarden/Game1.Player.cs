@@ -122,7 +122,9 @@ public partial class Game1
   /// </summary>
   private void TakeFromGround(Item item)
   {
-    if (!ModManager.HasFeature(ModFeatures.ConfirmPickup))
+    // Never for eggs. An egg is not picked up, it hatches, so asking whether to pick it up would be
+    // asking the wrong question about the one thing here you cannot undo.
+    if (item is Egg || !ModManager.HasFeature(ModFeatures.ConfirmPickup))
     {
       item.Take();
       return;

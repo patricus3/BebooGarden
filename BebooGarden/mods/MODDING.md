@@ -125,7 +125,7 @@ something the game already knows how to do but does not do by default:
 
 | feature | what it does |
 |---|---|
-| `confirmPickup` | Pressing enter next to something on the ground asks yes or no first, instead of taking it straight away. |
+| `confirmPickup` | Pressing enter next to something on the ground asks yes or no first, instead of taking it straight away. Eggs are left alone: they hatch rather than being picked up. |
 
 Names are matched without regard to case, and one this version does not recognise is ignored rather
 than refused, so a mod can name a feature from a later version and still load here.
