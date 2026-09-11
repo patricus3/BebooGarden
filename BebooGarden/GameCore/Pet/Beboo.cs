@@ -405,8 +405,28 @@ public partial class Beboo
     MoveBehaviour.MaxMS = 100;
   }
 
+  /// <summary>Whether this beboo is in the middle of saying something.</summary>
+  private bool IsSpeaking
+  {
+    get
+    {
+      try
+      {
+        return Channel != null && Channel.IsPlaying;
+      }
+      catch (FmodException)
+      {
+        // The channel has already finished and been recycled, so nothing is playing.
+        return false;
+      }
+    }
+  }
+
   private void DoCuteThing()
   {
+    // Idle chatter waits its turn. It used to cut off whatever was already playing, so the delight
+    // of being stroked would be chopped in half by the next scheduled noise.
+    if (IsSpeaking) return;
     Game1.Instance.SoundSystem.PlayBebooSound(Game1.Instance.SoundSystem.BebooCuteSounds, this);
   }
 
@@ -496,8 +516,16 @@ public partial class Beboo
   public void GetPetted()
   {
     if ((DateTime.Now - _lastPetted).TotalMilliseconds < 800) return;
-    _petCount++;
     _lastPetted = DateTime.Now;
+    // A sleeping beboo does not chirp happily at being stroked. You get its breathing instead, so
+    // the touch still answers you and tells you what it is doing.
+    if (Sleeping)
+    {
+      Game1.Instance.SoundSystem.PlayBebooSound(
+          Game1.Instance.SoundSystem.BebooSleepingSounds, this, false, 0.3f);
+      return;
+    }
+    _petCount++;
     Game1.Instance.SoundSystem.PlayBebooSound(Game1.Instance.SoundSystem.BebooPetSound, this, false);
     if (_petCount + Game1.Instance.Random.Next(2) >= PetsBeforeDelight)
     {

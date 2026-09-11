@@ -43,6 +43,17 @@ public partial class Beboo
 
   public bool IsHeld { get; private set; }
 
+  /// <summary>
+  /// How far a carried beboo's voice is lifted. Every sound in the game is placed two units out
+  /// from where it nominally is, which is exactly where a beboo standing on your own tile would be
+  /// - so a beboo in your arms sounded no different from one you had just put down. Cancelling that
+  /// offset puts its voice at your ears, which is where something you are carrying belongs.
+  /// </summary>
+  private static readonly Vector3 CARRYLIFT = new(0, 0, 2);
+
+  /// <summary>Where this beboo's voice is coming from right now.</summary>
+  public Vector3 VoicePosition => IsHeld ? Position + CARRYLIFT : Position;
+
   public void PickUp()
   {
     if (IsHeld) return;
@@ -89,8 +100,10 @@ public partial class Beboo
     Position = Game1.Instance.PlayerPosition;
     try
     {
+      // The same placement PlaySoundAtPosition would give it, so a sound that started before you
+      // picked the beboo up ends up where the next one will.
       if (Channel != null && Channel.IsPlaying)
-        Channel.Set3DAttributes(Position + new Vector3(0, 0, -2), default, default);
+        Channel.Set3DAttributes(VoicePosition + new Vector3(0, 0, -2), default, default);
     }
     catch (FmodAudio.FmodException)
     {

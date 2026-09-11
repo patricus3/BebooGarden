@@ -498,7 +498,7 @@ internal class SoundSystem
   {
     if (beboo.Paused) return;
     if (beboo.Channel != null && stopOthers && beboo.Channel.IsPlaying) beboo.Channel.Stop();
-    beboo.Channel = PlaySoundAtPosition(sound, beboo.Position, -0.1, beboo.VoicePitch);
+    beboo.Channel = PlaySoundAtPosition(sound, beboo.VoicePosition, -0.1, beboo.VoicePitch);
   }
 
   public void PlayBebooSound(List<Sound> sounds, Beboo beboo, bool stopOthers = true, float volume = -1)
@@ -506,7 +506,7 @@ internal class SoundSystem
     if (beboo.Paused) return;
     Sound sound = sounds[Game1.Instance.Random.Next(sounds.Count())];
     if (beboo.Channel != null && stopOthers && beboo.Channel.IsPlaying) beboo.Channel.Stop();
-    beboo.Channel = PlaySoundAtPosition(sound, beboo.Position, 0, beboo.VoicePitch);
+    beboo.Channel = PlaySoundAtPosition(sound, beboo.VoicePosition, 0, beboo.VoicePitch);
     if (volume != -1) beboo.Channel.Volume = volume;
   }
 
@@ -517,7 +517,7 @@ internal class SoundSystem
     soundsList = GetBebooSounds(sounds, beboo);
     Sound sound = soundsList[Game1.Instance.Random.Next(soundsList.Count)];
     if (beboo.Channel != null && stopOthers && beboo.Channel.IsPlaying) beboo.Channel.Stop();
-    beboo.Channel = PlaySoundAtPosition(sound, beboo.Position, 0, beboo.VoicePitch);
+    beboo.Channel = PlaySoundAtPosition(sound, beboo.VoicePosition, 0, beboo.VoicePitch);
     if (volume != -1) beboo.Channel.Volume = volume;
   }
 
