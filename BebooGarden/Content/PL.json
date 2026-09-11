@@ -190,5 +190,6 @@
     "memory.quit": "Poddajesz się.",
     "fluffball.staysbehind": "Kłębek puchu nie pójdzie za {0} na zimno i zostaje na miejscu.",
     "fluffball.alone": "Kłębek puchu nie ma już kogo przytulać i robi się cichy i smutny.",
-    "fluffball.cheered": "Kłębek puchu znów ma towarzystwo i od razu się ożywia."
+    "fluffball.cheered": "Kłębek puchu znów ma towarzystwo i od razu się ożywia.",
+    "fluffball.goeshome": "Kłębek puchu czekał dość długo i odpływa z powrotem do puchowej krainy."
 }

@@ -637,4 +637,7 @@ Oben rechts im Garten hat ein weicher kleiner Ort aufgemacht: das Flauschige. Do
 	<data name="fluffball.cheered" xml:space="preserve">
 		<value>Der Fluffball hat wieder Gesellschaft und lebt sofort auf.</value>
 	</data>
+	<data name="fluffball.goeshome" xml:space="preserve">
+		<value>Der Fluffball hat lange genug gewartet und schwebt heim ins Flauschland.</value>
+	</data>
 </root>

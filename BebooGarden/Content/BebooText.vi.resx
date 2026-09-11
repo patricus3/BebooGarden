@@ -637,4 +637,7 @@ Một nơi mềm mại tên là Xứ Bông vừa mở ra ở góc trên bên ph�
 	<data name="fluffball.cheered" xml:space="preserve">
 		<value>Cục bông lại có bạn, nó vui hẳn lên.</value>
 	</data>
+	<data name="fluffball.goeshome" xml:space="preserve">
+		<value>Cục bông đợi đủ lâu rồi, nó trôi về lại xứ bông.</value>
+	</data>
 </root>

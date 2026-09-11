@@ -637,4 +637,7 @@ Escape 打开菜单。就这些了。好好相处。</value>
 	<data name="fluffball.cheered" xml:space="preserve">
 		<value>绒球又有伴了，一下子精神起来。</value>
 	</data>
+	<data name="fluffball.goeshome" xml:space="preserve">
+		<value>绒球等得够久了，飘回绒绒地去了。</value>
+	</data>
 </root>

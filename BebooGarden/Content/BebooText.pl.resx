@@ -637,4 +637,7 @@ W prawym górnym rogu ogrodu otworzyło się miękkie miejsce zwane puszystości
 	<data name="fluffball.cheered" xml:space="preserve">
 		<value>Kłębek puchu znów ma towarzystwo i od razu się ożywia.</value>
 	</data>
+	<data name="fluffball.goeshome" xml:space="preserve">
+		<value>Kłębek puchu czekał dość długo i odpływa z powrotem do puchowej krainy.</value>
+	</data>
 </root>

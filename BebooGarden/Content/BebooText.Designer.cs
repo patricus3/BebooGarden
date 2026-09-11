@@ -1626,5 +1626,14 @@ namespace BebooGarden.Content {
             }
         }
 
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à The fluffball has waited long enough, and drifts away home to the fluff..
+        /// </summary>
+        internal static string fluffball_goeshome {
+            get {
+                return ResourceManager.GetString("fluffball.goeshome", resourceCulture);
+            }
+        }
+
     }
 }

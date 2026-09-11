@@ -637,4 +637,7 @@ Un petit endroit tout doux, la peluche, s'est ouvert en haut à droite du jardin
 	<data name="fluffball.cheered" xml:space="preserve">
 		<value>La boule de peluche a de nouveau de la compagnie et reprend vie.</value>
 	</data>
+	<data name="fluffball.goeshome" xml:space="preserve">
+		<value>La boule de peluche a assez attendu et s'en retourne doucement vers la peluche.</value>
+	</data>
 </root>

@@ -19,6 +19,9 @@ internal class FluffBall : Item
 {
   private const int HUGCOOLDOWNMS = 6000;
 
+  /// <summary>How long a fluffball will wait somewhere with nobody in it before going home.</summary>
+  private const int LONELYTOOLONGMS = 60000 * 3;
+
   private Vector3? _position;
   private Vector3? _drift;
   private DateTime _lastHug = DateTime.MinValue;
@@ -61,6 +64,7 @@ internal class FluffBall : Item
   private bool ReadyToHug => (DateTime.Now - _lastHug).TotalMilliseconds > HUGCOOLDOWNMS;
 
   private bool _wasAlone;
+  private DateTime _aloneSince = DateTime.MinValue;
 
   /// <summary>
   /// Nobody left to hug: no other fluffball here, and no beboo either. You do not count - a hug
@@ -164,6 +168,7 @@ internal class FluffBall : Item
   {
     if (Position == null) return;
     NoticeWhetherAlone();
+    if (GoneHome()) return;
     if (MurmurBehaviour.ItsTime())
     {
       // There is no sad fluffball sound, so a lonely one gets the same murmur with the life taken
@@ -211,6 +216,9 @@ internal class FluffBall : Item
     bool alone = Alone;
     if (alone == _wasAlone) return;
     _wasAlone = alone;
+    // Real time rather than ticks, so waiting counts while you are off in another place and this
+    // fluffball is not being updated at all. Come back an hour later and it has long since gone.
+    _aloneSince = alone ? DateTime.Now : DateTime.MinValue;
     MurmurBehaviour.MinMS = alone ? 9000 : 5000;
     MurmurBehaviour.MaxMS = alone ? 20000 : 12000;
     CrossSpeakManager.Instance.Output(
@@ -219,6 +227,26 @@ internal class FluffBall : Item
         alone ? Game1.Instance.SoundSystem.FluffBallMurmurSounds
               : Game1.Instance.SoundSystem.FluffBallHugSounds,
         this, alone ? 0.2f : -1, alone ? 0.7f : 1f);
+  }
+
+  /// <summary>
+  /// Takes itself home to the fluff once it has waited long enough with nobody, and reports whether
+  /// it has gone. It keeps whoever it had chosen: this is going home to wait, not giving up on them.
+  /// </summary>
+  private bool GoneHome()
+  {
+    if (_aloneSince == DateTime.MinValue) return false;
+    if ((DateTime.Now - _aloneSince).TotalMilliseconds < LONELYTOOLONGMS) return false;
+    Map? here = Game1.Instance.Map;
+    if (here == null || here == Map.Fluff) return false;
+    here.Items.Remove(this);
+    if (!Map.Fluff.AddItem(this, new Vector3(0, 0, 0))) Map.Fluff.Items.Add(this);
+    CrossSpeakManager.Instance.Output(BebooText.fluffball_goeshome);
+    _wasAlone = false;
+    _aloneSince = DateTime.MinValue;
+    MurmurBehaviour.MinMS = 5000;
+    MurmurBehaviour.MaxMS = 12000;
+    return true;
   }
 
   private void Drift()

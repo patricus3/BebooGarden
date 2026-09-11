@@ -202,5 +202,6 @@
     "memory.quit": "Você desistiu.",
     "fluffball.staysbehind": "A bolinha de pelúcia não segue {0} para o frio e fica onde está.",
     "fluffball.alone": "A bolinha de pelúcia não tem mais ninguém para abraçar e fica quietinha e triste.",
-    "fluffball.cheered": "A bolinha de pelúcia tem companhia de novo e se anima na hora."
+    "fluffball.cheered": "A bolinha de pelúcia tem companhia de novo e se anima na hora.",
+    "fluffball.goeshome": "A bolinha de pelúcia já esperou bastante e volta flutuando para a pelúcia."
 }
