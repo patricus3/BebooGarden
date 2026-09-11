@@ -363,3 +363,6 @@ MigrationBackup/
 FodyWeavers.xsd
 
 .idea
+# Installer build artefacts: the published payload and the compiled setup.
+installer/payload/
+installer/output/
