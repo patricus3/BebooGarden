@@ -255,15 +255,14 @@
 		<value>O nome fofo do seu Beboo</value>
 	</data>
 	<data name="ui.welcome" xml:space="preserve">
-		<value>Bem-vindo ao Jardim Beboo!
-Para começar, como devo te chamar?</value>
+		<value>Bem-vindo ao Centro de Adoção de Beboos!
+Alguém inscreveu você no nosso programa. Comentou que você andava muito sozinho ultimamente, e achou que uma companhia te faria bem. Espero que tudo bem.
+Vamos começar pelo simples: como devo te chamar?</value>
 	</data>
 	<data name="ui.welcome2" xml:space="preserve">
-		<value>Aqui é o Jardim Beboo.
-É um grande quadrado de vegetação, com uma pequena lagoa à esquerda e árvores frutíferas altas à direita.
-Para navegar pelo jardim, recomendo fortemente usar fones de ouvido.
-Está atualmente vazio, exceto por um ovo prestes a chocar, que você deve ouvir à sua direita.
-Depois que este diálogo for fechado, mova-se usando as teclas de seta em direção ao ovo, e quando ouvi-lo na sua frente, pressione a barra de espaço para ajudar seu Beboo a quebrar a casca.</value>
+		<value>Muito bem, {0}, aqui está o seu jardim. Agora é seu, de todos nós aqui do centro.
+É um quadrado largo de verde, com uma lagoa pequena à esquerda e árvores frutíferas altas à direita. Coloque fones, se tiver: aqui você se orienta de ouvido.
+Tem um ovo esperando à sua direita, prestes a chocar. Quando eu parar de falar, vá até ele com as setas, e quando ouvi-lo bem à sua frente, aperte espaço para ajudar seu beboo a sair da casca.</value>
 	</data>
 	<data name="ui.aboutyou" xml:space="preserve">
 		<value>Ótimo! Agora, {0}, preciso te fazer algumas perguntas para encontrar o Beboo que mais combina com você.
@@ -287,14 +286,12 @@ Pode ser qualquer coisa.</value>
 		<value>Bem, tudo parece em ordem.</value>
 	</data>
 	<data name="ui.quicktips" xml:space="preserve">
-		<value>Perfeito!
-Antes de começar a cuidar do {0}, preciso te ensinar o básico do jardim.
-Para alimentar {0}, você precisará coletar frutas das árvores à sua direita. Sacuda as árvores segurando a tecla enter e alternando entre as teclas de seta para cima e para baixo.
-Para dar uma fruta para {0}, pressione a barra de espaço quando estiver perto, assim como você fez com o ovo antes.
-Você também pode pressionar F para saber se {0} está precisando de algo.
-Quando {0} estiver muito feliz, você pode ir para o canto superior esquerdo para se exercitar.
-Por fim, pressione escape para abrir o menu.
-Divirta-se!</value>
+		<value>Pronto. Antes de deixar vocês dois, o que importa.
+Comida: sacuda as árvores à sua direita segurando enter e alternando cima e baixo. Depois fique ao lado de {0} e aperte espaço para oferecer uma fruta, do mesmo jeito que fez com o ovo.
+Aperte F quando quiser e eu digo como {0} está: o quanto está feliz, o quanto está cansado.
+P pega {0} no colo. Enquanto estiver segurando, segure enter e alterne esquerda e direita para embalar. Com jeitinho, viu. Embale com calma e ele dorme no seu colo; sacuda e ele chora, e ele lembra disso.
+Este jardim não é o único lugar. Com o tempo, caminhos se abrem para outros lugares, e você passa apertando enter onde ouvir um. Seu beboo não vai te seguir sozinho: assobie com espaço antes de ir, ou chame pelo número dele, e ele vem junto. Vale a pena levá-lo. Um beboo que só conhece um campo acaba entediado.
+Escape abre o menu. É isso. Aproveitem a companhia um do outro.</value>
 	</data>
 	<data name="ui.emptyinventory" xml:space="preserve">
 		<value>Nada na bolsa</value>
@@ -575,5 +572,30 @@ Você desbloqueou o caminho para a área nevada. Passe por ele chamando seu Bebo
 	</data>
 	<data name="mods.cantdisable" xml:space="preserve">
 		<value>Não dá para desligar {0}: você já tem {1}. Separe-se deles primeiro.</value>
+	</data>
+	<data name="ui.cantputhere" xml:space="preserve">
+		<value>Você não pode largar nada aqui.</value>
+	</data>
+	<data name="ui.itembacktobag" xml:space="preserve">
+		<value>{0} volta para a sua bolsa.</value>
+	</data>
+	<data name="fluff" xml:space="preserve">
+		<value>O fofo</value>
+	</data>
+	<data name="fluffball.name" xml:space="preserve">
+		<value>Bolinha de pelo</value>
+	</data>
+	<data name="fluffball.description" xml:space="preserve">
+		<value>Uma coisinha redonda feita inteiramente de pelo macio. Abraça tudo em que esbarra.</value>
+	</data>
+	<data name="fluffball.hugyou" xml:space="preserve">
+		<value>A bolinha de pelo te abraça. É macia demais.</value>
+	</data>
+	<data name="fluffball.hugbeboo" xml:space="preserve">
+		<value>A bolinha de pelo abraça {0}, que fica todo derretido.</value>
+	</data>
+	<data name="unlockfluff" xml:space="preserve">
+		<value>{0} está feliz o bastante para um passeio!
+Um cantinho macio chamado o fofo abriu no canto superior direito do jardim. Não há absolutamente nada para fazer lá. É justamente essa a graça.</value>
 	</data>
 </root>

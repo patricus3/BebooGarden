@@ -23,4 +23,5 @@ public class Flags
   public bool UnlockPerfectSwimming { get; set; }
   public bool UnlockEggInShop { get; set; }
   public bool UnlockUnderwaterMap { get; set; }
+  public bool UnlockFluffMap { get; set; }
 }

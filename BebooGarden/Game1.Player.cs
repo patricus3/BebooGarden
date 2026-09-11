@@ -114,42 +114,51 @@ public partial class Game1
   }
   private void TryPutItemInHand()
   {
-    if (ItemInHand == null) return;
-    bool waterProof = ItemInHand?.IsWaterProof ?? false;
+    Item? item = ItemInHand;
+    if (item == null) return;
     bool inWater = Map?.IsInWater(PlayerPosition) ?? false;
-    if (inWater && !waterProof)
+    if (inWater && !item.IsWaterProof)
     {
-      SoundSystem.System.PlaySound(SoundSystem.WarningSound);
-      CrossSpeakManager.Instance.Output(BebooText.ui_warningwater);
+      RefuseToPutDown(item, BebooText.ui_warningwater);
+      return;
     }
-    else
+    // AddItem refuses a tree line. Ignoring that used to announce the drop, take the item out of
+    // the bag and add it nowhere, which quietly destroyed it.
+    if (Map?.AddItem(item, PlayerPosition) != true)
     {
-      if (ItemInHand != null)
-      {
-        Map?.AddItem(ItemInHand, PlayerPosition);
-        CrossSpeakManager.Instance.Output(String.Format(BebooText.ui_itemput, ItemInHand.Name));
-        if (inWater) SoundSystem.System.PlaySound(SoundSystem.ItemPutWaterSound);
-        else SoundSystem.System.PlaySound(SoundSystem.ItemPutSound);
-        Inventory.Remove(ItemInHand);
-      }
-      ItemInHand = null;
+      RefuseToPutDown(item, BebooText.ui_cantputhere);
+      return;
     }
+    CrossSpeakManager.Instance.Output(String.Format(BebooText.ui_itemput, item.Name));
+    SoundSystem.System.PlaySound(inWater ? SoundSystem.ItemPutWaterSound : SoundSystem.ItemPutSound);
+    Inventory.Remove(item);
+    ItemInHand = null;
+  }
+
+  /// <summary>
+  /// Says why the item cannot go here and puts it back in the bag. Keeping hold of it would leave
+  /// the space bar stuck on retrying the drop, with no way to do anything else.
+  /// </summary>
+  private void RefuseToPutDown(Item item, string reason)
+  {
+    SoundSystem.System.PlaySound(SoundSystem.WarningSound);
+    CrossSpeakManager.Instance.Output(reason);
+    CrossSpeakManager.Instance.Output(String.Format(BebooText.ui_itembacktobag, item.Name));
+    ItemInHand = null;
   }
   private void Whistle()
   {
     SoundSystem.System.Get3DListenerAttributes(0, out Vector3 currentPosition, out _, out _, out _);
     SoundSystem.Whistle();
-    foreach (Beboo beboo in Map?.Beboos)
+    if (Map == null) return;
+    // A copy: waking a beboo can move it between maps, and the list would be changing underneath.
+    foreach (Beboo beboo in Map.Beboos.ToList())
     {
-      if (Map?.Beboos.Count <= 1 || Random.Next(2) == 1)
-      {
-        Task.Run(async () =>
-        {
-          await Task.Delay(Random.Next(1000, 2000));
-          beboo.WakeUp();
-        });
-        beboo.Destination = currentPosition;
-      }
+      if (Map.Beboos.Count > 1 && Random.Next(2) != 1) continue;
+      // The delay is drawn here rather than inside the callback: Random is shared and not safe to
+      // use from several threads at once.
+      beboo.Later(Random.Next(1000, 2000), () => beboo.WakeUp());
+      beboo.Destination = currentPosition;
     }
   }
   public void GainTicket(int amount)

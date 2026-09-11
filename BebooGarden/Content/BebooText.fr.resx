@@ -255,15 +255,14 @@
 		<value>Le nom de votre Bébou</value>
 	</data>
 	<data name="ui.welcome" xml:space="preserve">
-		<value>Bienvenue dans le Jardin Bébou!
-Pour commencer, comment dois-je vous appeler ?</value>
+		<value>Bienvenue au Centre d'Adoption des Bébous !
+Quelqu'un vous a inscrit à notre programme. Cette personne a dit que vous étiez souvent seul ces derniers temps, et s'est dit qu'un peu de compagnie vous ferait du bien. J'espère que ça vous va.
+Commençons par le plus simple : comment dois-je vous appeler ?</value>
 	</data>
 	<data name="ui.welcome2" xml:space="preserve">
-		<value>Voici le jardin Bébous.
-C'est un grand carré de verdure paisible, agrémenté d'un petit lagon à gauche et de hauts arbres fruitiers à droite.
-Pour vous repérer dans le jardin, je vous recommande grandement de mettre un casque ou des écouteurs.
-Il est actuellement vide, hormis un œuf sur le point d'éclore, que vous devriez entendre à votre droite.
-Une fois ce dialogue fermé, déplacez-vous avec les flèches en direction de cet œuf, puis, une fois que vous l'entendez au centre,  appuyez sur espace pour aider votre bébou à briser sa coquille.</value>
+		<value>Bien, {0}, voici votre jardin. Il est à vous désormais, de la part de toute l'équipe du centre.
+C'est un grand carré de verdure, avec une petite lagune sur la gauche et de grands arbres fruitiers sur la droite. Mettez un casque si vous en avez un : ici, on se repère à l'oreille.
+Un œuf vous attend sur la droite, prêt à éclore. Dès que j'aurai fini de parler, approchez-vous avec les flèches, et quand vous l'entendrez juste devant vous, appuyez sur espace pour aider votre bébou à sortir de sa coquille.</value>
 	</data>
 	<data name="ui.aboutyou" xml:space="preserve">
 		<value>Super ! Maintenant, {0}, je dois vous poser quelques questions pour vous trouver le Bébou qui vous conviendra le mieux.
@@ -287,14 +286,12 @@ Cela peut être n'importe quoi.</value>
 		<value>Eh bien, tout est en règle, il me semble.</value>
 	</data>
 	<data name="ui.quicktips" xml:space="preserve">
-		<value>Parfait !
-Avant de vous laisser vous occuper de {0}, je dois vous apprendre le béaba du jardin.
-Pour nourrir {0}, il vous faut récupérer des fruits dans les arbres à votre droite. Secouez-les en maintenant entrée, puis en alternant les flèches haut et bas.
-Pour donner un fruit à {0}, appuyez sur espace quand vous êtes à proximité, comme pour interagir avec l'œuf précédemment.
-Vous pouvez aussi appuyer sur F pour savoir précisément si {0} manque de quelque chose.
-Si {0} est surexcité, rendez-vous en haut à gauche pour qu'il se dépense.
-Enfin, appuyez sur échappe pour accéder au menu.
-Amusez-vous bien !</value>
+		<value>Voilà. Avant de vous laisser, l'essentiel.
+La nourriture : secouez les arbres sur votre droite en maintenant entrée et en alternant haut et bas. Ensuite, placez-vous à côté de {0} et appuyez sur espace pour offrir un fruit, comme vous l'avez fait pour l'œuf.
+Appuyez sur F à tout moment et je vous dirai comment va {0} : son humeur, sa fatigue.
+P prend {0} dans vos bras. Pendant que vous le portez, maintenez entrée en alternant gauche et droite pour le bercer. Doucement, hein. Bercez-le régulièrement et il s'endormira contre vous ; secouez-le et il pleurera, et il s'en souviendra.
+Ce jardin n'est pas le seul endroit. Au fil du temps, des chemins s'ouvrent vers d'autres lieux, et on passe en appuyant sur entrée là où on en entend un. Votre bébou ne vous suivra pas tout seul : sifflez avec espace avant de partir, ou appelez-le par son numéro, et il viendra avec vous. Ça vaut le coup de l'emmener. Un bébou qui ne voit qu'un seul pré finit par s'ennuyer.
+Échap ouvre le menu. C'est tout. Profitez bien l'un de l'autre.</value>
 	</data>
 	<data name="ui.emptyinventory" xml:space="preserve">
 		<value>Aucun objets dans le sac</value>
@@ -575,5 +572,30 @@ Vous venez de déblquer le chemin vers la pleine enneigée. Allez vite la visite
 	</data>
 	<data name="mods.cantdisable" xml:space="preserve">
 		<value>Impossible de désactiver {0} : vous avez déjà {1}. Séparez-vous d'eux d'abord.</value>
+	</data>
+	<data name="ui.cantputhere" xml:space="preserve">
+		<value>Vous ne pouvez rien poser ici.</value>
+	</data>
+	<data name="ui.itembacktobag" xml:space="preserve">
+		<value>{0} retourne dans votre sac.</value>
+	</data>
+	<data name="fluff" xml:space="preserve">
+		<value>La peluche</value>
+	</data>
+	<data name="fluffball.name" xml:space="preserve">
+		<value>Boule de peluche</value>
+	</data>
+	<data name="fluffball.description" xml:space="preserve">
+		<value>Une petite chose ronde entièrement faite de peluche. Elle fait un câlin à tout ce qu'elle croise.</value>
+	</data>
+	<data name="fluffball.hugyou" xml:space="preserve">
+		<value>La boule de peluche vous fait un câlin. C'est extrêmement doux.</value>
+	</data>
+	<data name="fluffball.hugbeboo" xml:space="preserve">
+		<value>La boule de peluche fait un câlin à {0}, qui fond complètement.</value>
+	</data>
+	<data name="unlockfluff" xml:space="preserve">
+		<value>{0} est assez heureux pour une sortie !
+Un petit endroit tout doux, la peluche, s'est ouvert en haut à droite du jardin. Il n'y a absolument rien à y faire. C'est un peu l'idée.</value>
 	</data>
 </root>

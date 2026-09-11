@@ -255,15 +255,14 @@
 		<value>Tên dễ thương của Beboo của bạn</value>
 	</data>
 	<data name="ui.welcome" xml:space="preserve">
-		<value>Chào mừng bạn đến với Vườn Beboo!
-Trước tiên, mình nên gọi bạn là gì nhỉ?</value>
+		<value>Chào mừng đến Trung tâm Nhận nuôi Beboo!
+Có người đã ghi tên bạn vào chương trình của chúng tôi. Họ bảo rằng dạo này bạn hay ở một mình, và nghĩ rằng có bạn đồng hành sẽ tốt cho bạn. Mong là bạn không phiền.
+Bắt đầu từ điều dễ nhất: tôi nên gọi bạn là gì?</value>
 	</data>
 	<data name="ui.welcome2" xml:space="preserve">
-		<value>Đây là Vườn Beboo. 🌿
-Nơi đây là một khu vườn rộng lớn đầy màu xanh, với một đầm phá nhỏ ở bên trái và những cây trái cao to ở bên phải.
-Để dễ dàng khám phá khu vườn, mình khuyên bạn nên đeo tai nghe.
-Hiện tại, khu vườn còn trống rỗng, ngoại trừ một quả trứng sắp nở, mà bạn có thể nghe thấy bên phải.
-Khi đoạn hội thoại này kết thúc, hãy di chuyển bằng các phím mũi tên về phía quả trứng, và khi bạn nghe thấy tiếng nó ở trước mặt, nhấn phím cách để giúp Beboo của bạn phá vỏ trứng nhé!</value>
+		<value>Được rồi, {0}, đây là khu vườn của bạn. Từ giờ nó là của bạn, quà từ tất cả chúng tôi ở trung tâm.
+Một khoảng vuông rộng đầy cây cỏ, có cái đầm nhỏ bên trái và những cây ăn quả cao bên phải. Nếu có tai nghe thì bạn nên đeo vào: ở đây bạn định hướng bằng tai.
+Bên phải có một quả trứng sắp nở. Khi tôi nói xong, hãy dùng phím mũi tên đi tới, và khi nghe thấy nó ngay trước mặt, nhấn phím cách để giúp bé Beboo chui ra khỏi vỏ.</value>
 	</data>
 	<data name="ui.aboutyou" xml:space="preserve">
 		<value>Tuyệt vời! Giờ thì, {0}, mình cần hỏi bạn một vài câu để tìm được Beboo phù hợp nhất với bạn nhé.
@@ -287,14 +286,12 @@ Có thể là bất cứ thứ gì đấy.</value>
 		<value>Chà, mọi thứ có vẻ đã ổn.</value>
 	</data>
 	<data name="ui.quicktips" xml:space="preserve">
-		<value>Hoàn hảo! 
-Trước khi bạn bắt đầu chăm sóc {0}, mình cần hướng dẫn bạn những điều cơ bản về khu vườn.
-Để cho {0} ăn, bạn cần thu thập trái cây từ những cây ở bên phải. Lắc cây bằng cách giữ phím Enter và xen kẽ giữa các phím mũi tên lên và xuống.
-Để cho {0} một trái cây, nhấn phím cách khi bạn ở gần, giống như bạn đã làm với quả trứng trước đó.
-Bạn cũng có thể nhấn phím F để biết nếu {0} thiếu thứ gì đó.
-Khi {0} rất vui vẻ, bạn có thể đến góc trên bên trái để làm việc.
-Cuối cùng, nhấn phím Escape để mở menu.
-Chúc bạn chơi vui vẻ!</value>
+		<value>Vậy đó. Trước khi tôi để hai bạn lại với nhau, những điều quan trọng.
+Thức ăn: rung cây bên phải bằng cách giữ enter và nhấn xen kẽ lên xuống. Rồi đứng cạnh {0} và nhấn phím cách để đưa quả, y như lúc bạn giúp quả trứng.
+Nhấn F bất cứ lúc nào, tôi sẽ cho bạn biết {0} thế nào: vui ra sao, mệt ra sao.
+P là bế {0} lên. Khi đang bế, giữ enter và nhấn xen kẽ trái phải để ru. Nhẹ nhàng thôi nhé. Ru đều thì bé sẽ ngủ trong tay bạn; lắc mạnh thì bé sẽ khóc, và bé sẽ nhớ đấy.
+Khu vườn này không phải nơi duy nhất. Dần dần sẽ có những lối mở ra các nơi khác, và bạn đi qua bằng cách nhấn enter ở chỗ nghe thấy lối đi. Bé Beboo sẽ không tự đi theo bạn: hãy huýt sáo bằng phím cách trước khi đi, hoặc gọi bé bằng số của bé, rồi bé sẽ đi cùng. Nên đưa bé đi chơi. Một bé Beboo chỉ biết mỗi một bãi cỏ thì sẽ chán.
+Escape mở menu. Thế là hết. Chúc hai bạn vui vẻ bên nhau.</value>
 	</data>
 	<data name="ui.emptyinventory" xml:space="preserve">
 		<value>Không có gì trong túi</value>
@@ -575,5 +572,30 @@ Bạn đã mở khóa đường dẫn đến khu vực đầy tuyết. Hãy vư�
 	</data>
 	<data name="mods.cantdisable" xml:space="preserve">
 		<value>Không thể tắt {0}: bạn đang có {1}. Hãy chia tay chúng trước đã.</value>
+	</data>
+	<data name="ui.cantputhere" xml:space="preserve">
+		<value>Bạn không thể đặt gì xuống đây.</value>
+	</data>
+	<data name="ui.itembacktobag" xml:space="preserve">
+		<value>{0} quay trở lại túi của bạn.</value>
+	</data>
+	<data name="fluff" xml:space="preserve">
+		<value>Xứ Bông</value>
+	</data>
+	<data name="fluffball.name" xml:space="preserve">
+		<value>Cục bông</value>
+	</data>
+	<data name="fluffball.description" xml:space="preserve">
+		<value>Một cục tròn nhỏ làm hoàn toàn bằng bông. Nó ôm bất cứ thứ gì nó chạm phải.</value>
+	</data>
+	<data name="fluffball.hugyou" xml:space="preserve">
+		<value>Cục bông ôm bạn. Nó mềm không tưởng.</value>
+	</data>
+	<data name="fluffball.hugbeboo" xml:space="preserve">
+		<value>Cục bông ôm {0}, và {0} thích mê đi.</value>
+	</data>
+	<data name="unlockfluff" xml:space="preserve">
+		<value>{0} đủ vui để đi chơi một chuyến rồi!
+Một nơi mềm mại tên là Xứ Bông vừa mở ra ở góc trên bên phải khu vườn. Ở đó chẳng có gì để làm cả. Đó chính là điều hay.</value>
 	</data>
 </root>

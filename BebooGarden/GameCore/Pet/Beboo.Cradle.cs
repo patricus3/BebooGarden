@@ -143,11 +143,8 @@ public partial class Beboo
     Game1.Instance.SoundSystem.PlayBebooSound(Game1.Instance.SoundSystem.BebooWailSounds, this);
     BurstInTearrs();
     CrossSpeakManager.Instance.Output(String.Format(BebooText.beboo_swaytoohard, Name));
-    Task.Run(async () =>
-    {
-      await Task.Delay(800);
-      Game1.Instance.SoundSystem.PlayBebooSound(Game1.Instance.SoundSystem.BebooCrySounds, this);
-    });
+    Later(800, () =>
+        Game1.Instance.SoundSystem.PlayBebooSound(Game1.Instance.SoundSystem.BebooCrySounds, this));
   }
 
   private void FallAsleepInArms()

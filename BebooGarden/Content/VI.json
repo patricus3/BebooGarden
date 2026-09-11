@@ -72,8 +72,8 @@
     "ui.yourname": "Tên của bạn",
     "ui.bebooname": "Tên dễ thương của Beboo của bạn",
     "ui.letsname": "Beboo của bạn vừa mới nở! Giờ là lúc đặt tên cho nó!",
-    "ui.welcome": "Chào mừng bạn đến với Vườn Beboo!\nTrước tiên, mình nên gọi bạn là gì nhỉ?",
-    "ui.welcome2": "Đây là Vườn Beboo. 🌿\nNơi đây là một khu vườn rộng lớn đầy màu xanh, với một đầm phá nhỏ ở bên trái và những cây trái cao to ở bên phải.\nĐể dễ dàng khám phá khu vườn, mình khuyên bạn nên đeo tai nghe.\nHiện tại, khu vườn còn trống rỗng, ngoại trừ một quả trứng sắp nở, mà bạn có thể nghe thấy bên phải.\nKhi đoạn hội thoại này kết thúc, hãy di chuyển bằng các phím mũi tên về phía quả trứng, và khi bạn nghe thấy tiếng nó ở trước mặt, nhấn phím cách để giúp Beboo của bạn phá vỏ trứng nhé!",
+    "ui.welcome": "Chào mừng đến Trung tâm Nhận nuôi Beboo!\nCó người đã ghi tên bạn vào chương trình của chúng tôi. Họ bảo rằng dạo này bạn hay ở một mình, và nghĩ rằng có bạn đồng hành sẽ tốt cho bạn. Mong là bạn không phiền.\nBắt đầu từ điều dễ nhất: tôi nên gọi bạn là gì?",
+    "ui.welcome2": "Được rồi, {0}, đây là khu vườn của bạn. Từ giờ nó là của bạn, quà từ tất cả chúng tôi ở trung tâm.\nMột khoảng vuông rộng đầy cây cỏ, có cái đầm nhỏ bên trái và những cây ăn quả cao bên phải. Nếu có tai nghe thì bạn nên đeo vào: ở đây bạn định hướng bằng tai.\nBên phải có một quả trứng sắp nở. Khi tôi nói xong, hãy dùng phím mũi tên đi tới, và khi nghe thấy nó ngay trước mặt, nhấn phím cách để giúp bé Beboo chui ra khỏi vỏ.",
     "ui.aboutyou": "Tuyệt vời! Giờ thì, {0}, mình cần hỏi bạn một vài câu để tìm được Beboo phù hợp nhất với bạn nhé.\nBắt đầu với những câu hỏi đơn giản thôi!",
     // 0=player name
     "ui.color": "Màu yêu thích của bạn là gì?",
@@ -81,7 +81,7 @@
     "ui.freetimequick": "Bạn thích làm gì?",
     "ui.dessert": "Cuối cùng, món tráng miệng yêu thích của bạn trong danh sách này là gì?",
     "ui.allgood": "Chà, mọi thứ có vẻ đã ổn.",
-    "ui.quicktips": "Hoàn hảo! \nTrước khi bạn bắt đầu chăm sóc {0}, mình cần hướng dẫn bạn những điều cơ bản về khu vườn.\nĐể cho {0} ăn, bạn cần thu thập trái cây từ những cây ở bên phải. Lắc cây bằng cách giữ phím Enter và xen kẽ giữa các phím mũi tên lên và xuống.\nĐể cho {0} một trái cây, nhấn phím cách khi bạn ở gần, giống như bạn đã làm với quả trứng trước đó.\nBạn cũng có thể nhấn phím F để biết nếu {0} thiếu thứ gì đó.\nKhi {0} rất vui vẻ, bạn có thể đến góc trên bên trái để làm việc.\nCuối cùng, nhấn phím Escape để mở menu.\nChúc bạn chơi vui vẻ!",
+    "ui.quicktips": "Vậy đó. Trước khi tôi để hai bạn lại với nhau, những điều quan trọng.\nThức ăn: rung cây bên phải bằng cách giữ enter và nhấn xen kẽ lên xuống. Rồi đứng cạnh {0} và nhấn phím cách để đưa quả, y như lúc bạn giúp quả trứng.\nNhấn F bất cứ lúc nào, tôi sẽ cho bạn biết {0} thế nào: vui ra sao, mệt ra sao.\nP là bế {0} lên. Khi đang bế, giữ enter và nhấn xen kẽ trái phải để ru. Nhẹ nhàng thôi nhé. Ru đều thì bé sẽ ngủ trong tay bạn; lắc mạnh thì bé sẽ khóc, và bé sẽ nhớ đấy.\nKhu vườn này không phải nơi duy nhất. Dần dần sẽ có những lối mở ra các nơi khác, và bạn đi qua bằng cách nhấn enter ở chỗ nghe thấy lối đi. Bé Beboo sẽ không tự đi theo bạn: hãy huýt sáo bằng phím cách trước khi đi, hoặc gọi bé bằng số của bé, rồi bé sẽ đi cùng. Nên đưa bé đi chơi. Một bé Beboo chỉ biết mỗi một bãi cỏ thì sẽ chán.\nEscape mở menu. Thế là hết. Chúc hai bạn vui vẻ bên nhau.",
     "ui.emptyinventory": "Không có gì trong túi",
     "ui.chooseitem": "Chọn một vật phẩm",
     "ui.itemput": "{0} đã được đặt xuống",
@@ -170,5 +170,13 @@
     "mods.play": "Chơi",
     "mods.entrycreatures": "{0}, thêm {1} sinh vật",
     "mods.inuse": "{0}, đang được dùng",
-    "mods.cantdisable": "Không thể tắt {0}: bạn đang có {1}. Hãy chia tay chúng trước đã."
+    "mods.cantdisable": "Không thể tắt {0}: bạn đang có {1}. Hãy chia tay chúng trước đã.",
+    "ui.cantputhere": "Bạn không thể đặt gì xuống đây.",
+    "ui.itembacktobag": "{0} quay trở lại túi của bạn.",
+    "fluff": "Xứ Bông",
+    "fluffball.name": "Cục bông",
+    "fluffball.description": "Một cục tròn nhỏ làm hoàn toàn bằng bông. Nó ôm bất cứ thứ gì nó chạm phải.",
+    "fluffball.hugyou": "Cục bông ôm bạn. Nó mềm không tưởng.",
+    "fluffball.hugbeboo": "Cục bông ôm {0}, và {0} thích mê đi.",
+    "unlockfluff": "{0} đủ vui để đi chơi một chuyến rồi!\nMột nơi mềm mại tên là Xứ Bông vừa mở ra ở góc trên bên phải khu vườn. Ở đó chẳng có gì để làm cả. Đó chính là điều hay."
 }

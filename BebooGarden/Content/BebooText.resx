@@ -255,15 +255,14 @@
     <value>Your Beboo's cute name</value>
   </data>
 	<data name="ui.welcome" xml:space="preserve">
-    <value>Welcome to the Beboo Garden!
-To begin with, what should I call you?</value>
+    <value>Welcome to the Beboo Adoption Centre!
+Someone put your name down for our programme. They mentioned you'd been on your own rather a lot lately, and thought you might like the company. I hope that's alright.
+Let's start with something easy: what should I call you?</value>
   </data>
 	<data name="ui.welcome2" xml:space="preserve">
-    <value>Here is the Beboo Garden.
-It's a large square of greenery, featuring a small lagoon to the left and tall fruit trees to the right.
-To navigate the garden, I highly recommend wearing headphones or earphones.
-It is currently empty, except for an egg about to hatch, which you should hear on your right.
-Once this dialogue is closed, move using the arrow keys towards the egg, and when you hear it in front of you, press the space bar to help your Beboo break its shell.</value>
+    <value>Right, {0}, here is your garden. It's yours now, from all of us here at the centre.
+It's a wide square of greenery, with a small lagoon over to the left and tall fruit trees to the right. I'd put headphones on, if you have them: you'll find your way around this place by ear.
+There's an egg waiting on your right, about to hatch. Once I stop talking, walk over to it with the arrow keys, and when you hear it right in front of you, press space to help your beboo out of its shell.</value>
   </data>
 	<data name="ui.aboutyou" xml:space="preserve">
     <value>Great! Now, {0}, I have to ask you a few questions to find the Beboo who suits you best.
@@ -287,14 +286,12 @@ It may be anything.</value>
     <value>Well, everything seems in order.</value>
   </data>
 	<data name="ui.quicktips" xml:space="preserve">
-    <value>Perfect!
-Before you start taking care of {0}, I need to teach you the basics of the garden.
-To feed {0}, you'll need to collect fruits from the trees on your right. Shake the trees by holding down the enter key and alternating between the up and down arrow keys.
-To give a fruit to {0}, press the space bar when you are close, just like you did with the egg earlier.
-You can also press F to know if {0} is missing something.
-Once {0} is very happy, you can go to top-left corner to get some exercise.
-Finally, press escape to open the menu.
-Have fun!</value>
+    <value>There we are. Before I leave you to it, the things that matter.
+Food: shake the trees on your right by holding enter and alternating up and down. Then stand next to {0} and press space to offer a fruit, the same way you helped with the egg.
+Press F at any time and I'll tell you how {0} is doing: how happy, how tired.
+P picks {0} up. While you're holding it, hold enter and alternate left and right to rock it. Gently, mind. Rock it steadily and it falls asleep in your arms; shake it about and it will cry, and it will remember.
+This garden isn't the only place. As you go on, paths open to other places, and you cross by pressing enter where you hear one. Your beboo won't follow you on its own, so whistle with space before you go, or call it by its number, and it will come along with you. It's worth taking it places. A beboo that only ever sees one field gets bored.
+Escape opens the menu. That's everything. Enjoy each other.</value>
   </data>
 	<data name="ui.emptyinventory" xml:space="preserve">
     <value>Nothing in the bag</value>
@@ -576,5 +573,30 @@ You unlock the path to the snowy area. Go through it by calling your Beboo to th
 	</data>
 	<data name="mods.cantdisable" xml:space="preserve">
 		<value>{0} cannot be switched off: you already have {1}. Give them away or let them go first.</value>
+	</data>
+	<data name="ui.cantputhere" xml:space="preserve">
+		<value>You can't put anything down here.</value>
+	</data>
+	<data name="ui.itembacktobag" xml:space="preserve">
+		<value>{0} goes back in your bag.</value>
+	</data>
+	<data name="fluff" xml:space="preserve">
+		<value>The fluff</value>
+	</data>
+	<data name="fluffball.name" xml:space="preserve">
+		<value>Fluffball</value>
+	</data>
+	<data name="fluffball.description" xml:space="preserve">
+		<value>A small round thing made entirely of fluff. It hugs whatever it bumps into.</value>
+	</data>
+	<data name="fluffball.hugyou" xml:space="preserve">
+		<value>The fluffball hugs you. It is extremely soft.</value>
+	</data>
+	<data name="fluffball.hugbeboo" xml:space="preserve">
+		<value>The fluffball hugs {0}, who goes all cute about it.</value>
+	</data>
+	<data name="unlockfluff" xml:space="preserve">
+		<value>{0} is happy enough for a day out!
+A soft little place called the fluff has opened up, at the top right of the garden. There is nothing to do there at all. That is rather the point.</value>
 	</data>
 </root>

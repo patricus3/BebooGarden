@@ -270,7 +270,7 @@ public partial class Beboo
       Game1.Instance.SoundSystem.PlayBebooSound(Game1.Instance.SoundSystem.BebooStepWaterSound, this, false);
       if (SwimLevel <= 1 || (SwimLevel < 10 && Game1.Instance.Random.Next(SwimLevel) == 1))
       {
-        StartPanik();
+        StartPanik(inWater: true);
         Destination = Game1.Instance.Map.GenerateRandomUnoccupedPosition(true);
       }
     }
@@ -344,19 +344,56 @@ public partial class Beboo
     }
   }
 
+  /// <summary>Whether the current panic began in water. Only those teach a beboo to swim.</summary>
+  private bool _panikInWater;
+
+  private readonly List<(DateTime At, Action What)> _later = [];
+  private readonly object _laterLock = new();
+
+  /// <summary>
+  /// Runs something after a delay, on the game thread, from Update. Sounds, screen reader output
+  /// and anything that reads the current map must not happen on a pool thread: the map can be
+  /// swapped out from under them the moment the player walks through a path.
+  /// </summary>
+  internal void Later(int delayMs, Action what)
+  {
+    lock (_laterLock) _later.Add((DateTime.Now.AddMilliseconds(delayMs), what));
+  }
+
+  /// <summary>Runs whatever has come due. Called from Update, so never while the game is paused.</summary>
+  internal void RunDueWork()
+  {
+    List<Action> due = [];
+    lock (_laterLock)
+    {
+      for (int i = _later.Count - 1; i >= 0; i--)
+      {
+        if (DateTime.Now < _later[i].At) continue;
+        due.Add(_later[i].What);
+        _later.RemoveAt(i);
+      }
+    }
+    foreach (Action what in due) what();
+  }
+
   private void EndPanik()
   {
     if (!Panik) return;
     Panik = false;
-    SwimLevel += 1;
+    // Floundering in water and getting out again is what teaches swimming. Being startled by a
+    // friend on dry land used to count too, and beboos startle each other constantly, so swim
+    // levels piled up without any water and unlocked the underwater map on the strength of it.
+    if (_panikInWater) SwimLevel += 1;
+    _panikInWater = false;
     MoveBehaviour.Restart();
     FancyMoveBehaviour.Restart();
   }
 
-  private void StartPanik()
+  private void StartPanik(bool inWater = false)
   {
     if (Panik) return;
     Panik = true;
+    _panikInWater = inWater;
     Game1.Instance.SoundSystem.PlayBebooSound(Game1.Instance.SoundSystem.BebooScreamSound, this);
     Happiness -= 2;
     Energy -= 2;
@@ -536,11 +573,7 @@ public partial class Beboo
   public void Call(object? sender, EventArgs eventArgs)
   {
     if (Paused || Sleeping || !KnowItsName) return;
-    Task.Run(async () =>
-    {
-      await Task.Delay(1000);
-      WakeUp();
-    });
+    Later(1000, () => WakeUp());
     Destination = Game1.Instance.PlayerPosition;
   }
   public void Scare(Beboo friend)
@@ -556,19 +589,14 @@ public partial class Beboo
   public void GetScared(Beboo friend)
   {
     StartPanik();
-    Task.Run(async () =>
-    {
-      await Task.Delay(5000);
-      EndPanik();
-    });
+    Later(5000, EndPanik);
   }
   public void GetWakeUped(Beboo friend)
   {
     if (ResistCradleWakeUp()) return;
     Game1.Instance.SoundSystem.PlayBebooSound(Game1.Instance.SoundSystem.BebooSurpriseSounds, this);
-    Task.Run(async () =>
+    Later(2000, () =>
     {
-      await Task.Delay(2000);
       Game1.Instance.SoundSystem.PlayBebooSound(Game1.Instance.SoundSystem.BebooAngrySounds, this);
       WakeUp(true);
     });
@@ -587,11 +615,8 @@ public partial class Beboo
       var randomSong = songsList[Game1.Instance.Random.Next(songsList.Count)];
       var randomSongFriend = songsList[Game1.Instance.Random.Next(songsListFriend.Count)];
       Game1.Instance.SoundSystem.PlayBebooSound(randomSong, this);
-      Task.Run(async () =>
-      {
-        await Task.Delay(100);
-        Game1.Instance.SoundSystem.PlayBebooSound(randomSongFriend, friend);
-      });
+      friend.Later(100, () =>
+          Game1.Instance.SoundSystem.PlayBebooSound(randomSongFriend, friend));
       Happiness++;
       friend.Happiness++;
     }

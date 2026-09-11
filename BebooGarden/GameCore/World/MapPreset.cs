@@ -8,4 +8,6 @@ public enum MapPreset
   underwater,
   snowyrace,
   beach,
+  // Appended: the save stores this as a number.
+  fluff,
 }

@@ -15,10 +15,10 @@ public partial class Beboo
   private const float SNUGGLERECOVERY = 1.5f;
   /// <summary>
   /// A sleepy beboo will walk this far to sleep next to a friend or in a nest. Wide enough to
-  /// cover most of a 40 by 40 garden: at eight tiles two wandering beboos were usually too far
-  /// apart to ever find each other, and the pile almost never formed.
+  /// cover most of the garden, which is why it grew with it: at eight tiles two wandering beboos
+  /// were usually too far apart to ever find each other, and the pile almost never formed.
   /// </summary>
-  private const int BEDSEARCHRANGE = 15;
+  private const int BEDSEARCHRANGE = 22;
   /// <summary>Happiness a beboo needs before it starts bringing things back for you.</summary>
   private const int PRESENTHAPPINESS = 6;
 

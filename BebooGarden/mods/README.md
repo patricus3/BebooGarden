@@ -1,4 +1,6 @@
-# Mods
+﻿# Mods
+
+Full reference: **MODDING.md**, beside this file.
 
 Drop a mod folder in here and it appears in the list the game shows at startup, with a checkbox.
 Tick the ones you want and choose play.

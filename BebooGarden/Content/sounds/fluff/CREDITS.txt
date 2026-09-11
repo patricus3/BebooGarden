@@ -1,0 +1,7 @@
+Fluffball sounds
+----------------
+Source: "Sound Effects Pack" by OwlishMedia (owlstorm), the Cloth, Rustle folder
+        https://opengameart.org/content/sound-effects-pack
+Licence: CC0 1.0 Universal (public domain dedication).
+Changes: the loudest 0.8 s of each blanket movement recording, faded at both ends and
+         converted to 22.05 kHz mono 16 bit WAV.

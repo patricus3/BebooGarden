@@ -255,15 +255,14 @@
 		<value>Urocze imię dla twojego beboo</value>
 	</data>
 	<data name="ui.welcome" xml:space="preserve">
-		<value>Witaj w Ogrodzie Beboo!
-Na początek: jak mam się do ciebie zwracać?</value>
+		<value>Witamy w Centrum Adopcji Beboo!
+Ktoś zapisał cię do naszego programu. Wspomniał, że ostatnio bywasz często sam, i pomyślał, że towarzystwo dobrze ci zrobi. Mam nadzieję, że nie masz nic przeciwko.
+Zacznijmy od czegoś prostego: jak mam się do ciebie zwracać?</value>
 	</data>
 	<data name="ui.welcome2" xml:space="preserve">
-		<value>Oto Ogród Beboo.
-To duży kwadrat zieleni, z małą laguną po lewej i wysokimi drzewami owocowymi po prawej.
-Do zwiedzania ogrodu gorąco polecam słuchawki.
-Na razie jest pusty, nie licząc jajka, które zaraz się wykluje — słychać je po twojej prawej.
-Gdy ten dialog się zamknie, podejdź do jajka strzałkami, a kiedy usłyszysz je przed sobą, naciśnij spację, żeby pomóc swojemu beboo rozbić skorupkę.</value>
+		<value>Dobrze, {0}, oto twój ogród. Od teraz jest twój, od nas wszystkich z centrum.
+To szeroki kwadrat zieleni, z małą laguną po lewej i wysokimi drzewami owocowymi po prawej. Załóż słuchawki, jeśli masz: tutaj orientujesz się słuchem.
+Po prawej czeka jajko, które zaraz się wykluje. Kiedy skończę mówić, podejdź do niego strzałkami, a gdy usłyszysz je tuż przed sobą, naciśnij spację, żeby pomóc swojemu beboo wyjść ze skorupki.</value>
 	</data>
 	<data name="ui.aboutyou" xml:space="preserve">
 		<value>Świetnie! A teraz, {0}, zadam ci kilka pytań, żeby znaleźć beboo, który pasuje do ciebie najlepiej.
@@ -287,14 +286,12 @@ Cokolwiek.</value>
 		<value>Dobrze, wszystko wydaje się w porządku.</value>
 	</data>
 	<data name="ui.quicktips" xml:space="preserve">
-		<value>Idealnie!
-Zanim zaczniesz opiekować się {0}, muszę cię nauczyć podstaw ogrodu.
-Żeby nakarmić {0}, musisz zebrać owoce z drzew po prawej. Potrząśnij drzewem, trzymając enter i naciskając na przemian strzałkę w górę i w dół.
-Żeby dać owoc {0}, naciśnij spację, gdy jesteś blisko — tak samo jak wcześniej przy jajku.
-Możesz też nacisnąć F, żeby sprawdzić, czy {0} czegoś nie potrzebuje.
-Gdy {0} będzie bardzo szczęśliwy, możecie pójść poćwiczyć do lewego górnego rogu.
-Na koniec: naciśnij escape, żeby otworzyć menu.
-Miłej zabawy!</value>
+		<value>No dobrze. Zanim was zostawię, najważniejsze rzeczy.
+Jedzenie: potrząśnij drzewami po prawej, trzymając enter i naciskając na przemian górę i dół. Potem stań obok {0} i naciśnij spację, żeby podać owoc, tak samo jak przy jajku.
+Naciśnij F w dowolnej chwili, a powiem ci, jak się miewa {0}: czy jest szczęśliwy, czy zmęczony.
+P bierze {0} na ręce. Kiedy go trzymasz, przytrzymaj enter i naciskaj na przemian lewo i prawo, żeby go kołysać. Delikatnie. Kołysz równo, a zaśnie ci w ramionach; potrząśnij nim, a się rozpłacze i zapamięta to.
+Ten ogród to nie jedyne miejsce. Z czasem otwierają się ścieżki do innych miejsc, a przechodzi się, naciskając enter tam, gdzie słychać przejście. Twój beboo nie pójdzie za tobą sam: zagwiżdż spacją przed wyjściem albo zawołaj go numerem, a pójdzie z tobą. Warto go zabierać. Beboo, który zna tylko jedną łąkę, zaczyna się nudzić.
+Escape otwiera menu. To wszystko. Bawcie się dobrze.</value>
 	</data>
 	<data name="ui.emptyinventory" xml:space="preserve">
 		<value>Nic nie ma w torbie</value>
@@ -575,5 +572,30 @@ Odblokowałeś ścieżkę na śnieżny teren. Przejdź nią, wołając swojego b
 	</data>
 	<data name="mods.cantdisable" xml:space="preserve">
 		<value>Nie można wyłączyć {0}: masz już {1}. Najpierw się z nimi rozstań.</value>
+	</data>
+	<data name="ui.cantputhere" xml:space="preserve">
+		<value>Tutaj nie można nic postawić.</value>
+	</data>
+	<data name="ui.itembacktobag" xml:space="preserve">
+		<value>{0} wraca do twojej torby.</value>
+	</data>
+	<data name="fluff" xml:space="preserve">
+		<value>Puszystość</value>
+	</data>
+	<data name="fluffball.name" xml:space="preserve">
+		<value>Kłębek puszku</value>
+	</data>
+	<data name="fluffball.description" xml:space="preserve">
+		<value>Mała okrągła rzecz zrobiona w całości z puszku. Przytula wszystko, na co wpadnie.</value>
+	</data>
+	<data name="fluffball.hugyou" xml:space="preserve">
+		<value>Kłębek puszku przytula cię. Jest niewiarygodnie miękki.</value>
+	</data>
+	<data name="fluffball.hugbeboo" xml:space="preserve">
+		<value>Kłębek puszku przytula {0}, który cały mięknie.</value>
+	</data>
+	<data name="unlockfluff" xml:space="preserve">
+		<value>{0} jest na tyle szczęśliwy, że zasłużył na wycieczkę!
+W prawym górnym rogu ogrodu otworzyło się miękkie miejsce zwane puszystością. Zupełnie nie ma tam nic do roboty. O to właśnie chodzi.</value>
 	</data>
 </root>

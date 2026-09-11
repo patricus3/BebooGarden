@@ -529,7 +529,7 @@ namespace BebooGarden.Content {
         }
 
         /// <summary>
-        ///   Recherche une chaîne localisée semblable à Welcome to the Beboo Garden! To begin with, what should I call you?.
+        ///   Recherche une chaîne localisée semblable à Welcome to the Beboo Adoption Centre! Someone put your name down for our programme. They mentioned you'd been on your own rather a lot lately, and thought you might like the company. I hope that's alright. Let's start with something easy: what should I call you?.
         /// </summary>
         internal static string ui_welcome {
             get {
@@ -538,7 +538,7 @@ namespace BebooGarden.Content {
         }
 
         /// <summary>
-        ///   Recherche une chaîne localisée semblable à Here is the Beboo Garden. It's a large square of greenery, featuring a small lagoon to the left and tall fruit trees to the right. To navigate the garden, I highly recommend wearing headphones or earphones. It is currently empty, except for an egg about to hatch, which you should hear on your right. Once this dialogue is closed, move using the arrow keys towards the egg, and when you hear it in front of you, press the space bar to help your Beboo break its shell..
+        ///   Recherche une chaîne localisée semblable à Right, {0}, here is your garden. It's yours now, from all of us here at the centre. It's a wide square of greenery, with a small lagoon over to the left and tall fruit trees to the right. I'd put headphones on, if you have them: you'll find your way around this place by ear. There's an egg waiting on your right, about to hatch. Once I stop talking, walk over to it with the arrow keys, and when you hear it right in front of you, press space to help your beboo out of its shell..
         /// </summary>
         internal static string ui_welcome2 {
             get {
@@ -601,7 +601,7 @@ namespace BebooGarden.Content {
         }
 
         /// <summary>
-        ///   Recherche une chaîne localisée semblable à Perfect! Before you start taking care of {0}, I need to teach you the basics of the garden. To feed {0}, you'll need to collect fruits from the trees on your right. Shake the trees by holding down the enter key and alternating between the up and down arrow keys. To give a fruit to {0}, press the space bar when you are close, just like you did with the egg earlier. You can also press F to know if {0} is missing something. Once {0} is very happy, you can go to top-left corner to get some exercise. Finally, press escape to open the menu. Have fun!.
+        ///   Recherche une chaîne localisée semblable à There we are. Before I leave you to it, the things that matter. Food: shake the trees on your right by holding enter and alternating up and down. Then stand next to {0} and press space to offer a fruit, the same way you helped with the egg. Press F at any time and I'll tell you how {0} is doing: how happy, how tired. P picks {0} up. While you're holding it, hold enter and alternate left and right to rock it. Gently, mind. Rock it steadily and it falls asleep in your arms; shake it about and it will cry, and it will remember. This garden isn't the only place. As you go on, paths open to other places, and you cross by pressing enter where you hear one. Your beboo won't follow you on its own, so whistle with space before you go, or call it by its number, and it will come along with you. It's worth taking it places. A beboo that only ever sees one field gets bored. Escape opens the menu. That's everything. Enjoy each other..
         /// </summary>
         internal static string ui_quicktips {
             get {
@@ -1434,6 +1434,78 @@ namespace BebooGarden.Content {
         internal static string mods_cantdisable {
             get {
                 return ResourceManager.GetString("mods.cantdisable", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à You can't put anything down here..
+        /// </summary>
+        internal static string ui_cantputhere {
+            get {
+                return ResourceManager.GetString("ui.cantputhere", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à {0} goes back in your bag..
+        /// </summary>
+        internal static string ui_itembacktobag {
+            get {
+                return ResourceManager.GetString("ui.itembacktobag", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à The fluff.
+        /// </summary>
+        internal static string fluff {
+            get {
+                return ResourceManager.GetString("fluff", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à Fluffball.
+        /// </summary>
+        internal static string fluffball_name {
+            get {
+                return ResourceManager.GetString("fluffball.name", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à A small round thing made entirely of fluff. It hugs whatever it bumps into..
+        /// </summary>
+        internal static string fluffball_description {
+            get {
+                return ResourceManager.GetString("fluffball.description", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à The fluffball hugs you. It is extremely soft..
+        /// </summary>
+        internal static string fluffball_hugyou {
+            get {
+                return ResourceManager.GetString("fluffball.hugyou", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à The fluffball hugs {0}, who goes all cute about it..
+        /// </summary>
+        internal static string fluffball_hugbeboo {
+            get {
+                return ResourceManager.GetString("fluffball.hugbeboo", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à {0} is happy enough for a day out! A soft little place called the fluff has opened up, at the top right of the garden. There is nothing to do there at all. That is rather the point..
+        /// </summary>
+        internal static string unlockfluff {
+            get {
+                return ResourceManager.GetString("unlockfluff", resourceCulture);
             }
         }
 

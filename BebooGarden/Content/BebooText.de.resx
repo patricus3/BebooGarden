@@ -255,15 +255,14 @@
 		<value>der süße Name deines Beboos</value>
 	</data>
 	<data name="ui.welcome" xml:space="preserve">
-		<value>Willkommen im Beboogarten!
-Zu aller erst, wie soll ich dich nennen?</value>
+		<value>Willkommen im Beboo-Adoptionszentrum!
+Jemand hat dich für unser Programm angemeldet. Diese Person meinte, du wärst in letzter Zeit ziemlich viel allein, und dachte, etwas Gesellschaft würde dir guttun. Ich hoffe, das ist in Ordnung.
+Fangen wir einfach an: Wie soll ich dich nennen?</value>
 	</data>
 	<data name="ui.welcome2" xml:space="preserve">
-		<value>Hier ist der Beboo Garten.
-Es ist ein großer, grüner Platz mit einer kleinen Lagune auf der linken Seite und hohen Obstbäumen auf der rechten.
-Um im Garten zu navigieren, empfehle ich dringend, Kopfhörer oder Ohrhörer zu tragen.
-Er ist derzeit leer, abgesehen von einem Ei, das kurz vor dem Schlüpfen steht, das du auf deiner rechten Seite hören solltest.
-Sobald dieser Dialog geschlossen ist, bewege dich mit den Pfeiltasten in Richtung des Eis, und wenn du es vor dir hörst, drücke die Leertaste, um deinem Beboo zu helfen, seine Schale zu durchbrechen.</value>
+		<value>Also gut, {0}, hier ist dein Garten. Er gehört jetzt dir, von uns allen hier im Zentrum.
+Ein weites Viereck voller Grün, mit einer kleinen Lagune links und hohen Obstbäumen rechts. Setz Kopfhörer auf, wenn du welche hast: Hier findest du dich mit den Ohren zurecht.
+Rechts wartet ein Ei, das gleich schlüpft. Wenn ich fertig geredet habe, geh mit den Pfeiltasten hin, und sobald du es direkt vor dir hörst, drücke Leertaste, um deinem Beboo aus der Schale zu helfen.</value>
 	</data>
 	<data name="ui.aboutyou" xml:space="preserve">
 		<value>Großartig! Nun, {0}, muss ich dir einige Fragen stellen, um das Beboo zu finden, das am besten zu dir passt.
@@ -287,14 +286,12 @@ Es kann alles mögliche sein</value>
 		<value>Nun, alles scheint in Ordnung zu sein.</value>
 	</data>
 	<data name="ui.quicktips" xml:space="preserve">
-		<value>Perfekt!
-Bevor du beginnst, dich um {0} zu kümmern, muss ich dir die Grundlagen des Gartens beibringen.
-Um {0} zu füttern, musst du Früchte von den Bäumen auf der rechten Seite sammeln. Schüttle die Bäume, indem du die Eingabetaste gedrückt hältst und abwechselnd die Pfeiltasten nach oben und unten verwendest.
-Um {0} eine Frucht zu geben, Drücke die Leertaste, wenn du nah dran bist, so, wie du es vorher mit dem Ei getan hast.
-Du kannst auch F drücken, um zu wissen, ob {0} etwas vermisst.
-Sobald {0} sehr glücklich ist, kannst du in die linke obere Ecke gehen, um ein wenig Übung zu bekommen.
-Schließlich, drücke die Escape-Taste, um das Menü zu öffnen.
-Viel Spaß!</value>
+		<value>So. Bevor ich euch allein lasse, das Wichtigste.
+Futter: Schüttle die Bäume rechts, indem du Eingabe hältst und abwechselnd hoch und runter drückst. Dann stell dich neben {0} und drücke Leertaste, um eine Frucht anzubieten, genau wie beim Ei.
+Drück jederzeit F, und ich sage dir, wie es {0} geht: wie glücklich, wie müde.
+P nimmt {0} auf den Arm. Während du es hältst, halte Eingabe und drücke abwechselnd links und rechts, um es zu wiegen. Sanft, bitte. Wiegst du gleichmäßig, schläft es in deinen Armen ein; schüttelst du es, weint es, und es merkt es sich.
+Dieser Garten ist nicht der einzige Ort. Mit der Zeit öffnen sich Wege zu anderen Orten, und du gehst hindurch, indem du dort Eingabe drückst, wo du einen hörst. Dein Beboo folgt dir nicht von selbst: Pfeife vorher mit der Leertaste, oder ruf es mit seiner Nummer, dann kommt es mit. Es lohnt sich, es mitzunehmen. Ein Beboo, das nur eine Wiese kennt, langweilt sich.
+Escape öffnet das Menü. Das war alles. Habt eine schöne Zeit miteinander.</value>
 	</data>
 	<data name="ui.emptyinventory" xml:space="preserve">
 		<value>Nichts in der Tasche</value>
@@ -575,5 +572,30 @@ Du schaltest den Weg zum Schneegebiet frei. Gehe hindurch, indem du dein Beboo i
 	</data>
 	<data name="mods.cantdisable" xml:space="preserve">
 		<value>{0} lässt sich nicht abschalten: du hast bereits {1}. Trenne dich zuerst von ihnen.</value>
+	</data>
+	<data name="ui.cantputhere" xml:space="preserve">
+		<value>Hier kannst du nichts ablegen.</value>
+	</data>
+	<data name="ui.itembacktobag" xml:space="preserve">
+		<value>{0} wandert zurück in deine Tasche.</value>
+	</data>
+	<data name="fluff" xml:space="preserve">
+		<value>Das Flauschige</value>
+	</data>
+	<data name="fluffball.name" xml:space="preserve">
+		<value>Flauschball</value>
+	</data>
+	<data name="fluffball.description" xml:space="preserve">
+		<value>Ein kleines rundes Ding, ganz aus Flausch. Es umarmt alles, was ihm über den Weg läuft.</value>
+	</data>
+	<data name="fluffball.hugyou" xml:space="preserve">
+		<value>Der Flauschball umarmt dich. Er ist unglaublich weich.</value>
+	</data>
+	<data name="fluffball.hugbeboo" xml:space="preserve">
+		<value>Der Flauschball umarmt {0}, was {0} ganz hin und weg sein lässt.</value>
+	</data>
+	<data name="unlockfluff" xml:space="preserve">
+		<value>{0} ist glücklich genug für einen Ausflug!
+Oben rechts im Garten hat ein weicher kleiner Ort aufgemacht: das Flauschige. Dort gibt es überhaupt nichts zu tun. Das ist genau der Sinn davon.</value>
 	</data>
 </root>

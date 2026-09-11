@@ -3084,3 +3084,39 @@
 /processor:SongProcessor
 /processorParam:Quality=Best
 /build:music/city.mp3
+
+#begin sounds/fluff/blanket-movement-1.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:sounds/fluff/blanket-movement-1.wav
+
+#begin sounds/fluff/blanket-movement-2.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:sounds/fluff/blanket-movement-2.wav
+
+#begin sounds/fluff/blanket-movement-3.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:sounds/fluff/blanket-movement-3.wav
+
+#begin sounds/fluff/blanket-movement-4.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:sounds/fluff/blanket-movement-4.wav
+
+#begin sounds/fluff/blanket-movement-5.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:sounds/fluff/blanket-movement-5.wav
+
+#begin sounds/fluff/blanket-movement-6.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:sounds/fluff/blanket-movement-6.wav

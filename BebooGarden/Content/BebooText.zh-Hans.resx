@@ -255,15 +255,14 @@
 		<value>你波波可爱宠物的名字</value>
 	</data>
 	<data name="ui.welcome" xml:space="preserve">
-		<value>欢迎来到波波宠物花园！
-首先，我该怎样称呼你？</value>
+		<value>欢迎来到宠物领养中心！
+有人替你报名参加了我们的计划。那位说你最近总是一个人，觉得有个伴会好一些。希望你不介意。
+先从简单的开始吧：我该怎么称呼你？</value>
 	</data>
 	<data name="ui.welcome2" xml:space="preserve">
-		<value>这里是波波宠物花园。
-这里是一片巨大的绿地，左边有一个小泻湖，右边有着高大的果树。
-要在花园里导航，我建议你带上耳机或耳塞。
-目前这里什么都没有，除了一个还没有孵化的蛋，在你的右边，你应该可以听到。
-当此对话框关闭后，就用方向键移动，当听到宠物蛋在你面前时，就按下空格键来打破蛋壳。</value>
+		<value>好了，{0}，这就是你的花园。从现在起它归你了，是中心全体同仁送你的。
+一大片方方正正的绿地，左边有个小泻湖，右边是高高的果树。有耳机的话请戴上：在这里你是靠耳朵认路的。
+右边有颗蛋就快孵出来了。等我说完，用方向键走过去，听到它就在正前方时按空格，帮你的宠物破壳。</value>
 	</data>
 	<data name="ui.aboutyou" xml:space="preserve">
 		<value>太棒了！ {0}, 现在，我必须问你几个问题，才能帮你找到最适合你的波波宠物。
@@ -287,14 +286,12 @@
 		<value>嗯，一切似乎都井然有序。</value>
 	</data>
 	<data name="ui.quicktips" xml:space="preserve">
-		<value>太好了！
-在你照顾 {0}, 之前，我需要教你花园基本知识。
-喂养 {0}, 你需要从右边的树上摘水果。 按住enter键抓住树木，然后交替按上下方向键来摇树。
-当获得水果后，来到 {0}身边, 像之前操作宠物蛋那样，按下空格，在背包里找到水果来喂给你的小可爱吧！
-你也可以按F键来查看 {0} 的状态。
-一旦 {0} 很开心，你可以去左上角自由发挥自己。
-最后，按ESC键可打开菜单。
-祝你玩的开心！</value>
+		<value>好了。在我把你们留给彼此之前，说几件要紧的事。
+吃的：按住回车、上下交替按，就能摇右边的树。然后站到 {0} 旁边按空格喂水果，跟你帮它破壳时一样。
+任何时候按 F，我都会告诉你 {0} 现在如何：多开心，多累。
+P 是把 {0} 抱起来。抱着的时候，按住回车、左右交替按就是在摇它。轻一点啊。摇得平稳它会在你怀里睡着；使劲晃它会哭，而且它记得住。
+这座花园不是唯一的地方。以后会有路通向别处，在听得见路口的地方按回车就能过去。你的宠物不会自己跟来：出发前用空格吹口哨，或者按它的编号叫它，它就会跟你一起走。值得多带它出去。只见过一块草地的宠物是会无聊的。
+Escape 打开菜单。就这些了。好好相处。</value>
 	</data>
 	<data name="ui.emptyinventory" xml:space="preserve">
 		<value>背包里什么都没有</value>
@@ -575,5 +572,30 @@
 	</data>
 	<data name="mods.cantdisable" xml:space="preserve">
 		<value>无法关闭 {0}：你已经拥有 {1}。请先让它们离开。</value>
+	</data>
+	<data name="ui.cantputhere" xml:space="preserve">
+		<value>这里放不下东西。</value>
+	</data>
+	<data name="ui.itembacktobag" xml:space="preserve">
+		<value>{0} 回到了你的包里。</value>
+	</data>
+	<data name="fluff" xml:space="preserve">
+		<value>绒绒地</value>
+	</data>
+	<data name="fluffball.name" xml:space="preserve">
+		<value>绒毛球</value>
+	</data>
+	<data name="fluffball.description" xml:space="preserve">
+		<value>一个小圆球，浑身都是绒毛。碰到什么就抱什么。</value>
+	</data>
+	<data name="fluffball.hugyou" xml:space="preserve">
+		<value>绒毛球抱住了你，软得不可思议。</value>
+	</data>
+	<data name="fluffball.hugbeboo" xml:space="preserve">
+		<value>绒毛球抱住了 {0}，{0} 高兴得不得了。</value>
+	</data>
+	<data name="unlockfluff" xml:space="preserve">
+		<value>{0} 开心得可以出门玩啦！
+花园右上角开了一处软绵绵的地方，叫绒绒地。那里什么都没得做。这正是它的好处。</value>
 	</data>
 </root>

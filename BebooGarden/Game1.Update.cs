@@ -51,6 +51,15 @@ public partial class Game1
         Map.Snowy.AddItem(new Egg("none"), new(0, 0, 0));
         Save.Flags.UnlockEggInShop = true;
       }
+      if (beboo.Happiness >= 8 && !Save.Flags.UnlockFluffMap)
+      {
+        Save.Flags.UnlockFluffMap = true;
+        SoundSystem.System.PlaySound(SoundSystem.JingleComplete);
+        _talkDialog = new TalkDialog(String.Format(BebooText.unlockfluff, beboo.Name));
+        _talkDialog?.Show();
+        // A second beboo, on the house, for anyone who gets one happy enough to earn the trip.
+        Map.Fluff.AddItem(new Egg("none"), new(0, 0, 0));
+      }
       if (beboo.SwimLevel >= 10 && !Save.Flags.UnlockPerfectSwimming)
       {
         Save.Flags.UnlockPerfectSwimming = true;

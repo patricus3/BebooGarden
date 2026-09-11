@@ -14,6 +14,7 @@ public partial class Beboo
   public void Update(GameTime gameTime)
   {
     if (Paused) return;
+    RunDueWork();
     if (IsHeld) CarryAlong();
     // BeHappy is reached from a delayed task, so the music switch lands here on the main thread.
     RefreshMoodMusic();
@@ -77,11 +78,7 @@ public partial class Beboo
         BurstInTearrs();
       else if (!Happy && Happiness >= CHEEREDUPAT)
       {
-        Task.Run(async () =>
-        {
-          await Task.Delay(1000);
-          BeHappy();
-        });
+        Later(1000, BeHappy);
       }
       if (Energy > 5 && Happiness >= 9)
         BeOverexcited();

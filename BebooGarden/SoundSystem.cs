@@ -112,6 +112,9 @@ internal class SoundSystem
   public Sound UnderWaterMusicStream { get; private set; }
   public Sound BeachMusicStream { get; private set; }
   public Sound CityMusicStream { get; private set; }
+  public Sound FluffMusicStream { get; private set; }
+  public List<Sound> FluffBallHugSounds { get; private set; }
+  public List<Sound> FluffBallMurmurSounds { get; private set; }
   public Sound RaceMusicStream { get; private set; }
   public Sound RaceLolMusicStream { get; private set; }
   public Sound RaceStopSound { get; private set; }
@@ -199,6 +202,7 @@ internal class SoundSystem
     UnderWaterMusicStream = System.CreateStream(CONTENTFOLDER + "music/Aquatic.mp3", Mode.Loop_Normal);
     BeachMusicStream = System.CreateStream(CONTENTFOLDER + "music/WhiteCity.mp3", Mode.Loop_Normal);
     CityMusicStream = System.CreateStream(CONTENTFOLDER + "music/city.mp3", Mode.Loop_Normal);
+    FluffMusicStream = System.CreateStream(CONTENTFOLDER + "music/Hero.mp3", Mode.Loop_Normal);
     LoadRace();
     SeagullStream = System.CreateStream(CONTENTFOLDER + "sounds/beach/seagull.wav", Mode.Loop_Normal);
     LagoonWaterSound = System.CreateStream(CONTENTFOLDER + "sounds/WaterCalmWide.wav",
@@ -255,6 +259,18 @@ internal class SoundSystem
     CinematicRaceStart = System.CreateStream(CONTENTFOLDER + "cinematic/race.mp3");
     CinematicRaceEnd = System.CreateStream(CONTENTFOLDER + "cinematic/Return.mp3");
     LoadItemSound();
+    // A fluffball is fabric before it is anything else, so both its noises are built on real
+    // blanket rustle. The hug gets a little squeak mixed in so it reads as a hug and not as
+    // somebody folding laundry.
+    FluffBallHugSounds = [];
+    LoadSoundsInList(["blanket-movement-2.wav", "blanket-movement-4.wav", "blanket-movement-6.wav"],
+        FluffBallHugSounds, "sounds/fluff/");
+    LoadSoundsInList(["cute.wav"], FluffBallHugSounds, "sounds/");
+    LoadSoundsInList(["Ftr_Rubberduck_On_1.wav", "Ftr_Rubberduck_On_2.wav"], FluffBallHugSounds,
+        "sounds/character/");
+    FluffBallMurmurSounds = [];
+    LoadSoundsInList(["blanket-movement-1.wav", "blanket-movement-3.wav", "blanket-movement-5.wav"],
+        FluffBallMurmurSounds, "sounds/fluff/");
     GrassSound = System.CreateSound(CONTENTFOLDER + "sounds/grass_rustle.wav",
         Mode._3D | Mode._3D_LinearSquareRolloff | Mode.Unique);
     ColdWindSound = System.CreateSound(CONTENTFOLDER + "sounds/snow/winter_day.wav",
@@ -468,6 +484,16 @@ internal class SoundSystem
     System.Set3DListenerAttributes(0, newPos, default, in Forward, in Up);
   }
 
+  /// <summary>Plays one of a fluffball's noises where it is sitting.</summary>
+  public void PlayFluffBallSound(List<Sound> sounds, GameCore.Item.FluffBall ball, float volume = -1)
+  {
+    if (sounds.Count == 0 || ball.Position == null) return;
+    Sound sound = sounds[Game1.Instance.Random.Next(sounds.Count)];
+    if (ball.Channel != null && ball.Channel.IsPlaying) ball.Channel.Stop();
+    ball.Channel = PlaySoundAtPosition(sound, ball.Position.Value, -0.2);
+    if (volume != -1) ball.Channel.Volume = volume;
+  }
+
   public void PlayBebooSound(Sound sound, Beboo beboo, bool stopOthers = true)
   {
     if (beboo.Paused) return;
@@ -635,6 +661,10 @@ internal class SoundSystem
   {
     MusicTransition(CityMusicStream, 1500166, 10572175, TimeUnit.MS);
   }
+  internal void PlayFluffMusic()
+  {
+    MusicTransition(FluffMusicStream, 0, 0, FmodAudio.TimeUnit.PCM, 0.35f);
+  }
   internal void PlayRaceMusic()
   {
     MusicTransition(RaceMusicStream, 0, 0, FmodAudio.TimeUnit.PCM);
@@ -667,6 +697,7 @@ internal class SoundSystem
         case MapPreset.snowy: PlaySnowyMusic(); break;
         case MapPreset.underwater: PlayUnderWaterMusic(); break;
         case MapPreset.beach: PlayBeachMusic(); break;
+        case MapPreset.fluff: PlayFluffMusic(); break;
         default: PlayNeutralMusic(); break;
       }
     }

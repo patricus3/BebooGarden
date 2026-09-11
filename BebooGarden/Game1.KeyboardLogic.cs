@@ -148,7 +148,8 @@ public partial class Game1
     if (IsKeyPressed(currentKeyboardState, Keys.Enter))
     {
       var mapConnexion = Map?.GetConnexionArroundPosition(PlayerPosition);
-      if (itemUnderCursor != null && itemUnderCursor.IsTakable && BebooInArms == null) itemUnderCursor.Take();
+      Item? takable = BebooInArms == null ? Map?.GetTakableItemArroundPosition(PlayerPosition) : null;
+      if (takable != null) takable.Take();
       else if (Race.IsARaceRunning)
       {
         // Nothing on the map is reachable while a race is on.

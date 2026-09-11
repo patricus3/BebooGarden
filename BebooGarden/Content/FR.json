@@ -72,8 +72,8 @@
     "ui.yourname": "Votre nom",
     "ui.letsname": "Votre Bébou vient de naître, à présent, il faut le nommer !",
     "ui.bebooname": "Le nom de votre Bébou",
-    "ui.welcome": "Bienvenue dans le Jardin Bébou!\nPour commencer, comment dois-je vous appeler ?",
-    "ui.welcome2": "Voici le jardin Bébous.\nC’est un grand carré de verdure paisible, agrémenté d’un petit lagon à gauche et de hauts arbres fruitiers à droite.\nPour vous repérer dans le jardin, je vous recommande grandement de mettre un casque ou des écouteurs.\nIl est actuellement vide, hormis un œuf sur le point d’éclore, que vous devriez entendre à votre droite.\nUne fois ce dialogue fermé, déplacez-vous avec les flèches en direction de cet œuf, puis, une fois que vous l’entendez au centre,  appuyez sur espace pour aider votre bébou à briser sa coquille.",
+    "ui.welcome": "Bienvenue au Centre d'Adoption des Bébous !\nQuelqu'un vous a inscrit à notre programme. Cette personne a dit que vous étiez souvent seul ces derniers temps, et s'est dit qu'un peu de compagnie vous ferait du bien. J'espère que ça vous va.\nCommençons par le plus simple : comment dois-je vous appeler ?",
+    "ui.welcome2": "Bien, {0}, voici votre jardin. Il est à vous désormais, de la part de toute l'équipe du centre.\nC'est un grand carré de verdure, avec une petite lagune sur la gauche et de grands arbres fruitiers sur la droite. Mettez un casque si vous en avez un : ici, on se repère à l'oreille.\nUn œuf vous attend sur la droite, prêt à éclore. Dès que j'aurai fini de parler, approchez-vous avec les flèches, et quand vous l'entendrez juste devant vous, appuyez sur espace pour aider votre bébou à sortir de sa coquille.",
     "ui.aboutyou": "Super ! Maintenant, {0}, je dois vous poser quelques questions pour vous trouver le Bébou qui vous conviendra le mieux.\nCommençons simplement.",
     // 0=player name
     "ui.color": "Quelle est votre couleur préférée ?",
@@ -81,7 +81,7 @@
     "ui.freetimequick": "Qu'aimez-vous faire ?",
     "ui.dessert": "Enfin, quel est votre dessert préféré parmis ceux-ci ?",
     "ui.allgood": "Eh bien, tout est en règle, il me semble.",
-    "ui.quicktips": "Parfait !\nAvant de vous laisser vous occuper de {0}, je dois vous apprendre le béaba du jardin.\nPour nourrir {0}, il vous faut récupérer des fruits dans les arbres à votre droite. Secouez-les en maintenant entrée, puis en alternant les flèches haut et bas.\nPour donner un fruit à {0}, appuyez sur espace quand vous êtes à proximité, comme pour interagir avec l’œuf précédemment.\nVous pouvez aussi appuyer sur F pour savoir précisément si {0} manque de quelque chose.\nSi {0} est surexcité, rendez-vous en haut à gauche pour qu'il se dépense.\nEnfin, appuyez sur échappe pour accéder au menu.\nAmusez-vous bien !",
+    "ui.quicktips": "Voilà. Avant de vous laisser, l'essentiel.\nLa nourriture : secouez les arbres sur votre droite en maintenant entrée et en alternant haut et bas. Ensuite, placez-vous à côté de {0} et appuyez sur espace pour offrir un fruit, comme vous l'avez fait pour l'œuf.\nAppuyez sur F à tout moment et je vous dirai comment va {0} : son humeur, sa fatigue.\nP prend {0} dans vos bras. Pendant que vous le portez, maintenez entrée en alternant gauche et droite pour le bercer. Doucement, hein. Bercez-le régulièrement et il s'endormira contre vous ; secouez-le et il pleurera, et il s'en souviendra.\nCe jardin n'est pas le seul endroit. Au fil du temps, des chemins s'ouvrent vers d'autres lieux, et on passe en appuyant sur entrée là où on en entend un. Votre bébou ne vous suivra pas tout seul : sifflez avec espace avant de partir, ou appelez-le par son numéro, et il viendra avec vous. Ça vaut le coup de l'emmener. Un bébou qui ne voit qu'un seul pré finit par s'ennuyer.\nÉchap ouvre le menu. C'est tout. Profitez bien l'un de l'autre.",
     "ui.emptyinventory": "Aucun objets dans le sac",
     "ui.chooseitem": "Choisissez un objet",
     "ui.itemput": "{0} déposé",
@@ -170,5 +170,13 @@
     "mods.play": "Jouer",
     "mods.entrycreatures": "{0}, ajoute {1} créature(s)",
     "mods.inuse": "{0}, en cours d'utilisation",
-    "mods.cantdisable": "Impossible de désactiver {0} : vous avez déjà {1}. Séparez-vous d'eux d'abord."
+    "mods.cantdisable": "Impossible de désactiver {0} : vous avez déjà {1}. Séparez-vous d'eux d'abord.",
+    "ui.cantputhere": "Vous ne pouvez rien poser ici.",
+    "ui.itembacktobag": "{0} retourne dans votre sac.",
+    "fluff": "La peluche",
+    "fluffball.name": "Boule de peluche",
+    "fluffball.description": "Une petite chose ronde entièrement faite de peluche. Elle fait un câlin à tout ce qu'elle croise.",
+    "fluffball.hugyou": "La boule de peluche vous fait un câlin. C'est extrêmement doux.",
+    "fluffball.hugbeboo": "La boule de peluche fait un câlin à {0}, qui fond complètement.",
+    "unlockfluff": "{0} est assez heureux pour une sortie !\nUn petit endroit tout doux, la peluche, s'est ouvert en haut à droite du jardin. Il n'y a absolument rien à y faire. C'est un peu l'idée."
 }

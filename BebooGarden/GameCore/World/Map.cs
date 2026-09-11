@@ -22,17 +22,24 @@ public class Map
   public static Map Snowy { get; private set; }
   public static Map UnderWater { get; private set; }
   public static Map Beach { get; }
+  public static Map Fluff { get; private set; }
   public static Map BasicRace { get; private set; }
   public static Map SnowyRace { get; private set; }
 
   static Map()
   {
-    Garden = new Map(MapPreset.garden, 40, 40,
-        [new TreeLine(new Vector2(20, 20), new Vector2(20, -20))],
-        [new WaterRectangle(WaterPreset.Lagoon, new Vector3(-20, 5, 0), 10, 10)],
+    // 60 by 60, so x and y both run from -30 to 30. The corners are taken: the competition
+    // centre at top left and the boutique at bottom right are worked out from the size, so the
+    // two exits that are placed by hand take the other two.
+    Garden = new Map(MapPreset.garden, 60, 60,
+        // Stops short of both right hand corners, leaving the fluff exit and the boutique clear.
+        [new TreeLine(new Vector2(30, 25), new Vector2(30, -25))],
+        [new WaterRectangle(WaterPreset.Lagoon, new Vector3(-30, 7, 0), 14, 14)],
        [
-         new(new(-20, -20,0), MapPreset.snowy, () => BebooText.path),
-         new(new(-20, 0, 0), MapPreset.underwater, () => BebooText.underwater)
+         new(new(-30, -30, 0), MapPreset.snowy, () => BebooText.path),
+         // Inside the lagoon: you go under by swimming down in it.
+         new(new(-30, 0, 0), MapPreset.underwater, () => BebooText.underwater),
+         new(new(30, 30, 0), MapPreset.fluff, () => BebooText.fluff)
        ],
        FmodAudio.Preset.Plain);
     Snowy = new Map(MapPreset.snowy, 60, 60,
@@ -54,6 +61,12 @@ public class Map
         [new(new(30, 20, 0), MapPreset.underwater, () => BebooText.underwater)],
         FmodAudio.Preset.Off);
 
+    Fluff = new Map(MapPreset.fluff, 24, 24,
+        [],
+        [],
+        [new(new(12, 0, 0), MapPreset.garden, () => BebooText.path)],
+        FmodAudio.Preset.Room);
+
     BasicRace = new Map(MapPreset.basicrace, Race.BASERACELENGTH, 10,
         [], [],
         [/*new WaterRectangle(position: new Vector3(0, -(Race.BASERACELENGTH / 2) - 10, 0))*/], FmodAudio.Preset.StoneCorridor);
@@ -66,6 +79,7 @@ public class Map
       { MapPreset.snowy, Snowy },
       { MapPreset.underwater, UnderWater },
       { MapPreset.beach, Beach },
+      { MapPreset.fluff, Fluff },
       { MapPreset.basicrace, BasicRace },
       { MapPreset.snowyrace, SnowyRace }
     };
@@ -95,6 +109,7 @@ public class Map
   private TimedBehaviour BubblePopBehaviour { get; set; }
   private TimedBehaviour FishSpawnBehaviour { get; set; }
   private TimedBehaviour SeagullSoundBehaviour { get; set; }
+  private TimedBehaviour FluffBallPopBehaviour { get; set; }
 
   public Map(MapPreset preset, int sizeX, int sizeY, List<TreeLine> treeLines, List<WaterRectangle> waterPoints, List<MapConnexion> mapConnexions, ReverbProperties reverbPreset)
   {
@@ -109,6 +124,7 @@ public class Map
     BubblePopBehaviour = new(10000, 15000, preset == MapPreset.underwater);
     FishSpawnBehaviour = new(2000, 4000, preset == MapPreset.beach);
     SeagullSoundBehaviour = new(1000 * 60 * 2, 1000 * 60 * 3, preset == MapPreset.beach);
+    FluffBallPopBehaviour = new(4000, 9000, preset == MapPreset.fluff);
     ReverbPreset = reverbPreset;
   }
 
@@ -181,6 +197,16 @@ public class Map
   }
 
 
+  /// <summary>
+  /// The nearest item you could pick up. Plain GetItemArroundPosition returns whatever happens to
+  /// be first, so a snowball sharing a tile with an egg could not be reached.
+  /// </summary>
+  public Item.Item? GetTakableItemArroundPosition(Vector3 position)
+  {
+    return Items?.FirstOrDefault(item => item != null && item.IsTakable && item.Position != null
+        && Util.IsInSquare(item.Position.Value, position, 1), null);
+  }
+
   public Item.Item? GetItemArroundPosition(Vector3 position)
   {
     return Items == null || Items.Count == 0
@@ -243,6 +269,12 @@ public class Map
       }
       BubblePopBehaviour.Done();
     }
+    if (FluffBallPopBehaviour.ItsTime())
+    {
+      if (Items.FindAll(x => x is FluffBall).Count < 8)
+        AddItem(new FluffBall(), GenerateRandomUnoccupedPosition());
+      FluffBallPopBehaviour.Done();
+    }
     if (FishSpawnBehaviour.ItsTime() && this == Beach)
     {
       List<Item.Item> fishes = this.Items.FindAll(x => x is Fish);
@@ -259,7 +291,8 @@ public class Map
     return (Preset == MapPreset.garden)
       || (Preset == MapPreset.underwater && Game1.Instance.Save.Flags.UnlockUnderwaterMap)
       || (Preset == MapPreset.snowy && Game1.Instance.Save.Flags.UnlockSnowyMap)
-      || (Preset == MapPreset.beach && Game1.Instance.Save.Flags.UnlockBeachMap
+      || (Preset == MapPreset.beach && Game1.Instance.Save.Flags.UnlockBeachMap)
+      || (Preset == MapPreset.fluff && Game1.Instance.Save.Flags.UnlockFluffMap
       );
   }
   public MapConnexion? GetConnexionArroundPosition(Vector3 position)

@@ -40,6 +40,9 @@ public abstract class Item
     Position = null;
     Game1.Instance.SoundSystem.System.PlaySound(Game1.Instance.SoundSystem.ItemTakeSound);
     Game1.Instance.Inventory.Add(this);
+    // The sound alone is eighty milliseconds long and easily lost under a map's ambience.
+    CrossSpeak.CrossSpeakManager.Instance.Output(
+        string.Format(Content.BebooText.ui_itemtake, Name));
   }
 
   public virtual void Buy()
