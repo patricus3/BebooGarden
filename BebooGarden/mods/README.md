@@ -7,8 +7,8 @@ the install directory, which normally needs administrator rights to write to. Bo
 the game shows everything it finds. Paste that path into Explorer's address bar to get there, and
 make the `mods` folder if it does not exist yet.
 
-Drop a mod folder in there and it appears in the list the game shows at startup, with a checkbox.
-Tick the ones you want and choose play.
+Drop a mod in there - a single dll, or a folder - and it appears in the list the game shows at
+startup, with a checkbox. Tick the ones you want and choose play.
 
 A mod whose creature you already own **cannot be switched off**. Turning it off would leave that
 beboo with no voice and nothing in the game to get it back with, so those boxes stay ticked and

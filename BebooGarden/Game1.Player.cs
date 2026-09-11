@@ -115,29 +115,14 @@ public partial class Game1
     if (Save.FruitsBasket != null) CrossSpeakManager.Instance.Output(String.Format(BebooText.ui_basket, fruits));
   }
   /// <summary>
-  /// Picks something up off the ground, asking first when the confirm-pickup mod is switched on.
-  ///
-  /// There is no setting for this anywhere. The mod list is the switch: people who keep scooping
-  /// things up by accident tick it once, and everybody else never sees a question.
+  /// Picks something up off the ground, unless a mod wants to handle it instead. A mod that takes
+  /// charge settles it in its own time, which may be after asking the player something, so there
+  /// is nothing to do here once one has.
   /// </summary>
   private void TakeFromGround(Item item)
   {
-    // Never for eggs. An egg is not picked up, it hatches, so asking whether to pick it up would be
-    // asking the wrong question about the one thing here you cannot undo.
-    if (item is Egg || !ModManager.HasFeature(ModFeatures.ConfirmPickup))
-    {
-      item.Take();
-      return;
-    }
-    Dictionary<string, bool> answers = new()
-    {
-      { BebooText.ui_yes, true },
-      { BebooText.ui_no, false },
-    };
-    // No cancel button: the two answers already cover it, and escape backs out without taking
-    // anything, which is the same as no.
-    new ChooseMenu<bool>(String.Format(BebooText.ui_confirmpickup, item.Name), answers,
-        taking => { if (taking) item.Take(); }, allowCancel: false).Show();
+    if (ModHost.Instance.PickupHandled(item, item.Take)) return;
+    item.Take();
   }
 
   private void TryPutItemInHand()

@@ -5,6 +5,7 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Reflection;
 
 namespace BebooGarden.Modding;
 
@@ -36,55 +37,85 @@ public static class ModManager
 
   public static IEnumerable<ModCreature> AllCreatures => All.SelectMany(mod => mod.Creatures);
 
-  /// <summary>
-  /// Whether a mod that is switched on asks for this behaviour. Unlike voices, which load either
-  /// way, a feature only counts while its mod is enabled: it changes how the game plays, so it has
-  /// to follow the checkbox.
-  /// </summary>
-  public static bool HasFeature(string feature) =>
-      All.Any(mod => IsEnabled(mod)
-          && mod.Features.Any(name => string.Equals(name, feature, StringComparison.OrdinalIgnoreCase)));
-
   public static ModCreature? CreatureById(string? id) =>
       id == null ? null : AllCreatures.FirstOrDefault(creature => creature.Id == id);
 
   /// <summary>
-  /// Reads every mod folder. A mod with a broken manifest is skipped rather than allowed to stop
-  /// the game starting: somebody else's file should not cost you your garden.
+  /// Finds every mod: a single dll dropped in with its manifest built into it, or a folder with a
+  /// mod.json in it. One that will not parse is skipped rather than allowed to stop the game
+  /// starting, because somebody else's file should not cost you your garden.
   /// </summary>
   public static void Discover()
   {
     All = [];
     foreach (string root in GamePaths.ModFolders)
+    {
       foreach (string folder in Directory.GetDirectories(root).OrderBy(f => f))
-        Read(folder);
+        ReadFolder(folder);
+      foreach (string file in Directory.GetFiles(root, "*.dll").OrderBy(f => f))
+        ReadAssembly(file);
+    }
   }
 
   /// <summary>Reads one mod folder, if it holds a manifest that parses.</summary>
-  private static void Read(string folder)
+  private static void ReadFolder(string folder)
   {
     string manifest = Path.Combine(folder, MANIFEST);
     if (!File.Exists(manifest)) return;
     try
     {
-      Mod? mod = JsonConvert.DeserializeObject<Mod>(File.ReadAllText(manifest));
-      if (mod == null || string.IsNullOrWhiteSpace(mod.Id)) return;
-      // Ids have to be unique, so a mod the player installed themselves is ignored if one of the
-      // same name already came with the game.
-      if (All.Any(other => other.Id == mod.Id)) return;
-      mod.Folder = folder;
-      mod.Creatures.RemoveAll(creature => string.IsNullOrWhiteSpace(creature.Id));
-      foreach (ModCreature creature in mod.Creatures)
-      {
-        creature.ModId = mod.Id;
-        creature.VoiceFolder = Path.Combine(folder, "creatures", creature.Id);
-      }
-      All.Add(mod);
+      Register(JsonConvert.DeserializeObject<Mod>(File.ReadAllText(manifest)), folder, null);
     }
     catch (Exception)
     {
       // A mod that will not parse is simply not there.
     }
+  }
+
+  /// <summary>
+  /// Reads a mod that is one file: a dll carrying its own manifest as an embedded resource, so it
+  /// installs by being dropped in rather than unpacked.
+  ///
+  /// Reading it means loading the assembly, which is why this only reads the manifest and stops.
+  /// Nothing of the mod's is constructed or run until the player has switched it on.
+  /// </summary>
+  private static void ReadAssembly(string file)
+  {
+    try
+    {
+      Assembly assembly = Assembly.LoadFrom(file);
+      string? resource = assembly.GetManifestResourceNames().FirstOrDefault(name =>
+          name.Equals(MANIFEST, StringComparison.OrdinalIgnoreCase)
+          || name.EndsWith("." + MANIFEST, StringComparison.OrdinalIgnoreCase));
+      if (resource == null) return;
+      using Stream? stream = assembly.GetManifestResourceStream(resource);
+      if (stream == null) return;
+      using StreamReader reader = new(stream);
+      Register(JsonConvert.DeserializeObject<Mod>(reader.ReadToEnd()),
+          Path.GetDirectoryName(file) ?? string.Empty, assembly);
+    }
+    catch (Exception)
+    {
+      // Not a mod, or not one this version can read.
+    }
+  }
+
+  /// <summary>Takes a parsed manifest and makes a mod of it, if it is worth having.</summary>
+  private static void Register(Mod? mod, string folder, Assembly? assembly)
+  {
+    if (mod == null || string.IsNullOrWhiteSpace(mod.Id)) return;
+    // Ids have to be unique, so a mod the player installed themselves is ignored if one of the
+    // same name already came with the game.
+    if (All.Any(other => other.Id == mod.Id)) return;
+    mod.Folder = folder;
+    mod.Assembly = assembly;
+    mod.Creatures.RemoveAll(creature => string.IsNullOrWhiteSpace(creature.Id));
+    foreach (ModCreature creature in mod.Creatures)
+    {
+      creature.ModId = mod.Id;
+      creature.VoiceFolder = Path.Combine(folder, "creatures", creature.Id);
+    }
+    All.Add(mod);
   }
 
   public static void SetEnabled(IEnumerable<string> ids)

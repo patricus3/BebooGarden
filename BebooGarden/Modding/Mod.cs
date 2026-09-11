@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Reflection;
 
 namespace BebooGarden.Modding;
 
@@ -27,11 +28,14 @@ public class Mod
   public string Description { get; set; } = string.Empty;
   public List<ModCreature> Creatures { get; set; } = [];
 
-  /// <summary>Behaviour this mod turns on. See ModFeatures; anything else here is ignored.</summary>
-  public List<string> Features { get; set; } = [];
-
   /// <summary>Filled in on load, not read from the manifest.</summary>
   public string Folder { get; set; } = string.Empty;
+
+  /// <summary>
+  /// The assembly this mod's manifest was read out of, when the mod is a single dll. Loaded to get
+  /// at the manifest, but nothing in it is constructed until the mod is switched on.
+  /// </summary>
+  public Assembly? Assembly { get; set; }
 
   /// <summary>
   /// What the mod list calls this mod. A mod that ships with the game is named in the game's own

@@ -120,18 +120,55 @@ brazilianportuguese.PrereqSubtitle=O Beboo Garden precisa do runtime do Microsof
 brazilianportuguese.InstallingDotNet=Instalando o runtime do .NET. O Windows vai pedir permissão.
 brazilianportuguese.DownloadFailed=Não foi possível baixar o runtime do .NET. Você pode instalá-lo depois a partir de %1 - o jogo não abre enquanto ele não estiver lá.%n%nInstalar o Beboo Garden mesmo assim?
 brazilianportuguese.DotNetFailed=O runtime do .NET não foi instalado. Você pode instalá-lo depois a partir de %1 - o jogo não abre enquanto ele não estiver lá.%n%nInstalar o Beboo Garden mesmo assim?
+TypeCustom=Choose what to install
+CompGame=Beboo Garden
+CompModding=Modding reference (for writing mods)
+ModdingFiles=Modding files
+french.TypeCustom=Choisissez ce qu'il faut installer
+french.CompGame=Beboo Garden
+french.CompModding=Documentation de moddage (pour écrire des mods)
+french.ModdingFiles=Fichiers de moddage
+german.TypeCustom=Wählen Sie aus, was installiert wird
+german.CompGame=Beboo Garden
+german.CompModding=Modding-Dokumentation (zum Schreiben von Mods)
+german.ModdingFiles=Modding-Dateien
+polish.TypeCustom=Wybierz, co zainstalować
+polish.CompGame=Beboo Garden
+polish.CompModding=Dokumentacja modów (do pisania modów)
+polish.ModdingFiles=Pliki modów
+brazilianportuguese.TypeCustom=Escolha o que instalar
+brazilianportuguese.CompGame=Beboo Garden
+brazilianportuguese.CompModding=Documentação de mods (para criar mods)
+brazilianportuguese.ModdingFiles=Arquivos de mods
+
+[Types]
+; One type, freely editable, so the components page is a plain list of checkboxes rather than a
+; combo box a screen reader has to be walked through first.
+Name: "custom"; Description: "{cm:TypeCustom}"; Flags: iscustom
+
+[Components]
+Name: "game"; Description: "{cm:CompGame}"; Types: custom; Flags: fixed
+; Not in any type, so it starts unticked: most people are not writing mods.
+Name: "modding"; Description: "{cm:CompModding}"
 
 [Tasks]
 Name: "desktopicon"; Description: "{cm:CreateDesktopIcon}"; GroupDescription: "{cm:AdditionalIcons}"
 
 [Files]
-; Everything the publish produced, mods folder and its documentation included.
-Source: "{#PayloadDir}\*"; DestDir: "{app}"; Flags: ignoreversion recursesubdirs createallsubdirs
+; The game. BebooGarden.ModApi.dll is in here rather than with the reference material: the game
+; itself runs against it, so it is not optional. What is optional is the documentation for it.
+Source: "{#PayloadDir}\*"; DestDir: "{app}"; Excludes: "mods\MODDING.md,BebooGarden.ModApi.xml"; Flags: ignoreversion recursesubdirs createallsubdirs; Components: game
+; The modding reference: how to write one, and the API documentation your editor reads.
+Source: "{#PayloadDir}\mods\MODDING.md"; DestDir: "{app}\mods"; Flags: ignoreversion; Components: modding
+Source: "{#PayloadDir}\BebooGarden.ModApi.xml"; DestDir: "{app}"; Flags: ignoreversion skipifsourcedoesntexist; Components: modding
 
 [Icons]
 Name: "{group}\{#AppShortName}"; Filename: "{app}\{#AppExe}"
 Name: "{group}\{cm:UninstallProgram,{#AppShortName}}"; Filename: "{uninstallexe}"
 Name: "{autodesktop}\{#AppShortName}"; Filename: "{app}\{#AppExe}"; Tasks: desktopicon
+; A folder rather than the file: a .md has no handler on a clean Windows, and a shortcut that opens
+; nothing is worse than one more click.
+Name: "{group}\{cm:ModdingFiles}"; Filename: "{app}\mods"; Components: modding
 
 [Run]
 Filename: "{app}\{#AppExe}"; Description: "{cm:LaunchProgram,{#AppShortName}}"; Flags: nowait postinstall skipifsilent

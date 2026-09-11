@@ -1,0 +1,45 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <!--
+    A mod. It compiles against BebooGarden.ModApi and nothing else, and the dll it produces is
+    dropped next to the mod.json with no further ceremony.
+
+    Build it with:
+      dotnet build mods-standalone\confirm-pickup\src\ConfirmPickup.csproj -c Release
+    which writes confirm-pickup.dll straight into the mod folder beside the manifest.
+  -->
+
+  <PropertyGroup>
+    <TargetFramework>net10.0</TargetFramework>
+    <Nullable>enable</Nullable>
+    <LangVersion>preview</LangVersion>
+    <AssemblyName>confirm-pickup</AssemblyName>
+    <RootNamespace>ConfirmPickup</RootNamespace>
+    <Version>1.0.0</Version>
+    <Product>Ask before picking things up</Product>
+
+    <!-- Straight into the mod folder, so the packaged mod is just that folder. -->
+    <OutputPath>..\</OutputPath>
+    <AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
+    <AppendRuntimeIdentifierToOutputPath>false</AppendRuntimeIdentifierToOutputPath>
+
+    <!-- The game already has the API assembly; a mod must never ship its own copy of it. -->
+    <GenerateDependencyFile>false</GenerateDependencyFile>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <!--
+      The manifest goes inside the dll, under the plain name the game looks for, so the mod is one
+      file that installs by being dropped in. Nothing to unpack, nothing to keep together.
+    -->
+    <EmbeddedResource Include="..\mod.json" LogicalName="mod.json" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\..\BebooGarden.ModApi\BebooGarden.ModApi.csproj">
+      <Private>false</Private>
+      <ExcludeAssets>runtime</ExcludeAssets>
+    </ProjectReference>
+  </ItemGroup>
+
+</Project>

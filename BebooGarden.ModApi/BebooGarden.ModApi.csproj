@@ -1,0 +1,20 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <!--
+    The surface a mod compiles against. Deliberately tiny and deliberately free of dependencies:
+    the game references it, every mod references it, and it is the only thing the two have in
+    common. Nothing from MonoGame, FMOD or the game's own types leaks through it, so a mod built
+    against one version keeps working while the game is rearranged behind it.
+  -->
+
+  <PropertyGroup>
+    <TargetFramework>net10.0</TargetFramework>
+    <Nullable>enable</Nullable>
+    <LangVersion>preview</LangVersion>
+    <Version>1.0.0</Version>
+    <Product>Beboo Garden mod API</Product>
+    <Company>Saladeuh</Company>
+    <GenerateDocumentationFile>true</GenerateDocumentationFile>
+  </PropertyGroup>
+
+</Project>

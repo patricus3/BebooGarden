@@ -30,6 +30,9 @@
 		</Content>
 	</ItemGroup>
 	<ItemGroup>
+		<ProjectReference Include="..\BebooGarden.ModApi\BebooGarden.ModApi.csproj" />
+	</ItemGroup>
+	<ItemGroup>
 		<EmbeddedResource Remove="Content\BebooText.fr.resx" />
 		<EmbeddedResource Remove="Content\BebooText.de.resx" />
 		<EmbeddedResource Remove="Content\BebooText.pl.resx" />

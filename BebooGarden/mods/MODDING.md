@@ -1,7 +1,7 @@
 ﻿# Modding Beboo Garden: Enhanced Edition — reference
 
-Version 2.2. Mods are folders of data, not code: no compiling, no DLLs, nothing to install beyond
-dropping a folder in place.
+Version 2.2. A mod is either a single dll you drop in, or a folder of sound files, or both at once.
+Creatures need no code at all; changing what the game does needs a little.
 
 ---
 
@@ -18,12 +18,13 @@ Either of two places. **Your own mods go in the second one:**
 Explorer's address bar or the Run box and it will take you there; if the `mods` folder is not there
 yet, make it.
 
-Either folder has the same shape:
+A mod is either **one dll** or **one folder**:
 
 ```
 mods/
   MODDING.md            this file
-  my-mod/               one folder per mod
+  confirm-pickup.dll    a mod that is one file, manifest built in
+  my-mod/               a mod that needs files on disk
     mod.json            required; a folder without one is ignored
     creatures/
       my-mod.fuzzy/     one folder per creature, named by its id
@@ -32,8 +33,14 @@ mods/
         ...
 ```
 
-Folder names other than `creatures/` are ignored, so you can keep a readme, a licence or your
-source files beside the manifest without upsetting anything.
+**A code mod should be a single dll.** Its manifest lives inside it as an embedded resource, so it
+installs by being dropped in - nothing to unpack and nothing that can be separated from it. See
+section 4.
+
+**A mod that adds creatures needs a folder,** because its voices are .wav files that have to sit
+somewhere. Folder names other than `creatures/` are ignored, so you can keep a readme, a licence or
+your source next to the manifest without upsetting anything. A folder mod may carry dlls too; they
+are all examined.
 
 Both folders are read, shipped mods first. Ids have to be unique, so if you install a mod that uses
 an id one of the shipped ones already has, yours is the one ignored - rename it.
@@ -59,7 +66,8 @@ an id one of the shipped ones already has, yours is the one ignored - rename it.
 | `name` | no | Shown in the mod list. Falls back to `id`. |
 | `description` | no | Not shown yet; write it anyway. |
 | `creatures` | no | May be empty or absent. A mod with no creatures loads and does nothing. |
-| `features` | no | Behaviour to switch on, by name. See section 4. |
+
+A mod that brings code declares nothing for it: any dll in the folder is examined. See section 4.
 
 Each creature:
 
@@ -114,27 +122,102 @@ Sounds are positioned in 3D at the beboo, and pitch-shifted per beboo (hatchling
 
 ---
 
-## 4. Features
+## 4. Code mods
 
-A mod cannot bring code, so it cannot invent behaviour. What it can do is ask the game to turn on
-something the game already knows how to do but does not do by default:
+A mod can bring code. The game loads the assembly when the mod is switched on, looks for a public
+class with a parameterless constructor implementing `IBebooMod`, makes one, and calls `Start` once,
+before the garden opens.
 
-```json
-{ "id": "confirm-pickup", "name": "Ask before picking things up", "features": ["confirmPickup"] }
+```csharp
+using BebooGarden.ModApi;
+
+public class ConfirmPickupMod : IBebooMod
+{
+  private IModHost _host = null!;
+
+  public void Start(IModHost host)
+  {
+    _host = host;
+    host.OnPickingUp(Ask);
+  }
+
+  private bool Ask(PickupRequest request)
+  {
+    if (request.IsEgg) return false;
+    string question = _host.Text("ui.confirmpickup") ?? "Pick up {0}?";
+    _host.AskYesNo(string.Format(question, request.ItemName), taking =>
+    {
+      if (taking) request.Take(); else request.Cancel();
+    });
+    return true;
+  }
+}
 ```
 
-| feature | what it does |
+That is a whole real mod - it is the `confirm-pickup` one, in full.
+
+### Building against the API
+
+Reference **`BebooGarden.ModApi.dll`**, which sits next to `BebooGarden.exe`, and nothing else. It
+has no dependencies and exposes none of the game's own types, so a mod built against it keeps
+working while the game is rearranged behind it. Install the modding files with the game and you get
+its documentation alongside, which is what your editor reads for the tooltips.
+
+Your project should **not** copy the API assembly into your mod folder - the game already has it,
+and a second copy is a different type to the runtime, so your `IBebooMod` would not be recognised:
+
+```xml
+<ProjectReference Include="path\to\BebooGarden.ModApi.csproj">
+  <Private>false</Private>
+  <ExcludeAssets>runtime</ExcludeAssets>
+</ProjectReference>
+```
+
+### One file, manifest included
+
+Build `mod.json` into the assembly and the mod is a single file. The game looks for an embedded
+resource called exactly `mod.json`:
+
+```xml
+<EmbeddedResource Include="mod.json" LogicalName="mod.json" />
+```
+
+`LogicalName` matters: without it the resource is named after your namespace and the game will not
+find it. That is the whole of it - drop the dll in `mods` and it is installed.
+
+Reading the manifest means loading the assembly, so the game loads a mod dll to see what it is, and
+then constructs and runs nothing at all until the player has switched that mod on.
+
+### What the host offers
+
+| member | what it does |
 |---|---|
-| `confirmPickup` | Pressing enter next to something on the ground asks yes or no first, instead of taking it straight away. Eggs are left alone: they hatch rather than being picked up. |
+| `GameVersion` | The game's version, if you need to tell what you are running against. |
+| `Log(text)` | A line in `crash.log`, tagged with your mod id. |
+| `Say(text)` | Says something through the screen reader. The game is played by ear; this is how you talk to the player. |
+| `Text(key)` | One of the game's own translated strings, in the player's language, or null. Reusing these is how a mod stays translated without shipping translations. |
+| `AskYesNo(question, answer)` | Asks a yes or no question as a menu and calls back with the answer. Backing out never calls back at all. |
+| `OnPickingUp(handler)` | Take part in picking things up off the ground. |
 
-Names are matched without regard to case, and one this version does not recognise is ignored rather
-than refused, so a mod can name a feature from a later version and still load here.
+`OnPickingUp` hands you a `PickupRequest`. Return **false** and the game picks the item up as
+usual. Return **true** and the game does nothing whatsoever until you call `Take()` or `Cancel()`,
+which may be much later - after a question has been answered, for instance. A request you take
+charge of and then forget about leaves the item on the ground forever, so settle it either way.
 
-Features are why a preference some people want and most do not can be a mod rather than a setting:
-the mod list is already a list of things you can tick, so it saves growing a settings screen for one
-checkbox. `confirm-pickup` above is a real one, downloaded separately from the game.
+`IsEgg` is on the request because an egg is not really picked up: touching one hatches it. A mod
+asking about pickups usually wants to leave those alone.
 
-A mod may list features, creatures, or both.
+### When it goes wrong
+
+A mod that throws while starting is written to `crash.log` and dropped, and the game opens without
+it. One that throws while handling a pickup is logged and the pickup carries on as if it had
+returned false. Somebody else's bug should not cost a player their beboos.
+
+### What is not there yet
+
+One hook, and a small host. This is the shape the rest will grow into rather than the finished
+thing, and the API assembly is versioned separately from the game so it can grow without breaking
+what already exists.
 
 ---
 
@@ -170,7 +253,9 @@ There is currently no way to guarantee a particular creature, or to tie one to a
 
 | symptom | cause |
 |---|---|
-| Mod missing from the list | No `mod.json`, unparseable JSON, blank `id`, or an `id` another mod already used. Bad manifests are skipped silently so one bad mod cannot stop the game starting. |
+| Mod missing from the list | No manifest, unparseable JSON, blank `id`, or an `id` another mod already used. For a single dll: the embedded resource is not called exactly `mod.json`, usually a missing `LogicalName`. Bad manifests are skipped silently so one bad mod cannot stop the game starting. |
+| Mod appears but its code never runs | The mod is not ticked, or the game could not construct it. `crash.log` says which, tagged with your mod id. |
+| `IBebooMod` not recognised | Your project copied `BebooGarden.ModApi.dll` into the mod folder. Set `Private` to false so it does not. |
 | Creature appears, sounds like a normal beboo | Voice folders missing, empty, or under the wrong name. The folder under `creatures/` must equal the creature `id` exactly. |
 | One sound never plays | FMOD could not decode it. Re-export as plain PCM WAV. |
 | Creature never hatches | Mod not ticked, or luck — it is one in three, and only on a hatch. |
@@ -202,7 +287,7 @@ Three files and a manifest. Everything else falls back to the base voice.
 
 ## 9. What mods can add today
 
-Creatures with their voices, and the features listed in section 4.
+Creatures with their voices, and code, through the small API in section 4.
 
-The manifest is deliberately shaped to grow, and unknown fields and unknown feature names are both
-ignored, so a mod can carry data for a later version without breaking on this one.
+The manifest is deliberately shaped to grow and unknown fields are ignored, so a mod can carry data
+for a later version without breaking on this one.

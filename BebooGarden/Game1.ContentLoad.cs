@@ -84,6 +84,7 @@ public partial class Game1
 
   private void StartTheGarden()
   {
+    Modding.ModHost.StartEnabledMods();
     if (Save.Flags.NewGame)
     {
       (new WelcomeScene()).Show();

@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BebooGarden", "BebooGarden\
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AccessibleMyraUI", "AccessibleMyraUI\AccessibleMyraUI.csproj", "{0AADDE4D-8AEF-678F-BD33-63E0EB441628}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BebooGarden.ModApi", "BebooGarden.ModApi\BebooGarden.ModApi.csproj", "{7E2C9A51-3B4D-4E66-9F10-2D5C8B7A4E31}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{0AADDE4D-8AEF-678F-BD33-63E0EB441628}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{0AADDE4D-8AEF-678F-BD33-63E0EB441628}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{0AADDE4D-8AEF-678F-BD33-63E0EB441628}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7E2C9A51-3B4D-4E66-9F10-2D5C8B7A4E31}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7E2C9A51-3B4D-4E66-9F10-2D5C8B7A4E31}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7E2C9A51-3B4D-4E66-9F10-2D5C8B7A4E31}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7E2C9A51-3B4D-4E66-9F10-2D5C8B7A4E31}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

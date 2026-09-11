@@ -449,7 +449,10 @@ public partial class Game1
   /// </summary>
   private void ShowModMenu()
   {
-    new ModMenu(LeaveMenusForTheGarden, atStartup: false).Show();
+    // Switching one on takes effect at once; switching one off needs a restart, because code that
+    // has been loaded cannot be taken back out again.
+    new ModMenu(() => { Modding.ModHost.StartEnabledMods(); LeaveMenusForTheGarden(); },
+        atStartup: false).Show();
     // So that escape steps back to the menu it was opened from rather than nowhere.
     if (_desktop.Root is Panel modPanel) PreviousPanels[modPanel] = _escapeMenuPanel;
   }

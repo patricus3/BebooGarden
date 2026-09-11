@@ -1,24 +1,33 @@
 # Mods distributed separately
 
-Mods in here are **not** part of the game's download. Each one is packaged on its own and installed
-by whoever wants it, which is the whole point: they change how the game plays, and most people
-should never have to think about them.
+Mods in here are **not** part of the game's download. Each one is released on its own and installed
+by whoever wants it, which is the point: they change how the game plays, and most people should
+never have to think about them.
 
-Each folder is packaged as a zip containing the folder itself, so it unpacks straight into a mods
-folder:
+Each is a single dll with its manifest built in, so installing one means dropping the file into
+`%LocalAppData%\BebooGarden\mods` — no unpacking, no administrator rights, and it survives
+reinstalling the game. It then appears in the list the game shows at startup, with a checkbox, and
+does nothing until it is ticked.
+
+The full reference for writing one is `MODDING.md`, which installs with the game if you tick the
+modding component, alongside the documentation for `BebooGarden.ModApi.dll`.
+
+## Layout
 
 ```
-confirm-pickup.zip
-  confirm-pickup/
-    mod.json
+confirm-pickup/
+  mod.json          the manifest, embedded into the dll at build time
+  src/              the mod's source
+  confirm-pickup.dll   built here, and this file alone is what ships
 ```
 
-To install one, unpack it into `%LocalAppData%\BebooGarden\mods` — no administrator rights needed,
-and it survives reinstalling the game. It then appears in the list the game shows at startup, with
-a checkbox.
+Build one with:
 
-The full reference for writing one is `MODDING.md`, which does ship with the game, in its `mods`
-folder.
+```
+dotnet build mods-standalone\confirm-pickup\src\ConfirmPickup.csproj -c Release
+```
+
+which writes the dll into the mod's folder.
 
 ## confirm-pickup
 
