@@ -622,4 +622,10 @@ W prawym górnym rogu ogrodu otworzyło się miękkie miejsce zwane puszystości
 	<data name="fluffball.follows" xml:space="preserve">
 		<value>Kłębek puchu człapie za {0}.</value>
 	</data>
+	<data name="memory.start" xml:space="preserve">
+		<value>Pamięć dźwiękowa. {0} pól. Naciśnij od 1 do {0}, aby posłuchać, i znajdź pary. Dozwolone błędy: {1}. Escape, aby się poddać.</value>
+	</data>
+	<data name="memory.quit" xml:space="preserve">
+		<value>Poddajesz się.</value>
+	</data>
 </root>

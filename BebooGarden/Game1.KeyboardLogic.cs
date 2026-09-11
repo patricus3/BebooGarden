@@ -34,6 +34,9 @@ public partial class Game1
 
   private void HandleKeyboardNavigation(KeyboardState currentKeyboardState)
   {
+    // A minigame owns the keyboard for as long as it runs, so the menus do not act on the same
+    // keys behind it - escape in particular, which now leaves the minigame.
+    if (CurrentPlayingMiniGame?.IsRunning ?? false) return;
     if (_currentScreen == GameScreen.game && !_paused)
     {
       MainGameKeyboardLogic(currentKeyboardState);

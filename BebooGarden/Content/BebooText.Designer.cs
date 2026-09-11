@@ -1581,5 +1581,23 @@ namespace BebooGarden.Content {
             }
         }
 
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à Sound memory. {0} cases. Press 1 to {0} to hear one, and find the pairs. {1} mistakes allowed. Escape to give up..
+        /// </summary>
+        internal static string memory_start {
+            get {
+                return ResourceManager.GetString("memory.start", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à You gave up..
+        /// </summary>
+        internal static string memory_quit {
+            get {
+                return ResourceManager.GetString("memory.quit", resourceCulture);
+            }
+        }
+
     }
 }

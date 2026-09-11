@@ -187,5 +187,7 @@
     "mods.done": "Fertig",
     "mods.confirm-pickup": "Vor dem Aufheben nachfragen",
     "fluffball.attached": "Der Fluffball kuschelt sich an {0} und bleibt da. Er hat sich sein Beboo ausgesucht.",
-    "fluffball.follows": "Der Fluffball zockelt hinter {0} her."
+    "fluffball.follows": "Der Fluffball zockelt hinter {0} her.",
+    "memory.start": "Klanggedächtnis. {0} Felder. Drücke 1 bis {0}, um eines zu hören, und finde die Paare. {1} Fehler erlaubt. Escape zum Aufgeben.",
+    "memory.quit": "Du gibst auf."
 }

@@ -622,4 +622,10 @@ Escape 打开菜单。就这些了。好好相处。</value>
 	<data name="fluffball.follows" xml:space="preserve">
 		<value>绒球跟在 {0} 后面。</value>
 	</data>
+	<data name="memory.start" xml:space="preserve">
+		<value>声音记忆。共 {0} 格。按 1 到 {0} 听一格，找出成对的声音。可以错 {1} 次。按 Escape 放弃。</value>
+	</data>
+	<data name="memory.quit" xml:space="preserve">
+		<value>你放弃了。</value>
+	</data>
 </root>

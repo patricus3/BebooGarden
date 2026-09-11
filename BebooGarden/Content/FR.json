@@ -186,5 +186,7 @@
     "mods.done": "Terminé",
     "mods.confirm-pickup": "Demander avant de ramasser",
     "fluffball.attached": "La boule de peluche se blottit contre {0} et s'y installe. Elle a choisi son beboo.",
-    "fluffball.follows": "La boule de peluche suit {0}."
+    "fluffball.follows": "La boule de peluche suit {0}.",
+    "memory.start": "Mémoire sonore. {0} cases. Appuyez sur 1 à {0} pour en écouter une, et retrouvez les paires. {1} erreurs permises. Échap pour abandonner.",
+    "memory.quit": "Vous abandonnez."
 }

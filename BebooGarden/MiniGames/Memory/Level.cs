@@ -28,6 +28,11 @@ internal class Level
     FillGridByRandomInt();
     SoundSystem = soundSystem;
     SoundSystem.LoadLevel(nbSounds, group1, group2);
+    // The game said nothing whatsoever when it opened: no statement of what it is, that it wants
+    // the number keys, how many cases there are, or how to leave. On a game played by ear that is
+    // not a quiet start, it is indistinguishable from being stuck.
+    CrossSpeakManager.Instance.Output(
+        String.Format(BebooText.memory_start, nbSounds * 2, maxRetry));
   }
 
   private void FillGridByRandomInt()
@@ -43,6 +48,17 @@ internal class Level
   public void Update(GameTime gameTime, KeyboardState currentKeyboardState)
   {
     if (Ended) return;
+    // A way out. There was none: the alt F4 branch that used to sit at the bottom was nested inside
+    // the digit check, so it could only fire if you held a digit at the same time, and nothing else
+    // ended a run. You kept whatever you had scored up to here.
+    if (Game1.Instance.IsKeyPressed(currentKeyboardState, Keys.Escape))
+    {
+      CrossSpeakManager.Instance.Output(BebooText.memory_quit);
+      Release();
+      Win = false;
+      Ended = true;
+      return;
+    }
     // D5 was missing from this list while every other digit was here, so the fifth case could not
     // be turned over from the number row at all. A grid always has six or eight cases, so one of
     // them was permanently unreachable and no level could ever be cleared.
@@ -71,11 +87,6 @@ internal class Level
           Win = false;
           Ended = true;
         }
-      }
-      else if (Game1.Instance.IsKeyPressed(currentKeyboardState, Keys.F4) && Game1.Instance.IsKeyPressed(currentKeyboardState, Keys.LeftAlt, Keys.RightAlt))
-      {
-        Win = false;
-        Ended = true;
       }
     }
   }

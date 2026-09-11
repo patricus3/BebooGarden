@@ -186,5 +186,7 @@
     "mods.done": "Xong",
     "mods.confirm-pickup": "Hỏi trước khi nhặt đồ",
     "fluffball.attached": "Cục bông rúc vào {0} rồi ở lì đó. Nó đã chọn được beboo của mình.",
-    "fluffball.follows": "Cục bông lẽo đẽo theo sau {0}."
+    "fluffball.follows": "Cục bông lẽo đẽo theo sau {0}.",
+    "memory.start": "Trí nhớ âm thanh. {0} ô. Bấm từ 1 đến {0} để nghe một ô, rồi tìm các cặp. Được sai {1} lần. Bấm Escape để bỏ cuộc.",
+    "memory.quit": "Bạn đã bỏ cuộc."
 }

@@ -197,5 +197,7 @@
     "mods.done": "Pronto",
     "mods.confirm-pickup": "Perguntar antes de pegar as coisas",
     "fluffball.attached": "A bolinha de pelúcia se aninha em {0} e fica por ali. Escolheu o beboo dela.",
-    "fluffball.follows": "A bolinha de pelúcia vai atrás de {0}."
+    "fluffball.follows": "A bolinha de pelúcia vai atrás de {0}.",
+    "memory.start": "Memória sonora. {0} casas. Aperte de 1 a {0} para ouvir uma e ache os pares. {1} erros permitidos. Escape para desistir.",
+    "memory.quit": "Você desistiu."
 }
