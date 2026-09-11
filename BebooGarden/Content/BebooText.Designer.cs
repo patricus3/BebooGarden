@@ -1608,5 +1608,23 @@ namespace BebooGarden.Content {
             }
         }
 
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à The fluffball has nobody left to hug, and goes quiet and sad..
+        /// </summary>
+        internal static string fluffball_alone {
+            get {
+                return ResourceManager.GetString("fluffball.alone", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à The fluffball has company again, and perks right up..
+        /// </summary>
+        internal static string fluffball_cheered {
+            get {
+                return ResourceManager.GetString("fluffball.cheered", resourceCulture);
+            }
+        }
+
     }
 }

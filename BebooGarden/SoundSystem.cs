@@ -485,12 +485,13 @@ internal class SoundSystem
   }
 
   /// <summary>Plays one of a fluffball's noises where it is sitting.</summary>
-  public void PlayFluffBallSound(List<Sound> sounds, GameCore.Item.FluffBall ball, float volume = -1)
+  public void PlayFluffBallSound(List<Sound> sounds, GameCore.Item.FluffBall ball, float volume = -1,
+      float pitch = 1)
   {
     if (sounds.Count == 0 || ball.Position == null) return;
     Sound sound = sounds[Game1.Instance.Random.Next(sounds.Count)];
     if (ball.Channel != null && ball.Channel.IsPlaying) ball.Channel.Stop();
-    ball.Channel = PlaySoundAtPosition(sound, ball.Position.Value, -0.2);
+    ball.Channel = PlaySoundAtPosition(sound, ball.Position.Value, -0.2, pitch);
     if (volume != -1) ball.Channel.Volume = volume;
   }
 

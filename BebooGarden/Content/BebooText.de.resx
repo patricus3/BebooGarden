@@ -631,4 +631,10 @@ Oben rechts im Garten hat ein weicher kleiner Ort aufgemacht: das Flauschige. Do
 	<data name="fluffball.staysbehind" xml:space="preserve">
 		<value>Der Fluffball folgt {0} nicht in die Kälte und bleibt, wo er ist.</value>
 	</data>
+	<data name="fluffball.alone" xml:space="preserve">
+		<value>Der Fluffball hat niemanden mehr zum Kuscheln und wird ganz still und traurig.</value>
+	</data>
+	<data name="fluffball.cheered" xml:space="preserve">
+		<value>Der Fluffball hat wieder Gesellschaft und lebt sofort auf.</value>
+	</data>
 </root>

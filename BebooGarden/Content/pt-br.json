@@ -200,5 +200,7 @@
     "fluffball.follows": "A bolinha de pelúcia vai atrás de {0}.",
     "memory.start": "Memória sonora. {0} casas. Aperte de 1 a {0} para ouvir uma e ache os pares. {1} erros permitidos. Escape para desistir.",
     "memory.quit": "Você desistiu.",
-    "fluffball.staysbehind": "A bolinha de pelúcia não segue {0} para o frio e fica onde está."
+    "fluffball.staysbehind": "A bolinha de pelúcia não segue {0} para o frio e fica onde está.",
+    "fluffball.alone": "A bolinha de pelúcia não tem mais ninguém para abraçar e fica quietinha e triste.",
+    "fluffball.cheered": "A bolinha de pelúcia tem companhia de novo e se anima na hora."
 }

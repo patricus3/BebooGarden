@@ -632,4 +632,10 @@ A soft little place called the fluff has opened up, at the top right of the gard
 	<data name="fluffball.staysbehind" xml:space="preserve">
 		<value>The fluffball will not follow {0} into the cold, and stays where it is.</value>
 	</data>
+	<data name="fluffball.alone" xml:space="preserve">
+		<value>The fluffball has nobody left to hug, and goes quiet and sad.</value>
+	</data>
+	<data name="fluffball.cheered" xml:space="preserve">
+		<value>The fluffball has company again, and perks right up.</value>
+	</data>
 </root>

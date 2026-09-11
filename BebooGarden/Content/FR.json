@@ -189,5 +189,7 @@
     "fluffball.follows": "La boule de peluche suit {0}.",
     "memory.start": "Mémoire sonore. {0} cases. Appuyez sur 1 à {0} pour en écouter une, et retrouvez les paires. {1} erreurs permises. Échap pour abandonner.",
     "memory.quit": "Vous abandonnez.",
-    "fluffball.staysbehind": "La boule de peluche refuse de suivre {0} dans le froid et reste où elle est."
+    "fluffball.staysbehind": "La boule de peluche refuse de suivre {0} dans le froid et reste où elle est.",
+    "fluffball.alone": "La boule de peluche n'a plus personne à câliner et devient toute triste.",
+    "fluffball.cheered": "La boule de peluche a de nouveau de la compagnie et reprend vie."
 }

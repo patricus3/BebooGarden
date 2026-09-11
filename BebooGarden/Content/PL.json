@@ -188,5 +188,7 @@
     "fluffball.follows": "Kłębek puchu człapie za {0}.",
     "memory.start": "Pamięć dźwiękowa. {0} pól. Naciśnij od 1 do {0}, aby posłuchać, i znajdź pary. Dozwolone błędy: {1}. Escape, aby się poddać.",
     "memory.quit": "Poddajesz się.",
-    "fluffball.staysbehind": "Kłębek puchu nie pójdzie za {0} na zimno i zostaje na miejscu."
+    "fluffball.staysbehind": "Kłębek puchu nie pójdzie za {0} na zimno i zostaje na miejscu.",
+    "fluffball.alone": "Kłębek puchu nie ma już kogo przytulać i robi się cichy i smutny.",
+    "fluffball.cheered": "Kłębek puchu znów ma towarzystwo i od razu się ożywia."
 }

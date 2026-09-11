@@ -631,4 +631,10 @@ W prawym górnym rogu ogrodu otworzyło się miękkie miejsce zwane puszystości
 	<data name="fluffball.staysbehind" xml:space="preserve">
 		<value>Kłębek puchu nie pójdzie za {0} na zimno i zostaje na miejscu.</value>
 	</data>
+	<data name="fluffball.alone" xml:space="preserve">
+		<value>Kłębek puchu nie ma już kogo przytulać i robi się cichy i smutny.</value>
+	</data>
+	<data name="fluffball.cheered" xml:space="preserve">
+		<value>Kłębek puchu znów ma towarzystwo i od razu się ożywia.</value>
+	</data>
 </root>

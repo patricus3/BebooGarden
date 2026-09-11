@@ -189,5 +189,7 @@
     "fluffball.follows": "绒球跟在 {0} 后面。",
     "memory.start": "声音记忆。共 {0} 格。按 1 到 {0} 听一格，找出成对的声音。可以错 {1} 次。按 Escape 放弃。",
     "memory.quit": "你放弃了。",
-    "fluffball.staysbehind": "绒球不肯跟着 {0} 去冷的地方，留在了原地。"
+    "fluffball.staysbehind": "绒球不肯跟着 {0} 去冷的地方，留在了原地。",
+    "fluffball.alone": "绒球没有人可以抱了，安静下来，变得很失落。",
+    "fluffball.cheered": "绒球又有伴了，一下子精神起来。"
 }

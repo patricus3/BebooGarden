@@ -60,6 +60,22 @@ internal class FluffBall : Item
 
   private bool ReadyToHug => (DateTime.Now - _lastHug).TotalMilliseconds > HUGCOOLDOWNMS;
 
+  private bool _wasAlone;
+
+  /// <summary>
+  /// Nobody left to hug: no other fluffball here, and no beboo either. You do not count - a hug
+  /// from you is exactly what it wants, and a sad murmur across the garden is how it asks.
+  /// </summary>
+  private bool Alone
+  {
+    get
+    {
+      Map? map = Game1.Instance.Map;
+      if (map == null || map.Beboos.Count > 0) return false;
+      return !map.Items.OfType<FluffBall>().Any(other => other != this);
+    }
+  }
+
   /// <summary>
   /// Somewhere a fluffball will not go, whoever is asking. It is a ball of fluff: cold and wet are
   /// the two things it has no answer for.
@@ -147,10 +163,14 @@ internal class FluffBall : Item
   public override void Update(GameTime gameTime)
   {
     if (Position == null) return;
+    NoticeWhetherAlone();
     if (MurmurBehaviour.ItsTime())
     {
+      // There is no sad fluffball sound, so a lonely one gets the same murmur with the life taken
+      // out of it: lower, quieter, and further apart.
       Game1.Instance.SoundSystem.PlayFluffBallSound(
-          Game1.Instance.SoundSystem.FluffBallMurmurSounds, this, 0.35f);
+          Game1.Instance.SoundSystem.FluffBallMurmurSounds, this,
+          _wasAlone ? 0.2f : 0.35f, _wasAlone ? 0.75f : 1f);
       MurmurBehaviour.Done();
     }
     if (DriftBehaviour.ItsTime())
@@ -180,6 +200,25 @@ internal class FluffBall : Item
         && !(Game1.Instance.Map?.IsInWater(friend.Position) ?? false))
       return friend.Position;
     return Game1.Instance.Map?.GenerateRandomUnoccupedPosition(excludeWater: true);
+  }
+
+  /// <summary>
+  /// Says so when it is left with nobody, and says so again when somebody comes back. Only on the
+  /// change: a fluffball repeating how sad it is would stop being sad and start being nagging.
+  /// </summary>
+  private void NoticeWhetherAlone()
+  {
+    bool alone = Alone;
+    if (alone == _wasAlone) return;
+    _wasAlone = alone;
+    MurmurBehaviour.MinMS = alone ? 9000 : 5000;
+    MurmurBehaviour.MaxMS = alone ? 20000 : 12000;
+    CrossSpeakManager.Instance.Output(
+        alone ? BebooText.fluffball_alone : BebooText.fluffball_cheered);
+    Game1.Instance.SoundSystem.PlayFluffBallSound(
+        alone ? Game1.Instance.SoundSystem.FluffBallMurmurSounds
+              : Game1.Instance.SoundSystem.FluffBallHugSounds,
+        this, alone ? 0.2f : -1, alone ? 0.7f : 1f);
   }
 
   private void Drift()

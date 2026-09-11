@@ -189,5 +189,7 @@
     "fluffball.follows": "The fluffball tags along after {0}.",
     "memory.start": "Sound memory. {0} cases. Press 1 to {0} to hear one, and find the pairs. {1} mistakes allowed. Escape to give up.",
     "memory.quit": "You gave up.",
-    "fluffball.staysbehind": "The fluffball will not follow {0} into the cold, and stays where it is."
+    "fluffball.staysbehind": "The fluffball will not follow {0} into the cold, and stays where it is.",
+    "fluffball.alone": "The fluffball has nobody left to hug, and goes quiet and sad.",
+    "fluffball.cheered": "The fluffball has company again, and perks right up."
 }

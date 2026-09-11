@@ -190,5 +190,7 @@
     "fluffball.follows": "Der Fluffball zockelt hinter {0} her.",
     "memory.start": "Klanggedächtnis. {0} Felder. Drücke 1 bis {0}, um eines zu hören, und finde die Paare. {1} Fehler erlaubt. Escape zum Aufgeben.",
     "memory.quit": "Du gibst auf.",
-    "fluffball.staysbehind": "Der Fluffball folgt {0} nicht in die Kälte und bleibt, wo er ist."
+    "fluffball.staysbehind": "Der Fluffball folgt {0} nicht in die Kälte und bleibt, wo er ist.",
+    "fluffball.alone": "Der Fluffball hat niemanden mehr zum Kuscheln und wird ganz still und traurig.",
+    "fluffball.cheered": "Der Fluffball hat wieder Gesellschaft und lebt sofort auf."
 }

@@ -631,4 +631,10 @@ Um cantinho macio chamado o fofo abriu no canto superior direito do jardim. Não
 	<data name="fluffball.staysbehind" xml:space="preserve">
 		<value>A bolinha de pelúcia não segue {0} para o frio e fica onde está.</value>
 	</data>
+	<data name="fluffball.alone" xml:space="preserve">
+		<value>A bolinha de pelúcia não tem mais ninguém para abraçar e fica quietinha e triste.</value>
+	</data>
+	<data name="fluffball.cheered" xml:space="preserve">
+		<value>A bolinha de pelúcia tem companhia de novo e se anima na hora.</value>
+	</data>
 </root>
