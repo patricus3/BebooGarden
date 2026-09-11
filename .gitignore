@@ -366,3 +366,7 @@ FodyWeavers.xsd
 # Installer build artefacts: the published payload and the compiled setup.
 installer/payload/
 dist/
+
+# Built mods: the dll is an artefact, rebuilt from src/ and released from dist/.
+mods-standalone/**/*.dll
+mods-standalone/**/*.pdb
