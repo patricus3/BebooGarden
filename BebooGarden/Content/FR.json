@@ -184,5 +184,13 @@
     "ui.confirmpickup": "Ramasser {0} ?",
     "ui.mods": "Mods",
     "mods.done": "Terminé",
-    "mods.confirm-pickup": "Demander avant de ramasser"
+    "mods.confirm-pickup": "Demander avant de ramasser",
+    "beboo.trait.brave": "{0} n'a peur de presque rien.",
+    "beboo.trait.timid": "{0} se méfie de tout ce qui est nouveau.",
+    "beboo.trait.chatty": "{0} a toujours quelque chose à dire.",
+    "beboo.trait.cuddly": "{0} veut être près de tout le monde.",
+    "beboo.trait.dreamy": "{0} est plutôt dormeur.",
+    "beboo.trait.playful": "{0} ne peut rien laisser tranquille.",
+    "fluffball.attached": "La boule de peluche se blottit contre {0} et s'y installe. Elle a choisi son beboo.",
+    "fluffball.follows": "La boule de peluche suit {0}."
 }

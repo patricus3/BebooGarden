@@ -82,7 +82,7 @@ public partial class Game1
                   ? Util.GetBebooTypeByColor(Save.FavoredColor)
                   : Util.GetRandomBebooType();
               }
-              Beboo beboo = new(bebooInfo.Name, bebootype, bebooInfo.Age, Save.LastPlayed, bebooInfo.Happiness, bebooInfo.Energy, bebooInfo.SwimLevel, false, bebooInfo.Voice)
+              Beboo beboo = new(bebooInfo.Name, bebootype, bebooInfo.Age, Save.LastPlayed, bebooInfo.Happiness, bebooInfo.Energy, bebooInfo.SwimLevel, false, bebooInfo.Voice, bebooInfo.Trait)
               {
                 KnowItsName = bebooInfo.KnowItsName || bebooInfo.Age >= 2,
                 ModCreature = bebooInfo.ModCreature,

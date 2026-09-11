@@ -15,4 +15,10 @@ public class BebooInfo(string name, float age, int happiness, float energy, int 
 
   /// <summary>Id of the mod creature this beboo is, when it came from a mod.</summary>
   public string? ModCreature { get; set; }
+
+  /// <summary>
+  /// This beboo's temperament. Nullable on purpose: a save written before traits existed has none,
+  /// and null means draw one rather than quietly making every old beboo the first of the list.
+  /// </summary>
+  public GameCore.Pet.Trait? Trait { get; set; }
 }

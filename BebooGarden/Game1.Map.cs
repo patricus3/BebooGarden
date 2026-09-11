@@ -23,6 +23,7 @@ public partial class Game1
       Map?.Beboos.Remove(transferedBeboo);
       transferedBeboo.Position = new(0, 0, 0);
       richedMap.Beboos.Add(transferedBeboo);
+      GameCore.Item.FluffBall.FollowFriend(transferedBeboo, Map, richedMap);
     }
     ChangeMap(richedMap);
     ChangeMapMusic();

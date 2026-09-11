@@ -36,7 +36,7 @@ public partial class Beboo
     }
     if (GoToSleepOrWakeUpBehaviour.ItsTime())
     {
-      if (!Sleeping && Energy <= MaxEnergy * SLEEPYAT && !OnAnErrand)
+      if (!Sleeping && Energy <= MaxEnergy * SleepyAt && !OnAnErrand)
       {
         GoToBed();
         GoToSleepOrWakeUpBehaviour.Done();

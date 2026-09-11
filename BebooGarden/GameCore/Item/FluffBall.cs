@@ -1,5 +1,6 @@
-using BebooGarden.Content;
+﻿using BebooGarden.Content;
 using BebooGarden.GameCore.Pet;
+using BebooGarden.GameCore.World;
 using CrossSpeak;
 using FmodAudio;
 using Microsoft.Xna.Framework;
@@ -45,7 +46,36 @@ internal class FluffBall : Item
     set => _position = value == null ? null : Game1.Instance.Map?.Clamp(value.Value) ?? value;
   }
 
+  /// <summary>
+  /// The name of the beboo this fluffball has decided belongs to it, once one does. A name rather
+  /// than the beboo itself because items are written into the save, and holding the creature would
+  /// drag the whole of it in there too.
+  /// </summary>
+  public string? FriendName { get; set; }
+
+  /// <summary>The beboo it is attached to, wherever in the world that beboo currently is.</summary>
+  private Beboo? Friend => FriendName == null ? null
+      : Map.Maps.Values.SelectMany(map => map.Beboos)
+          .FirstOrDefault(beboo => !beboo.Racer && beboo.Name == FriendName);
+
   private bool ReadyToHug => (DateTime.Now - _lastHug).TotalMilliseconds > HUGCOOLDOWNMS;
+
+  /// <summary>
+  /// Brings a fluffball along when the beboo it picked changes map. Having chosen somebody, it is
+  /// not going to be left behind in the fluff.
+  /// </summary>
+  public static void FollowFriend(Beboo beboo, Map? from, Map to)
+  {
+    if (from == null || from == to) return;
+    foreach (FluffBall ball in from.Items.OfType<FluffBall>()
+        .Where(ball => ball.FriendName == beboo.Name).ToList())
+    {
+      from.Items.Remove(ball);
+      // Where the beboo itself arrives, and a spot both maps are certain to have.
+      if (!to.AddItem(ball, new Vector3(0, 0, 0))) to.Items.Add(ball);
+      CrossSpeakManager.Instance.Output(String.Format(BebooText.fluffball_follows, beboo.Name));
+    }
+  }
 
   /// <summary>Hugging one back.</summary>
   public override void Action()
@@ -64,6 +94,23 @@ internal class FluffBall : Item
     beboo.Happiness++;
     Game1.Instance.SoundSystem.PlayFluffBallSound(Game1.Instance.SoundSystem.FluffBallHugSounds, this);
     CrossSpeakManager.Instance.Output(String.Format(BebooText.fluffball_hugbeboo, beboo.Name));
+    MaybeAttachTo(beboo);
+  }
+
+  /// <summary>
+  /// Now and then a hug turns into something lasting and the fluffball picks its beboo. One each at
+  /// most: a beboo who already has one is spoken for, and a fluffball only ever chooses once, so
+  /// this stays a thing that happens to somebody rather than to everybody.
+  /// </summary>
+  private void MaybeAttachTo(Beboo beboo)
+  {
+    if (FriendName != null || beboo.Racer) return;
+    if (Game1.Instance.Random.Next(6) != 0) return;
+    if (Map.Maps.Values.SelectMany(map => map.Items).OfType<FluffBall>()
+        .Any(ball => ball.FriendName == beboo.Name)) return;
+    FriendName = beboo.Name;
+    Game1.Instance.SoundSystem.PlayFluffBallSound(Game1.Instance.SoundSystem.FluffBallHugSounds, this);
+    CrossSpeakManager.Instance.Output(String.Format(BebooText.fluffball_attached, beboo.Name));
   }
 
   public override void PlaySound() { }
@@ -95,7 +142,11 @@ internal class FluffBall : Item
     }
     if (DriftBehaviour.ItsTime())
     {
-      _drift = Game1.Instance.Map?.GenerateRandomUnoccupedPosition();
+      // One that has chosen a beboo keeps drifting back to it; a free one goes anywhere.
+      Beboo? friend = Friend;
+      _drift = friend != null && (Game1.Instance.Map?.Beboos.Contains(friend) ?? false)
+          ? friend.Position
+          : Game1.Instance.Map?.GenerateRandomUnoccupedPosition();
       DriftBehaviour.Done();
     }
     if (MoveBehaviour.ItsTime())

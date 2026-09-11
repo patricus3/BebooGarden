@@ -70,6 +70,7 @@ public partial class Game1 : Game
           bebooInfos.Add(new(beboo.Name, beboo.Age, beboo.Happiness, beboo.Energy, beboo.SwimLevel, beboo.VoicePitch, beboo.BebooType)
           {
             ModCreature = beboo.ModCreature,
+            Trait = beboo.Trait,
           });
       }
       MapInfo mapInfo = new(map.Items, fruits, bebooInfos);

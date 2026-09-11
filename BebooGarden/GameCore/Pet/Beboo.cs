@@ -61,8 +61,10 @@ public partial class Beboo
   /// name of its built in type.
   /// </summary>
   public string VoiceId => ModCreature ?? BebooType.ToString();
-  public Beboo(string name, BebooType bebooType, float age, DateTime lastPlayed, int happiness = 3, float energy = 3, int swimLevel = 0, bool racer = false, float voicePitch = 1)
+  public Beboo(string name, BebooType bebooType, float age, DateTime lastPlayed, int happiness = 3, float energy = 3, int swimLevel = 0, bool racer = false, float voicePitch = 1, Trait? trait = null)
   {
+    // Before the behaviours below: some of their timings are drawn from it.
+    Trait = trait ?? RandomTrait();
     Racer = racer;
     Position = new Vector3(0, 0, 0);
     Name = name == string.Empty ? "boby" : name;
@@ -73,13 +75,13 @@ public partial class Beboo
     bool isSleepingAtStart = !racer && (DateTime.Now.Hour < 8 || DateTime.Now.Hour > 22);
     Sleeping = isSleepingAtStart;
     CuteBehaviour =
-      new TimedBehaviour(10000, 35000, !isSleepingAtStart);
+      new TimedBehaviour((int)(10000 * ChatterRate), (int)(35000 * ChatterRate), !isSleepingAtStart);
     MoveBehaviour =
         new TimedBehaviour(200, 400, !isSleepingAtStart);
     GoToSleepOrWakeUpBehaviour =
         new TimedBehaviour(10000, 150000, true);
     FancyMoveBehaviour =
-        new TimedBehaviour(10000, 20000, true);
+        new TimedBehaviour((int)(10000 * RestlessRate), (int)(20000 * RestlessRate), true);
     GoingTiredBehaviour =
         new TimedBehaviour(GOINGTIREDMINMS, GOINGTIREDMAXMS, !isSleepingAtStart || !racer);
     GoingSadBehaviour =
@@ -268,7 +270,7 @@ public partial class Beboo
     if (Game1.Instance.Map?.IsInWater(Position) ?? false)
     {
       Game1.Instance.SoundSystem.PlayBebooSound(Game1.Instance.SoundSystem.BebooStepWaterSound, this, false);
-      if (SwimLevel <= 1 || (SwimLevel < 10 && Game1.Instance.Random.Next(SwimLevel) == 1))
+      if (SwimLevel <= NerveInWater || (SwimLevel < 10 && Game1.Instance.Random.Next(SwimLevel) == 1))
       {
         StartPanik(inWater: true);
         Destination = Game1.Instance.Map.GenerateRandomUnoccupedPosition(true);
@@ -310,7 +312,7 @@ public partial class Beboo
   {
     var proximityBeboos = Game1.Instance.Map?.GetBeboosArround(Position);
     (proximityBeboos ??= []).Remove(this);
-    if (Game1.Instance.Random.Next(4) == 1)
+    if (Game1.Instance.Random.Next(Trait == Trait.Playful ? 3 : 4) == 1)
     {
       Item.Item? proximityItem = Game1.Instance.Map?.GetItemArroundPosition(Position);
       if (proximityItem != null)
@@ -395,7 +397,7 @@ public partial class Beboo
     Panik = true;
     _panikInWater = inWater;
     Game1.Instance.SoundSystem.PlayBebooSound(Game1.Instance.SoundSystem.BebooScreamSound, this);
-    Happiness -= 2;
+    Happiness -= Trait == Trait.Timid ? 3 : 2;
     Energy -= 2;
     FancyMoveBehaviour.MinMS = 400;
     FancyMoveBehaviour.MaxMS = 400;
@@ -415,7 +417,8 @@ public partial class Beboo
       Item.Item? targetItem = Game1.Instance.Map?.Items[Game1.Instance.Random.Next(Game1.Instance.Map.Items.Count)];
       if (targetItem != null) Destination = targetItem.Position;
     }
-    else if (Game1.Instance.Map?.Beboos.Count > 1 && Game1.Instance.Random.Next(2) == 1)
+    else if (Game1.Instance.Map?.Beboos.Count > 1
+        && (Trait == Trait.Cuddly || Game1.Instance.Random.Next(2) == 1))
     {
       var otherBeboos = new List<Beboo>(Game1.Instance.Map.Beboos);
       otherBeboos.Remove(this);
@@ -496,7 +499,7 @@ public partial class Beboo
     _petCount++;
     _lastPetted = DateTime.Now;
     Game1.Instance.SoundSystem.PlayBebooSound(Game1.Instance.SoundSystem.BebooPetSound, this, false);
-    if (_petCount + Game1.Instance.Random.Next(2) >= 4)
+    if (_petCount + Game1.Instance.Random.Next(2) >= PetsBeforeDelight)
     {
       Game1.Instance.SoundSystem.PlayBebooSound(Game1.Instance.SoundSystem.BebooDelightSounds, this);
       if (Happiness <= 7 && Game1.Instance.Random.Next(2) == 1)
@@ -588,12 +591,15 @@ public partial class Beboo
   }
   public void GetScared(Beboo friend)
   {
+    // A brave beboo shrugs off about half of what its friends spring on it.
+    if (Trait == Trait.Brave && Game1.Instance.Random.Next(2) == 1) return;
     StartPanik();
-    Later(5000, EndPanik);
+    Later(PanikMs, EndPanik);
   }
   public void GetWakeUped(Beboo friend)
   {
     if (ResistCradleWakeUp()) return;
+    if (Trait == Trait.Dreamy && Game1.Instance.Random.Next(3) != 1) return;
     Game1.Instance.SoundSystem.PlayBebooSound(Game1.Instance.SoundSystem.BebooSurpriseSounds, this);
     Later(2000, () =>
     {

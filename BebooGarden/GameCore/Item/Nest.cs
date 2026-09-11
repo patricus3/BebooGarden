@@ -1,4 +1,4 @@
-using BebooGarden.Content;
+﻿using BebooGarden.Content;
 using BebooGarden.GameCore.Pet;
 using FmodAudio;
 using System.Numerics;
@@ -28,7 +28,7 @@ internal class Nest : Item
   {
     base.BebooAction(beboo);
     // Bumping into a bed while tired is all the invitation a beboo needs.
-    if (!beboo.Sleeping && beboo.Energy <= beboo.MaxEnergy * Beboo.SLEEPYAT) beboo.GoAsleep();
+    if (!beboo.Sleeping && beboo.Energy <= beboo.MaxEnergy * beboo.SleepyAt) beboo.GoAsleep();
     else PlaySound();
   }
 
