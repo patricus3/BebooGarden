@@ -130,9 +130,9 @@ something the game already knows how to do but does not do by default:
 Names are matched without regard to case, and one this version does not recognise is ignored rather
 than refused, so a mod can name a feature from a later version and still load here.
 
-This is also why the game ships a mod of its own: `confirm-pickup` is a preference some people want
-and most do not, and the mod list is already a list of things you can tick. It saves growing a
-settings screen for one checkbox.
+Features are why a preference some people want and most do not can be a mod rather than a setting:
+the mod list is already a list of things you can tick, so it saves growing a settings screen for one
+checkbox. `confirm-pickup` above is a real one, downloaded separately from the game.
 
 A mod may list features, creatures, or both.
 
