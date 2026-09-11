@@ -628,4 +628,7 @@ Un petit endroit tout doux, la peluche, s'est ouvert en haut à droite du jardin
 	<data name="memory.quit" xml:space="preserve">
 		<value>Vous abandonnez.</value>
 	</data>
+	<data name="fluffball.staysbehind" xml:space="preserve">
+		<value>La boule de peluche refuse de suivre {0} dans le froid et reste où elle est.</value>
+	</data>
 </root>

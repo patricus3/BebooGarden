@@ -628,4 +628,7 @@ Một nơi mềm mại tên là Xứ Bông vừa mở ra ở góc trên bên ph�
 	<data name="memory.quit" xml:space="preserve">
 		<value>Bạn đã bỏ cuộc.</value>
 	</data>
+	<data name="fluffball.staysbehind" xml:space="preserve">
+		<value>Cục bông không chịu theo {0} vào chỗ lạnh, nó ở lại.</value>
+	</data>
 </root>

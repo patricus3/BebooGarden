@@ -1599,5 +1599,14 @@ namespace BebooGarden.Content {
             }
         }
 
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à The fluffball will not follow {0} into the cold, and stays where it is..
+        /// </summary>
+        internal static string fluffball_staysbehind {
+            get {
+                return ResourceManager.GetString("fluffball.staysbehind", resourceCulture);
+            }
+        }
+
     }
 }

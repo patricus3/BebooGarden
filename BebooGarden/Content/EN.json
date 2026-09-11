@@ -188,5 +188,6 @@
     "fluffball.attached": "The fluffball snuggles into {0} and settles there. It has picked its beboo.",
     "fluffball.follows": "The fluffball tags along after {0}.",
     "memory.start": "Sound memory. {0} cases. Press 1 to {0} to hear one, and find the pairs. {1} mistakes allowed. Escape to give up.",
-    "memory.quit": "You gave up."
+    "memory.quit": "You gave up.",
+    "fluffball.staysbehind": "The fluffball will not follow {0} into the cold, and stays where it is."
 }

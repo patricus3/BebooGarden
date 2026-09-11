@@ -188,5 +188,6 @@
     "fluffball.attached": "绒球依偎进 {0} 怀里，就赖着不走了。它选好自己的beboo了。",
     "fluffball.follows": "绒球跟在 {0} 后面。",
     "memory.start": "声音记忆。共 {0} 格。按 1 到 {0} 听一格，找出成对的声音。可以错 {1} 次。按 Escape 放弃。",
-    "memory.quit": "你放弃了。"
+    "memory.quit": "你放弃了。",
+    "fluffball.staysbehind": "绒球不肯跟着 {0} 去冷的地方，留在了原地。"
 }

@@ -628,4 +628,7 @@ W prawym górnym rogu ogrodu otworzyło się miękkie miejsce zwane puszystości
 	<data name="memory.quit" xml:space="preserve">
 		<value>Poddajesz się.</value>
 	</data>
+	<data name="fluffball.staysbehind" xml:space="preserve">
+		<value>Kłębek puchu nie pójdzie za {0} na zimno i zostaje na miejscu.</value>
+	</data>
 </root>

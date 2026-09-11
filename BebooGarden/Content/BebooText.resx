@@ -629,4 +629,7 @@ A soft little place called the fluff has opened up, at the top right of the gard
 	<data name="memory.quit" xml:space="preserve">
 		<value>You gave up.</value>
 	</data>
+	<data name="fluffball.staysbehind" xml:space="preserve">
+		<value>The fluffball will not follow {0} into the cold, and stays where it is.</value>
+	</data>
 </root>

@@ -628,4 +628,7 @@ Oben rechts im Garten hat ein weicher kleiner Ort aufgemacht: das Flauschige. Do
 	<data name="memory.quit" xml:space="preserve">
 		<value>Du gibst auf.</value>
 	</data>
+	<data name="fluffball.staysbehind" xml:space="preserve">
+		<value>Der Fluffball folgt {0} nicht in die Kälte und bleibt, wo er ist.</value>
+	</data>
 </root>

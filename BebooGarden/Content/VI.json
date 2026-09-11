@@ -188,5 +188,6 @@
     "fluffball.attached": "Cục bông rúc vào {0} rồi ở lì đó. Nó đã chọn được beboo của mình.",
     "fluffball.follows": "Cục bông lẽo đẽo theo sau {0}.",
     "memory.start": "Trí nhớ âm thanh. {0} ô. Bấm từ 1 đến {0} để nghe một ô, rồi tìm các cặp. Được sai {1} lần. Bấm Escape để bỏ cuộc.",
-    "memory.quit": "Bạn đã bỏ cuộc."
+    "memory.quit": "Bạn đã bỏ cuộc.",
+    "fluffball.staysbehind": "Cục bông không chịu theo {0} vào chỗ lạnh, nó ở lại."
 }

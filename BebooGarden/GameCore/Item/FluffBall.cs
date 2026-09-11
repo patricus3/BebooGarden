@@ -61,8 +61,15 @@ internal class FluffBall : Item
   private bool ReadyToHug => (DateTime.Now - _lastHug).TotalMilliseconds > HUGCOOLDOWNMS;
 
   /// <summary>
-  /// Brings a fluffball along when the beboo it picked changes map. Having chosen somebody, it is
-  /// not going to be left behind in the fluff.
+  /// Somewhere a fluffball will not go, whoever is asking. It is a ball of fluff: cold and wet are
+  /// the two things it has no answer for.
+  /// </summary>
+  private static bool TooColdForFluff(Map map) =>
+      map.Preset is MapPreset.snowy or MapPreset.snowyrace or MapPreset.underwater;
+
+  /// <summary>
+  /// Brings a fluffball along when the beboo it picked changes map. Having chosen somebody it goes
+  /// where they go - except into the snow or under the water, where it waits instead.
   /// </summary>
   public static void FollowFriend(Beboo beboo, Map? from, Map to)
   {
@@ -70,6 +77,12 @@ internal class FluffBall : Item
     foreach (FluffBall ball in from.Items.OfType<FluffBall>()
         .Where(ball => ball.FriendName == beboo.Name).ToList())
     {
+      if (TooColdForFluff(to))
+      {
+        CrossSpeakManager.Instance.Output(
+            String.Format(BebooText.fluffball_staysbehind, beboo.Name));
+        continue;
+      }
       from.Items.Remove(ball);
       // Where the beboo itself arrives, and a spot both maps are certain to have.
       if (!to.AddItem(ball, new Vector3(0, 0, 0))) to.Items.Add(ball);
@@ -142,19 +155,31 @@ internal class FluffBall : Item
     }
     if (DriftBehaviour.ItsTime())
     {
-      // One that has chosen a beboo keeps drifting back to it; a free one goes anywhere.
-      Beboo? friend = Friend;
-      _drift = friend != null && (Game1.Instance.Map?.Beboos.Contains(friend) ?? false)
-          ? friend.Position
-          : Game1.Instance.Map?.GenerateRandomUnoccupedPosition();
+      _drift = WhereToDrift();
       DriftBehaviour.Done();
     }
     if (MoveBehaviour.ItsTime())
     {
+      // One that has chosen a beboo keeps it in sight every step rather than waiting for the next
+      // drift, so it really follows instead of trailing a long way behind.
+      if (Friend != null) _drift = WhereToDrift();
       Drift();
       HugWhateverIsHere();
       MoveBehaviour.Done();
     }
+  }
+
+  /// <summary>
+  /// Where it wants to be: its beboo, when it has one and that beboo is here and out of the water,
+  /// and anywhere dry otherwise. It will not wade in after somebody.
+  /// </summary>
+  private Vector3? WhereToDrift()
+  {
+    Beboo? friend = Friend;
+    if (friend != null && (Game1.Instance.Map?.Beboos.Contains(friend) ?? false)
+        && !(Game1.Instance.Map?.IsInWater(friend.Position) ?? false))
+      return friend.Position;
+    return Game1.Instance.Map?.GenerateRandomUnoccupedPosition(excludeWater: true);
   }
 
   private void Drift()
@@ -164,7 +189,10 @@ internal class FluffBall : Item
     if (Math.Abs(step.X) < 1 && Math.Abs(step.Y) < 1) return;
     step.X = Math.Sign(step.X);
     step.Y = Math.Sign(step.Y);
-    Position += step;
+    Vector3 next = Position.Value + step;
+    // A soaked fluffball is not a fluffball any more.
+    if (Game1.Instance.Map?.IsInWater(next) ?? false) return;
+    Position = next;
   }
 
   /// <summary>Two fluffballs that meet hug each other, which is most of what you hear in here.</summary>

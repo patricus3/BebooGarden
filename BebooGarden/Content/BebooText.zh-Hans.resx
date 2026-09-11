@@ -628,4 +628,7 @@ Escape 打开菜单。就这些了。好好相处。</value>
 	<data name="memory.quit" xml:space="preserve">
 		<value>你放弃了。</value>
 	</data>
+	<data name="fluffball.staysbehind" xml:space="preserve">
+		<value>绒球不肯跟着 {0} 去冷的地方，留在了原地。</value>
+	</data>
 </root>
