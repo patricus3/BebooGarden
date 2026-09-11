@@ -74,9 +74,25 @@ public partial class Game1
     {
       _desktop.OnChar(a.Character);
     };
-    // The mod list comes first, but only when it has something to ask: a mod the player has not
-    // seen before. Asking every launch would put a screen between them and the garden forever, for
-    // an answer that almost never changes. It stays reachable from the main menu.
+    // Not from here. MonoGame calls LoadContent from inside base.Initialize, which runs before the
+    // rest of Initialize has discovered the mods and read which of them are switched on - so this
+    // used to decide both questions against an empty list, and no mod ever started. The first
+    // Update tick is after all of it, whichever order the graphics device happens to be created in.
+    _gardenNotStarted = true;
+  }
+
+  /// <summary>Whether the garden still has to be opened. Cleared on the first update.</summary>
+  private bool _gardenNotStarted;
+
+  /// <summary>
+  /// Opens the garden, asking about mods first when there is one the player has not seen before.
+  /// Asking every launch would put a screen between them and their beboos forever, for an answer
+  /// that almost never changes, so the list stays reachable from the main menu instead.
+  /// </summary>
+  internal void BeginGardenIfNeeded()
+  {
+    if (!_gardenNotStarted) return;
+    _gardenNotStarted = false;
     if (Modding.ModManager.All.Any(mod => !(Save.KnownMods ?? []).Contains(mod.Id)))
       new UI.ModMenu(StartTheGarden).Show();
     else StartTheGarden();

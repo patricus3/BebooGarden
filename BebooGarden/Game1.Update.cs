@@ -28,6 +28,7 @@ public partial class Game1
 
   protected override void Update(GameTime gameTime)
   {
+    BeginGardenIfNeeded();
     GetKeyStates(out _currentKeyboardState, out MouseState currentMouseState);
     _desktop.UpdateInput();
     CloseMenuIfNeeded();
