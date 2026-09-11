@@ -110,7 +110,6 @@ internal class Memory : IMiniGame
     var group1 = _groups[_random.Next(_groups.Count)];
     string? group2 = null;
     int nbSounds = 4;
-    int maxRetry = 4;
     if (Score % 3 == 0 && Score != 0)
     {
       do
@@ -123,10 +122,10 @@ internal class Memory : IMiniGame
       nbSounds = 3;
       group1 = _groups[0];
     }
-    if (Score < 4)
-    {
-      maxRetry = 3;
-    }
+    // Mistakes scale with the size of the grid instead of being a flat three. Three across eight
+    // cases meant playing very nearly perfectly from the first guess, which is less a memory game
+    // than a coin toss. It tightens as you get further in, but never below one per pair.
+    int maxRetry = nbSounds + 2 - Math.Min(2, Score / 6);
     _level = new Level(SoundSystem, nbSounds, maxRetry, group1, group2);
   }
 }

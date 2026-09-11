@@ -79,7 +79,10 @@ internal class Level
           Win = true;
           Ended = true;
         }
-        else if (Retry >= MaxRetry)
+        // Strictly greater: MaxRetry is how many mistakes you may make, which is what the game
+        // announces at the start, so the last one you are promised should not be the one that ends
+        // the run.
+        else if (Retry > MaxRetry)
         {
           CrossSpeakManager.Instance.Output(BebooText.lose);
           SoundSystem.PlayQueue(SoundSystem.JingleLose);
