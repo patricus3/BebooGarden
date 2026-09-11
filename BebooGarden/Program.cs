@@ -1,16 +1,16 @@
-using System;
+﻿using System;
 using System.IO;
 using System.Threading.Tasks;
 
 // A crash used to take the window away with nothing written down anywhere, which makes a bug
-// report a guess. Anything that gets this far is appended to crash.log next to the game, with the
-// stack, so a player can send it on and it says what actually happened.
+// report a guess. Anything that gets this far is appended to crash.log in the player's own folder,
+// with the stack, so a player can send it on and it says what actually happened.
 static void Record(string origin, Exception? error)
 {
     if (error == null) return;
     try
     {
-        File.AppendAllText("crash.log",
+        File.AppendAllText(BebooGarden.GamePaths.CrashLog,
             $"{DateTime.Now:yyyy-MM-dd HH:mm:ss}  {origin}{Environment.NewLine}{error}{Environment.NewLine}{Environment.NewLine}");
     }
     catch (Exception)

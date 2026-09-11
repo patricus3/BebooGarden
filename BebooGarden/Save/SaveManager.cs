@@ -7,7 +7,6 @@ namespace BebooGarden.Save;
 
 public class SaveManager
 {
-  private const string DATAFILEPATH = "save.dat";
 
   private static readonly JsonSerializerSettings Settings = new()
   {
@@ -27,8 +26,9 @@ public class SaveManager
 
   private static SaveParameters? LoadJson()
   {
-    if (!File.Exists(DATAFILEPATH)) return null;
-    string json = File.ReadAllText(DATAFILEPATH);
+    GamePaths.MigrateLegacyFiles();
+    if (!File.Exists(GamePaths.SaveFile)) return null;
+    string json = File.ReadAllText(GamePaths.SaveFile);
     try
     {
       return JsonConvert.DeserializeObject<SaveParameters>(json, Settings);
@@ -45,6 +45,6 @@ public class SaveManager
   public static void WriteSave(SaveParameters parameters)
   {
     string json = JsonConvert.SerializeObject(parameters, Settings);
-    File.WriteAllText(DATAFILEPATH, json);
+    File.WriteAllText(GamePaths.SaveFile, json);
   }
 }

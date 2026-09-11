@@ -13,10 +13,11 @@
 ;
 ; Two decisions worth knowing about:
 ;
-; It installs per user, not into Program Files. The game keeps save.dat and crash.log beside its
-; own executable and reads mods from a folder there, none of which a normal account may write to
-; under Program Files. PrivilegesRequired=lowest with {autopf} lands it in
-; %LocalAppData%\Programs instead, which is writable, and asks for no administrator prompt.
+; It installs for the whole machine, into Program Files, with the permissions Windows gives that
+; folder and no loosening of them. That works because the game keeps nothing of the player's in its
+; own folder: the save, the crash log and any mods they add live under %LocalAppData%\BebooGarden
+; (see GamePaths.cs). Each account gets its own garden. Someone without administrator rights can
+; still choose to install just for themselves, and everything works the same way.
 ;
 ; The build is framework dependent, and the .NET runtime is downloaded during setup only when the
 ; machine does not already have it. Most people never see that step, and nobody downloads a copy
@@ -55,11 +56,11 @@ AppUpdatesURL={#AppURL}
 VersionInfoVersion={#AppVersion}
 VersionInfoProductName={#AppName}
 
-; Per user: see the note at the top about save.dat needing a writable folder. Deliberately without
-; PrivilegesRequiredOverridesAllowed: offering an all-users install offers a broken one, and a
-; silent install by an administrator takes that branch on its own, landing the game in Program
-; Files where it cannot write its save.
-PrivilegesRequired=lowest
+; All users by default. Anyone without administrator rights is offered a just-for-me install
+; instead, which lands in %LocalAppData%\Programs; both are correct now that nothing the player
+; owns is kept in the install folder. {autopf} follows whichever mode is in force.
+PrivilegesRequired=admin
+PrivilegesRequiredOverridesAllowed=dialog
 DefaultDirName={autopf}\{#AppShortName}
 DefaultGroupName={#AppShortName}
 DisableProgramGroupPage=yes
@@ -136,8 +137,8 @@ Name: "{autodesktop}\{#AppShortName}"; Filename: "{app}\{#AppExe}"; Tasks: deskt
 Filename: "{app}\{#AppExe}"; Description: "{cm:LaunchProgram,{#AppShortName}}"; Flags: nowait postinstall skipifsilent
 
 [UninstallDelete]
-; save.dat, crash.log and anything the player dropped into mods are deliberately not listed here.
-; Uninstalling should not take somebody's beboos away, so the folder stays if it still holds them.
+; Only what setup put here. Saves live in %LocalAppData%\BebooGarden and are left alone entirely -
+; uninstalling should not take somebody's beboos away, and reinstalling should find them again.
 Type: dirifempty; Name: "{app}\mods"
 Type: dirifempty; Name: "{app}"
 
