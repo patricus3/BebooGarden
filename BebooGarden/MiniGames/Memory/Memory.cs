@@ -52,8 +52,12 @@ internal class Memory : IMiniGame
     }
     SoundSystem.LoadMenu();
     _random = new Random();
-    _groups = Directory.GetDirectories(Path.Combine(BebooGarden.SoundSystem.CONTENTFOLDER, BebooGarden.SoundSystem.BEBOOSOUNDSFOLDER)).ToList();
-    _groups.Concat(Directory.GetDirectories(CONTENTFOLDER).ToList());
+    // Concat returns a new sequence rather than adding to this one, so the boombox groups were
+    // built and then dropped on the floor: every level was drawn from beboo voices alone.
+    _groups = [
+      .. Directory.GetDirectories(Path.Combine(BebooGarden.SoundSystem.CONTENTFOLDER, BebooGarden.SoundSystem.BEBOOSOUNDSFOLDER)),
+      .. Directory.GetDirectories(CONTENTFOLDER),
+    ];
     Score = 0;
     StartNewLevel();
   }
@@ -80,8 +84,10 @@ internal class Memory : IMiniGame
     Game1.Instance.Unpause();
     SoundSystem.System.Release();
     IsRunning = false;
+    // The whole point of the treasure chest, and it was commented out: you played the memory game
+    // and were given nothing at all for it.
+    Game1.Instance.GainTicket(Score / 4);
 /*
-    Game1.Instance.GainTicket((int)score / 4);
     beboo.Age += ((int)score / 5) * 0.1f;
     if (score > 0) beboo.Happiness++;
     else beboo.Happiness--;

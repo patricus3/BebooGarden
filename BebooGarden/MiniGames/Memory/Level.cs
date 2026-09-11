@@ -43,7 +43,10 @@ internal class Level
   public void Update(GameTime gameTime, KeyboardState currentKeyboardState)
   {
     if (Ended) return;
-    if (Game1.Instance.IsKeyPressed(currentKeyboardState, Keys.D1, Keys.D2, Keys.D3, Keys.D4, Keys.D6, Keys.D7, Keys.D8, Keys.NumPad1, Keys.NumPad2, Keys.NumPad3, Keys.NumPad4, Keys.NumPad5, Keys.NumPad6, Keys.NumPad7, Keys.NumPad8))
+    // D5 was missing from this list while every other digit was here, so the fifth case could not
+    // be turned over from the number row at all. A grid always has six or eight cases, so one of
+    // them was permanently unreachable and no level could ever be cleared.
+    if (Game1.Instance.IsKeyPressed(currentKeyboardState, Keys.D1, Keys.D2, Keys.D3, Keys.D4, Keys.D5, Keys.D6, Keys.D7, Keys.D8, Keys.NumPad1, Keys.NumPad2, Keys.NumPad3, Keys.NumPad4, Keys.NumPad5, Keys.NumPad6, Keys.NumPad7, Keys.NumPad8))
     {
       var key = currentKeyboardState.GetPressedKeys()[0];
       if (BebooGarden.Util.IsKeyDigit(key, out int keyInt) && keyInt <= NbSounds * 2 && keyInt > 0)
