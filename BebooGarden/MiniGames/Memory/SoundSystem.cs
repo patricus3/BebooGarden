@@ -42,6 +42,11 @@ public class SoundSystem
 
   public void LoadLevel(int maxSounds, string group1, string? group2 = null)
   {
+    // Finishing a level tells the waiting tasks to give up, and that flag stayed set for the life
+    // of the minigame: every sound of every level after the first returned without playing a note,
+    // so the game worked once and then went silent. A new level is a fresh start.
+    _stopping = false;
+    tasks.RemoveAll(task => task.IsCompleted);
     //Load sounds
     MaxSounds = maxSounds;
     Sounds = new Sound[maxSounds];
