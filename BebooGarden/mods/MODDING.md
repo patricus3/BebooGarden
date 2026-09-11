@@ -1,6 +1,6 @@
-# Modding Beboo Garden: Enhanced Edition — reference
+﻿# Modding Beboo Garden: Enhanced Edition — reference
 
-Version 2.1. Mods are folders of data, not code: no compiling, no DLLs, nothing to install beyond
+Version 2.2. Mods are folders of data, not code: no compiling, no DLLs, nothing to install beyond
 dropping a folder in place.
 
 ---
