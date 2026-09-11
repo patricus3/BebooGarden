@@ -1,12 +1,14 @@
-; Installer for Beboo Garden: Enhanced Edition.
+﻿; Installer for Beboo Garden: Enhanced Edition.
 ;
 ; Build it with:
-;   dotnet publish BebooGarden\BebooGarden.csproj -c Release -r win-x64 --self-contained true ^
+;   dotnet publish BebooGarden\BebooGarden.csproj -c Release -r win-x64 --self-contained false ^
 ;       -p:EnableMGCBItems=false -o installer\payload
 ;   "C:\Program Files (x86)\Inno Setup 6\ISCC.exe" installer\BebooGarden.iss
 ;
 ; PayloadDir and OutDir can both be pointed elsewhere without editing this file, e.g.
 ;   ISCC.exe /DPayloadDir="D:\build\payload" /DOutDir="%USERPROFILE%\Desktop" installer\BebooGarden.iss
+;
+; This file is UTF-8 with a BOM. Inno needs the BOM to read the accented characters below.
 ;
 ; Two decisions worth knowing about:
 ;
@@ -15,8 +17,9 @@
 ; under Program Files. PrivilegesRequired=lowest with {autopf} lands it in
 ; %LocalAppData%\Programs instead, which is writable, and asks for no administrator prompt.
 ;
-; The payload is self contained, so there is no .NET runtime to install first. That costs size,
-; which is worth it for a game whose players should not have to go and find a prerequisite.
+; The build is framework dependent, and the .NET runtime is downloaded during setup only when the
+; machine does not already have it. Most people never see that step, and nobody downloads a copy
+; of a runtime they already have.
 
 #define AppName "Beboo Garden: Enhanced Edition"
 #define AppShortName "Beboo Garden"
@@ -24,6 +27,12 @@
 #define AppPublisher "Saladeuh"
 #define AppURL "https://github.com/Saladeuh/BebooGarden"
 #define AppExe "BebooGarden.exe"
+
+; The runtime the game needs. The project sets RollForward=Major, so a later major works too.
+; The aka.ms address always points at the newest patch of the 10.0 channel.
+#define DotNetMajor "10"
+#define DotNetUrl "https://aka.ms/dotnet/10.0/dotnet-runtime-win-x64.exe"
+#define DotNetManualUrl "https://dotnet.microsoft.com/download/dotnet/10.0"
 
 #ifndef PayloadDir
   #define PayloadDir "payload"
@@ -75,6 +84,38 @@ Name: "german"; MessagesFile: "compiler:Languages\German.isl"
 Name: "polish"; MessagesFile: "compiler:Languages\Polish.isl"
 Name: "brazilianportuguese"; MessagesFile: "compiler:Languages\BrazilianPortuguese.isl"
 
+[CustomMessages]
+; An entry with no language prefix is the fallback for any language that does not override it.
+PrereqTitle=.NET runtime
+PrereqSubtitle=Beboo Garden needs the Microsoft .NET runtime, which this computer does not have yet. Setup will download it.
+InstallingDotNet=Installing the .NET runtime. Windows will ask for permission.
+DownloadFailed=The .NET runtime could not be downloaded. You can install it yourself afterwards from %1 - the game will not start until it is there.%n%nInstall Beboo Garden anyway?
+DotNetFailed=The .NET runtime was not installed. You can install it yourself afterwards from %1 - the game will not start until it is there.%n%nInstall Beboo Garden anyway?
+
+french.PrereqTitle=Environnement .NET
+french.PrereqSubtitle=Beboo Garden a besoin de l'environnement Microsoft .NET, qui n'est pas encore installé sur cet ordinateur. Le programme d'installation va le télécharger.
+french.InstallingDotNet=Installation de l'environnement .NET. Windows va demander une autorisation.
+french.DownloadFailed=Impossible de télécharger l'environnement .NET. Vous pourrez l'installer vous-même depuis %1 - le jeu ne démarrera pas tant qu'il ne sera pas là.%n%nInstaller Beboo Garden quand même ?
+french.DotNetFailed=L'environnement .NET n'a pas été installé. Vous pourrez l'installer vous-même depuis %1 - le jeu ne démarrera pas tant qu'il ne sera pas là.%n%nInstaller Beboo Garden quand même ?
+
+german.PrereqTitle=.NET-Laufzeitumgebung
+german.PrereqSubtitle=Beboo Garden benötigt die Microsoft .NET-Laufzeitumgebung, die auf diesem Computer noch fehlt. Das Setup lädt sie herunter.
+german.InstallingDotNet=Die .NET-Laufzeitumgebung wird installiert. Windows fragt gleich nach einer Berechtigung.
+german.DownloadFailed=Die .NET-Laufzeitumgebung konnte nicht heruntergeladen werden. Sie können sie später selbst von %1 installieren - bis dahin startet das Spiel nicht.%n%nBeboo Garden trotzdem installieren?
+german.DotNetFailed=Die .NET-Laufzeitumgebung wurde nicht installiert. Sie können sie später selbst von %1 installieren - bis dahin startet das Spiel nicht.%n%nBeboo Garden trotzdem installieren?
+
+polish.PrereqTitle=Środowisko .NET
+polish.PrereqSubtitle=Beboo Garden potrzebuje środowiska Microsoft .NET, którego nie ma jeszcze na tym komputerze. Instalator je pobierze.
+polish.InstallingDotNet=Instalowanie środowiska .NET. Windows poprosi o zgodę.
+polish.DownloadFailed=Nie udało się pobrać środowiska .NET. Możesz zainstalować je później samodzielnie ze strony %1 - do tego czasu gra się nie uruchomi.%n%nZainstalować mimo to Beboo Garden?
+polish.DotNetFailed=Środowisko .NET nie zostało zainstalowane. Możesz zainstalować je później samodzielnie ze strony %1 - do tego czasu gra się nie uruchomi.%n%nZainstalować mimo to Beboo Garden?
+
+brazilianportuguese.PrereqTitle=Runtime do .NET
+brazilianportuguese.PrereqSubtitle=O Beboo Garden precisa do runtime do Microsoft .NET, que ainda não existe neste computador. O instalador vai baixá-lo.
+brazilianportuguese.InstallingDotNet=Instalando o runtime do .NET. O Windows vai pedir permissão.
+brazilianportuguese.DownloadFailed=Não foi possível baixar o runtime do .NET. Você pode instalá-lo depois a partir de %1 - o jogo não abre enquanto ele não estiver lá.%n%nInstalar o Beboo Garden mesmo assim?
+brazilianportuguese.DotNetFailed=O runtime do .NET não foi instalado. Você pode instalá-lo depois a partir de %1 - o jogo não abre enquanto ele não estiver lá.%n%nInstalar o Beboo Garden mesmo assim?
+
 [Tasks]
 Name: "desktopicon"; Description: "{cm:CreateDesktopIcon}"; GroupDescription: "{cm:AdditionalIcons}"
 
@@ -95,3 +136,124 @@ Filename: "{app}\{#AppExe}"; Description: "{cm:LaunchProgram,{#AppShortName}}"; 
 ; Uninstalling should not take somebody's beboos away, so the folder stays if it still holds them.
 Type: dirifempty; Name: "{app}\mods"
 Type: dirifempty; Name: "{app}"
+
+[Code]
+const
+  DotNetInstaller = 'dotnet-runtime-win-x64.exe';
+
+var
+  DownloadPage: TDownloadWizardPage;
+  NeedDotNet: Boolean;
+
+{ Where the shared runtimes live. The runtime installer normally records this, but not every
+  machine has the key - one that arrived with Visual Studio may not - so fall back to the
+  default location. }
+function DotNetRoot(): String;
+begin
+  if not RegQueryStringValue(HKLM64, 'SOFTWARE\dotnet\Setup\InstalledVersions\x64',
+      'InstallLocation', Result) or (Result = '') then
+    Result := ExpandConstant('{commonpf64}\dotnet');
+end;
+
+{ True when a runtime the game can use is already here. Every subfolder of
+  shared\Microsoft.NETCore.App is named for its version, so the major number is all we need: the
+  project sets RollForward=Major, so anything from 10 upwards will run it. }
+function HasDotNet(): Boolean;
+var
+  Dir, Name: String;
+  Rec: TFindRec;
+  Dot: Integer;
+begin
+  Result := False;
+  Dir := DotNetRoot + '\shared\Microsoft.NETCore.App';
+  if not DirExists(Dir) then Exit;
+  if not FindFirst(Dir + '\*', Rec) then Exit;
+  try
+    repeat
+      if (Rec.Attributes and FILE_ATTRIBUTE_DIRECTORY) = 0 then Continue;
+      Name := Rec.Name;
+      Dot := Pos('.', Name);
+      if Dot < 2 then Continue;
+      if StrToIntDef(Copy(Name, 1, Dot - 1), 0) >= {#DotNetMajor} then Result := True;
+    until Result or (not FindNext(Rec));
+  finally
+    FindClose(Rec);
+  end;
+end;
+
+function OnDownloadProgress(const Url, FileName: String; const Progress, ProgressMax: Int64): Boolean;
+begin
+  Result := True;
+end;
+
+procedure InitializeWizard();
+begin
+  DownloadPage := CreateDownloadPage(CustomMessage('PrereqTitle'), CustomMessage('PrereqSubtitle'),
+      @OnDownloadProgress);
+end;
+
+{ The download happens after the last question and before anything is written, so backing out
+  here still leaves the machine untouched. A silent install never reaches this: it is handled in
+  PrepareToInstall instead. }
+function NextButtonClick(CurPageID: Integer): Boolean;
+begin
+  Result := True;
+  if CurPageID <> wpReady then Exit;
+
+  NeedDotNet := not HasDotNet;
+  if not NeedDotNet then Exit;
+
+  DownloadPage.Clear;
+  DownloadPage.Add('{#DotNetUrl}', DotNetInstaller, '');
+  DownloadPage.Show;
+  try
+    try
+      DownloadPage.Download;
+    except
+      { No connection, or Microsoft is having a day. The game installs fine without the runtime,
+        it just will not start, so let the player decide rather than dead-ending them here. }
+      NeedDotNet := False;
+      Result := SuppressibleMsgBox(FmtMessage(CustomMessage('DownloadFailed'), ['{#DotNetManualUrl}']),
+          mbError, MB_YESNO, IDYES) = IDYES;
+    end;
+  finally
+    DownloadPage.Hide;
+  end;
+end;
+
+function PrepareToInstall(var NeedsRestart: Boolean): String;
+var
+  Code: Integer;
+  Ok: Boolean;
+begin
+  Result := '';
+
+  { A silent install skips every wizard page, NextButtonClick included, so the check and the
+    download have to happen here as well or an unattended install would quietly end up with a game
+    that cannot start. No page to show, so fetch the file directly. }
+  if WizardSilent and not HasDotNet then
+  begin
+    try
+      DownloadTemporaryFile('{#DotNetUrl}', DotNetInstaller, '', nil);
+      NeedDotNet := True;
+    except
+      Log('Could not download the .NET runtime: ' + GetExceptionMessage);
+    end;
+  end;
+
+  if not NeedDotNet then Exit;
+
+  WizardForm.PreparingLabel.Caption := CustomMessage('InstallingDotNet');
+  { The game needs no administrator rights, but Microsoft's runtime installer does, so this is the
+    one point in setup where Windows asks. 'runas' is what raises that prompt. }
+  Ok := ShellExec('runas', ExpandConstant('{tmp}\' + DotNetInstaller), '/install /quiet /norestart',
+      '', SW_SHOW, ewWaitUntilTerminated, Code);
+  { 1641 and 3010 both mean it worked and wants a reboot. }
+  if Ok and ((Code = 1641) or (Code = 3010)) then NeedsRestart := True;
+  if Ok and ((Code = 0) or (Code = 1641) or (Code = 3010)) then Exit;
+
+  { Declined the prompt, or it failed outright. Same offer as a failed download: carry on, or stop. }
+  if SuppressibleMsgBox(FmtMessage(CustomMessage('DotNetFailed'), ['{#DotNetManualUrl}']),
+      mbError, MB_YESNO, IDYES) = IDNO then
+    Result := FmtMessage(CustomMessage('DotNetFailed'), ['{#DotNetManualUrl}']);
+end;
