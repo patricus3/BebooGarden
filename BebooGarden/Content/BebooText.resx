@@ -599,4 +599,22 @@ You unlock the path to the snowy area. Go through it by calling your Beboo to th
 		<value>{0} is happy enough for a day out!
 A soft little place called the fluff has opened up, at the top right of the garden. There is nothing to do there at all. That is rather the point.</value>
 	</data>
+	<data name="ui.yes" xml:space="preserve">
+		<value>Yes</value>
+	</data>
+	<data name="ui.no" xml:space="preserve">
+		<value>No</value>
+	</data>
+	<data name="ui.confirmpickup" xml:space="preserve">
+		<value>Pick up {0}?</value>
+	</data>
+	<data name="ui.mods" xml:space="preserve">
+		<value>Mods</value>
+	</data>
+	<data name="mods.done" xml:space="preserve">
+		<value>Done</value>
+	</data>
+	<data name="mods.confirm-pickup" xml:space="preserve">
+		<value>Ask before picking things up</value>
+	</data>
 </root>

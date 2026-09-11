@@ -179,5 +179,11 @@
     "fluffball.description": "Ein kleines rundes Ding, ganz aus Flausch. Es umarmt alles, was ihm über den Weg läuft.",
     "fluffball.hugyou": "Der Flauschball umarmt dich. Er ist unglaublich weich.",
     "fluffball.hugbeboo": "Der Flauschball umarmt {0}, was {0} ganz hin und weg sein lässt.",
-    "unlockfluff": "{0} ist glücklich genug für einen Ausflug!\nOben rechts im Garten hat ein weicher kleiner Ort aufgemacht: das Flauschige. Dort gibt es überhaupt nichts zu tun. Das ist genau der Sinn davon."
+    "unlockfluff": "{0} ist glücklich genug für einen Ausflug!\nOben rechts im Garten hat ein weicher kleiner Ort aufgemacht: das Flauschige. Dort gibt es überhaupt nichts zu tun. Das ist genau der Sinn davon.",
+    "ui.yes": "Ja",
+    "ui.no": "Nein",
+    "ui.confirmpickup": "{0} aufheben?",
+    "ui.mods": "Mods",
+    "mods.done": "Fertig",
+    "mods.confirm-pickup": "Vor dem Aufheben nachfragen"
 }

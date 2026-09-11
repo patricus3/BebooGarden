@@ -109,6 +109,16 @@ public partial class Game1
     };
     mainGrid.Widgets.Add(creditsButton);
 
+    ConfirmButton modsButton = new(BebooText.ui_mods)
+    {
+      Id = "modsButton"
+    };
+    modsButton.Click += (_, _) =>
+    {
+      ShowModMenu();
+    };
+    mainGrid.Widgets.Add(modsButton);
+
     ConfirmButton languageButton = new(BebooText.ui_language)
     {
       Id = "languageButton"
@@ -430,6 +440,18 @@ public partial class Game1
     CultureInfo.CurrentUICulture = culture;
     CultureInfo.DefaultThreadCurrentUICulture = culture;
     Save.Language = culture.Name;
+  }
+
+  /// <summary>
+  /// Reopens the mod list. Without a way back to it the startup list would be a one-way door: it
+  /// only appears for mods you have not seen yet, so there would be no way to turn something on
+  /// after saying no to it once.
+  /// </summary>
+  private void ShowModMenu()
+  {
+    new ModMenu(LeaveMenusForTheGarden, atStartup: false).Show();
+    // So that escape steps back to the menu it was opened from rather than nowhere.
+    if (_desktop.Root is Panel modPanel) PreviousPanels[modPanel] = _escapeMenuPanel;
   }
 
   private void CloseEscapeMenu()

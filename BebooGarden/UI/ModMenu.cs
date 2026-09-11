@@ -1,4 +1,4 @@
-using AccessibleMyraUI;
+﻿using AccessibleMyraUI;
 using BebooGarden.Content;
 using BebooGarden.Modding;
 using CrossSpeak;
@@ -15,16 +15,27 @@ namespace BebooGarden.UI;
 /// A mod whose creature you already own cannot be switched off: turning it off would leave that
 /// beboo with no voice and nothing in the game to get it back with. Those boxes stay ticked and
 /// say why when you try.
+///
+/// The same list is reachable from the main menu, where it behaves like any other menu: escape
+/// backs out and leaves the ticks as they were.
 /// </summary>
 public class ModMenu
 {
   private readonly Action _onDone;
+  private readonly bool _atStartup;
   private readonly Dictionary<Mod, AccessibleCheckBox> _boxes = [];
   private Panel _panel = new();
 
-  public ModMenu(Action onDone)
+  /// <summary>
+  /// True while the list that has to be answered is up. The one before the garden is the way in
+  /// rather than a menu, so escape does not take it away; the one from the main menu is a menu.
+  /// </summary>
+  public static bool BlocksEscape { get; private set; }
+
+  public ModMenu(Action onDone, bool atStartup = true)
   {
     _onDone = onDone;
+    _atStartup = atStartup;
   }
 
   public void Show()
@@ -55,11 +66,15 @@ public class ModMenu
       grid.Widgets.Add(box);
     }
 
-    ConfirmButton confirm = new(BebooText.mods_play) { Id = "modsConfirm" };
+    ConfirmButton confirm = new(_atStartup ? BebooText.mods_play : BebooText.mods_done)
+    {
+      Id = "modsConfirm"
+    };
     confirm.Click += (_, _) => Confirm();
     grid.Widgets.Add(confirm);
 
     _panel.Widgets.Add(grid);
+    BlocksEscape = _atStartup;
     Game1.Instance._desktop.Root = _panel;
     Game1.Instance.SwitchToScreen(GameScreen.ModMenu);
     Game1.Instance._desktop.FocusedKeyboardWidget = _boxes.Count > 0 ? _boxes.Values.First() : confirm;
@@ -89,6 +104,7 @@ public class ModMenu
 
   private void Confirm()
   {
+    BlocksEscape = false;
     ModManager.SetEnabled(_boxes.Where(pair => pair.Value.IsChecked).Select(pair => pair.Key.Id));
     Game1.Instance.SoundSystem.System.PlaySound(Game1.Instance.SoundSystem.MenuOkSound);
     _onDone();

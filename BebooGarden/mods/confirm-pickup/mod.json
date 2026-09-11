@@ -1,0 +1,6 @@
+{
+  "id": "confirm-pickup",
+  "name": "Ask before picking things up",
+  "description": "Pressing enter next to something on the ground asks first, instead of taking it straight away. Handy if you keep scooping up your snowballs by accident.",
+  "features": ["confirmPickup"]
+}

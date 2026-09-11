@@ -178,5 +178,11 @@
     "fluffball.description": "Một cục tròn nhỏ làm hoàn toàn bằng bông. Nó ôm bất cứ thứ gì nó chạm phải.",
     "fluffball.hugyou": "Cục bông ôm bạn. Nó mềm không tưởng.",
     "fluffball.hugbeboo": "Cục bông ôm {0}, và {0} thích mê đi.",
-    "unlockfluff": "{0} đủ vui để đi chơi một chuyến rồi!\nMột nơi mềm mại tên là Xứ Bông vừa mở ra ở góc trên bên phải khu vườn. Ở đó chẳng có gì để làm cả. Đó chính là điều hay."
+    "unlockfluff": "{0} đủ vui để đi chơi một chuyến rồi!\nMột nơi mềm mại tên là Xứ Bông vừa mở ra ở góc trên bên phải khu vườn. Ở đó chẳng có gì để làm cả. Đó chính là điều hay.",
+    "ui.yes": "Có",
+    "ui.no": "Không",
+    "ui.confirmpickup": "Nhặt {0} lên?",
+    "ui.mods": "Mod",
+    "mods.done": "Xong",
+    "mods.confirm-pickup": "Hỏi trước khi nhặt đồ"
 }

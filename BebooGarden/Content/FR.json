@@ -178,5 +178,11 @@
     "fluffball.description": "Une petite chose ronde entièrement faite de peluche. Elle fait un câlin à tout ce qu'elle croise.",
     "fluffball.hugyou": "La boule de peluche vous fait un câlin. C'est extrêmement doux.",
     "fluffball.hugbeboo": "La boule de peluche fait un câlin à {0}, qui fond complètement.",
-    "unlockfluff": "{0} est assez heureux pour une sortie !\nUn petit endroit tout doux, la peluche, s'est ouvert en haut à droite du jardin. Il n'y a absolument rien à y faire. C'est un peu l'idée."
+    "unlockfluff": "{0} est assez heureux pour une sortie !\nUn petit endroit tout doux, la peluche, s'est ouvert en haut à droite du jardin. Il n'y a absolument rien à y faire. C'est un peu l'idée.",
+    "ui.yes": "Oui",
+    "ui.no": "Non",
+    "ui.confirmpickup": "Ramasser {0} ?",
+    "ui.mods": "Mods",
+    "mods.done": "Terminé",
+    "mods.confirm-pickup": "Demander avant de ramasser"
 }

@@ -189,5 +189,11 @@
     "fluffball.description": "Uma coisinha redonda feita inteiramente de pelo macio. Abraça tudo em que esbarra.",
     "fluffball.hugyou": "A bolinha de pelo te abraça. É macia demais.",
     "fluffball.hugbeboo": "A bolinha de pelo abraça {0}, que fica todo derretido.",
-    "unlockfluff": "{0} está feliz o bastante para um passeio!\nUm cantinho macio chamado o fofo abriu no canto superior direito do jardim. Não há absolutamente nada para fazer lá. É justamente essa a graça."
+    "unlockfluff": "{0} está feliz o bastante para um passeio!\nUm cantinho macio chamado o fofo abriu no canto superior direito do jardim. Não há absolutamente nada para fazer lá. É justamente essa a graça.",
+    "ui.yes": "Sim",
+    "ui.no": "Não",
+    "ui.confirmpickup": "Pegar {0}?",
+    "ui.mods": "Mods",
+    "mods.done": "Pronto",
+    "mods.confirm-pickup": "Perguntar antes de pegar as coisas"
 }

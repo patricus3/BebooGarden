@@ -2,7 +2,12 @@
 
 Full reference: **MODDING.md**, beside this file.
 
-Drop a mod folder in here and it appears in the list the game shows at startup, with a checkbox.
+Put your own mods in `%LocalAppData%\BebooGarden\mods` rather than in here: this folder lives in
+the install directory, which normally needs administrator rights to write to. Both are read, and
+the game shows everything it finds. Paste that path into Explorer's address bar to get there, and
+make the `mods` folder if it does not exist yet.
+
+Drop a mod folder in there and it appears in the list the game shows at startup, with a checkbox.
 Tick the ones you want and choose play.
 
 A mod whose creature you already own **cannot be switched off**. Turning it off would leave that

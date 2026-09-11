@@ -10,6 +10,7 @@ using Microsoft.Xna.Framework;
 using System;
 using System.Collections.Generic;
 using System.Globalization;
+using System.Linq;
 
 namespace BebooGarden;
 public partial class Game1 : Game
@@ -93,6 +94,8 @@ public partial class Game1 : Game
          enabledMods: [.. Modding.ModManager.Enabled],
          competitionTries: Competition.TodayTries
      );
+    // Everything discovered this run counts as seen, so the startup list does not ask again.
+    parameters.KnownMods = [.. (Save.KnownMods ?? []).Union(Modding.ModManager.All.Select(mod => mod.Id))];
     SaveManager.WriteSave(parameters);
   }
 

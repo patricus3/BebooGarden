@@ -178,5 +178,11 @@
     "fluffball.description": "A small round thing made entirely of fluff. It hugs whatever it bumps into.",
     "fluffball.hugyou": "The fluffball hugs you. It is extremely soft.",
     "fluffball.hugbeboo": "The fluffball hugs {0}, who goes all cute about it.",
-    "unlockfluff": "{0} is happy enough for a day out!\nA soft little place called the fluff has opened up, at the top right of the garden. There is nothing to do there at all. That is rather the point."
+    "unlockfluff": "{0} is happy enough for a day out!\nA soft little place called the fluff has opened up, at the top right of the garden. There is nothing to do there at all. That is rather the point.",
+    "ui.yes": "Yes",
+    "ui.no": "No",
+    "ui.confirmpickup": "Pick up {0}?",
+    "ui.mods": "Mods",
+    "mods.done": "Done",
+    "mods.confirm-pickup": "Ask before picking things up"
 }

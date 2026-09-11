@@ -1,4 +1,4 @@
-using BebooGarden.GameCore.Pet;
+﻿using BebooGarden.GameCore.Pet;
 using BebooGarden.GameCore.World;
 using Newtonsoft.Json;
 using System;
@@ -9,7 +9,8 @@ using System.Linq;
 namespace BebooGarden.Modding;
 
 /// <summary>
-/// Finds and tracks mods in the mods/ folder next to the game.
+/// Finds and tracks mods, both the ones that came with the game and the ones the player added to
+/// their own mods folder.
 ///
 /// Every discovered mod's voices are loaded whether or not it is enabled, because a mod whose
 /// creature you already own cannot be turned off, so its sounds are needed regardless. Enabling is
@@ -18,7 +19,6 @@ namespace BebooGarden.Modding;
 /// </summary>
 public static class ModManager
 {
-  public const string MODSFOLDER = "mods";
   private const string MANIFEST = "mod.json";
 
   public static List<Mod> All { get; private set; } = [];
@@ -36,6 +36,15 @@ public static class ModManager
 
   public static IEnumerable<ModCreature> AllCreatures => All.SelectMany(mod => mod.Creatures);
 
+  /// <summary>
+  /// Whether a mod that is switched on asks for this behaviour. Unlike voices, which load either
+  /// way, a feature only counts while its mod is enabled: it changes how the game plays, so it has
+  /// to follow the checkbox.
+  /// </summary>
+  public static bool HasFeature(string feature) =>
+      All.Any(mod => IsEnabled(mod)
+          && mod.Features.Any(name => string.Equals(name, feature, StringComparison.OrdinalIgnoreCase)));
+
   public static ModCreature? CreatureById(string? id) =>
       id == null ? null : AllCreatures.FirstOrDefault(creature => creature.Id == id);
 
@@ -46,29 +55,35 @@ public static class ModManager
   public static void Discover()
   {
     All = [];
-    if (!Directory.Exists(MODSFOLDER)) return;
-    foreach (string folder in Directory.GetDirectories(MODSFOLDER).OrderBy(f => f))
+    foreach (string root in GamePaths.ModFolders)
+      foreach (string folder in Directory.GetDirectories(root).OrderBy(f => f))
+        Read(folder);
+  }
+
+  /// <summary>Reads one mod folder, if it holds a manifest that parses.</summary>
+  private static void Read(string folder)
+  {
+    string manifest = Path.Combine(folder, MANIFEST);
+    if (!File.Exists(manifest)) return;
+    try
     {
-      string manifest = Path.Combine(folder, MANIFEST);
-      if (!File.Exists(manifest)) continue;
-      try
+      Mod? mod = JsonConvert.DeserializeObject<Mod>(File.ReadAllText(manifest));
+      if (mod == null || string.IsNullOrWhiteSpace(mod.Id)) return;
+      // Ids have to be unique, so a mod the player installed themselves is ignored if one of the
+      // same name already came with the game.
+      if (All.Any(other => other.Id == mod.Id)) return;
+      mod.Folder = folder;
+      mod.Creatures.RemoveAll(creature => string.IsNullOrWhiteSpace(creature.Id));
+      foreach (ModCreature creature in mod.Creatures)
       {
-        Mod? mod = JsonConvert.DeserializeObject<Mod>(File.ReadAllText(manifest));
-        if (mod == null || string.IsNullOrWhiteSpace(mod.Id)) continue;
-        if (All.Any(other => other.Id == mod.Id)) continue;
-        mod.Folder = folder;
-        mod.Creatures.RemoveAll(creature => string.IsNullOrWhiteSpace(creature.Id));
-        foreach (ModCreature creature in mod.Creatures)
-        {
-          creature.ModId = mod.Id;
-          creature.VoiceFolder = Path.Combine(folder, "creatures", creature.Id);
-        }
-        All.Add(mod);
+        creature.ModId = mod.Id;
+        creature.VoiceFolder = Path.Combine(folder, "creatures", creature.Id);
       }
-      catch (Exception)
-      {
-        // A mod that will not parse is simply not there.
-      }
+      All.Add(mod);
+    }
+    catch (Exception)
+    {
+      // A mod that will not parse is simply not there.
     }
   }
 

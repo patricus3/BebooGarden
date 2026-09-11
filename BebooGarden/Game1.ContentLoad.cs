@@ -74,9 +74,11 @@ public partial class Game1
     {
       _desktop.OnChar(a.Character);
     };
-    // The mod list comes first when there is one, so a choice about creatures is made before any
-    // creature is handed out.
-    if (Modding.ModManager.Any) new UI.ModMenu(StartTheGarden).Show();
+    // The mod list comes first, but only when it has something to ask: a mod the player has not
+    // seen before. Asking every launch would put a screen between them and the garden forever, for
+    // an answer that almost never changes. It stays reachable from the main menu.
+    if (Modding.ModManager.All.Any(mod => !(Save.KnownMods ?? []).Contains(mod.Id)))
+      new UI.ModMenu(StartTheGarden).Show();
     else StartTheGarden();
   }
 

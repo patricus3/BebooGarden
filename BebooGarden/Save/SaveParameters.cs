@@ -66,5 +66,11 @@ public class SaveParameters
 
   /// <summary>Ids of the mods the player switched on.</summary>
   public List<string> EnabledMods { get; set; } = [];
+
+  /// <summary>
+  /// Every mod the player has already been shown. The list before the garden is only for mods that
+  /// are not in here yet, so it stops appearing once there is nothing new to answer.
+  /// </summary>
+  public List<string> KnownMods { get; set; } = [];
   public int RaceTotalWin { get; set; }
 }

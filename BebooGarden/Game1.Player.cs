@@ -2,7 +2,9 @@
 using BebooGarden.GameCore.Item;
 using BebooGarden.GameCore.Pet;
 using BebooGarden.GameCore.World;
+using BebooGarden.Interface.UI;
 using BebooGarden.Minigame;
+using BebooGarden.Modding;
 using BebooGarden.MiniGames;
 using BebooGarden.Save;
 using BebooGarden.UI;
@@ -112,6 +114,30 @@ public partial class Game1
     foreach (var fruistCount in Save.FruitsBasket.Values) fruits += fruistCount;
     if (Save.FruitsBasket != null) CrossSpeakManager.Instance.Output(String.Format(BebooText.ui_basket, fruits));
   }
+  /// <summary>
+  /// Picks something up off the ground, asking first when the confirm-pickup mod is switched on.
+  ///
+  /// There is no setting for this anywhere. The mod list is the switch: people who keep scooping
+  /// things up by accident tick it once, and everybody else never sees a question.
+  /// </summary>
+  private void TakeFromGround(Item item)
+  {
+    if (!ModManager.HasFeature(ModFeatures.ConfirmPickup))
+    {
+      item.Take();
+      return;
+    }
+    Dictionary<string, bool> answers = new()
+    {
+      { BebooText.ui_yes, true },
+      { BebooText.ui_no, false },
+    };
+    // No cancel button: the two answers already cover it, and escape backs out without taking
+    // anything, which is the same as no.
+    new ChooseMenu<bool>(String.Format(BebooText.ui_confirmpickup, item.Name), answers,
+        taking => { if (taking) item.Take(); }, allowCancel: false).Show();
+  }
+
   private void TryPutItemInHand()
   {
     Item? item = ItemInHand;

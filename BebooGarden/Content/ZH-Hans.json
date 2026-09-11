@@ -178,5 +178,11 @@
     "fluffball.description": "一个小圆球，浑身都是绒毛。碰到什么就抱什么。",
     "fluffball.hugyou": "绒毛球抱住了你，软得不可思议。",
     "fluffball.hugbeboo": "绒毛球抱住了 {0}，{0} 高兴得不得了。",
-    "unlockfluff": "{0} 开心得可以出门玩啦！\n花园右上角开了一处软绵绵的地方，叫绒绒地。那里什么都没得做。这正是它的好处。"
+    "unlockfluff": "{0} 开心得可以出门玩啦！\n花园右上角开了一处软绵绵的地方，叫绒绒地。那里什么都没得做。这正是它的好处。",
+    "ui.yes": "是",
+    "ui.no": "否",
+    "ui.confirmpickup": "捡起{0}吗？",
+    "ui.mods": "模组",
+    "mods.done": "完成",
+    "mods.confirm-pickup": "捡起物品前先询问"
 }

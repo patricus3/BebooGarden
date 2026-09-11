@@ -7,10 +7,20 @@ dropping a folder in place.
 
 ## 1. Where mods go
 
-Next to `BebooGarden.exe`:
+Either of two places. **Your own mods go in the second one:**
 
 ```
-BebooGarden.exe
+%LocalAppData%\BebooGarden\mods\      your mods; no administrator rights needed
+<install folder>\mods\                 the ones that shipped with the game
+```
+
+`%LocalAppData%\BebooGarden` is also where your save and `crash.log` live. Paste that path into
+Explorer's address bar or the Run box and it will take you there; if the `mods` folder is not there
+yet, make it.
+
+Either folder has the same shape:
+
+```
 mods/
   MODDING.md            this file
   my-mod/               one folder per mod
@@ -24,6 +34,9 @@ mods/
 
 Folder names other than `creatures/` are ignored, so you can keep a readme, a licence or your
 source files beside the manifest without upsetting anything.
+
+Both folders are read, shipped mods first. Ids have to be unique, so if you install a mod that uses
+an id one of the shipped ones already has, yours is the one ignored - rename it.
 
 ---
 
@@ -46,6 +59,7 @@ source files beside the manifest without upsetting anything.
 | `name` | no | Shown in the mod list. Falls back to `id`. |
 | `description` | no | Not shown yet; write it anyway. |
 | `creatures` | no | May be empty or absent. A mod with no creatures loads and does nothing. |
+| `features` | no | Behaviour to switch on, by name. See section 4. |
 
 Each creature:
 
@@ -100,10 +114,37 @@ Sounds are positioned in 3D at the beboo, and pitch-shifted per beboo (hatchling
 
 ---
 
-## 4. The mod list
+## 4. Features
 
-Shown once at startup, before the garden, whenever `mods/` contains at least one valid mod. One
-checkbox per mod; enter or space toggles; choose Play to continue. Choices are saved.
+A mod cannot bring code, so it cannot invent behaviour. What it can do is ask the game to turn on
+something the game already knows how to do but does not do by default:
+
+```json
+{ "id": "confirm-pickup", "name": "Ask before picking things up", "features": ["confirmPickup"] }
+```
+
+| feature | what it does |
+|---|---|
+| `confirmPickup` | Pressing enter next to something on the ground asks yes or no first, instead of taking it straight away. |
+
+Names are matched without regard to case, and one this version does not recognise is ignored rather
+than refused, so a mod can name a feature from a later version and still load here.
+
+This is also why the game ships a mod of its own: `confirm-pickup` is a preference some people want
+and most do not, and the mod list is already a list of things you can tick. It saves growing a
+settings screen for one checkbox.
+
+A mod may list features, creatures, or both.
+
+---
+
+## 5. The mod list
+
+Shown before the garden when there is a mod you have not been asked about yet. One checkbox per
+mod; enter or space toggles; choose Play to continue. Choices are saved, and once every mod has
+been answered for the list stops appearing at startup.
+
+It is always available from the main menu, under Mods, so a choice can be changed later.
 
 **Enabling controls whether new creatures are offered, not whether files are read.** Every
 discovered mod's voices load either way, because a creature already living in the save has to keep
@@ -115,7 +156,7 @@ the game able to fix it.
 
 ---
 
-## 5. How creatures reach the player
+## 6. How creatures reach the player
 
 When an egg hatches and at least one enabled mod offers creatures, there is roughly a **one in
 three** chance the hatchling is a mod creature, chosen at random from all enabled mods. Otherwise
@@ -125,7 +166,7 @@ There is currently no way to guarantee a particular creature, or to tie one to a
 
 ---
 
-## 6. When something does not work
+## 7. When something does not work
 
 | symptom | cause |
 |---|---|
@@ -134,12 +175,12 @@ There is currently no way to guarantee a particular creature, or to tie one to a
 | One sound never plays | FMOD could not decode it. Re-export as plain PCM WAV. |
 | Creature never hatches | Mod not ticked, or luck — it is one in three, and only on a hatch. |
 
-The game writes unhandled errors to `crash.log` beside the executable. If a mod does break
-something, that file is the thing to send.
+The game writes unhandled errors to `crash.log` in `%LocalAppData%\BebooGarden`. If a mod does
+break something, that file is the thing to send.
 
 ---
 
-## 7. Worked example
+## 8. Worked example
 
 ```
 mods/birdfolk/mod.json
@@ -159,9 +200,9 @@ Three files and a manifest. Everything else falls back to the base voice.
 
 ---
 
-## 8. What mods can add today
+## 9. What mods can add today
 
-Creatures, and their voices. That is the whole of it in 2.1.
+Creatures with their voices, and the features listed in section 4.
 
-The manifest is deliberately shaped to grow, and unknown fields are ignored, so a mod can carry
-data for a later version without breaking on this one.
+The manifest is deliberately shaped to grow, and unknown fields and unknown feature names are both
+ignored, so a mod can carry data for a later version without breaking on this one.

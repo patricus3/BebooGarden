@@ -598,4 +598,22 @@ Vous venez de déblquer le chemin vers la pleine enneigée. Allez vite la visite
 		<value>{0} est assez heureux pour une sortie !
 Un petit endroit tout doux, la peluche, s'est ouvert en haut à droite du jardin. Il n'y a absolument rien à y faire. C'est un peu l'idée.</value>
 	</data>
+	<data name="ui.yes" xml:space="preserve">
+		<value>Oui</value>
+	</data>
+	<data name="ui.no" xml:space="preserve">
+		<value>Non</value>
+	</data>
+	<data name="ui.confirmpickup" xml:space="preserve">
+		<value>Ramasser {0} ?</value>
+	</data>
+	<data name="ui.mods" xml:space="preserve">
+		<value>Mods</value>
+	</data>
+	<data name="mods.done" xml:space="preserve">
+		<value>Terminé</value>
+	</data>
+	<data name="mods.confirm-pickup" xml:space="preserve">
+		<value>Demander avant de ramasser</value>
+	</data>
 </root>

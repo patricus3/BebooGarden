@@ -149,7 +149,7 @@ public partial class Game1
     {
       var mapConnexion = Map?.GetConnexionArroundPosition(PlayerPosition);
       Item? takable = BebooInArms == null ? Map?.GetTakableItemArroundPosition(PlayerPosition) : null;
-      if (takable != null) takable.Take();
+      if (takable != null) TakeFromGround(takable);
       else if (Race.IsARaceRunning)
       {
         // Nothing on the map is reachable while a race is on.
@@ -241,9 +241,10 @@ public partial class Game1
       if (focused is CheckButton checkButton) checkButton.IsPressed = !checkButton.IsPressed;
       else if (focused is Button button) button.DoClick();
     }
-    // The mod list is not a menu you can back out of; it is the way in.
+    // The mod list shown before the garden is not a menu you can back out of; it is the way in.
+    // The same list opened from the main menu is an ordinary menu and closes like one.
     if (IsKeyPressed(currentKeyboardState, Keys.Escape) && !EscapeJustPressed
-        && _currentScreen != GameScreen.ModMenu)
+        && !(_currentScreen == GameScreen.ModMenu && UI.ModMenu.BlocksEscape))
     {
       _aMenuShouldBeClosed = true;
     }

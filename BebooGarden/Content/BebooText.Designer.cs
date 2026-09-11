@@ -1509,5 +1509,59 @@ namespace BebooGarden.Content {
             }
         }
 
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à Yes.
+        /// </summary>
+        internal static string ui_yes {
+            get {
+                return ResourceManager.GetString("ui.yes", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à No.
+        /// </summary>
+        internal static string ui_no {
+            get {
+                return ResourceManager.GetString("ui.no", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à Pick up {0}?.
+        /// </summary>
+        internal static string ui_confirmpickup {
+            get {
+                return ResourceManager.GetString("ui.confirmpickup", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à Mods.
+        /// </summary>
+        internal static string ui_mods {
+            get {
+                return ResourceManager.GetString("ui.mods", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à Done.
+        /// </summary>
+        internal static string mods_done {
+            get {
+                return ResourceManager.GetString("mods.done", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à Ask before picking things up.
+        /// </summary>
+        internal static string mods_confirm_pickup {
+            get {
+                return ResourceManager.GetString("mods.confirm-pickup", resourceCulture);
+            }
+        }
+
     }
 }

@@ -1,4 +1,4 @@
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 
 namespace BebooGarden.Modding;
 
@@ -16,9 +16,9 @@ public class ModCreature
 }
 
 /// <summary>
-/// A folder under mods/ with a mod.json in it. The manifest only describes creatures for now, but
-/// unknown fields are ignored rather than rejected, so a mod written for a later version still
-/// loads what this version understands.
+/// A folder under mods/ with a mod.json in it. A mod adds creatures, switches on behaviour the game
+/// already knows how to do, or both. Unknown fields are ignored rather than rejected, so a mod
+/// written for a later version still loads what this version understands.
 /// </summary>
 public class Mod
 {
@@ -27,8 +27,17 @@ public class Mod
   public string Description { get; set; } = string.Empty;
   public List<ModCreature> Creatures { get; set; } = [];
 
+  /// <summary>Behaviour this mod turns on. See ModFeatures; anything else here is ignored.</summary>
+  public List<string> Features { get; set; } = [];
+
   /// <summary>Filled in on load, not read from the manifest.</summary>
   public string Folder { get; set; } = string.Empty;
 
-  public string DisplayName => string.IsNullOrWhiteSpace(Name) ? Id : Name;
+  /// <summary>
+  /// What the mod list calls this mod. A mod that ships with the game is named in the game's own
+  /// translations so that it is not stuck in English; anything else uses its manifest.
+  /// </summary>
+  public string DisplayName =>
+      Content.BebooText.ResourceManager.GetString("mods." + Id, Content.BebooText.Culture)
+      ?? (string.IsNullOrWhiteSpace(Name) ? Id : Name);
 }

@@ -177,5 +177,11 @@
     "fluffball.description": "Mała okrągła rzecz zrobiona w całości z puszku. Przytula wszystko, na co wpadnie.",
     "fluffball.hugyou": "Kłębek puszku przytula cię. Jest niewiarygodnie miękki.",
     "fluffball.hugbeboo": "Kłębek puszku przytula {0}, który cały mięknie.",
-    "unlockfluff": "{0} jest na tyle szczęśliwy, że zasłużył na wycieczkę!\nW prawym górnym rogu ogrodu otworzyło się miękkie miejsce zwane puszystością. Zupełnie nie ma tam nic do roboty. O to właśnie chodzi."
+    "unlockfluff": "{0} jest na tyle szczęśliwy, że zasłużył na wycieczkę!\nW prawym górnym rogu ogrodu otworzyło się miękkie miejsce zwane puszystością. Zupełnie nie ma tam nic do roboty. O to właśnie chodzi.",
+    "ui.yes": "Tak",
+    "ui.no": "Nie",
+    "ui.confirmpickup": "Podnieść {0}?",
+    "ui.mods": "Mody",
+    "mods.done": "Gotowe",
+    "mods.confirm-pickup": "Pytaj przed podniesieniem"
 }
