@@ -115,6 +115,11 @@ public class ChooseMenu<T>
     {
       Game1.Instance._desktop.FocusedKeyboardWidget = firstChoiceButton;
     }
+    // The title was drawn and never said. Focusing the first option announces that option and
+    // nothing else, so every one of these menus asked its question silently - which is survivable
+    // when the options are fruit names and useless when they are Yes and No. Said last, after the
+    // focus announcement, so the question is what you are left with.
+    CrossSpeakManager.Instance.Output(_title);
   }
 
   private void Close()
