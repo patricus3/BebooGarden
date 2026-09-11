@@ -616,24 +616,6 @@ Um cantinho macio chamado o fofo abriu no canto superior direito do jardim. Não
 	<data name="mods.confirm-pickup" xml:space="preserve">
 		<value>Perguntar antes de pegar as coisas</value>
 	</data>
-	<data name="beboo.trait.brave" xml:space="preserve">
-		<value>{0} não tem medo de quase nada.</value>
-	</data>
-	<data name="beboo.trait.timid" xml:space="preserve">
-		<value>{0} desconfia de tudo que é novo.</value>
-	</data>
-	<data name="beboo.trait.chatty" xml:space="preserve">
-		<value>{0} sempre tem algo a dizer.</value>
-	</data>
-	<data name="beboo.trait.cuddly" xml:space="preserve">
-		<value>{0} quer ficar perto de todo mundo.</value>
-	</data>
-	<data name="beboo.trait.dreamy" xml:space="preserve">
-		<value>{0} é dorminhoco.</value>
-	</data>
-	<data name="beboo.trait.playful" xml:space="preserve">
-		<value>{0} não consegue deixar nada em paz.</value>
-	</data>
 	<data name="fluffball.attached" xml:space="preserve">
 		<value>A bolinha de pelúcia se aninha em {0} e fica por ali. Escolheu o beboo dela.</value>
 	</data>

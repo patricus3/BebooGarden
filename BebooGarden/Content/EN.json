@@ -185,12 +185,6 @@
     "ui.mods": "Mods",
     "mods.done": "Done",
     "mods.confirm-pickup": "Ask before picking things up",
-    "beboo.trait.brave": "{0} is afraid of nothing much.",
-    "beboo.trait.timid": "{0} is wary of anything new.",
-    "beboo.trait.chatty": "{0} always has something to say.",
-    "beboo.trait.cuddly": "{0} wants to be near everyone.",
-    "beboo.trait.dreamy": "{0} is a sleepy one.",
-    "beboo.trait.playful": "{0} cannot leave anything alone.",
     "fluffball.attached": "The fluffball snuggles into {0} and settles there. It has picked its beboo.",
     "fluffball.follows": "The fluffball tags along after {0}."
 }

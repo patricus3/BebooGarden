@@ -616,24 +616,6 @@ Một nơi mềm mại tên là Xứ Bông vừa mở ra ở góc trên bên ph�
 	<data name="mods.confirm-pickup" xml:space="preserve">
 		<value>Hỏi trước khi nhặt đồ</value>
 	</data>
-	<data name="beboo.trait.brave" xml:space="preserve">
-		<value>{0} hầu như chẳng sợ gì.</value>
-	</data>
-	<data name="beboo.trait.timid" xml:space="preserve">
-		<value>{0} dè chừng mọi thứ mới lạ.</value>
-	</data>
-	<data name="beboo.trait.chatty" xml:space="preserve">
-		<value>{0} lúc nào cũng có chuyện để nói.</value>
-	</data>
-	<data name="beboo.trait.cuddly" xml:space="preserve">
-		<value>{0} muốn ở gần mọi người.</value>
-	</data>
-	<data name="beboo.trait.dreamy" xml:space="preserve">
-		<value>{0} là đứa ham ngủ.</value>
-	</data>
-	<data name="beboo.trait.playful" xml:space="preserve">
-		<value>{0} không để yên cho thứ gì cả.</value>
-	</data>
 	<data name="fluffball.attached" xml:space="preserve">
 		<value>Cục bông rúc vào {0} rồi ở lì đó. Nó đã chọn được beboo của mình.</value>
 	</data>

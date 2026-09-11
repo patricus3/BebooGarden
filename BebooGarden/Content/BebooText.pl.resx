@@ -616,24 +616,6 @@ W prawym górnym rogu ogrodu otworzyło się miękkie miejsce zwane puszystości
 	<data name="mods.confirm-pickup" xml:space="preserve">
 		<value>Pytaj przed podniesieniem</value>
 	</data>
-	<data name="beboo.trait.brave" xml:space="preserve">
-		<value>{0} prawie niczego się nie boi.</value>
-	</data>
-	<data name="beboo.trait.timid" xml:space="preserve">
-		<value>{0} nie ufa niczemu nowemu.</value>
-	</data>
-	<data name="beboo.trait.chatty" xml:space="preserve">
-		<value>{0} zawsze ma coś do powiedzenia.</value>
-	</data>
-	<data name="beboo.trait.cuddly" xml:space="preserve">
-		<value>{0} chce być blisko wszystkich.</value>
-	</data>
-	<data name="beboo.trait.dreamy" xml:space="preserve">
-		<value>{0} to śpioch.</value>
-	</data>
-	<data name="beboo.trait.playful" xml:space="preserve">
-		<value>{0} nie potrafi niczego zostawić w spokoju.</value>
-	</data>
 	<data name="fluffball.attached" xml:space="preserve">
 		<value>Kłębek puchu wtula się w {0} i już tam zostaje. Wybrał sobie swoje beboo.</value>
 	</data>

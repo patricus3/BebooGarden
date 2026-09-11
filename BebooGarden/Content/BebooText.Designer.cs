@@ -1564,60 +1564,6 @@ namespace BebooGarden.Content {
         }
 
         /// <summary>
-        ///   Recherche une chaîne localisée semblable à {0} is afraid of nothing much..
-        /// </summary>
-        internal static string beboo_trait_brave {
-            get {
-                return ResourceManager.GetString("beboo.trait.brave", resourceCulture);
-            }
-        }
-
-        /// <summary>
-        ///   Recherche une chaîne localisée semblable à {0} is wary of anything new..
-        /// </summary>
-        internal static string beboo_trait_timid {
-            get {
-                return ResourceManager.GetString("beboo.trait.timid", resourceCulture);
-            }
-        }
-
-        /// <summary>
-        ///   Recherche une chaîne localisée semblable à {0} always has something to say..
-        /// </summary>
-        internal static string beboo_trait_chatty {
-            get {
-                return ResourceManager.GetString("beboo.trait.chatty", resourceCulture);
-            }
-        }
-
-        /// <summary>
-        ///   Recherche une chaîne localisée semblable à {0} wants to be near everyone..
-        /// </summary>
-        internal static string beboo_trait_cuddly {
-            get {
-                return ResourceManager.GetString("beboo.trait.cuddly", resourceCulture);
-            }
-        }
-
-        /// <summary>
-        ///   Recherche une chaîne localisée semblable à {0} is a sleepy one..
-        /// </summary>
-        internal static string beboo_trait_dreamy {
-            get {
-                return ResourceManager.GetString("beboo.trait.dreamy", resourceCulture);
-            }
-        }
-
-        /// <summary>
-        ///   Recherche une chaîne localisée semblable à {0} cannot leave anything alone..
-        /// </summary>
-        internal static string beboo_trait_playful {
-            get {
-                return ResourceManager.GetString("beboo.trait.playful", resourceCulture);
-            }
-        }
-
-        /// <summary>
         ///   Recherche une chaîne localisée semblable à The fluffball snuggles into {0} and settles there. It has picked its beboo..
         /// </summary>
         internal static string fluffball_attached {

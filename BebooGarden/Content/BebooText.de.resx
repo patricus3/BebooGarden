@@ -616,24 +616,6 @@ Oben rechts im Garten hat ein weicher kleiner Ort aufgemacht: das Flauschige. Do
 	<data name="mods.confirm-pickup" xml:space="preserve">
 		<value>Vor dem Aufheben nachfragen</value>
 	</data>
-	<data name="beboo.trait.brave" xml:space="preserve">
-		<value>{0} fürchtet sich vor fast nichts.</value>
-	</data>
-	<data name="beboo.trait.timid" xml:space="preserve">
-		<value>{0} ist misstrauisch gegenüber allem Neuen.</value>
-	</data>
-	<data name="beboo.trait.chatty" xml:space="preserve">
-		<value>{0} hat immer etwas zu erzählen.</value>
-	</data>
-	<data name="beboo.trait.cuddly" xml:space="preserve">
-		<value>{0} will bei allen sein.</value>
-	</data>
-	<data name="beboo.trait.dreamy" xml:space="preserve">
-		<value>{0} ist ein Schläfchenkind.</value>
-	</data>
-	<data name="beboo.trait.playful" xml:space="preserve">
-		<value>{0} kann nichts in Ruhe lassen.</value>
-	</data>
 	<data name="fluffball.attached" xml:space="preserve">
 		<value>Der Fluffball kuschelt sich an {0} und bleibt da. Er hat sich sein Beboo ausgesucht.</value>
 	</data>

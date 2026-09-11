@@ -1,11 +1,14 @@
-using System;
-using BebooGarden.Content;
+﻿using System;
 
 namespace BebooGarden.GameCore.Pet;
 
 /// <summary>
 /// A beboo's temperament. Drawn at random when it hatches and kept for life, so two beboos of the
-/// same colour still behave differently and you learn which one is which by living with them.
+/// same colour still behave differently.
+///
+/// Nothing ever says out loud what a beboo is. You are meant to work out that this one always ends
+/// up underfoot and that one sleeps through everything, the way you would with a real animal, and
+/// being told would spoil exactly the thing it is for.
 /// </summary>
 public enum Trait
 {
@@ -74,15 +77,4 @@ public partial class Beboo
 
   /// <summary>How many strokes before it melts.</summary>
   private int PetsBeforeDelight => Trait == Trait.Cuddly ? 3 : 4;
-
-  /// <summary>How the game describes this one's temperament, with its name in it.</summary>
-  public string TraitSentence => Trait switch
-  {
-    Trait.Brave => String.Format(BebooText.beboo_trait_brave, Name),
-    Trait.Timid => String.Format(BebooText.beboo_trait_timid, Name),
-    Trait.Chatty => String.Format(BebooText.beboo_trait_chatty, Name),
-    Trait.Cuddly => String.Format(BebooText.beboo_trait_cuddly, Name),
-    Trait.Dreamy => String.Format(BebooText.beboo_trait_dreamy, Name),
-    _ => String.Format(BebooText.beboo_trait_playful, Name),
-  };
 }

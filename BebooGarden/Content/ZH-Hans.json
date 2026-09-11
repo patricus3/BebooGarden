@@ -185,12 +185,6 @@
     "ui.mods": "模组",
     "mods.done": "完成",
     "mods.confirm-pickup": "捡起物品前先询问",
-    "beboo.trait.brave": "{0} 几乎什么都不怕。",
-    "beboo.trait.timid": "{0} 对新事物总是很警惕。",
-    "beboo.trait.chatty": "{0} 总有话要说。",
-    "beboo.trait.cuddly": "{0} 想待在大家身边。",
-    "beboo.trait.dreamy": "{0} 很爱睡觉。",
-    "beboo.trait.playful": "{0} 什么东西都要去碰一碰。",
     "fluffball.attached": "绒球依偎进 {0} 怀里，就赖着不走了。它选好自己的beboo了。",
     "fluffball.follows": "绒球跟在 {0} 后面。"
 }

@@ -95,9 +95,6 @@ public partial class Game1
       }
       allSentences += String.Format(sentence, name);
       allSentences += "\n";
-      // Their temperament, so you can tell who is who by more than their name.
-      allSentences += beboo.TraitSentence;
-      allSentences += "\n";
     }
     CrossSpeakManager.Instance.Output(allSentences);
   }

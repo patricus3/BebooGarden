@@ -186,12 +186,6 @@
     "ui.mods": "Mods",
     "mods.done": "Fertig",
     "mods.confirm-pickup": "Vor dem Aufheben nachfragen",
-    "beboo.trait.brave": "{0} fürchtet sich vor fast nichts.",
-    "beboo.trait.timid": "{0} ist misstrauisch gegenüber allem Neuen.",
-    "beboo.trait.chatty": "{0} hat immer etwas zu erzählen.",
-    "beboo.trait.cuddly": "{0} will bei allen sein.",
-    "beboo.trait.dreamy": "{0} ist ein Schläfchenkind.",
-    "beboo.trait.playful": "{0} kann nichts in Ruhe lassen.",
     "fluffball.attached": "Der Fluffball kuschelt sich an {0} und bleibt da. Er hat sich sein Beboo ausgesucht.",
     "fluffball.follows": "Der Fluffball zockelt hinter {0} her."
 }

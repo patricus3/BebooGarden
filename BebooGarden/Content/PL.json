@@ -184,12 +184,6 @@
     "ui.mods": "Mody",
     "mods.done": "Gotowe",
     "mods.confirm-pickup": "Pytaj przed podniesieniem",
-    "beboo.trait.brave": "{0} prawie niczego się nie boi.",
-    "beboo.trait.timid": "{0} nie ufa niczemu nowemu.",
-    "beboo.trait.chatty": "{0} zawsze ma coś do powiedzenia.",
-    "beboo.trait.cuddly": "{0} chce być blisko wszystkich.",
-    "beboo.trait.dreamy": "{0} to śpioch.",
-    "beboo.trait.playful": "{0} nie potrafi niczego zostawić w spokoju.",
     "fluffball.attached": "Kłębek puchu wtula się w {0} i już tam zostaje. Wybrał sobie swoje beboo.",
     "fluffball.follows": "Kłębek puchu człapie za {0}."
 }

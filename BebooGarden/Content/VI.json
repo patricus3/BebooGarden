@@ -185,12 +185,6 @@
     "ui.mods": "Mod",
     "mods.done": "Xong",
     "mods.confirm-pickup": "Hỏi trước khi nhặt đồ",
-    "beboo.trait.brave": "{0} hầu như chẳng sợ gì.",
-    "beboo.trait.timid": "{0} dè chừng mọi thứ mới lạ.",
-    "beboo.trait.chatty": "{0} lúc nào cũng có chuyện để nói.",
-    "beboo.trait.cuddly": "{0} muốn ở gần mọi người.",
-    "beboo.trait.dreamy": "{0} là đứa ham ngủ.",
-    "beboo.trait.playful": "{0} không để yên cho thứ gì cả.",
     "fluffball.attached": "Cục bông rúc vào {0} rồi ở lì đó. Nó đã chọn được beboo của mình.",
     "fluffball.follows": "Cục bông lẽo đẽo theo sau {0}."
 }

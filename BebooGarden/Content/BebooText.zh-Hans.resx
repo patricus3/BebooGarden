@@ -616,24 +616,6 @@ Escape 打开菜单。就这些了。好好相处。</value>
 	<data name="mods.confirm-pickup" xml:space="preserve">
 		<value>捡起物品前先询问</value>
 	</data>
-	<data name="beboo.trait.brave" xml:space="preserve">
-		<value>{0} 几乎什么都不怕。</value>
-	</data>
-	<data name="beboo.trait.timid" xml:space="preserve">
-		<value>{0} 对新事物总是很警惕。</value>
-	</data>
-	<data name="beboo.trait.chatty" xml:space="preserve">
-		<value>{0} 总有话要说。</value>
-	</data>
-	<data name="beboo.trait.cuddly" xml:space="preserve">
-		<value>{0} 想待在大家身边。</value>
-	</data>
-	<data name="beboo.trait.dreamy" xml:space="preserve">
-		<value>{0} 很爱睡觉。</value>
-	</data>
-	<data name="beboo.trait.playful" xml:space="preserve">
-		<value>{0} 什么东西都要去碰一碰。</value>
-	</data>
 	<data name="fluffball.attached" xml:space="preserve">
 		<value>绒球依偎进 {0} 怀里，就赖着不走了。它选好自己的beboo了。</value>
 	</data>

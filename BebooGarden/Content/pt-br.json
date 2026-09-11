@@ -196,12 +196,6 @@
     "ui.mods": "Mods",
     "mods.done": "Pronto",
     "mods.confirm-pickup": "Perguntar antes de pegar as coisas",
-    "beboo.trait.brave": "{0} não tem medo de quase nada.",
-    "beboo.trait.timid": "{0} desconfia de tudo que é novo.",
-    "beboo.trait.chatty": "{0} sempre tem algo a dizer.",
-    "beboo.trait.cuddly": "{0} quer ficar perto de todo mundo.",
-    "beboo.trait.dreamy": "{0} é dorminhoco.",
-    "beboo.trait.playful": "{0} não consegue deixar nada em paz.",
     "fluffball.attached": "A bolinha de pelúcia se aninha em {0} e fica por ali. Escolheu o beboo dela.",
     "fluffball.follows": "A bolinha de pelúcia vai atrás de {0}."
 }

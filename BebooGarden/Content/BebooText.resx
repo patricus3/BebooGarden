@@ -617,24 +617,6 @@ A soft little place called the fluff has opened up, at the top right of the gard
 	<data name="mods.confirm-pickup" xml:space="preserve">
 		<value>Ask before picking things up</value>
 	</data>
-	<data name="beboo.trait.brave" xml:space="preserve">
-		<value>{0} is afraid of nothing much.</value>
-	</data>
-	<data name="beboo.trait.timid" xml:space="preserve">
-		<value>{0} is wary of anything new.</value>
-	</data>
-	<data name="beboo.trait.chatty" xml:space="preserve">
-		<value>{0} always has something to say.</value>
-	</data>
-	<data name="beboo.trait.cuddly" xml:space="preserve">
-		<value>{0} wants to be near everyone.</value>
-	</data>
-	<data name="beboo.trait.dreamy" xml:space="preserve">
-		<value>{0} is a sleepy one.</value>
-	</data>
-	<data name="beboo.trait.playful" xml:space="preserve">
-		<value>{0} cannot leave anything alone.</value>
-	</data>
 	<data name="fluffball.attached" xml:space="preserve">
 		<value>The fluffball snuggles into {0} and settles there. It has picked its beboo.</value>
 	</data>

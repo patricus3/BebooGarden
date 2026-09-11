@@ -616,24 +616,6 @@ Un petit endroit tout doux, la peluche, s'est ouvert en haut à droite du jardin
 	<data name="mods.confirm-pickup" xml:space="preserve">
 		<value>Demander avant de ramasser</value>
 	</data>
-	<data name="beboo.trait.brave" xml:space="preserve">
-		<value>{0} n'a peur de presque rien.</value>
-	</data>
-	<data name="beboo.trait.timid" xml:space="preserve">
-		<value>{0} se méfie de tout ce qui est nouveau.</value>
-	</data>
-	<data name="beboo.trait.chatty" xml:space="preserve">
-		<value>{0} a toujours quelque chose à dire.</value>
-	</data>
-	<data name="beboo.trait.cuddly" xml:space="preserve">
-		<value>{0} veut être près de tout le monde.</value>
-	</data>
-	<data name="beboo.trait.dreamy" xml:space="preserve">
-		<value>{0} est plutôt dormeur.</value>
-	</data>
-	<data name="beboo.trait.playful" xml:space="preserve">
-		<value>{0} ne peut rien laisser tranquille.</value>
-	</data>
 	<data name="fluffball.attached" xml:space="preserve">
 		<value>La boule de peluche se blottit contre {0} et s'y installe. Elle a choisi son beboo.</value>
 	</data>

@@ -1,7 +1,6 @@
 ﻿using BebooGarden.Content;
 using BebooGarden.GameCore.Pet;
 using BebooGarden.GameCore.World;
-using CrossSpeak;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Input;
 using Myra.Graphics2D.UI;
@@ -98,8 +97,6 @@ public class NewBebooScene : IScriptedScene
   }
   private void Close()
   {
-    // Now that it has a name, say what sort of beboo it turned out to be.
-    CrossSpeakManager.Instance.Output(_beboo.TraitSentence);
     Game1.Instance.SwitchToScreen(GameScreen.game);
     Game1.Instance._scriptedScene = null;
   }
