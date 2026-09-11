@@ -27,6 +27,12 @@ public partial class Game1
 
   public void SwitchToScreen(GameScreen screen)
   {
+    // The key that opened this screen is almost certainly still held, and IsKeyPressed compares
+    // against the previous frame, which is not updated until the end of this one. So a screen that
+    // appears mid-frame saw the very same press again and acted on it: pressing enter on something
+    // lying on the ground opened the confirmation and then immediately answered Yes in it, which
+    // looked exactly like no confirmation at all.
+    _previousKeyboardState = _currentKeyboardState;
     _previousGameScreen=_currentScreen;
     _currentScreen = screen;
     switch (screen)
