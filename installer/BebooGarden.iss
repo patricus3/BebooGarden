@@ -5,8 +5,9 @@
 ;       -p:EnableMGCBItems=false -o installer\payload
 ;   "C:\Program Files (x86)\Inno Setup 6\ISCC.exe" installer\BebooGarden.iss
 ;
-; PayloadDir and OutDir can both be pointed elsewhere without editing this file, e.g.
-;   ISCC.exe /DPayloadDir="D:\build\payload" /DOutDir="%USERPROFILE%\Desktop" installer\BebooGarden.iss
+; The installer is written to dist\ at the root of the repository. PayloadDir and OutDir can both
+; be pointed elsewhere without editing this file, e.g.
+;   ISCC.exe /DPayloadDir="D:\build\payload" /DOutDir="D:\releases" installer\BebooGarden.iss
 ;
 ; This file is UTF-8 with a BOM. Inno needs the BOM to read the accented characters below.
 ;
@@ -37,8 +38,9 @@
 #ifndef PayloadDir
   #define PayloadDir "payload"
 #endif
+; Built installers land in dist\ at the root of the repository, which is gitignored.
 #ifndef OutDir
-  #define OutDir "output"
+  #define OutDir "..\dist"
 #endif
 
 [Setup]
@@ -53,9 +55,11 @@ AppUpdatesURL={#AppURL}
 VersionInfoVersion={#AppVersion}
 VersionInfoProductName={#AppName}
 
-; Per user: see the note at the top about save.dat needing a writable folder.
+; Per user: see the note at the top about save.dat needing a writable folder. Deliberately without
+; PrivilegesRequiredOverridesAllowed: offering an all-users install offers a broken one, and a
+; silent install by an administrator takes that branch on its own, landing the game in Program
+; Files where it cannot write its save.
 PrivilegesRequired=lowest
-PrivilegesRequiredOverridesAllowed=dialog
 DefaultDirName={autopf}\{#AppShortName}
 DefaultGroupName={#AppShortName}
 DisableProgramGroupPage=yes
