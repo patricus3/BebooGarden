@@ -5,6 +5,7 @@ using CrossSpeak;
 using FmodAudio;
 using Microsoft.Xna.Framework;
 using System;
+using System.Collections.Generic;
 using System.Linq;
 using Vector3 = System.Numerics.Vector3;
 
@@ -19,8 +20,11 @@ internal class FluffBall : Item
 {
   private const int HUGCOOLDOWNMS = 6000;
 
-  /// <summary>How long a fluffball will wait somewhere with nobody in it before going home.</summary>
-  private const int LONELYTOOLONGMS = 60000 * 3;
+  /// <summary>
+  /// How long a fluffball will wait somewhere with nobody in it before going home. Short on purpose:
+  /// three minutes of patience meant you never saw it happen.
+  /// </summary>
+  private const int LONELYTOOLONGMS = 45000;
 
   private Vector3? _position;
   private Vector3? _drift;
@@ -67,17 +71,42 @@ internal class FluffBall : Item
   private DateTime _aloneSince = DateTime.MinValue;
 
   /// <summary>
-  /// Nobody left to hug: no other fluffball here, and no beboo either. You do not count - a hug
-  /// from you is exactly what it wants, and a sad murmur across the garden is how it asks.
+  /// Watches every fluffball on one map, and is called for every map from Map.Update rather than
+  /// only for the one you are standing on. Items are updated on your map alone, so a fluffball left
+  /// behind is not running at all: leaving it to notice its own loneliness meant nothing happened
+  /// until you came back and stood there, which is exactly when it is not alone any more.
+  ///
+  /// Nobody to hug means no other fluffball here and no beboo either. You do not count - a hug from
+  /// you is exactly what it wants, and a sad murmur across the garden is how it asks.
   /// </summary>
-  private bool Alone
+  public static void WatchTheLonely(Map map)
   {
-    get
+    List<FluffBall> here = [.. map.Items.OfType<FluffBall>()];
+    bool company = map.Beboos.Count > 0 || here.Count > 1;
+    foreach (FluffBall ball in here)
     {
-      Map? map = Game1.Instance.Map;
-      if (map == null || map.Beboos.Count > 0) return false;
-      return !map.Items.OfType<FluffBall>().Any(other => other != this);
+      if (company) ball._aloneSince = DateTime.MinValue;
+      else if (ball._aloneSince == DateTime.MinValue) ball._aloneSince = DateTime.Now;
+      else if ((DateTime.Now - ball._aloneSince).TotalMilliseconds >= LONELYTOOLONGMS) ball.GoHome(map);
     }
+  }
+
+  /// <summary>
+  /// Back to the fluff. It keeps whoever it had chosen: this is going home to wait, not giving up
+  /// on them.
+  /// </summary>
+  private void GoHome(Map from)
+  {
+    if (from == Map.Fluff) return;
+    from.Items.Remove(this);
+    if (!Map.Fluff.AddItem(this, new Vector3(0, 0, 0))) Map.Fluff.Items.Add(this);
+    _aloneSince = DateTime.MinValue;
+    _wasAlone = false;
+    MurmurBehaviour.MinMS = 5000;
+    MurmurBehaviour.MaxMS = 12000;
+    // Only worth saying where you could actually have heard it go.
+    if (Game1.Instance.Map == from || Game1.Instance.Map == Map.Fluff)
+      CrossSpeakManager.Instance.Output(BebooText.fluffball_goeshome);
   }
 
   /// <summary>
@@ -168,7 +197,6 @@ internal class FluffBall : Item
   {
     if (Position == null) return;
     NoticeWhetherAlone();
-    if (GoneHome()) return;
     if (MurmurBehaviour.ItsTime())
     {
       // There is no sad fluffball sound, so a lonely one gets the same murmur with the life taken
@@ -213,12 +241,11 @@ internal class FluffBall : Item
   /// </summary>
   private void NoticeWhetherAlone()
   {
-    bool alone = Alone;
+    // Whether it is alone was settled from the map, which is watched whether or not you are on it.
+    // All this does is say so.
+    bool alone = _aloneSince != DateTime.MinValue;
     if (alone == _wasAlone) return;
     _wasAlone = alone;
-    // Real time rather than ticks, so waiting counts while you are off in another place and this
-    // fluffball is not being updated at all. Come back an hour later and it has long since gone.
-    _aloneSince = alone ? DateTime.Now : DateTime.MinValue;
     MurmurBehaviour.MinMS = alone ? 9000 : 5000;
     MurmurBehaviour.MaxMS = alone ? 20000 : 12000;
     CrossSpeakManager.Instance.Output(
@@ -227,26 +254,6 @@ internal class FluffBall : Item
         alone ? Game1.Instance.SoundSystem.FluffBallMurmurSounds
               : Game1.Instance.SoundSystem.FluffBallHugSounds,
         this, alone ? 0.2f : -1, alone ? 0.7f : 1f);
-  }
-
-  /// <summary>
-  /// Takes itself home to the fluff once it has waited long enough with nobody, and reports whether
-  /// it has gone. It keeps whoever it had chosen: this is going home to wait, not giving up on them.
-  /// </summary>
-  private bool GoneHome()
-  {
-    if (_aloneSince == DateTime.MinValue) return false;
-    if ((DateTime.Now - _aloneSince).TotalMilliseconds < LONELYTOOLONGMS) return false;
-    Map? here = Game1.Instance.Map;
-    if (here == null || here == Map.Fluff) return false;
-    here.Items.Remove(this);
-    if (!Map.Fluff.AddItem(this, new Vector3(0, 0, 0))) Map.Fluff.Items.Add(this);
-    CrossSpeakManager.Instance.Output(BebooText.fluffball_goeshome);
-    _wasAlone = false;
-    _aloneSince = DateTime.MinValue;
-    MurmurBehaviour.MinMS = 5000;
-    MurmurBehaviour.MaxMS = 12000;
-    return true;
   }
 
   private void Drift()

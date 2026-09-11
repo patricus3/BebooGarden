@@ -269,6 +269,9 @@ public class Map
       }
       BubblePopBehaviour.Done();
     }
+    // Every map, every frame, not only the one you are standing on: a fluffball left behind has to
+    // be able to get bored and go home with nobody there to see it.
+    FluffBall.WatchTheLonely(this);
     if (FluffBallPopBehaviour.ItsTime())
     {
       if (Items.FindAll(x => x is FluffBall).Count < 8)
