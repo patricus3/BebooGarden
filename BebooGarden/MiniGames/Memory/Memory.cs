@@ -11,6 +11,7 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Threading.Tasks;
 using static System.Formats.Asn1.AsnWriter;
 
 namespace BebooGarden.Minigame.memory;
@@ -64,6 +65,10 @@ internal class Memory : IMiniGame
 
   public void Update(GameTime gameTime, KeyboardState currentKeyboardState)
   {
+    // The minigame has an FMOD system of its own, separate from the game's, and nothing was ever
+    // updating it. Its channels therefore never reported themselves finished, which is what left
+    // the sound tasks waiting forever.
+    SoundSystem.System.Update();
     _level?.Update(gameTime, currentKeyboardState);
     if ((_level?.Ended??false) && (_level?.Win ?? false))
     {
@@ -82,6 +87,10 @@ internal class Memory : IMiniGame
   {
     if (MaxScore < Score) MaxScore = Score;
     Game1.Instance.Unpause();
+    // Let the waiting tasks go before the system they are waiting on disappears, but never wait
+    // longer than a moment: finishing the minigame must not be able to hang the game.
+    SoundSystem.Stop();
+    Task.WaitAll(SoundSystem.tasks.ToArray(), 500);
     SoundSystem.System.Release();
     IsRunning = false;
     // The whole point of the treasure chest, and it was commented out: you played the memory game

@@ -107,8 +107,10 @@ internal class Level
   }
   public void Release()
   {
-    Task.WaitAll(SoundSystem.tasks.ToArray());
+    // Never wait for those tasks from here. They run on the thread pool and wait for channels to
+    // finish; this runs on the game thread. The minigame's sound system was never being updated, so
+    // a channel could stay "playing" forever, and Task.WaitAll then stopped the entire game dead.
+    SoundSystem.Stop();
     SoundSystem.FreeRessources();
-    //SoundSystem.System.Release();
   }
 }

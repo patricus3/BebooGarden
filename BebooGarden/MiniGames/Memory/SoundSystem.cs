@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -95,42 +95,56 @@ public class SoundSystem
   }
 
   public List<Task> tasks = new();
+
+  /// <summary>
+  /// Set when the minigame is finishing. Every wait below watches it, so a task can never be left
+  /// spinning on a sound that is not going to end.
+  /// </summary>
+  private volatile bool _stopping;
+
+  /// <summary>Tells the waiting tasks to give up. They stop within a few milliseconds.</summary>
+  public void Stop() => _stopping = true;
+
+  /// <summary>
+  /// Waits for a channel to finish, or for the minigame to be shutting down. Sleeps rather than
+  /// spinning: this runs on a pool thread and used to burn a core solid while it waited.
+  /// </summary>
+  private void WaitFor(Channel channel)
+  {
+    while (!_stopping && channel.IsPlaying) Thread.Sleep(5);
+  }
+
   public void PlayQueue(Sound sound, bool queued = true)
   {
-    if (queued)
+    tasks.Add(Task.Factory.StartNew(() =>
     {
-      tasks.Add(Task.Factory.StartNew(() =>
+      try
       {
-        int real;
-        do
+        if (queued)
         {
-          System.GetChannelsPlaying(out int all, out real);
-        } while (real > 2);
-        Channel? channel = System.PlaySound(sound, paused: false);
-        if (channel != null)
-        {
-          while (channel.IsPlaying) { Thread.Sleep(5); }
-          try
+          // Wait for the queue to drain before adding to it. This had no sleep in it, so it span
+          // as fast as the processor would allow.
+          int real;
+          do
           {
-            channel.Stop();
-          }
-          catch { }
+            if (_stopping) return;
+            System.GetChannelsPlaying(out int _, out real);
+            if (real > 2) Thread.Sleep(5);
+          } while (real > 2);
         }
-      }));
-    }
-    else
-    {
-      tasks.Add(Task.Factory.StartNew(() =>
-      {
+        if (_stopping) return;
         Channel? channel = System.PlaySound(sound, paused: false);
-        if (channel != null)
-        {
-          while (channel.IsPlaying) { Thread.Sleep(5); }
-          channel.Stop();
-        }
-      }));
-    }
+        if (channel == null) return;
+        WaitFor(channel);
+        channel.Stop();
+      }
+      catch (Exception)
+      {
+        // The system was released while this was waiting on it. Nothing left to play.
+      }
+    }));
   }
+
   public void FreeRessources()
   {
     Musics.ForEach((music) =>
