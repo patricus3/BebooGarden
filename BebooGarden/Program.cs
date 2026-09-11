@@ -2,6 +2,12 @@
 using System.IO;
 using System.Threading.Tasks;
 
+// fmod.dll sits in lib\ and is found by probing relative to the working directory, so the game only
+// started when that happened to be its own folder. Shortcuts set it, which is why this was never
+// noticed, but a command line, a launcher or a file manager need not, and the reward was a
+// DllNotFoundException before anything was on screen. Pin it to where the game actually lives.
+Directory.SetCurrentDirectory(AppContext.BaseDirectory);
+
 // A crash used to take the window away with nothing written down anywhere, which makes a bug
 // report a guess. Anything that gets this far is appended to crash.log in the player's own folder,
 // with the stack, so a player can send it on and it says what actually happened.

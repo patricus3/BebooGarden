@@ -647,7 +647,11 @@ public partial class Beboo
     if (songsList.Count > 0 && songsListFriend.Count > 0)
     {
       var randomSong = songsList[Game1.Instance.Random.Next(songsList.Count)];
-      var randomSongFriend = songsList[Game1.Instance.Random.Next(songsListFriend.Count)];
+      // The friend's song, out of the friend's own songs. This drew from this beboo's list using
+      // the friend's count, which sang in the wrong voice and threw outright whenever the friend
+      // had more songs to choose from - easy to hit now that a mod creature can have a voice of a
+      // different size.
+      var randomSongFriend = songsListFriend[Game1.Instance.Random.Next(songsListFriend.Count)];
       Game1.Instance.SoundSystem.PlayBebooSound(randomSong, this);
       friend.Later(100, () =>
           Game1.Instance.SoundSystem.PlayBebooSound(randomSongFriend, friend));
