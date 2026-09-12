@@ -10,6 +10,13 @@ namespace BebooGarden.GameCore.Item;
 
 internal class Fish : Item
 {
+  /// <summary>
+  /// How loud one fish's swimming loop is. Ten of them share the beach at once, each looping
+  /// without pause, so at the full volume every other sound was playing under a wall of fish. The
+  /// water they are in runs at 0.1 to 0.5 and the trees at 0.2; this sits with them.
+  /// </summary>
+  private const float MOVELOOPVOLUME = 0.15f;
+
   private System.Numerics.Vector3? position;
   public Fish()
   {
@@ -38,6 +45,7 @@ internal class Fish : Item
           Game1.Instance.SoundSystem.PlaySoundAtPosition(Game1.Instance.SoundSystem.WallSound, newPos);
         }
         position = newPos;
+        MoveLoopTo(newPos);
       }
       else
       {
@@ -58,6 +66,25 @@ internal class Fish : Item
     Action();
   }
   public override void PlaySound() { }
+
+  /// <summary>
+  /// Takes the swimming loop with the fish. It used to be started once where the fish appeared and
+  /// left there, so a fish you could hear right beside you was often nowhere near.
+  /// </summary>
+  private void MoveLoopTo(System.Numerics.Vector3 newPos)
+  {
+    try
+    {
+      if (Channel != null && Channel.IsPlaying)
+        Channel.Set3DAttributes(newPos + new System.Numerics.Vector3(0, 0, -2), default, default);
+    }
+    catch (FmodException)
+    {
+      // The loop has ended under us; the next update starts a new one.
+      Channel = null;
+    }
+  }
+
   public override void Pause()
   {
     base.Pause();
@@ -77,7 +104,9 @@ internal class Fish : Item
     base.Update(gameTime);
     if (Channel == null && Position != null)
     {
-      Channel = Game1.Instance.SoundSystem.PlaySoundAtPosition(Game1.Instance.SoundSystem.FishMoveSound, Position.Value);
+      Channel channel = Game1.Instance.SoundSystem.PlaySoundAtPosition(Game1.Instance.SoundSystem.FishMoveSound, Position.Value);
+      channel.Volume = MOVELOOPVOLUME;
+      Channel = channel;
     }
     if (ChangeDestinationBehaviour.ItsTime())
     {
