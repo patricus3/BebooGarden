@@ -16,9 +16,18 @@
 		<ApplicationManifest>app.manifest</ApplicationManifest>
 		<ApplicationIcon>Icon.ico</ApplicationIcon>
 	</PropertyGroup>
+	<PropertyGroup>
+		<!-- No MonoGame content pipeline. Every sound in this game is opened by FMOD from the raw
+		     file on disk, and nothing anywhere calls Content.Load, so the pipeline was transcoding
+		     518 mp3s and wavs into xnb files that were never once read - three minutes a build and
+		     351 MB of output that the Content item below then had to exclude from the release.
+		     It also failed the build outright: 25 of those files are at sample rates or bit depths
+		     MonoGame's importers refuse, which FMOD plays without complaint. -->
+		<EnableMGCBItems>false</EnableMGCBItems>
+	</PropertyGroup>
 	<ItemGroup>
-		<!-- Content/bin and Content/obj are the content pipeline's intermediates. The game reads the
-		     raw files through FMOD, so shipping them added 351 MB of build junk to the release. -->
+		<!-- Content/bin and Content/obj are what that pipeline used to leave behind. Still excluded:
+		     the folders are on disk in existing checkouts and must not reach the release. -->
 		<Content Include="Content\**" Exclude="Content\bin\**;Content\obj\**">
 			<CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
 		</Content>
@@ -89,10 +98,8 @@
 	<ItemGroup>
 		<PackageReference Include="Fmod5Sharp" Version="3.0.1" />
 		<PackageReference Include="MonoGame.Framework.DesktopGL" Version="3.8.2.1105" />
-		<PackageReference Include="MonoGame.Content.Builder.Task" Version="3.8.2.1105" />
 		<PackageReference Include="Myra" Version="1.5.9" />
 		<PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
-		<PackageReference Include="Nopipeline.Task" Version="2.3.0" />
 		<PackageReference Include="SharpHook" Version="5.3.9" />
 		<PackageReference Include="TOWK.Utility.CrossSpeak" Version="1.0.0" />
 	</ItemGroup>
@@ -128,8 +135,8 @@
 			<LastGenOutput>GameText.Designer.cs</LastGenOutput>
 		</EmbeddedResource>
 	</ItemGroup>
-	<Target Name="RestoreDotnetTools" BeforeTargets="Restore">
-		<Message Text="Restoring dotnet tools" Importance="High" />
-		<Exec Command="dotnet tool restore" />
-	</Target>
+	<!-- There was a RestoreDotnetTools target here that ran "dotnet tool restore" before every
+	     restore. The only thing in .config/dotnet-tools.json is mgcb and its editors, so with the
+	     content pipeline gone it was fetching a toolchain nothing runs. The manifest is left in
+	     place for anyone who wants to open Content.mgcb in the editor by hand. -->
 </Project>

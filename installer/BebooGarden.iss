@@ -2,7 +2,7 @@
 ;
 ; Build it with:
 ;   dotnet publish BebooGarden\BebooGarden.csproj -c Release -r win-x64 --self-contained false ^
-;       -p:EnableMGCBItems=false -o installer\payload
+;       -o installer\payload
 ;   "C:\Program Files (x86)\Inno Setup 6\ISCC.exe" installer\BebooGarden.iss
 ;
 ; The installer is written to dist\ at the root of the repository. PayloadDir and OutDir can both
