@@ -652,4 +652,7 @@ Oben rechts im Garten hat ein weicher kleiner Ort aufgemacht: das Flauschige. Do
 	<data name="ui.musicunmuted" xml:space="preserve">
 		<value>Musik an.</value>
 	</data>
+	<data name="snowball.toowarm" xml:space="preserve">
+		<value>Ein Schneeball würde im Flauschigen keine Minute überstehen.</value>
+	</data>
 </root>

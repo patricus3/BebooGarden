@@ -196,5 +196,6 @@
     "ui.volume": "音量 {0}%。",
     "ui.musicvolume": "音乐音量 {0}%。",
     "ui.musicmuted": "音乐已关闭。",
-    "ui.musicunmuted": "音乐已开启。"
+    "ui.musicunmuted": "音乐已开启。",
+    "snowball.toowarm": "雪球在绒绒地连一分钟都撑不住。"
 }

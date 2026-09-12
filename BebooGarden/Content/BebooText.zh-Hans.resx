@@ -652,4 +652,7 @@ Escape 打开菜单。就这些了。好好相处。</value>
 	<data name="ui.musicunmuted" xml:space="preserve">
 		<value>音乐已开启。</value>
 	</data>
+	<data name="snowball.toowarm" xml:space="preserve">
+		<value>雪球在绒绒地连一分钟都撑不住。</value>
+	</data>
 </root>

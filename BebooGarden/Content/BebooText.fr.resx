@@ -652,4 +652,7 @@ Un petit endroit tout doux, la peluche, s'est ouvert en haut à droite du jardin
 	<data name="ui.musicunmuted" xml:space="preserve">
 		<value>Musique rétablie.</value>
 	</data>
+	<data name="snowball.toowarm" xml:space="preserve">
+		<value>Une boule de neige ne tiendrait pas une minute dans la peluche.</value>
+	</data>
 </root>

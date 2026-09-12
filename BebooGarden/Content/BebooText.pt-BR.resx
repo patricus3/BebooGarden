@@ -652,4 +652,7 @@ Um cantinho macio chamado o fofo abriu no canto superior direito do jardim. Não
 	<data name="ui.musicunmuted" xml:space="preserve">
 		<value>Música ligada.</value>
 	</data>
+	<data name="snowball.toowarm" xml:space="preserve">
+		<value>Uma bola de neve não duraria um minuto no fofo.</value>
+	</data>
 </root>

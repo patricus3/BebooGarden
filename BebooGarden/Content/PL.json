@@ -195,5 +195,6 @@
     "ui.volume": "Głośność {0}%.",
     "ui.musicvolume": "Głośność muzyki {0}%.",
     "ui.musicmuted": "Muzyka wyłączona.",
-    "ui.musicunmuted": "Muzyka włączona."
+    "ui.musicunmuted": "Muzyka włączona.",
+    "snowball.toowarm": "Śnieżka nie przetrwałaby w Puszystości nawet minuty."
 }

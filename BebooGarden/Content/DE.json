@@ -197,5 +197,6 @@
     "ui.volume": "Lautstärke {0}%.",
     "ui.musicvolume": "Musiklautstärke {0}%.",
     "ui.musicmuted": "Musik aus.",
-    "ui.musicunmuted": "Musik an."
+    "ui.musicunmuted": "Musik an.",
+    "snowball.toowarm": "Ein Schneeball würde im Flauschigen keine Minute überstehen."
 }

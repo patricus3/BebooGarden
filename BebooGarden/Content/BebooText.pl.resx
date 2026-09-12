@@ -652,4 +652,7 @@ W prawym górnym rogu ogrodu otworzyło się miękkie miejsce zwane puszystości
 	<data name="ui.musicunmuted" xml:space="preserve">
 		<value>Muzyka włączona.</value>
 	</data>
+	<data name="snowball.toowarm" xml:space="preserve">
+		<value>Śnieżka nie przetrwałaby w Puszystości nawet minuty.</value>
+	</data>
 </root>

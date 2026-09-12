@@ -653,4 +653,7 @@ A soft little place called the fluff has opened up, at the top right of the gard
 	<data name="ui.musicunmuted" xml:space="preserve">
 		<value>Music on.</value>
 	</data>
+	<data name="snowball.toowarm" xml:space="preserve">
+		<value>A snowball would not last a minute in the fluff.</value>
+	</data>
 </root>

@@ -46,9 +46,19 @@ public class Bubble : Item
       }
     }
   } // position null=in inventory
-  public override bool IsTakable { get; set; } = false;
+  // Bubbles can be caught and carried. They are waterproof, so one will sit anywhere you put it,
+  // including a garden that has never seen a bubble before.
+  public override bool IsTakable { get; set; } = true;
   public override bool IsWaterProof { get; set; } = true;
   public override Channel? Channel { get; set; }
+
+  public override void Take()
+  {
+    // Caught, not knocked: a bubble in the bag has no drift left over to carry out of it.
+    Direction = null;
+    base.Take();
+  }
+
   public override void Action()
   {
     Game1.Instance.SoundSystem.PlaySoundAtPosition(Game1.Instance.SoundSystem.BubbleSounds, Position.Value);

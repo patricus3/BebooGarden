@@ -652,4 +652,7 @@ Một nơi mềm mại tên là Xứ Bông vừa mở ra ở góc trên bên ph�
 	<data name="ui.musicunmuted" xml:space="preserve">
 		<value>Đã bật nhạc.</value>
 	</data>
+	<data name="snowball.toowarm" xml:space="preserve">
+		<value>Một quả cầu tuyết sẽ không trụ nổi một phút ở Xứ Bông.</value>
+	</data>
 </root>

@@ -129,6 +129,12 @@ public partial class Game1
   {
     Item? item = ItemInHand;
     if (item == null) return;
+    string? refusal = Map != null ? item.WhyItCannotGoOn(Map) : null;
+    if (refusal != null)
+    {
+      RefuseToPutDown(item, refusal);
+      return;
+    }
     bool inWater = Map?.IsInWater(PlayerPosition) ?? false;
     if (inWater && !item.IsWaterProof)
     {

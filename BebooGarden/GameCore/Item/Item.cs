@@ -20,6 +20,13 @@ public abstract class Item
   public abstract System.Numerics.Vector3? Position { get; set; } // position null = in inventory
   public virtual bool IsTakable { get; set; } = true;
   public virtual bool IsWaterProof { get; set; } = false;
+
+  /// <summary>
+  /// Why this item cannot be left on that map, or null when it can. Water is asked about
+  /// separately through IsWaterProof; this is for a whole place an item has no business being in.
+  /// </summary>
+  public virtual string? WhyItCannotGoOn(World.Map map) => null;
+
   public virtual int Cost { get; set; } = 1;
 
   [JsonIgnore]

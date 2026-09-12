@@ -207,5 +207,6 @@
     "ui.volume": "Volume {0}%.",
     "ui.musicvolume": "Volume da música {0}%.",
     "ui.musicmuted": "Música desligada.",
-    "ui.musicunmuted": "Música ligada."
+    "ui.musicunmuted": "Música ligada.",
+    "snowball.toowarm": "Uma bola de neve não duraria um minuto no fofo."
 }

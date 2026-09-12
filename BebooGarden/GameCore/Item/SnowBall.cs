@@ -47,6 +47,21 @@ internal class SnowBall : Item
   public override bool IsWaterProof { get; set; } = false;
   public override Channel? Channel { get; set; }
   public override int Cost { get; set; } = -1;
+  /// <summary>
+  /// The fluff is warm and indoors, and nothing there can be won or lost. A snowball carried in
+  /// from the snow has to stay in the bag.
+  /// </summary>
+  public override string? WhyItCannotGoOn(World.Map map)
+      => map.Preset == World.MapPreset.fluff ? BebooText.snowball_toowarm : null;
+
+  public override void Take()
+  {
+    // A snowball rolls for as long as it has a direction. Taking one mid roll and putting it down
+    // somewhere else used to have it shoot off the moment it landed.
+    Direction = null;
+    base.Take();
+  }
+
   public override void Action()
   {
     Game1.Instance.SoundSystem.PlaySoundAtPosition(Game1.Instance.SoundSystem.ItemSnowBallKickSound, Position.Value);

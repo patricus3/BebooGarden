@@ -196,5 +196,6 @@
     "ui.volume": "Volume {0}%.",
     "ui.musicvolume": "Volume de la musique {0}%.",
     "ui.musicmuted": "Musique coupée.",
-    "ui.musicunmuted": "Musique rétablie."
+    "ui.musicunmuted": "Musique rétablie.",
+    "snowball.toowarm": "Une boule de neige ne tiendrait pas une minute dans la peluche."
 }

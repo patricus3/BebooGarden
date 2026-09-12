@@ -1671,5 +1671,14 @@ namespace BebooGarden.Content {
             }
         }
 
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à A snowball would not last a minute in the fluff..
+        /// </summary>
+        internal static string snowball_toowarm {
+            get {
+                return ResourceManager.GetString("snowball.toowarm", resourceCulture);
+            }
+        }
+
     }
 }
