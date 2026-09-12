@@ -640,4 +640,16 @@ Un petit endroit tout doux, la peluche, s'est ouvert en haut à droite du jardin
 	<data name="fluffball.goeshome" xml:space="preserve">
 		<value>La boule de peluche a assez attendu et s'en retourne doucement vers la peluche.</value>
 	</data>
+	<data name="ui.volume" xml:space="preserve">
+		<value>Volume {0}%.</value>
+	</data>
+	<data name="ui.musicvolume" xml:space="preserve">
+		<value>Volume de la musique {0}%.</value>
+	</data>
+	<data name="ui.musicmuted" xml:space="preserve">
+		<value>Musique coupée.</value>
+	</data>
+	<data name="ui.musicunmuted" xml:space="preserve">
+		<value>Musique rétablie.</value>
+	</data>
 </root>

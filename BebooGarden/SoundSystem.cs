@@ -50,7 +50,46 @@ internal class SoundSystem
   public float Volume
   {
     get => System.MasterSoundGroup.GetValueOrDefault().Volume;
-    set => System.MasterSoundGroup.GetValueOrDefault().Volume = value;
+    set => System.MasterSoundGroup.GetValueOrDefault().Volume = Math.Clamp(value, 0f, 1f);
+  }
+
+  /// <summary>What the track playing now asked to be played at. See <see cref="MusicVolume"/>.</summary>
+  private float _musicTrackVolume = 0.5f;
+  private float _musicVolume = 1f;
+  private bool _musicMuted;
+
+  /// <summary>
+  /// The player's music setting, from 0 to 1. Every track asks for its own volume - the sad music
+  /// is deliberately faint, the fluff's deliberately less so - which is why this scales what the
+  /// track wants instead of replacing it. Replacing it is what the setting used to do, and it was
+  /// undone by the next change of map, which is why the music keys appeared to do nothing.
+  /// </summary>
+  public float MusicVolume
+  {
+    get => _musicVolume;
+    set
+    {
+      _musicVolume = Math.Clamp(value, 0f, 1f);
+      ApplyMusicVolume();
+    }
+  }
+
+  public bool MusicMuted
+  {
+    get => _musicMuted;
+    set
+    {
+      _musicMuted = value;
+      // A channel whose sound has ended is no longer a channel, and asking it anything throws.
+      try { if (Music != null) Music.Mute = value; }
+      catch (FmodException) { }
+    }
+  }
+
+  private void ApplyMusicVolume()
+  {
+    try { if (Music != null) Music.Volume = _musicTrackVolume * _musicVolume; }
+    catch (FmodException) { }
   }
 
   public Dictionary<string, List<Sound>> BebooCuteSounds { get; private set; }
@@ -571,12 +610,15 @@ internal class SoundSystem
 
   public void MusicTransition(Sound music, uint startLoop, uint endLoop, TimeUnit timeUnit, float volume = 0.5f)
   {
-    bool mute = Music?.Mute ?? false;
-    Music?.Stop();
+    try { Music?.Stop(); }
+    catch (FmodException) { }
+    _musicTrackVolume = volume;
     Music = System.PlaySound(music, paused: false)!;
     if (endLoop != 0) Music?.SetLoopPoints(timeUnit, startLoop, timeUnit, endLoop);
-    if (Music != null) Music.Volume = volume;
-    if (Music != null) Music.Mute = mute;
+    // The track's own volume, scaled by the player's setting, and muted if that is where they left
+    // it. Carrying both across the transition is what makes the music keys stick between maps.
+    ApplyMusicVolume();
+    if (Music != null) Music.Mute = _musicMuted;
   }
 
   public Channel PlaySoundAtPosition(List<Sound> sounds, Vector3 position, float volumeModifier = 0, float pitch = 1)

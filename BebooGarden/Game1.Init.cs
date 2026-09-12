@@ -105,7 +105,8 @@ public partial class Game1
     ChangeMapMusic();
     //if (Save.Flags.NewGame) Welcome.AfterGarden();
     //else UpdateMapMusic();
-    SoundSystem.Music?.Volume = Save.MusicVolume;
+    SoundSystem.MusicVolume = Save.MusicLevel ?? 1f;
+    SoundSystem.MusicMuted = Save.MusicMuted;
     LastPressedKeyTime = DateTime.Now;
     if (Save.FruitsBasket == null || Save.FruitsBasket.Count == 0)
     {

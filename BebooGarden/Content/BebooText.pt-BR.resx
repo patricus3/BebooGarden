@@ -640,4 +640,16 @@ Um cantinho macio chamado o fofo abriu no canto superior direito do jardim. Não
 	<data name="fluffball.goeshome" xml:space="preserve">
 		<value>A bolinha de pelúcia já esperou bastante e volta flutuando para a pelúcia.</value>
 	</data>
+	<data name="ui.volume" xml:space="preserve">
+		<value>Volume {0}%.</value>
+	</data>
+	<data name="ui.musicvolume" xml:space="preserve">
+		<value>Volume da música {0}%.</value>
+	</data>
+	<data name="ui.musicmuted" xml:space="preserve">
+		<value>Música desligada.</value>
+	</data>
+	<data name="ui.musicunmuted" xml:space="preserve">
+		<value>Música ligada.</value>
+	</data>
 </root>

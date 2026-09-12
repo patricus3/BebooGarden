@@ -91,10 +91,11 @@ public partial class Game1 : Game
          raceScores: Race.RaceScores,
          raceTodayTries: Competition.TodayTries.GetValueOrDefault(CompetitionType.Race),
          raceTotalWin: Race.TotalWin,
-         musicVolume: SoundSystem.Music?.Volume ?? 0.5f,
+         musicLevel: SoundSystem.MusicVolume,
          enabledMods: [.. Modding.ModManager.Enabled],
          competitionTries: Competition.TodayTries
      );
+    parameters.MusicMuted = SoundSystem.MusicMuted;
     // Everything discovered this run counts as seen, so the startup list does not ask again.
     parameters.KnownMods = [.. (Save.KnownMods ?? []).Union(Modding.ModManager.All.Select(mod => mod.Id))];
     SaveManager.WriteSave(parameters);

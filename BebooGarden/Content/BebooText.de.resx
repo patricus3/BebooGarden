@@ -640,4 +640,16 @@ Oben rechts im Garten hat ein weicher kleiner Ort aufgemacht: das Flauschige. Do
 	<data name="fluffball.goeshome" xml:space="preserve">
 		<value>Der Fluffball hat lange genug gewartet und schwebt heim ins Flauschland.</value>
 	</data>
+	<data name="ui.volume" xml:space="preserve">
+		<value>Lautstärke {0}%.</value>
+	</data>
+	<data name="ui.musicvolume" xml:space="preserve">
+		<value>Musiklautstärke {0}%.</value>
+	</data>
+	<data name="ui.musicmuted" xml:space="preserve">
+		<value>Musik aus.</value>
+	</data>
+	<data name="ui.musicunmuted" xml:space="preserve">
+		<value>Musik an.</value>
+	</data>
 </root>

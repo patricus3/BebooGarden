@@ -32,8 +32,14 @@ public partial class Game1
   private bool _lastSwayWasLeft;
   private bool _wasActive = true;
 
+  /// <summary>How much one press of a volume key moves it.</summary>
+  private const float VOLUMESTEP = 0.05f;
+
   private void HandleKeyboardNavigation(KeyboardState currentKeyboardState)
   {
+    // Before anything else, and outside every other check: the volume keys work in the garden, in
+    // a menu and in the middle of a minigame alike, which is where you most want them.
+    HandleVolumeKeys(currentKeyboardState);
     // A minigame owns the keyboard for as long as it runs, so the menus do not act on the same
     // keys behind it - escape in particular, which now leaves the minigame.
     if (CurrentPlayingMiniGame?.IsRunning ?? false) return;
@@ -56,6 +62,48 @@ public partial class Game1
     {
       HandleMenuNavigation(currentKeyboardState);
     }
+  }
+
+  /// <summary>
+  /// F2 and F3 for everything, F5 and F6 for the music, F4 to silence the music. These are the
+  /// keys the manual has always listed; they were dropped when the input was rewritten and had
+  /// been doing nothing since.
+  /// </summary>
+  private void HandleVolumeKeys(KeyboardState currentKeyboardState)
+  {
+    if (IsKeyPressed(currentKeyboardState, Keys.F2)) SetVolume(SoundSystem.Volume - VOLUMESTEP);
+    if (IsKeyPressed(currentKeyboardState, Keys.F3)) SetVolume(SoundSystem.Volume + VOLUMESTEP);
+    if (IsKeyPressed(currentKeyboardState, Keys.F5)) SetMusicVolume(SoundSystem.MusicVolume - VOLUMESTEP);
+    if (IsKeyPressed(currentKeyboardState, Keys.F6)) SetMusicVolume(SoundSystem.MusicVolume + VOLUMESTEP);
+    // Alt F4 closes the window and is dealt with below. It must not also mute the music on its
+    // way out, and it must not mute it when the window refuses to close either.
+    if (IsKeyPressed(currentKeyboardState, Keys.F4)
+        && !currentKeyboardState.IsKeyDown(Keys.LeftAlt)
+        && !currentKeyboardState.IsKeyDown(Keys.RightAlt))
+    {
+      SoundSystem.MusicMuted = !SoundSystem.MusicMuted;
+      CrossSpeakManager.Instance.Output(
+          SoundSystem.MusicMuted ? BebooText.ui_musicmuted : BebooText.ui_musicunmuted);
+    }
+  }
+
+  private void SetVolume(float volume)
+  {
+    SoundSystem.Volume = volume;
+    // The memory brings its own sound system, and is the only thing you can hear while it runs.
+    CurrentPlayingMiniGame?.SetVolume(SoundSystem.Volume);
+    // A bip after the change, so you hear the level you have just set rather than only hear it
+    // named. The music needs none: the music is the thing being turned down.
+    SoundSystem.System.PlaySound(SoundSystem.MenuBipSound);
+    CrossSpeakManager.Instance.Output(
+        String.Format(BebooText.ui_volume, (int)Math.Round(SoundSystem.Volume * 100)));
+  }
+
+  private void SetMusicVolume(float volume)
+  {
+    SoundSystem.MusicVolume = volume;
+    CrossSpeakManager.Instance.Output(
+        String.Format(BebooText.ui_musicvolume, (int)Math.Round(SoundSystem.MusicVolume * 100)));
   }
 
   private void MainGameKeyboardLogic(KeyboardState currentKeyboardState)

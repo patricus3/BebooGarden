@@ -52,7 +52,8 @@ public partial class Game1
       PlayerPosition = new Vector3(-2, 0, 0);
       Map.AddItem(new Egg(Save.FavoredColor), new(2, 0, 0));
     }
-    SoundSystem.Music?.Volume = Save.MusicVolume;
+    SoundSystem.MusicVolume = Save.MusicLevel ?? 1f;
+    SoundSystem.MusicMuted = Save.MusicMuted;
     LastPressedKeyTime = DateTime.Now;
     if (Save.FruitsBasket == null || Save.FruitsBasket.Count == 0)
     {

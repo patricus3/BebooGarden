@@ -193,5 +193,9 @@
     "fluffball.staysbehind": "Der Fluffball folgt {0} nicht in die Kälte und bleibt, wo er ist.",
     "fluffball.alone": "Der Fluffball hat niemanden mehr zum Kuscheln und wird ganz still und traurig.",
     "fluffball.cheered": "Der Fluffball hat wieder Gesellschaft und lebt sofort auf.",
-    "fluffball.goeshome": "Der Fluffball hat lange genug gewartet und schwebt heim ins Flauschland."
+    "fluffball.goeshome": "Der Fluffball hat lange genug gewartet und schwebt heim ins Flauschland.",
+    "ui.volume": "Lautstärke {0}%.",
+    "ui.musicvolume": "Musiklautstärke {0}%.",
+    "ui.musicmuted": "Musik aus.",
+    "ui.musicunmuted": "Musik an."
 }

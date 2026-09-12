@@ -192,5 +192,9 @@
     "fluffball.staysbehind": "Cục bông không chịu theo {0} vào chỗ lạnh, nó ở lại.",
     "fluffball.alone": "Cục bông không còn ai để ôm nữa, nó lặng đi và buồn hẳn.",
     "fluffball.cheered": "Cục bông lại có bạn, nó vui hẳn lên.",
-    "fluffball.goeshome": "Cục bông đợi đủ lâu rồi, nó trôi về lại xứ bông."
+    "fluffball.goeshome": "Cục bông đợi đủ lâu rồi, nó trôi về lại xứ bông.",
+    "ui.volume": "Âm lượng {0}%.",
+    "ui.musicvolume": "Âm lượng nhạc {0}%.",
+    "ui.musicmuted": "Đã tắt nhạc.",
+    "ui.musicunmuted": "Đã bật nhạc."
 }

@@ -192,5 +192,9 @@
     "fluffball.staysbehind": "The fluffball will not follow {0} into the cold, and stays where it is.",
     "fluffball.alone": "The fluffball has nobody left to hug, and goes quiet and sad.",
     "fluffball.cheered": "The fluffball has company again, and perks right up.",
-    "fluffball.goeshome": "The fluffball has waited long enough, and drifts away home to the fluff."
+    "fluffball.goeshome": "The fluffball has waited long enough, and drifts away home to the fluff.",
+    "ui.volume": "Volume {0}%.",
+    "ui.musicvolume": "Music volume {0}%.",
+    "ui.musicmuted": "Music off.",
+    "ui.musicunmuted": "Music on."
 }

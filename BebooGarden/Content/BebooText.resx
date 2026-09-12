@@ -641,4 +641,16 @@ A soft little place called the fluff has opened up, at the top right of the gard
 	<data name="fluffball.goeshome" xml:space="preserve">
 		<value>The fluffball has waited long enough, and drifts away home to the fluff.</value>
 	</data>
+	<data name="ui.volume" xml:space="preserve">
+		<value>Volume {0}%.</value>
+	</data>
+	<data name="ui.musicvolume" xml:space="preserve">
+		<value>Music volume {0}%.</value>
+	</data>
+	<data name="ui.musicmuted" xml:space="preserve">
+		<value>Music off.</value>
+	</data>
+	<data name="ui.musicunmuted" xml:space="preserve">
+		<value>Music on.</value>
+	</data>
 </root>

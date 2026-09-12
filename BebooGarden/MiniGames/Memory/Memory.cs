@@ -37,8 +37,13 @@ internal class Memory : IMiniGame
 
   public Memory(float volume)
   {
-    SoundSystem = new SoundSystem(volume - 0.3f);
+    SoundSystem = new SoundSystem(MemoryVolumeFor(volume));
   }
+
+  /// <summary>The memory's own sounds are mastered louder than the garden's, so they come down a bit.</summary>
+  private static float MemoryVolumeFor(float volume) => Math.Max(0f, volume - 0.3f);
+
+  public void SetVolume(float volume) => SoundSystem.Volume = MemoryVolumeFor(volume);
 
   public void Start()
   {

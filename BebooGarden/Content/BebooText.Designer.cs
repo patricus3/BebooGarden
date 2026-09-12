@@ -1635,5 +1635,41 @@ namespace BebooGarden.Content {
             }
         }
 
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à Volume {0}%..
+        /// </summary>
+        internal static string ui_volume {
+            get {
+                return ResourceManager.GetString("ui.volume", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à Music volume {0}%..
+        /// </summary>
+        internal static string ui_musicvolume {
+            get {
+                return ResourceManager.GetString("ui.musicvolume", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à Music off..
+        /// </summary>
+        internal static string ui_musicmuted {
+            get {
+                return ResourceManager.GetString("ui.musicmuted", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à Music on..
+        /// </summary>
+        internal static string ui_musicunmuted {
+            get {
+                return ResourceManager.GetString("ui.musicunmuted", resourceCulture);
+            }
+        }
+
     }
 }

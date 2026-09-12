@@ -191,5 +191,9 @@
     "fluffball.staysbehind": "Kłębek puchu nie pójdzie za {0} na zimno i zostaje na miejscu.",
     "fluffball.alone": "Kłębek puchu nie ma już kogo przytulać i robi się cichy i smutny.",
     "fluffball.cheered": "Kłębek puchu znów ma towarzystwo i od razu się ożywia.",
-    "fluffball.goeshome": "Kłębek puchu czekał dość długo i odpływa z powrotem do puchowej krainy."
+    "fluffball.goeshome": "Kłębek puchu czekał dość długo i odpływa z powrotem do puchowej krainy.",
+    "ui.volume": "Głośność {0}%.",
+    "ui.musicvolume": "Głośność muzyki {0}%.",
+    "ui.musicmuted": "Muzyka wyłączona.",
+    "ui.musicunmuted": "Muzyka włączona."
 }

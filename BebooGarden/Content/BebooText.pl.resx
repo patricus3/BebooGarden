@@ -640,4 +640,16 @@ W prawym górnym rogu ogrodu otworzyło się miękkie miejsce zwane puszystości
 	<data name="fluffball.goeshome" xml:space="preserve">
 		<value>Kłębek puchu czekał dość długo i odpływa z powrotem do puchowej krainy.</value>
 	</data>
+	<data name="ui.volume" xml:space="preserve">
+		<value>Głośność {0}%.</value>
+	</data>
+	<data name="ui.musicvolume" xml:space="preserve">
+		<value>Głośność muzyki {0}%.</value>
+	</data>
+	<data name="ui.musicmuted" xml:space="preserve">
+		<value>Muzyka wyłączona.</value>
+	</data>
+	<data name="ui.musicunmuted" xml:space="preserve">
+		<value>Muzyka włączona.</value>
+	</data>
 </root>

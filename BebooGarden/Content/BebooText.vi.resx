@@ -640,4 +640,16 @@ Một nơi mềm mại tên là Xứ Bông vừa mở ra ở góc trên bên ph�
 	<data name="fluffball.goeshome" xml:space="preserve">
 		<value>Cục bông đợi đủ lâu rồi, nó trôi về lại xứ bông.</value>
 	</data>
+	<data name="ui.volume" xml:space="preserve">
+		<value>Âm lượng {0}%.</value>
+	</data>
+	<data name="ui.musicvolume" xml:space="preserve">
+		<value>Âm lượng nhạc {0}%.</value>
+	</data>
+	<data name="ui.musicmuted" xml:space="preserve">
+		<value>Đã tắt nhạc.</value>
+	</data>
+	<data name="ui.musicunmuted" xml:space="preserve">
+		<value>Đã bật nhạc.</value>
+	</data>
 </root>

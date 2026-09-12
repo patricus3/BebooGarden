@@ -192,5 +192,9 @@
     "fluffball.staysbehind": "La boule de peluche refuse de suivre {0} dans le froid et reste où elle est.",
     "fluffball.alone": "La boule de peluche n'a plus personne à câliner et devient toute triste.",
     "fluffball.cheered": "La boule de peluche a de nouveau de la compagnie et reprend vie.",
-    "fluffball.goeshome": "La boule de peluche a assez attendu et s'en retourne doucement vers la peluche."
+    "fluffball.goeshome": "La boule de peluche a assez attendu et s'en retourne doucement vers la peluche.",
+    "ui.volume": "Volume {0}%.",
+    "ui.musicvolume": "Volume de la musique {0}%.",
+    "ui.musicmuted": "Musique coupée.",
+    "ui.musicunmuted": "Musique rétablie."
 }
