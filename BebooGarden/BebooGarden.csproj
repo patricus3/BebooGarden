@@ -10,7 +10,7 @@
 		<Product>Beboo Garden: Enhanced Edition</Product>
 		<AssemblyTitle>Beboo Garden: Enhanced Edition</AssemblyTitle>
 		<Company>Saladeuh</Company>
-		<Version>2.3.0</Version>
+		<Version>2.4.0</Version>
 	</PropertyGroup>
 	<PropertyGroup>
 		<ApplicationManifest>app.manifest</ApplicationManifest>

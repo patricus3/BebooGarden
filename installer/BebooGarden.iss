@@ -25,7 +25,7 @@
 
 #define AppName "Beboo Garden: Enhanced Edition"
 #define AppShortName "Beboo Garden"
-#define AppVersion "2.3.0"
+#define AppVersion "2.4.0"
 #define AppPublisher "Saladeuh"
 #define AppURL "https://github.com/Saladeuh/BebooGarden"
 #define AppExe "BebooGarden.exe"
