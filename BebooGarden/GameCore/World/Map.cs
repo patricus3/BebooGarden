@@ -91,7 +91,22 @@ public class Map
   public List<MapConnexion> Connexions { get; set; } = [];
 
   public List<WaterRectangle> WaterPoints { get; } = [];
-  public List<Item.Item> Items { get; set; } = new();
+  private List<Item.Item> items = new();
+
+  /// <summary>
+  /// What is lying about on this map. Assigning the list is how a save is poured back in, so that
+  /// is also where each item is told which map it is on - it has to know before it moves, or it
+  /// clamps itself against the wrong one.
+  /// </summary>
+  public List<Item.Item> Items
+  {
+    get => items;
+    set
+    {
+      items = value ?? [];
+      foreach (Item.Item item in items) item.OwnerMap = this;
+    }
+  }
   public bool IsLullabyPlaying { get; set; } = false;
   public bool IsDansePlaying { get; set; } = false;
   public bool IsRaceMap => (this == BasicRace || this == SnowyRace);
@@ -191,6 +206,9 @@ public class Map
   {
     if (GetTreeLineAtPosition(position) != null) return false;
     Items.Add(item);
+    // Before the position, not after: setting the position is what clamps it, and clamping needs
+    // to know which map it is being clamped to.
+    item.OwnerMap = this;
     item.Position = position;
     if (Paused) item.Pause();
     return true;

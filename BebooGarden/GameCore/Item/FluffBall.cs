@@ -50,7 +50,7 @@ internal class FluffBall : Item
   public override Vector3? Position
   {
     get => _position;
-    set => _position = value == null ? null : Game1.Instance.Map?.Clamp(value.Value) ?? value;
+    set => _position = value == null ? null : ClampToOwnMap(value.Value, out _);
   }
 
   /// <summary>
@@ -99,7 +99,13 @@ internal class FluffBall : Item
   {
     if (from == Map.Fluff) return;
     from.Items.Remove(this);
-    if (!Map.Fluff.AddItem(this, new Vector3(0, 0, 0))) Map.Fluff.Items.Add(this);
+    // AddItem stamps the new map on it; the fallback has to do the same, or it would go on
+    // clamping itself against the map it just left.
+    if (!Map.Fluff.AddItem(this, new Vector3(0, 0, 0)))
+    {
+      Map.Fluff.Items.Add(this);
+      OwnerMap = Map.Fluff;
+    }
     _aloneSince = DateTime.MinValue;
     _wasAlone = false;
     MurmurBehaviour.MinMS = 5000;
@@ -134,7 +140,11 @@ internal class FluffBall : Item
       }
       from.Items.Remove(ball);
       // Where the beboo itself arrives, and a spot both maps are certain to have.
-      if (!to.AddItem(ball, new Vector3(0, 0, 0))) to.Items.Add(ball);
+      if (!to.AddItem(ball, new Vector3(0, 0, 0)))
+      {
+        to.Items.Add(ball);
+        ball.OwnerMap = to;
+      }
       CrossSpeakManager.Instance.Output(String.Format(BebooText.fluffball_follows, beboo.Name));
     }
   }

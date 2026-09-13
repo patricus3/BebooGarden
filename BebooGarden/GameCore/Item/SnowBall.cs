@@ -27,19 +27,15 @@ internal class SnowBall : Item
       {
         position = value;
       }
-      else if (Game1.Instance.Map != null)
+      else
       {
-        Vector3 newPos = Game1.Instance.Map.Clamp(value.Value);
-        if (newPos != value)
+        Vector3 newPos = ClampToOwnMap(value.Value, out bool hitWall);
+        if (hitWall)
         {
           Game1.Instance.SoundSystem.PlaySoundAtPosition(Game1.Instance.SoundSystem.WallSound, newPos);
           Direction = null;
         }
         position = newPos;
-      }
-      else
-      {
-        position = value;
       }
     }
   } // position null=in inventory
