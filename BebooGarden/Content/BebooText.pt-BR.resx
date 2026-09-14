@@ -655,4 +655,7 @@ Um cantinho macio chamado o fofo abriu no canto superior direito do jardim. Não
 	<data name="snowball.toowarm" xml:space="preserve">
 		<value>Uma bola de neve não duraria um minuto no fofo.</value>
 	</data>
+	<data name="ui.hatchcolor" xml:space="preserve">
+		<value>Seu Beboo é {0}!</value>
+	</data>
 </root>

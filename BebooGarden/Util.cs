@@ -43,6 +43,13 @@ public static class Util
   {
     return int.TryParse(key.ToString().Replace("NumPad", "").Replace("D", ""), out keyInt);
   }
+  /// <summary>One of the colours a beboo can be, never "none".</summary>
+  public static string RandomColor()
+  {
+    var colors = Array.FindAll(Colors, color => color != "none");
+    return colors[Game1.Instance.Random.Next(colors.Length)];
+  }
+
   public static BebooType GetRandomBebooType()
   {
     var bebooTypes = Enum.GetValues(typeof(BebooType));
@@ -63,6 +70,26 @@ public static class Util
       "indigo" => BebooType.Indigo,
       "violet" => BebooType.Violet,
       _ => BebooType.Base,
+    };
+  }
+
+  /// <summary>
+  /// The colour a beboo type goes by, as the english key its translation is stored under. Null for
+  /// the base type, the one type that has no colour to give.
+  /// </summary>
+  public static string? ColorOfBebooType(BebooType bebooType)
+  {
+    return bebooType switch
+    {
+      BebooType.Pink => "pink",
+      BebooType.Red => "red",
+      BebooType.Orange => "orange",
+      BebooType.Yellow => "yellow",
+      BebooType.Green => "green",
+      BebooType.Blue => "blue",
+      BebooType.Indigo => "indigo",
+      BebooType.Violet => "violet",
+      _ => null,
     };
   }
 }

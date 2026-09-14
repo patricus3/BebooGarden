@@ -27,7 +27,7 @@ public class NewBebooScene : IScriptedScene
   public NewBebooScene(Beboo beboo)
   {
     _beboo = beboo;
-    _letsNameDialog = new TalkDialog(BebooText.ui_letsname, GameScreen.ScriptedScene);
+    _letsNameDialog = new TalkDialog(ColorLine(beboo) + BebooText.ui_letsname, GameScreen.ScriptedScene);
     _nameTextFieldDialog = new Dialog
     {
       Title = BebooText.ui_bebooname
@@ -69,6 +69,17 @@ public class NewBebooScene : IScriptedScene
       }
     };
   }
+  /// <summary>
+  /// Which colour came out of the shell, as a line ahead of the naming one. An egg found in the
+  /// garden picks its colour only as it hatches, so this is the one moment the player gets told.
+  /// </summary>
+  private static string ColorLine(Beboo beboo)
+  {
+    string? color = Util.ColorOfBebooType(beboo.BebooType);
+    if (color == null) return "";
+    return String.Format(BebooText.ui_hatchcolor, Util.LocalizedColor(color)) + "\n";
+  }
+
   public void Update(GameTime gameTime)
   {
     if (Game1.Instance._currentScreen != GameScreen.ScriptedScene) return;

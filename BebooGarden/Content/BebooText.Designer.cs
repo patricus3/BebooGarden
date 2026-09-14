@@ -1680,5 +1680,14 @@ namespace BebooGarden.Content {
             }
         }
 
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à Your beboo is {0}!.
+        /// </summary>
+        internal static string ui_hatchcolor {
+            get {
+                return ResourceManager.GetString("ui.hatchcolor", resourceCulture);
+            }
+        }
+
     }
 }

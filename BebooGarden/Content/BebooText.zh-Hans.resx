@@ -655,4 +655,7 @@ Escape 打开菜单。就这些了。好好相处。</value>
 	<data name="snowball.toowarm" xml:space="preserve">
 		<value>雪球在绒绒地连一分钟都撑不住。</value>
 	</data>
+	<data name="ui.hatchcolor" xml:space="preserve">
+		<value>你的波波是{0}的！</value>
+	</data>
 </root>

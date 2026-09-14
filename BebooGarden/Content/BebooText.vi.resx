@@ -655,4 +655,7 @@ Một nơi mềm mại tên là Xứ Bông vừa mở ra ở góc trên bên ph�
 	<data name="snowball.toowarm" xml:space="preserve">
 		<value>Một quả cầu tuyết sẽ không trụ nổi một phút ở Xứ Bông.</value>
 	</data>
+	<data name="ui.hatchcolor" xml:space="preserve">
+		<value>Beboo của bạn là {0}!</value>
+	</data>
 </root>

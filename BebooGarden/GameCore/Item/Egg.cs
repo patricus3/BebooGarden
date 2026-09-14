@@ -8,16 +8,27 @@ using FmodAudio;
 
 namespace BebooGarden.GameCore.Item;
 
-public class Egg(string color) : Item
+public class Egg : Item
 {
-  public override string Name => String.Format(BebooText.egg_name, Color != "none" ? Util.LocalizedColor(Color) : " ");
+  /// <summary>
+  /// An egg knows its colour from the moment it exists, so that finding one, buying one or picking
+  /// one up tells the player which beboo is on the way. An egg asked for with no colour, the ones
+  /// the garden leaves lying about and the one in the shop, draws its own here rather than at
+  /// hatching time, which used to leave the player holding an egg of no colour at all.
+  /// </summary>
+  public Egg(string color)
+  {
+    Color = color == "none" ? Util.RandomColor() : color;
+  }
+
+  public override string Name => String.Format(BebooText.egg_name, Util.LocalizedColor(Color));
   public override string Description => BebooText.egg_description;
   public override Vector3? Position { get; set; } // position null=in inventory
   public override bool IsTakable { get; set; } = false;
   public override int Cost { get; set; } = 20;
   public override bool IsWaterProof { get; set; } = true;
   public override Channel? Channel { get; set; }
-  public string Color { get; } = color;
+  public string Color { get; }
 
   public override void Action() => Hatch();
   public override void Take() => Hatch();
@@ -26,7 +37,7 @@ public class Egg(string color) : Item
   {
     Game1.Instance.Map?.Items.Remove(this);
     SoundLoopBehaviour.Stop();
-    BebooType bebooType = Color != "none" ? Util.GetBebooTypeByColor(Color) : Util.GetRandomBebooType();
+    BebooType bebooType = Util.GetBebooTypeByColor(Color);
     // Roughly one hatchling in three is a mod creature when any mod offering them is switched on.
     Modding.ModCreature? modCreature = null;
     var offered = Modding.ModManager.AvailableCreatures.ToList();

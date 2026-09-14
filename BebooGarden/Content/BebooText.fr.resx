@@ -655,4 +655,7 @@ Un petit endroit tout doux, la peluche, s'est ouvert en haut à droite du jardin
 	<data name="snowball.toowarm" xml:space="preserve">
 		<value>Une boule de neige ne tiendrait pas une minute dans la peluche.</value>
 	</data>
+	<data name="ui.hatchcolor" xml:space="preserve">
+		<value>Votre Bébou est {0} !</value>
+	</data>
 </root>

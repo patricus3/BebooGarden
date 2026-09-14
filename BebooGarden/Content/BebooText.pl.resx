@@ -655,4 +655,7 @@ W prawym górnym rogu ogrodu otworzyło się miękkie miejsce zwane puszystości
 	<data name="snowball.toowarm" xml:space="preserve">
 		<value>Śnieżka nie przetrwałaby w Puszystości nawet minuty.</value>
 	</data>
+	<data name="ui.hatchcolor" xml:space="preserve">
+		<value>Kolor twojego beboo: {0}!</value>
+	</data>
 </root>

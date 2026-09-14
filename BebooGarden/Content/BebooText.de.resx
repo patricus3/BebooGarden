@@ -655,4 +655,7 @@ Oben rechts im Garten hat ein weicher kleiner Ort aufgemacht: das Flauschige. Do
 	<data name="snowball.toowarm" xml:space="preserve">
 		<value>Ein Schneeball würde im Flauschigen keine Minute überstehen.</value>
 	</data>
+	<data name="ui.hatchcolor" xml:space="preserve">
+		<value>Dein Beboo ist {0}!</value>
+	</data>
 </root>
