@@ -13,18 +13,20 @@ using System.Globalization;
 using System.Linq;
 
 namespace BebooGarden;
-public partial class Game1 : Game
+public partial class Game1 : Game, GameCore.IGame
 {
   public const string GAMENAME = "Beboo Garden: Enhanced Edition";
 
   public GameScreen _currentScreen;
   public GameScreen _previousGameScreen;
 
-  internal SoundSystem SoundSystem { get; }
+  public SoundSystem SoundSystem { get; }
 
   // Singleton
   public static Game1 Instance { get; private set; }
   public Random Random { get; set; }
+  /// <summary>Scenes and menus for the shared code. See <see cref="MyraGameUi"/>.</summary>
+  public GameCore.IGameUi Ui { get; } = new MyraGameUi();
   public IMiniGame? CurrentPlayingMiniGame { get; set; } = null;
   private bool _lastArrowWasUp;
 
@@ -37,6 +39,8 @@ public partial class Game1 : Game
     _currentScreen = GameScreen.game;
     SoundSystem = new SoundSystem();
     Instance = this; // Set the static instance
+    // And install it for the shared code, which asks GameHost rather than naming this class.
+    GameCore.GameHost.Use(this);
   }
 
   private void OnExit(object sender, ExitingEventArgs e)
@@ -51,56 +55,8 @@ public partial class Game1 : Game
     CrossSpeakManager.Instance.Close();
   }
 
-  private void WriteSave()
-  {
-    // Rolls live in the music box, not on the ground. Every map, not just the current one:
-    // rolls left elsewhere used to be saved.
-    foreach (Map map in Map.Maps.Values)
-      map.Items.RemoveAll(item => item is Roll);
-    Dictionary<MapPreset, MapInfo> mapInfos = [];
-    foreach (Map map in Map.Maps.Values)
-    {
-      int fruits = 0;
-      if (map.TreeLines.Count > 0)
-        fruits = map.TreeLines[0].Fruits;
-      List<BebooInfo> bebooInfos = new();
-      foreach (Beboo beboo in map.Beboos)
-      {
-        if (!beboo.Racer)
-          bebooInfos.Add(new(beboo.Name, beboo.Age, beboo.Happiness, beboo.Energy, beboo.SwimLevel, beboo.VoicePitch, beboo.BebooType)
-          {
-            ModCreature = beboo.ModCreature,
-            Trait = beboo.Trait,
-          });
-      }
-      MapInfo mapInfo = new(map.Items, fruits, bebooInfos);
-      mapInfos.Add(map.Preset, mapInfo);
-    }
-    SaveParameters parameters = new(CultureInfo.CurrentUICulture.Name,
-        SoundSystem.Volume,
-        lastPayed: DateTime.Now,
-         flags: Save.Flags,
-         playerName: Save.PlayerName,
-         fruitsBasket: Save.FruitsBasket ?? [],
-         inventory: Inventory,
-         tickets: Save.Tickets,
-         unlockedRolls: MusicBox.AvailableRolls,
-         favoredColor: Save.FavoredColor,
-         currentMap: Map?.Preset ?? MapPreset.garden,
-         mapInfos: mapInfos,
-         raceScores: Race.RaceScores,
-         raceTodayTries: Competition.TodayTries.GetValueOrDefault(CompetitionType.Race),
-         raceTotalWin: Race.TotalWin,
-         musicLevel: SoundSystem.MusicVolume,
-         enabledMods: [.. Modding.ModManager.Enabled],
-         competitionTries: Competition.TodayTries
-     );
-    parameters.MusicMuted = SoundSystem.MusicMuted;
-    // Everything discovered this run counts as seen, so the startup list does not ask again.
-    parameters.KnownMods = [.. (Save.KnownMods ?? []).Union(Modding.ModManager.All.Select(mod => mod.Id))];
-    SaveManager.WriteSave(parameters);
-  }
-
+  /// <summary>Writes the garden down. The deciding is shared; see SaveCapture.</summary>
+  private void WriteSave() => BebooGarden.Save.SaveCapture.Write(this);
   public List<Item> Inventory { get; set; } = [];
   public Item? ItemInHand { get; set; }
 

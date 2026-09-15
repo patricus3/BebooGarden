@@ -221,7 +221,7 @@ public partial class Game1
     if (currentKeyboardState.GetPressedKeyCount() > 0)
     {
       var key = currentKeyboardState.GetPressedKeys()[0];
-      if (Util.IsKeyDigit(key, out int keyInt) && keyInt > 0)
+      if (MonoUtil.IsKeyDigit(key, out int keyInt) && keyInt > 0)
       {
         if (Map != null && keyInt <= Map.Beboos.Count)
         {

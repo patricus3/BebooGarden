@@ -370,3 +370,10 @@ dist/
 # Built mods: the dll is an artefact, rebuilt from src/ and released from dist/.
 mods-standalone/**/*.dll
 mods-standalone/**/*.pdb
+
+# FMOD Android native libraries. Not redistributable - fetch them with download_deps.bat
+# (see BebooGarden.Android/lib/android/README.txt).
+BebooGarden.Android/lib/android/**/*.so
+
+# Android SDK / JDK installed by build_all.bat, if anyone points them inside the repo.
+.android/

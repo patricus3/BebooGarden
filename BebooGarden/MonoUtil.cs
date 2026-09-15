@@ -6,6 +6,15 @@ namespace BebooGarden;
 
 public static class MonoUtil
 {
+  /// <summary>
+  /// Whether a key is a digit, and which. Lives here rather than in the shared Util because Keys
+  /// is a MonoGame type; the shared code asks for a slot instead. See IInputFrame.
+  /// </summary>
+  public static bool IsKeyDigit(Keys key, out int keyInt)
+  {
+    return int.TryParse(key.ToString().Replace("NumPad", "").Replace("D", ""), out keyInt);
+  }
+
   private static readonly Dictionary<KeyCode, Keys> KEYCODEMAP = new()
   {
     // Lettres

@@ -34,7 +34,7 @@ public partial class Game1
     if (Map != null) SoundSystem.PlayMapMusic(Map);
   }
 
-  internal void ChangeMap(Map map, bool backup = true)
+  public void ChangeMap(Map map, bool backup = true)
   {
     if (Map != null) SoundSystem.Pause(Map);
     if (backup) _backedMap = Map;
@@ -43,7 +43,7 @@ public partial class Game1
     foreach (var otherMap in Map.Maps.Values)
       if (otherMap != map) SoundSystem.Pause(otherMap);
   }
-  internal void LoadBackedMap()
+  public void LoadBackedMap()
   {
     if (_backedMap == null) return;
     SoundSystem.Pause(Map);

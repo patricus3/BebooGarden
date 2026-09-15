@@ -1,0 +1,105 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+	<!--
+	  The Android head. It holds no game logic at all - that is BebooGarden.Core, compiled once and
+	  shared with the Windows build. What lives here is only what a phone does differently: the
+	  activity and its lifecycle, the system text-to-speech engine, touch instead of a keyboard,
+	  notifications, audio focus, and unpacking the shipped sounds out of the package.
+
+	  FMOD is not one of those. FmodAudio is managed and resolves its native library at run time, so
+	  the same SoundSystem serves both platforms; this head only points it at libfmod.so.
+	-->
+
+	<PropertyGroup>
+		<TargetFramework>net10.0-android</TargetFramework>
+		<SupportedOSPlatformVersion>26</SupportedOSPlatformVersion>
+		<OutputType>Exe</OutputType>
+		<Nullable>enable</Nullable>
+		<LangVersion>preview</LangVersion>
+		<RootNamespace>BebooGarden.Droid</RootNamespace>
+		<ApplicationId>com.patricusprod.beboo.enhanced</ApplicationId>
+		<ApplicationVersion>1</ApplicationVersion>
+		<ApplicationDisplayVersion>3.0.0</ApplicationDisplayVersion>
+		<Product>Beboo Garden: Enhanced Edition</Product>
+		<Company>Saladeuh</Company>
+		<!-- Mods are loaded with Assembly.LoadFrom at run time, which full AOT and trimming would
+		     break. The game is not CPU-bound - it draws nothing - so there is nothing to win here
+		     that would be worth losing mods over. -->
+		<RunAOTCompilation>false</RunAOTCompilation>
+		<PublishTrimmed>false</PublishTrimmed>
+	</PropertyGroup>
+
+	<ItemGroup>
+		<!-- Managed binding only. libfmod.so per ABI is supplied separately and found at run time;
+		     see MainActivity, which points Fmod.SetLibraryLocation at the native library dir. -->
+		<Reference Include="FmodAudio">
+			<HintPath>..\BebooGarden\lib\FmodAudio.dll</HintPath>
+		</Reference>
+	</ItemGroup>
+
+	<ItemGroup>
+		<ProjectReference Include="..\BebooGarden.Core\BebooGarden.Core.csproj" />
+		<ProjectReference Include="..\BebooGarden.ModApi\BebooGarden.ModApi.csproj" />
+	</ItemGroup>
+
+	<!--
+	  FMOD's Android native libraries. Drop them in and the game has sound; without them it starts,
+	  speaks and unpacks its content but dies the moment it tries to create the FMOD system.
+
+	  They are not in this repository because FMOD's licence does not let them be redistributed -
+	  you download them yourself from fmod.com. Take "FMOD Engine" for Android and copy the .so out
+	  of api/core/lib/<abi>/ into lib/android/<abi>/ here. The ABI folder name is what the build
+	  reads to decide which slice of the apk each one belongs in, so keep those names exactly.
+
+	  The glob means adding an ABI needs no edit here. If the folder is empty the build still
+	  succeeds, which is deliberate: everything except the audio can be worked on without it.
+	-->
+	<ItemGroup>
+		<AndroidNativeLibrary Include="lib\android\*\*.so">
+			<Abi>$([System.IO.Path]::GetFileName($([System.IO.Path]::GetDirectoryName('%(FullPath)'))))</Abi>
+		</AndroidNativeLibrary>
+	</ItemGroup>
+
+	<!--
+	  The sounds ship as ONE zip asset, unpacked on first run - see AndroidStorage.
+
+	  Not as 520 separate AndroidAssets, for two reasons. aapt2 cannot open an asset path that is not
+	  ASCII, and the music box rolls are named things like "1812 Overture (Finale)&#x29F8;- Tchaikovsky.mp3"
+	  - that character is a big solidus standing in for the slash a filename is not allowed to
+	  contain. Packaging them one at a time also made aapt2 walk half a gigabyte of files it had
+	  nothing to do to. A zip sidesteps both, keeps every name exactly as it is, and unpacks faster.
+	-->
+	<Target Name="PackBebooContent" BeforeTargets="BeforeBuild">
+		<!-- Inside the target, not in a PropertyGroup above it. IntermediateOutputPath is set by an
+		     SDK import that is evaluated after this file, so up there it is still empty and both of
+		     these resolve to the project directory - which quietly drops half a gigabyte of staged
+		     audio next to the source and offers it all to git. -->
+		<PropertyGroup>
+			<BebooContentSource>..\BebooGarden\Content</BebooContentSource>
+			<BebooContentStage>$(IntermediateOutputPath)content-stage\</BebooContentStage>
+			<BebooContentZip>$(IntermediateOutputPath)content.zip</BebooContentZip>
+		</PropertyGroup>
+		<ItemGroup>
+			<!-- Excluded: leftovers from the MonoGame content pipeline that no longer runs, and the
+			     translations, which are embedded in BebooGarden.Core instead. -->
+			<BebooContent Include="$(BebooContentSource)\**\*.*"
+			              Exclude="$(BebooContentSource)\bin\**;$(BebooContentSource)\obj\**;$(BebooContentSource)\**\*.resx;$(BebooContentSource)\**\*.cs;$(BebooContentSource)\**\*.xnb;$(BebooContentSource)\**\*.mgcontent" />
+		</ItemGroup>
+		<Copy SourceFiles="@(BebooContent)"
+		      DestinationFiles="@(BebooContent->'$(BebooContentStage)%(RecursiveDir)%(Filename)%(Extension)')"
+		      SkipUnchangedFiles="true" />
+		<ZipDirectory SourceDirectory="$(BebooContentStage)"
+		              DestinationFile="$(BebooContentZip)"
+		              Overwrite="true" />
+		<ItemGroup>
+			<AndroidAsset Include="$(BebooContentZip)" Link="Assets\content.zip" />
+		</ItemGroup>
+	</Target>
+
+	<PropertyGroup>
+		<!-- The zip holds audio that is already compressed; squeezing it again in the apk would only
+		     cost install time. -->
+		<AndroidStoreUncompressedFileExtensions>.zip</AndroidStoreUncompressedFileExtensions>
+	</PropertyGroup>
+
+</Project>

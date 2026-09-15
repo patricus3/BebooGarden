@@ -34,7 +34,7 @@ public partial class Game1
     CloseMenuIfNeeded();
     foreach (GameCore.Pet.Beboo beboo in Map?.Beboos)
     {
-      beboo.Update(gameTime);
+      beboo.Update();
       if (Map.IsLullabyPlaying) beboo.GoAsleep();
       else if (Map.IsDansePlaying) beboo.WakeUp();
       if (!Map.IsRaceMap && beboo.Racer) beboo.Pause();
@@ -73,11 +73,11 @@ public partial class Game1
     }
     foreach (var map in Map.Maps.Values.ToList())
     {
-      map?.Update(gameTime);
+      map?.Update();
     }
     foreach (Item item in Map?.Items.ToList())
     {
-      item?.Update(gameTime);
+      item?.Update();
     }
 
     ReleaseBebooInArmsIfGone();
@@ -148,7 +148,7 @@ public partial class Game1
   {
     if (CurrentPlayingMiniGame?.IsRunning ?? false)
     {
-      CurrentPlayingMiniGame?.Update(gameTime, currentKeyboardState);
+      CurrentPlayingMiniGame?.Update(new KeyboardInputFrame(this, currentKeyboardState));
     }
   }
 

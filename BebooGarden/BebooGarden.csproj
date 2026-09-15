@@ -10,7 +10,7 @@
 		<Product>Beboo Garden: Enhanced Edition</Product>
 		<AssemblyTitle>Beboo Garden: Enhanced Edition</AssemblyTitle>
 		<Company>Saladeuh</Company>
-		<Version>2.5.0</Version>
+		<Version>3.0.0</Version>
 	</PropertyGroup>
 	<PropertyGroup>
 		<ApplicationManifest>app.manifest</ApplicationManifest>
@@ -40,18 +40,7 @@
 	</ItemGroup>
 	<ItemGroup>
 		<ProjectReference Include="..\BebooGarden.ModApi\BebooGarden.ModApi.csproj" />
-	</ItemGroup>
-	<ItemGroup>
-		<EmbeddedResource Remove="Content\BebooText.fr.resx" />
-		<EmbeddedResource Remove="Content\BebooText.de.resx" />
-		<EmbeddedResource Remove="Content\BebooText.pl.resx" />
-		<EmbeddedResource Remove="Content\BebooText.pt-BR.resx" />
-		<EmbeddedResource Remove="Content\BebooText.vi.resx" />
-		<EmbeddedResource Remove="Content\BebooText.zh-Hans.resx" />
-		<EmbeddedResource Remove="Content\BebooText.resx" />
-		<EmbeddedResource Remove="Content\GameText.de.resx" />
-		<EmbeddedResource Remove="Content\GameText.pl.resx" />
-		<EmbeddedResource Remove="Content\GameText.resx" />
+		<ProjectReference Include="..\BebooGarden.Core\BebooGarden.Core.csproj" />
 	</ItemGroup>
 	<ItemGroup>
 		<None Remove="Icon.ico" />
@@ -63,36 +52,6 @@
 		</EmbeddedResource>
 		<EmbeddedResource Include="Icon.bmp">
 			<LogicalName>Icon.bmp</LogicalName>
-		</EmbeddedResource>
-	</ItemGroup>
-	<ItemGroup>
-		<EmbeddedResource Include="Content\BebooText.resx">
-			<LogicalName>BebooGarden.Content.BebooText.resources</LogicalName>
-			<WithCulture>true</WithCulture>
-		</EmbeddedResource>
-		<EmbeddedResource Include="Content\BebooText.fr.resx">
-			<LogicalName>BebooGarden.Content.BebooText.fr.resources</LogicalName>
-			<WithCulture>true</WithCulture>
-		</EmbeddedResource>
-		<EmbeddedResource Include="Content\BebooText.de.resx">
-			<LogicalName>BebooGarden.Content.BebooText.de.resources</LogicalName>
-			<WithCulture>true</WithCulture>
-		</EmbeddedResource>
-		<EmbeddedResource Include="Content\BebooText.pl.resx">
-			<LogicalName>BebooGarden.Content.BebooText.pl.resources</LogicalName>
-			<WithCulture>true</WithCulture>
-		</EmbeddedResource>
-		<EmbeddedResource Include="Content\BebooText.pt-BR.resx">
-			<LogicalName>BebooGarden.Content.BebooText.pt-BR.resources</LogicalName>
-			<WithCulture>true</WithCulture>
-		</EmbeddedResource>
-		<EmbeddedResource Include="Content\BebooText.vi.resx">
-			<LogicalName>BebooGarden.Content.BebooText.vi.resources</LogicalName>
-			<WithCulture>true</WithCulture>
-		</EmbeddedResource>
-		<EmbeddedResource Include="Content\BebooText.zh-Hans.resx">
-			<LogicalName>BebooGarden.Content.BebooText.zh-Hans.resources</LogicalName>
-			<WithCulture>true</WithCulture>
 		</EmbeddedResource>
 	</ItemGroup>
 	<ItemGroup>
@@ -110,30 +69,6 @@
 		<Reference Include="FmodAudio">
 			<HintPath>lib\FmodAudio.dll</HintPath>
 		</Reference>
-	</ItemGroup>
-	<ItemGroup>
-		<Compile Update="Content\BebooText.Designer.cs">
-			<DesignTime>True</DesignTime>
-			<AutoGen>True</AutoGen>
-			<DependentUpon>BebooText.resx</DependentUpon>
-		</Compile>
-	</ItemGroup>
-	<ItemGroup>
-		<Content Update="Content\BebooText.Designer.cs">
-			<DesignTime>True</DesignTime>
-			<AutoGen>True</AutoGen>
-			<DependentUpon>BebooText.resx</DependentUpon>
-		</Content>
-		<Content Update="Content\BebooText.resx">
-			<Generator>ResXFileCodeGenerator</Generator>
-			<LastGenOutput>BebooText.Designer.cs</LastGenOutput>
-		</Content>
-	</ItemGroup>
-	<ItemGroup>
-		<EmbeddedResource Update="Content\GameText.resx">
-			<Generator>ResXFileCodeGenerator</Generator>
-			<LastGenOutput>GameText.Designer.cs</LastGenOutput>
-		</EmbeddedResource>
 	</ItemGroup>
 	<!-- There was a RestoreDotnetTools target here that ran "dotnet tool restore" before every
 	     restore. The only thing in .config/dotnet-tools.json is mgcb and its editors, so with the

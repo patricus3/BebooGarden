@@ -1,0 +1,94 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+	<!--
+	  Every line of Beboo Garden's game logic: beboos, items, maps, minigames, the save, the mod
+	  loader and the sound system.
+
+	  The target framework is plain net10.0 on purpose, with no platform suffix. That is what keeps
+	  the game honest: this project *cannot* reference MonoGame, Myra, SharpHook, a screen reader or
+	  anything else that only exists on one platform, because the compiler will not allow it. So a
+	  beboo cannot come to behave differently on Windows than on a phone - there is one copy of the
+	  behaviour and no conditional compilation in it.
+
+	  What the platform does differ on is reached through interfaces declared here and implemented by
+	  each head: IGame, IGameUi, ISpeech and IInputFrame.
+
+	  FMOD is not one of those. FmodAudio is a managed net6.0 assembly that resolves its native
+	  library at run time, so the same sound system serves both platforms; each head only has to
+	  point Fmod.SetLibraryLocation at its own fmod binary.
+	-->
+
+	<PropertyGroup>
+		<TargetFramework>net10.0</TargetFramework>
+		<RollForward>Major</RollForward>
+		<LangVersion>preview</LangVersion>
+		<Nullable>enable</Nullable>
+		<RootNamespace>BebooGarden</RootNamespace>
+		<Product>Beboo Garden: Enhanced Edition</Product>
+		<Company>Saladeuh</Company>
+		<Version>3.0.0</Version>
+		<!-- The audio and the text live beside the game, not inside this assembly. -->
+		<EnableDefaultContentItems>false</EnableDefaultContentItems>
+		<!-- The resx items below are declared explicitly, with pinned LogicalNames. -->
+		<EnableDefaultEmbeddedResourceItems>false</EnableDefaultEmbeddedResourceItems>
+	</PropertyGroup>
+
+	<ItemGroup>
+		<PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<ProjectReference Include="..\BebooGarden.ModApi\BebooGarden.ModApi.csproj" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<!-- Managed binding only. The native fmod library is each head's business. -->
+		<Reference Include="FmodAudio">
+			<HintPath>..\BebooGarden\lib\FmodAudio.dll</HintPath>
+		</Reference>
+	</ItemGroup>
+
+	<!--
+	  The translations. LogicalName is pinned so the names stay exactly what BebooText.Designer.cs
+	  asks its ResourceManager for, which is "BebooGarden.Content.BebooText" plus the culture.
+	-->
+	<ItemGroup>
+		<EmbeddedResource Include="Content\BebooText.resx">
+			<LogicalName>BebooGarden.Content.BebooText.resources</LogicalName>
+			<WithCulture>true</WithCulture>
+		</EmbeddedResource>
+		<EmbeddedResource Include="Content\BebooText.fr.resx">
+			<LogicalName>BebooGarden.Content.BebooText.fr.resources</LogicalName>
+			<WithCulture>true</WithCulture>
+		</EmbeddedResource>
+		<EmbeddedResource Include="Content\BebooText.de.resx">
+			<LogicalName>BebooGarden.Content.BebooText.de.resources</LogicalName>
+			<WithCulture>true</WithCulture>
+		</EmbeddedResource>
+		<EmbeddedResource Include="Content\BebooText.pl.resx">
+			<LogicalName>BebooGarden.Content.BebooText.pl.resources</LogicalName>
+			<WithCulture>true</WithCulture>
+		</EmbeddedResource>
+		<EmbeddedResource Include="Content\BebooText.pt-BR.resx">
+			<LogicalName>BebooGarden.Content.BebooText.pt-BR.resources</LogicalName>
+			<WithCulture>true</WithCulture>
+		</EmbeddedResource>
+		<EmbeddedResource Include="Content\BebooText.vi.resx">
+			<LogicalName>BebooGarden.Content.BebooText.vi.resources</LogicalName>
+			<WithCulture>true</WithCulture>
+		</EmbeddedResource>
+		<EmbeddedResource Include="Content\BebooText.zh-Hans.resx">
+			<LogicalName>BebooGarden.Content.BebooText.zh-Hans.resources</LogicalName>
+			<WithCulture>true</WithCulture>
+		</EmbeddedResource>
+	</ItemGroup>
+
+	<ItemGroup>
+		<Compile Update="Content\BebooText.Designer.cs">
+			<DesignTime>True</DesignTime>
+			<AutoGen>True</AutoGen>
+			<DependentUpon>BebooText.resx</DependentUpon>
+		</Compile>
+	</ItemGroup>
+
+</Project>
