@@ -228,17 +228,19 @@ public sealed class MainActivity : Activity, AudioManager.IOnAudioFocusChangeLis
     var audio = GetSystemService(AudioService) as AudioManager;
     if (audio is null) return;
 
-    var attributes = new AudioAttributes.Builder()
+    AudioAttributes? attributes = new AudioAttributes.Builder()
         .SetUsage(AudioUsageKind.Game)!
         .SetContentType(AudioContentType.Music)!
         .Build();
+    if (attributes is null) return;
 
     _focusRequest = new AudioFocusRequestClass.Builder(AudioFocus.Gain)
         .SetAudioAttributes(attributes)!
         .SetOnAudioFocusChangeListener(this)!
         .Build();
+    if (_focusRequest is null) return;
 
-    audio.RequestAudioFocus(_focusRequest!);
+    audio.RequestAudioFocus(_focusRequest);
   }
 
   private void AbandonAudioFocus()

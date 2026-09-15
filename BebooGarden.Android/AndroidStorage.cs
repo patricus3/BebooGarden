@@ -81,11 +81,30 @@ public static class AndroidStorage
   /// Unpacks the content zip. Done once per app version: a new build may carry new or changed
   /// sounds, and a stale marker would leave the player without them.
   /// </summary>
+  /// <summary>
+  /// This build's version code, used to decide whether the unpacked content is stale.
+  ///
+  /// LongVersionCode only exists from API 28, and this app supports 26. Calling it on Android 8
+  /// throws NoSuchMethodError - during first-run unpacking, so the game would have died on every
+  /// launch on those devices and never got far enough to write down why.
+  /// </summary>
+  private static string PackageVersion(Context context)
+  {
+    var info = context.PackageManager?.GetPackageInfo(context.PackageName!, 0);
+    if (info is null) return "0";
+
+    if (OperatingSystem.IsAndroidVersionAtLeast(28))
+      return info.LongVersionCode.ToString();
+
+#pragma warning disable CA1422, CS0618 // Deprecated from 28, and deliberately only used below it.
+    return info.VersionCode.ToString();
+#pragma warning restore CA1422, CS0618
+  }
+
   private static void UnpackContent(Context context, string target, Action<int, int>? onProgress)
   {
     string marker = Path.Combine(target, ContentMarker);
-    string version = context.PackageManager?
-        .GetPackageInfo(context.PackageName!, 0)?.LongVersionCode.ToString() ?? "0";
+    string version = PackageVersion(context);
 
     if (File.Exists(marker) && File.ReadAllText(marker) == version) return;
 

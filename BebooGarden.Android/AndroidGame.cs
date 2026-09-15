@@ -16,7 +16,7 @@ using System.Numerics;
 namespace BebooGarden.Droid;
 
 /// <summary>
-/// The phone's running game: what <see cref="Game1"/> is on Windows, minus everything to do with a
+/// The phone's running game: what Game1 is on Windows, minus everything to do with a
 /// window, a keyboard or a widget.
 ///
 /// It holds no behaviour of its own. Beboos, items, maps and minigames all come from
