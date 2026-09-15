@@ -6,8 +6,8 @@ using System.Numerics;
 using System.Threading.Tasks;
 using BebooGarden.Content;
 using BebooGarden.GameCore.World;
-using FmodAudio;
-using FmodAudio.DigitalSignalProcessing;
+using BebooGarden.Audio;
+
 
 namespace BebooGarden.GameCore.Pet;
 
@@ -70,7 +70,7 @@ public partial class Beboo
     Position = new Vector3(0, 0, 0);
     Name = name == string.Empty ? "boby" : name;
     BebooType = bebooType;
-    VoiceDsp = GameHost.Current.SoundSystem.System.CreateDSPByType(FmodAudio.DigitalSignalProcessing.DSPType.PitchShift);
+    VoiceDsp = GameHost.Current.SoundSystem.System.CreateDSPByType(DspType.PitchShift);
     VoiceDsp.SetParameterFloat(0, voicePitch);
     SwimLevel = swimLevel;
     bool isSleepingAtStart = !racer && (DateTime.Now.Hour < 8 || DateTime.Now.Hour > 22);

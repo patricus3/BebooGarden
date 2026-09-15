@@ -93,12 +93,9 @@ public sealed class MainActivity : Activity, AudioManager.IOnAudioFocusChangeLis
       Voice.Current.Say("Setting up your garden. This happens once.");
       AndroidStorage.Prepare(this);
 
-      // FmodAudio is managed and finds its native library at run time. On Android that library is
-      // unpacked next to the app's own .so files, which is the one directory that is guaranteed to
-      // hold the right ABI for this device.
-      string? nativeDir = ApplicationInfo?.NativeLibraryDir;
-      if (!string.IsNullOrEmpty(nativeDir))
-        FmodAudio.Fmod.SetLibraryLocation(nativeDir);
+      // Nothing to point at a library here: FMOD's own bindings P/Invoke against "fmod", and
+      // Android resolves that to libfmod.so out of the apk's native library directory, which is
+      // already the one holding the right ABI for this device.
 
       _game = new AndroidGame(new AndroidGameUi(() => this));
       GameHost.Use(_game);

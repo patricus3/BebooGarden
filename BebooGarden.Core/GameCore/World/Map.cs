@@ -6,7 +6,7 @@ using System.Numerics;
 using BebooGarden.GameCore.Item;
 using BebooGarden.GameCore.Pet;
 using BebooGarden.Minigame;
-using FmodAudio;
+using BebooGarden.Audio;
 using Newtonsoft.Json;
 using Vector2 = System.Numerics.Vector2;
 using Vector3 = System.Numerics.Vector3;
@@ -41,12 +41,12 @@ public class Map
          new(new(-30, 0, 0), MapPreset.underwater, () => BebooText.underwater),
          new(new(30, 30, 0), MapPreset.fluff, () => BebooText.fluff)
        ],
-       FmodAudio.Preset.Plain);
+       Audio.Preset.Plain);
     Snowy = new Map(MapPreset.snowy, 60, 60,
         [new TreeLine(new Vector2(-5, 30), new Vector2(5, 30), 3, [FruitSpecies.Normal, FruitSpecies.Energetic])],
         [],
         [new(new(-30, -30, 0), MapPreset.garden, () => BebooText.path)],
-        FmodAudio.Preset.Plain);
+        Audio.Preset.Plain);
     UnderWater = new Map(MapPreset.underwater, 40, 40,
         [],
         [],
@@ -54,25 +54,25 @@ public class Map
           new(new(20, 0, 0), MapPreset.garden, () => BebooText.underwater),
           new(new(-20,0,0), MapPreset.beach, () => BebooText.underwater)
         ],
-        FmodAudio.Preset.UnderWater);
+        Audio.Preset.UnderWater);
     Beach = new Map(MapPreset.beach, 60, 40,
         [new TreeLine(new Vector2(-30, -20), new Vector2(30, -20), 5, [FruitSpecies.Normal, FruitSpecies.Energetic])],
         [new WaterRectangle(WaterPreset.Sea, new Vector3(-30, 20, 0), 60, 20)],
         [new(new(30, 20, 0), MapPreset.underwater, () => BebooText.underwater)],
-        FmodAudio.Preset.Off);
+        Audio.Preset.Off);
 
     Fluff = new Map(MapPreset.fluff, 24, 24,
         [],
         [],
         [new(new(12, 0, 0), MapPreset.garden, () => BebooText.path)],
-        FmodAudio.Preset.Room);
+        Audio.Preset.Room);
 
     BasicRace = new Map(MapPreset.basicrace, Race.BASERACELENGTH, 10,
         [], [],
-        [/*new WaterRectangle(position: new Vector3(0, -(Race.BASERACELENGTH / 2) - 10, 0))*/], FmodAudio.Preset.StoneCorridor);
+        [/*new WaterRectangle(position: new Vector3(0, -(Race.BASERACELENGTH / 2) - 10, 0))*/], Audio.Preset.StoneCorridor);
     SnowyRace = new Map(MapPreset.snowyrace, Race.BASERACELENGTH, 10,
         [], [],
-        [], FmodAudio.Preset.Plain);
+        [], Audio.Preset.Plain);
 
     Maps = new Dictionary<MapPreset, Map>{
       { MapPreset.garden, Garden },

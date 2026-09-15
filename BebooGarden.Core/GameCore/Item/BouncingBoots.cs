@@ -1,7 +1,7 @@
 ﻿using System.Numerics;
 using BebooGarden.Content;
 using BebooGarden.GameCore.Pet;
-using FmodAudio;
+using BebooGarden.Audio;
 
 namespace BebooGarden.GameCore.Item;
 

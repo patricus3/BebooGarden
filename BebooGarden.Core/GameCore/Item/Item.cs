@@ -3,7 +3,7 @@ using System;
 using System.Numerics;
 using BebooGarden.GameCore;
 using BebooGarden.GameCore.Pet;
-using FmodAudio;
+using BebooGarden.Audio;
 using Newtonsoft.Json;
 
 namespace BebooGarden.GameCore.Item;

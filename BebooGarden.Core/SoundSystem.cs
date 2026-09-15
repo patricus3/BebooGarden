@@ -10,9 +10,9 @@ using System.Timers;
 using BebooGarden.GameCore;
 using BebooGarden.GameCore.Pet;
 using BebooGarden.GameCore.World;
-using FmodAudio;
-using FmodAudio.Base;
-using FmodAudio.DigitalSignalProcessing;
+using BebooGarden.Audio;
+
+
 using Timer = System.Timers.Timer;
 
 namespace BebooGarden;
@@ -695,7 +695,7 @@ public class SoundSystem
   }
   public void PlayShopMusic()
   {
-    MusicTransition(ShopMusicStream, 459264, 8156722, FmodAudio.TimeUnit.PCM);
+    MusicTransition(ShopMusicStream, 459264, 8156722, TimeUnit.PCM);
   }
   public void PlayBeachMusic()
   {
@@ -707,23 +707,23 @@ public class SoundSystem
   }
   public void PlayFluffMusic()
   {
-    MusicTransition(FluffMusicStream, 0, 0, FmodAudio.TimeUnit.PCM, 0.35f);
+    MusicTransition(FluffMusicStream, 0, 0, TimeUnit.PCM, 0.35f);
   }
   public void PlayRaceMusic()
   {
-    MusicTransition(RaceMusicStream, 0, 0, FmodAudio.TimeUnit.PCM);
+    MusicTransition(RaceMusicStream, 0, 0, TimeUnit.PCM);
   }
   public void PlayRaceLolMusic()
   {
-    MusicTransition(RaceLolMusicStream, 0, 0, FmodAudio.TimeUnit.PCM);
+    MusicTransition(RaceLolMusicStream, 0, 0, TimeUnit.PCM);
   }
   public void PlaySnowyMusic()
   {
-    MusicTransition(SnowyMusicStream, 1922069, 6508548, FmodAudio.TimeUnit.PCM);
+    MusicTransition(SnowyMusicStream, 1922069, 6508548, TimeUnit.PCM);
   }
   public void PlayUnderWaterMusic()
   {
-    MusicTransition(UnderWaterMusicStream, 2684920, 6164501, FmodAudio.TimeUnit.PCM, 0.3f);
+    MusicTransition(UnderWaterMusicStream, 2684920, 6164501, TimeUnit.PCM, 0.3f);
   }
   public void PlayMapMusic(Map map)
   {

@@ -1,4 +1,5 @@
-﻿using BebooGarden.GameCore;
+﻿using BebooGarden.Audio;
+using BebooGarden.GameCore;
 using BebooGarden.GameCore.Speech;
 using System;
 using System.Numerics;
@@ -106,7 +107,7 @@ public partial class Beboo
       if (Channel != null && Channel.IsPlaying)
         Channel.Set3DAttributes(VoicePosition + new Vector3(0, 0, -2), default, default);
     }
-    catch (FmodAudio.FmodException)
+    catch (FmodException)
     {
       // The channel finished between the check and the move; nothing to follow any more.
     }

@@ -3,7 +3,7 @@ using BebooGarden.Content;
 using BebooGarden.GameCore;
 using BebooGarden.GameCore.Pet;
 using BebooGarden.MiniGames;
-using FmodAudio;
+using BebooGarden.Audio;
 using BebooGarden.GameCore.Input;
 using System;
 using System.Collections.Generic;

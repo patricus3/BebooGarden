@@ -5,7 +5,7 @@ using System.Linq;
 using System.Numerics;
 using System.Threading;
 using System.Threading.Tasks;
-using FmodAudio;
+using BebooGarden.Audio;
 
 namespace BebooGarden.Minigame.memory;
 public class SoundSystem

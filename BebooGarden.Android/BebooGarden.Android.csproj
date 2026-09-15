@@ -6,8 +6,9 @@
 	  activity and its lifecycle, the system text-to-speech engine, touch instead of a keyboard,
 	  notifications, audio focus, and unpacking the shipped sounds out of the package.
 
-	  FMOD is not one of those. FmodAudio is managed and resolves its native library at run time, so
-	  the same SoundSystem serves both platforms; this head only points it at libfmod.so.
+	  FMOD is not one of those. Its C# bindings are plain P/Invoke against "fmod", which Android
+	  resolves to libfmod.so out of the apk's own native library directory, so the same
+	  SoundSystem serves both platforms with nothing to configure here.
 	-->
 
 	<PropertyGroup>
@@ -29,13 +30,6 @@
 		<PublishTrimmed>false</PublishTrimmed>
 	</PropertyGroup>
 
-	<ItemGroup>
-		<!-- Managed binding only. libfmod.so per ABI is supplied separately and found at run time;
-		     see MainActivity, which points Fmod.SetLibraryLocation at the native library dir. -->
-		<Reference Include="FmodAudio">
-			<HintPath>..\BebooGarden\lib\FmodAudio.dll</HintPath>
-		</Reference>
-	</ItemGroup>
 
 	<ItemGroup>
 		<ProjectReference Include="..\BebooGarden.Core\BebooGarden.Core.csproj" />
@@ -54,11 +48,9 @@
 	  The glob means adding an ABI needs no edit here. If the folder is empty the build still
 	  succeeds, which is deliberate: everything except the audio can be worked on without it.
 	-->
-	<ItemGroup>
-		<AndroidNativeLibrary Include="lib\android\*\*.so">
-			<Abi>$([System.IO.Path]::GetFileName($([System.IO.Path]::GetDirectoryName('%(FullPath)'))))</Abi>
-		</AndroidNativeLibrary>
-	</ItemGroup>
+	<!-- No item group for these: the Android SDK already globs lib\<abi>\*.so into
+	     AndroidNativeLibrary by itself, and adding them again only earns XA4301
+	     "APK already contains the item" for every one of them. -->
 
 	<!--
 	  The sounds ship as ONE zip asset, unpacked on first run - see AndroidStorage.

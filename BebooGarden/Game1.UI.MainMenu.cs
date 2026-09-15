@@ -4,7 +4,7 @@ using BebooGarden.GameCore.Pet;
 using BebooGarden.UI;
 using BebooGarden.UI.ScriptedScene;
 using CrossSpeak;
-using FmodAudio;
+using BebooGarden.Audio;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Input;
 using Myra.Events;

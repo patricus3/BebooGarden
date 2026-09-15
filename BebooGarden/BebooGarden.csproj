@@ -65,11 +65,6 @@
 	<ItemGroup>
 		<ProjectReference Include="..\AccessibleMyraUI\AccessibleMyraUI.csproj" />
 	</ItemGroup>
-	<ItemGroup>
-		<Reference Include="FmodAudio">
-			<HintPath>lib\FmodAudio.dll</HintPath>
-		</Reference>
-	</ItemGroup>
 	<!-- There was a RestoreDotnetTools target here that ran "dotnet tool restore" before every
 	     restore. The only thing in .config/dotnet-tools.json is mgcb and its editors, so with the
 	     content pipeline gone it was fetching a toolchain nothing runs. The manifest is left in

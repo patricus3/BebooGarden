@@ -17,7 +17,10 @@ They are not in this repository because FMOD's licence does not allow redistribu
   4. Rebuild. build_all.bat picks them up with no edit needed.
 
 Use libfmod.so, not libfmodL.so - the L build is the logging one, and it is much larger
-and slower. Match the FMOD version to lib/FmodAudio.dll in the Windows project, which is
-binding version 2.02.
+and slower.
+
+The version has to match BebooGarden/lib/fmod.dll, currently 2.03.14, because FMOD
+compares header against library in System::init and refuses to start on a mismatch.
+download_deps.bat checks this for you and stops rather than building something silent.
 
 Only arm64-v8a is genuinely needed if you are just installing on your own phone.

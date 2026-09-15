@@ -13,9 +13,9 @@
 	  What the platform does differ on is reached through interfaces declared here and implemented by
 	  each head: IGame, IGameUi, ISpeech and IInputFrame.
 
-	  FMOD is not one of those. FmodAudio is a managed net6.0 assembly that resolves its native
-	  library at run time, so the same sound system serves both platforms; each head only has to
-	  point Fmod.SetLibraryLocation at its own fmod binary.
+	  FMOD is not one of those. Its own C# bindings live in Fmod/ and are plain P/Invoke against
+	  "fmod" with no framework dependency of any kind, so the same sound system serves both
+	  platforms and each one simply supplies its own fmod binary.
 	-->
 
 	<PropertyGroup>
@@ -41,12 +41,6 @@
 		<ProjectReference Include="..\BebooGarden.ModApi\BebooGarden.ModApi.csproj" />
 	</ItemGroup>
 
-	<ItemGroup>
-		<!-- Managed binding only. The native fmod library is each head's business. -->
-		<Reference Include="FmodAudio">
-			<HintPath>..\BebooGarden\lib\FmodAudio.dll</HintPath>
-		</Reference>
-	</ItemGroup>
 
 	<!--
 	  The translations. LogicalName is pinned so the names stay exactly what BebooText.Designer.cs
