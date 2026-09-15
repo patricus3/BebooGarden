@@ -21,6 +21,21 @@ public static class AndroidStorage
   private const string ContentMarker = ".unpacked";
 
   /// <summary>
+  /// Points the crash log somewhere the player can actually reach, and nothing else.
+  ///
+  /// Separate from <see cref="Prepare"/> and far cheaper, because it has to run before anything
+  /// that might throw - including <see cref="Prepare"/> itself, which unpacks half a gigabyte and
+  /// is the likeliest thing in the whole app to fail on a device that is out of room.
+  /// </summary>
+  public static void PrepareCrashLog(Context context)
+  {
+    string? external = context.GetExternalFilesDir(null)?.AbsolutePath;
+    string folder = external ?? context.FilesDir?.AbsolutePath ?? Path.GetTempPath();
+    Directory.CreateDirectory(folder);
+    GamePaths.CrashLog = Path.Combine(folder, "crash.log");
+  }
+
+  /// <summary>
   /// Sets every path the shared code reads, then unpacks the content if it has not been unpacked
   /// already. Call once, before anything loads a sound.
   /// </summary>
@@ -41,6 +56,12 @@ public static class AndroidStorage
     Directory.CreateDirectory(userMods);
     GamePaths.UserModsFolder = userMods;
 
+    // The crash log goes in the same reachable place, for the same reason and then some: it is
+    // written so that somebody can send it on, and a log nobody can open is no log at all. The
+    // save deliberately stays in private storage - that one is the player's and wants protecting,
+    // not sharing.
+    GamePaths.CrashLog = Path.Combine(external ?? files, "crash.log");
+
     // A note left where somebody looking for the folder will find it.
     string readme = Path.Combine(userMods, "PUT MODS HERE.txt");
     if (!File.Exists(readme))
@@ -48,7 +69,9 @@ public static class AndroidStorage
       File.WriteAllText(readme,
           "Drop a mod's .dll here, or its folder, and restart Beboo Garden.\r\n" +
           "Turn mods on in the game's mod menu.\r\n\r\n" +
-          $"Full path: {userMods}\r\n");
+          $"Full path: {userMods}\r\n\r\n" +
+          "If the game ever crashes, crash.log is in the folder above this one -\r\n" +
+          "send it on and it says what actually happened.\r\n");
     }
 
     UnpackContent(context, content, onProgress);

@@ -57,7 +57,17 @@ public static class GamePaths
 
   public static string SaveFile => Path.Combine(DataFolder, SAVEFILE);
 
-  public static string CrashLog => Path.Combine(DataFolder, CRASHLOG);
+  /// <summary>
+  /// Where a crash gets written down.
+  ///
+  /// Settable for the same reason as <see cref="UserModsFolder"/>, and it matters more here. The
+  /// save belongs in private storage - it is the player's and nothing should be able to touch it -
+  /// but a crash log exists precisely so it can be sent to somebody. On Android the private
+  /// directory cannot be opened by any file manager, so a log written there is one the player
+  /// cannot reach, cannot attach to a bug report, and might as well not have been written. That
+  /// head puts this in shared storage instead.
+  /// </summary>
+  public static string CrashLog { get; set; } = Path.Combine(DataFolder, CRASHLOG);
 
   /// <summary>
   /// Where a player drops mods of their own. Needs no administrator rights.

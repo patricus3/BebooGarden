@@ -1,4 +1,4 @@
-using Android.App;
+﻿using Android.App;
 using Android.Content;
 using Android.Content.PM;
 using Android.Media;
@@ -49,6 +49,17 @@ public sealed class MainActivity : Activity, AudioManager.IOnAudioFocusChangeLis
   protected override void OnCreate(Bundle? savedInstanceState)
   {
     base.OnCreate(savedInstanceState);
+
+    // First, before anything at all can throw. A crash that happens on the way up is exactly the
+    // one a player most needs to be able to send you, and until this runs the log would be written
+    // into private storage where nobody can get at it.
+    AndroidStorage.PrepareCrashLog(this);
+    AppDomain.CurrentDomain.UnhandledException +=
+        (_, e) => Record("unhandled", e.ExceptionObject as Exception);
+    // Beboo behaviour runs plenty of delayed work on the thread pool; a throw in one of those is
+    // otherwise swallowed entirely. Same reasoning as Program.cs on Windows.
+    TaskScheduler.UnobservedTaskException +=
+        (_, e) => Record("background task", e.Exception);
 
     // Nothing is drawn, but a view is still needed to receive touches and to be what TalkBack
     // focuses when it is running.
@@ -102,18 +113,23 @@ public sealed class MainActivity : Activity, AudioManager.IOnAudioFocusChangeLis
     {
       // A crash here leaves a black screen and no explanation, which on an audio game is
       // indistinguishable from the app simply not working.
-      TryRecord(error);
+      Record("startup", error);
       RunOnUiThread(() => Voice.Current.Say(
           "Beboo Garden could not start. The details were written to the crash log.", interrupt: true));
     }
   }
 
-  private void TryRecord(Exception error)
+  /// <summary>
+  /// Appends a crash to the log the player can reach. Never throws: this is what runs when things
+  /// have already gone wrong.
+  /// </summary>
+  private static void Record(string origin, Exception? error)
   {
+    if (error == null) return;
     try
     {
       File.AppendAllText(GamePaths.CrashLog,
-          $"{DateTime.Now:yyyy-MM-dd HH:mm:ss}  android startup{System.Environment.NewLine}{error}{System.Environment.NewLine}{System.Environment.NewLine}");
+          $"{DateTime.Now:yyyy-MM-dd HH:mm:ss}  {origin}{System.Environment.NewLine}{error}{System.Environment.NewLine}{System.Environment.NewLine}");
     }
     catch (Exception)
     {
@@ -139,7 +155,7 @@ public sealed class MainActivity : Activity, AudioManager.IOnAudioFocusChangeLis
         }
         catch (Exception error)
         {
-          TryRecord(error);
+          Record("tick", error);
         }
         await Task.Delay(TickInterval, token).ConfigureAwait(false);
       }
@@ -163,7 +179,7 @@ public sealed class MainActivity : Activity, AudioManager.IOnAudioFocusChangeLis
     }
     catch (Exception error)
     {
-      TryRecord(error);
+      Record("closing down", error);
     }
 
     AbandonAudioFocus();
