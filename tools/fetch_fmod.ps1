@@ -17,6 +17,7 @@ Give it a path if the archive is somewhere unusual:
 [CmdletBinding()]
 param(
     [string]$Archive,
+    [switch]$Force,
     [switch]$Quiet
 )
 
@@ -72,6 +73,60 @@ if (-not $Archive -or -not (Test-Path $Archive)) {
 
 Write-Step "  Using $Archive"
 
+# --- Does it match the binding? ----------------------------------------------
+# FMOD checks the header version against the library version in System::init and
+# returns ERR_HEADER_MISMATCH when the minor line differs. A 2.03 library against
+# a 2.02 binding builds and installs perfectly and then has no audio at all, with
+# nothing on screen to say why - so catch it here, where it is still cheap.
+# Read it off the Windows fmod.dll's file version rather than by loading the managed
+# binding. Loading FmodAudio.dll needs its own dependencies resolvable from wherever
+# this happens to be run, and when that fails the reflection returns null and the check
+# skips - so the fragile way to do this is also the way that silently passes.
+# fmod.dll reports e.g. "2.2.14 (build 133546)", where 2.2 is the 2.02 line.
+$bindingLine = $null
+$bindingProblem = $null
+try {
+    $fmodDll = [System.IO.Path]::GetFullPath((Join-Path $repo 'BebooGarden\lib\fmod.dll'))
+    if (Test-Path $fmodDll) {
+        $fileVersion = (Get-Item $fmodDll).VersionInfo.FileVersion
+        if ($fileVersion -match '^(\d+)\.(\d+)\.') {
+            $bindingLine = "{0}.{1:D2}" -f [int]$Matches[1], [int]$Matches[2]
+        }
+        else { $bindingProblem = "could not parse '$fileVersion'" }
+    }
+    else { $bindingProblem = "fmod.dll not found at $fmodDll" }
+}
+catch { $bindingProblem = $_.Exception.Message }
+
+# Say so rather than skipping in silence. A check that quietly does nothing when it
+# cannot run is worse than no check, because it still looks like it passed.
+if (-not $bindingLine) {
+    Write-Host "  Note: could not read the expected FMOD version, so it is unchecked."
+    if ($bindingProblem) { Write-Host "        ($bindingProblem)" }
+}
+
+if ($bindingLine -and ($Archive -match 'fmodstudioapi(\d)(\d\d)(\d\d)')) {
+    $archiveLine = "$($Matches[1]).$($Matches[2])"
+
+    if ($archiveLine -ne $bindingLine) {
+        Write-Host ""
+        Write-Host "  Wrong FMOD line: that archive is $archiveLine, the binding needs $bindingLine."
+        Write-Host ""
+        Write-Host "  FMOD compares the two in System::init and refuses to start on a mismatch"
+        Write-Host "  (ERR_HEADER_MISMATCH). The apk would build and install and simply have no"
+        Write-Host "  sound, which is a miserable thing to debug on a phone."
+        Write-Host ""
+        Write-Host "  On fmod.com the download page has a version dropdown - pick $bindingLine.x"
+        Write-Host "  (the Windows build in this repo is on $bindingLine too, so both platforms"
+        Write-Host "  stay on one version)."
+        Write-Host ""
+        Write-Host "  To use it anyway: -Force"
+        Write-Host ""
+        if (-not $Force) { exit 4 }
+        Write-Host "  -Force given; continuing with the mismatched version."
+    }
+}
+
 # --- Unpack it ---------------------------------------------------------------
 $staging = Join-Path ([System.IO.Path]::GetTempPath()) "fmod-android-$(Get-Random)"
 New-Item -ItemType Directory -Path $staging -Force | Out-Null
@@ -81,8 +136,13 @@ try {
         Expand-Archive -Path $Archive -DestinationPath $staging -Force
     }
     else {
-        # tar ships with Windows 10 1803 and later, and handles .tar.gz directly.
-        & tar -xf $Archive -C $staging
+        # Windows' own bsdtar, by full path, not whatever "tar" happens to resolve to. Run from a
+        # Git Bash shell, PATH puts GNU tar first, and GNU tar reads "C:\Users\..." as a remote
+        # host called C - "Cannot connect to C: resolve failed" - which looks like a broken archive
+        # rather than the wrong tar.
+        $tar = Join-Path $env:SystemRoot 'System32\tar.exe'
+        if (-not (Test-Path $tar)) { $tar = 'tar' }
+        & $tar -xf $Archive -C $staging
         if ($LASTEXITCODE -ne 0) { throw "tar could not read $Archive" }
     }
 
